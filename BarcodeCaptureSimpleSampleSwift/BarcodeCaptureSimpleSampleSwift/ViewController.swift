@@ -115,9 +115,9 @@ class ViewController: UIViewController {
     }
 
     private func showResult(_ result: String, completion: @escaping () -> Void) {
-        let alert = UIAlertController(title: result, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completion() }))
         DispatchQueue.main.async {
+            let alert = UIAlertController(title: result, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completion() }))
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -139,7 +139,7 @@ extension ViewController: BarcodeCaptureListener {
         // the capture mode is enabled again. Note that disabling the capture mode does not stop the camera, the camera
         // continues to stream frames until it is turned off.
         barcodeCapture.isEnabled = false
-        
+
         // If you are not disabling barcode capture here and want to continue scanning, consider setting the
         // codeDuplicateFilter when creating the barcode capture settings to around 500 or even -1 if you do not want
         // codes to be scanned more than once.

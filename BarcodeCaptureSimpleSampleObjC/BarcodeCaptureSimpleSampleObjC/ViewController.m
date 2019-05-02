@@ -129,16 +129,16 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
 }
 
 - (void)showResult:(nonnull NSString *)result completion:(nonnull void (^)(void))completion {
-    UIAlertController *alert = [UIAlertController
-        alertControllerWithTitle:result
-                         message:nil
-                  preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK"
-                                              style:UIAlertActionStyleDefault
-                                            handler:^(UIAlertAction *_Nonnull action) {
-                                                completion();
-                                            }]];
     dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alert = [UIAlertController
+            alertControllerWithTitle:result
+                             message:nil
+                      preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *_Nonnull action) {
+                                                    completion();
+                                                }]];
         [self presentViewController:alert animated:YES completion:nil];
     });
 }

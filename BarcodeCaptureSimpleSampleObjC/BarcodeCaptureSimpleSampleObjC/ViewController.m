@@ -97,7 +97,7 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
     [settings setSymbology:SDCSymbologyInterleavedTwoOfFive enabled:YES];
 
     // Some linear/1d barcode symbologies allow you to encode variable-length data. By default, the
-    // Scandit DataCapture SDK only scans barcodes in a certain length range. If your application
+    // Scandit Data Capture SDK only scans barcodes in a certain length range. If your application
     // requires scanning of one of these symbologies, and the length is falling outside the default
     // range, you may need to adjust the "active symbol counts" for this symbology. This is shown in
     // the following few lines of code for one of the variable-length symbologies.
@@ -115,7 +115,7 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
     // To visualize the on-going barcode capturing process on screen, setup a data capture view that
     // renders the camera preview. The view must be connected to the data capture context.
     self.captureView = [[SDCDataCaptureView alloc] initWithFrame:self.view.bounds];
-    self.captureView.dataCaptureContext = self.context;
+    self.captureView.context = self.context;
     self.captureView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
                                         UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:self.captureView];

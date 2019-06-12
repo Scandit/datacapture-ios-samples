@@ -42,6 +42,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>Access to the camera is required for scanning</string>
 </dict>
 </plist>

@@ -16,17 +16,17 @@ The simple samples allow you to get going quickly, while the advanced samples sh
 |                                               Simple Sample                                               |                                           Advanced Sample                                           |
 |:---------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------:|
 |                         ![alt text](/images/sample-ms-simple.jpeg?raw=true "Simple Sample")                         |                                             Coming Soon                                             |
-| Very simple sample which shows how you can highlight barcodes on screen with the Scandit DataCapture SDK. | Demonstrates the use of more advanced augmented reality use cases with the Scandit DataCapture SDK. |
+| Very simple sample which shows how you can highlight barcodes on screen with the Scandit Data Capture SDK. | Demonstrates the use of more advanced augmented reality use cases with the Scandit Data Capture SDK. |
 
 # Run the Samples
 
-The best way to start working with the Scandit DataCapture SDK is to run one of our sample apps.
+The best way to start working with the Scandit Data Capture SDK is to run one of our sample apps.
 
 Before you can run a sample app, you need to go through a few simple steps:
 
   1. Clone or download the samples repository.
   
-  2. Sign in to your Scandit account and download the newest iOS Framework at <https://ssl.scandit.com/downloads/>. Unzip the archive and copy the `frameworks` directory into the parent directory of the one with all the samples. It should look like this:
+  2. Sign in to your Scandit account and download the newest iOS Framework at <https://ssl.scandit.com/sdk/>. Unzip the archive and copy the `frameworks` directory into the parent directory of the one with all the samples. It should look like this:
   
   ![alt text](/images/samples-libs-setup.png?raw=true "Frameworks setup")
   

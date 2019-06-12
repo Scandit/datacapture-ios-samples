@@ -112,6 +112,7 @@
 				A23A015121E88A9500206642 /* Frameworks */,
 				A23A015221E88A9500206642 /* Resources */,
 				A23A017221E88F7F00206642 /* Embed Frameworks */,
+				655AC791228DA4BA0076E445 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -134,6 +135,7 @@
 				TargetAttributes = {
 					A23A015321E88A9500206642 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -167,6 +169,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		655AC791228DA4BA0076E445 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanditCaptureCore.framework/strip-frameworks.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A23A015021E88A9500206642 /* Sources */ = {
@@ -324,7 +346,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
-				INFOPLIST_FILE = MatrixScanSimpleSample/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanSimpleSample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -332,7 +354,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.MatrixScanSimpleSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -344,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
-				INFOPLIST_FILE = MatrixScanSimpleSample/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanSimpleSample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -352,7 +374,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.MatrixScanSimpleSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

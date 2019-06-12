@@ -109,6 +109,7 @@
 				6FA0B28A219AE7B600FF780A /* Frameworks */,
 				6FA0B28B219AE7B600FF780A /* Resources */,
 				6FA0B2B2219AF57200FF780A /* Embed Frameworks */,
+				655AC78D228DA46A0076E445 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -131,7 +132,7 @@
 				TargetAttributes = {
 					6FA0B28C219AE7B600FF780A = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -165,6 +166,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		655AC78D228DA46A0076E445 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanditCaptureCore.framework/strip-frameworks.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6FA0B289219AE7B600FF780A /* Sources */ = {
@@ -331,7 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.sdc.simplesampleswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -352,7 +373,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.sdc.simplesampleswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

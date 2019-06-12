@@ -87,12 +87,12 @@ class ViewController: UIViewController {
         settings.set(symbology: .interleavedTwoOfFive, enabled: true)
 
         // Some linear/1d barcode symbologies allow you to encode variable-length data. By default, the Scandit
-        // DataCapture SDK only scans barcodes in a certain length range. If your application requires scanning of one
+        // Data Capture SDK only scans barcodes in a certain length range. If your application requires scanning of one
         // of these symbologies, and the length is falling outside the default range, you may need to adjust the "active
         // symbol counts" for this symbology. This is shown in the following few lines of code for one of the
         // variable-length symbologies.
         let symbologySettings = settings.settings(for: .code39)
-        symbologySettings?.activeSymbolCounts = Set(7...20) as Set<NSNumber>
+        symbologySettings.activeSymbolCounts = Set(7...20) as Set<NSNumber>
 
         // Create new barcode capture mode with the settings from above.
         barcodeCapture = BarcodeCapture(context: context, settings: settings)
@@ -103,7 +103,7 @@ class ViewController: UIViewController {
         // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
         captureView = DataCaptureView(frame: view.bounds)
-        captureView.dataCaptureContext = context
+        captureView.context = context
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
 
@@ -131,7 +131,7 @@ extension ViewController: BarcodeCaptureListener {
     func barcodeCapture(_ barcodeCapture: BarcodeCapture,
                         didScanIn session: BarcodeCaptureSession,
                         frameData: FrameData) {
-        guard let barcode = session.newlyRecognizedBarcodes.first, let data = barcode.data else {
+        guard let barcode = session.newlyRecognizedBarcodes.first else {
             return
         }
 
@@ -146,7 +146,7 @@ extension ViewController: BarcodeCaptureListener {
 
         // Get the human readable name of the symbology and assemble the result to be shown.
         let symbology = SymbologyDescription(symbology: barcode.symbology).readableName
-        let result = "Scanned: \(data) (\(symbology))"
+        let result = "Scanned: \(barcode.data) (\(symbology))"
 
         showResult(result) { [weak self] in
             // Enable recognizing barcodes when the result is not shown anymore.

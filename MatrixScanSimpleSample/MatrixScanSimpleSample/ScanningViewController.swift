@@ -85,13 +85,6 @@ class ScanningViewController: UIViewController {
         // and are then applied to the barcode tracking instance that manages barcode tracking.
         let settings = BarcodeTrackingSettings()
 
-        // BarcodeTracking has the ability to track more than one barcode at the same time. The next line sets up
-        // barcode tracking for an expected number of 8 codes per frame. This means that it's expected that there won't
-        // be more than around 8 barcodes visible in the image at the same time. Changing this number to higher values
-        // can have negative impact on performance, so just increasing it to high values is not recommended unless there
-        // is need to track many codes at once.
-        settings.expectedNumberOfBarcodesPerFrame = 8
-
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
         // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the
         // symbologies that your app requires as every additional enabled symbology has an impact on processing times.
@@ -110,7 +103,7 @@ class ScanningViewController: UIViewController {
         // To visualize the on-going barcode tracking process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
         captureView = DataCaptureView(frame: view.bounds)
-        captureView.dataCaptureContext = context
+        captureView.context = context
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)
@@ -135,7 +128,7 @@ class ScanningViewController: UIViewController {
 
 fileprivate extension Barcode {
     var isRejected: Bool {
-        return data?.first == "7"
+        return data.first == "7"
     }
 }
 
@@ -149,8 +142,8 @@ extension ScanningViewController: BarcodeTrackingListener {
         DispatchQueue.main.async {
             session.trackedBarcodes.values.compactMap({ $0.barcode }).forEach { barcode in
                 // The `isRejected` property is for illustrative purposes only, not part of the official API.
-                if let barcodeData = barcode.data, !barcodeData.isEmpty, !barcode.isRejected {
-                    self.results[barcodeData] = barcode
+                if !barcode.data.isEmpty, !barcode.isRejected {
+                    self.results[barcode.data] = barcode
                 }
             }
         }

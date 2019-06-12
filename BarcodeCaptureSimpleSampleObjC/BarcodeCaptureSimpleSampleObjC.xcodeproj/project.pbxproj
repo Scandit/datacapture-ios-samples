@@ -116,6 +116,7 @@
 				6F1DFF2A219B153200716DF1 /* Frameworks */,
 				6F1DFF2B219B153200716DF1 /* Resources */,
 				6F1DFF51219B15A200716DF1 /* Embed Frameworks */,
+				655AC78C228DA4560076E445 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -170,6 +171,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		655AC78C228DA4560076E445 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanditCaptureCore.framework/strip-frameworks.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6F1DFF29219B153200716DF1 /* Sources */ = {

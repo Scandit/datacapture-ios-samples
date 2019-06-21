@@ -179,12 +179,12 @@ extension SplitViewScannerViewController: BarcodeCaptureListener {
 }
 
 extension SplitViewScannerViewController: DataCaptureContextListener {
-    func context(_ context: DataCaptureContext, didChange licenseStatus: LicenseStatus) {
+    func context(_ context: DataCaptureContext, didChange contextStatus: ContextStatus) {
         // This function is executed from a background queue, so we need to switch to the main queue
         // before doing any work with our timer.
         DispatchQueue.main.async { [weak self] in
             self?.scanTimeoutTimer?.invalidate()
-            if !licenseStatus.isValid {
+            if !contextStatus.isValid {
                 // No need to create a timer in case we have an invalid license.
                 self?.scanTimeoutTimer = nil
             } else {

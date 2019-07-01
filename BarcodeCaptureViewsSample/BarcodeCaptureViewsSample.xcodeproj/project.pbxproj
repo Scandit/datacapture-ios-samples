@@ -19,6 +19,7 @@
 		0036C7F12254FD7800AC8CDC /* DataCaptureContext+Licensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036C7F02254FD7800AC8CDC /* DataCaptureContext+Licensed.swift */; };
 		00683C09225C981B0043578C /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00683C08225C981B0043578C /* ScanResult.swift */; };
 		00683C0E225CB4310043578C /* Modal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00683C0D225CB4310043578C /* Modal.storyboard */; };
+		0089C8F322C64BDF00CD3591 /* Symbology+ReadableName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0089C8F222C64BDF00CD3591 /* Symbology+ReadableName.swift */; };
 		00CCCF24225600D4002DDFA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCCF23225600D4002DDFA0 /* Constants.swift */; };
 		00CCCF2922565A41002DDFA0 /* CommonScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCCF2822565A41002DDFA0 /* CommonScannerViewController.swift */; };
 		00CCCF2B22574AC2002DDFA0 /* SplitViewModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCCF2A22574AC2002DDFA0 /* SplitViewModeViewController.swift */; };
@@ -55,6 +56,7 @@
 		0036C7F02254FD7800AC8CDC /* DataCaptureContext+Licensed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+Licensed.swift"; sourceTree = "<group>"; };
 		00683C08225C981B0043578C /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
 		00683C0D225CB4310043578C /* Modal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Modal.storyboard; sourceTree = "<group>"; };
+		0089C8F222C64BDF00CD3591 /* Symbology+ReadableName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Symbology+ReadableName.swift"; sourceTree = "<group>"; };
 		00CCCF23225600D4002DDFA0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		00CCCF2822565A41002DDFA0 /* CommonScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonScannerViewController.swift; sourceTree = "<group>"; };
 		00CCCF2A22574AC2002DDFA0 /* SplitViewModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewModeViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		0036C7EF2254FD6200AC8CDC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0089C8F222C64BDF00CD3591 /* Symbology+ReadableName.swift */,
 				0036C7F02254FD7800AC8CDC /* DataCaptureContext+Licensed.swift */,
 			);
 			path = Extensions;
@@ -274,6 +277,7 @@
 				0036C7F12254FD7800AC8CDC /* DataCaptureContext+Licensed.swift in Sources */,
 				00D5A644225CBEA000A9283D /* SplitViewScannerViewController.swift in Sources */,
 				00CCCF2922565A41002DDFA0 /* CommonScannerViewController.swift in Sources */,
+				0089C8F322C64BDF00CD3591 /* Symbology+ReadableName.swift in Sources */,
 				0036C7D42254F24400AC8CDC /* ModesViewController.swift in Sources */,
 				0036C7D22254F24400AC8CDC /* AppDelegate.swift in Sources */,
 				00683C09225C981B0043578C /* ScanResult.swift in Sources */,

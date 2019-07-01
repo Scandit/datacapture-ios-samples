@@ -22,7 +22,7 @@ import UIKit
 class MainTableViewController: UITableViewController {
     @IBOutlet weak var versionLabel: UILabel! {
         didSet {
-            versionLabel.text = Constants.sdkVersion
+            versionLabel.text = "Barcode Capture Settings Sample\n SDK \(Constants.sdkVersion)"
         }
     }
 }

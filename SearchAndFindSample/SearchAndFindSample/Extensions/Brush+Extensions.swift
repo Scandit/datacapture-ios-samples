@@ -17,17 +17,15 @@
  * under the License.
  */
 
-import ScanditBarcodeCapture
-import UIKit
+import ScanditCaptureCore
 
-class ModesViewController: UITableViewController {
-
-    @IBOutlet weak var versionLabel: UILabel!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        versionLabel.text = "Barcode Capture Views Sample \n SDK \(Constants.sdkVersion)"
+extension Brush {
+    static var matching: Brush {
+        let fillColor = UIColor(red: 57.0/255.0, green: 204.0/255.0, blue: 97.0/255.0, alpha: 0.6)
+        return Brush(fill: fillColor, stroke: .clear, strokeWidth: 0)
     }
 
-    @IBAction func unwindFromModalControllerMode(unwindSegue: UIStoryboardSegue) {}
+    static var nonMatching: Brush {
+        return Brush(fill: .clear, stroke: .white, strokeWidth: 3)
+    }
 }

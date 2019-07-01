@@ -5,18 +5,18 @@ The simple samples allow you to get going quickly, while the advanced samples sh
 
 ## Barcode Capture Samples
 
-|                        Simple Sample                        |                                 User Interface Sample                                |                                               Settings Sample                                               |
-|:-----------------------------------------------------------:|:------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------:|
-|  ![alt text](/images/sample-bc-simple.jpeg?raw=true "Simple Sample")  |                                      Coming Soon                                     |                                                 Coming Soon                                                 |
-| Basic sample that uses the camera to read a single barcode. | Demonstrates the various ways to best integrate the scanner into the UI of your app. | Demonstrates how you can adapt the scanner settings best to your needs and experiment with all the options. |
+|                               Simple Sample                              |                                View Sample                               |                             Settings Sample                              |
+|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
+| ![alt text](/images/sample-bc-simple.jpeg?raw=true "Simple Sample") | ![alt text](/images/sample-bc-view-1.jpeg?raw=true "View Sample") ![alt text](/images/sample-bc-view-2.jpeg?raw=true "View Sample") | ![alt text](/images/sample-bc-settings-1.jpeg?raw=true "Settings Sample") ![alt text](/images/sample-bc-settings-2.png?raw=true "Settings Sample") |
+ Basic sample that uses the camera to read a single barcode.              | Demonstrates the various ways to best integrate the scanner into the UI of your app. | Demonstrates how you can adapt the scanner settings best to your needs and experiment with all the options. |
 
 
 ## MatrixScan Samples
 
-|                                               Simple Sample                                               |                                           Advanced Sample                                           |
-|:---------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------:|
-|                         ![alt text](/images/sample-ms-simple.jpeg?raw=true "Simple Sample")                         |                                             Coming Soon                                             |
-| Very simple sample which shows how you can highlight barcodes on screen with the Scandit Data Capture SDK. | Demonstrates the use of more advanced augmented reality use cases with the Scandit Data Capture SDK. |
+|                               Reject Sample                              |                               Bubble Sample                              |                          Search And Find Sample                          |
+|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
+| ![alt text](/images/sample-ms-simple.jpeg?raw=true "Simple Sample") | ![alt text](/images/sample-ms-bubble.jpeg?raw=true "Bubble Sample") | ![alt text](/images/sample-ms-saf-1.jpeg?raw=true "Search") ![alt text](/images/sample-ms-saf-2.jpeg?raw=true "Find") |
+| Sample which shows how you can highlight selected (by a custom condition) barcodes on screen with the Scandit Data Capture SDK. | Demonstrates the use of more advanced augmented reality use cases with the Scandit Data Capture SDK. | Demonstrates a use case that requires a consecutive use of both Barcode Capture and MatrixScan in a single app. |
 
 # Run the Samples
 
@@ -44,3 +44,13 @@ Before you can run a sample app, you need to go through a few simple steps:
   ```
   
   5. Run the sample in Xcode by clicking the Play button. We recommend running our samples on a physical device as otherwise no camera is available.
+
+
+# Troubleshooting
+
+## Code Signing
+	Code Sign error: No matching provisioning profiles found: No provisioning profiles with a valid signing identity (i.e. certificate and private key pair) matching the bundle identifier "" were found.
+	
+Try to disable and enable again the `Automatic manage signing` settings in Xcode. You might want to change the bundle id.
+
+For more code signing troubleshooting please refer to the [Apple developer support page](https://help.apple.com/xcode/mac/current/#/dev60b6fbbc7)

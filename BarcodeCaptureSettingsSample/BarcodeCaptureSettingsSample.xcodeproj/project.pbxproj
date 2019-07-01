@@ -25,7 +25,6 @@
 		6F361E70223A7749009744EF /* Set+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F361E6F223A7749009744EF /* Set+Extensions.swift */; };
 		6F361E74223FAE78009744EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F361E73223FAE78009744EF /* Constants.swift */; };
 		6F361E76223FAF3F009744EF /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F361E75223FAF3F009744EF /* MainTableViewController.swift */; };
-		6F668AE92256082F00DCA33A /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668AE82256082F00DCA33A /* ResultViewController.swift */; };
 		6F668AEC225651A300DCA33A /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F668AEA225651A300DCA33A /* Result.storyboard */; };
 		6F668AEE225651DD00DCA33A /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668AED225651DD00DCA33A /* ResultTableViewController.swift */; };
 		6F668AF02256524E00DCA33A /* ResultDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668AEF2256524E00DCA33A /* ResultDataSource.swift */; };
@@ -114,7 +113,6 @@
 		6F361E6F223A7749009744EF /* Set+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Extensions.swift"; sourceTree = "<group>"; };
 		6F361E73223FAE78009744EF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6F361E75223FAF3F009744EF /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		6F668AE82256082F00DCA33A /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		6F668AEB225651A300DCA33A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = BarcodeCaptureSettingsSample/Storyboards/Base.lproj/Result.storyboard; sourceTree = "<group>"; };
 		6F668AED225651DD00DCA33A /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		6F668AEF2256524E00DCA33A /* ResultDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDataSource.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				6FA0B292219AE7B600FF780A /* ScanViewController.swift */,
-				6F668AE82256082F00DCA33A /* ResultViewController.swift */,
 				6F144A1A222E92BF002C5C3E /* Settings */,
 				6F869D0E2230033700E20833 /* Other */,
 			);
@@ -538,7 +535,6 @@
 				6F869D152230218500E20833 /* FeedbackTableViewController.swift in Sources */,
 				6F869D2622311FFC00E20833 /* CameraDataSource.swift in Sources */,
 				6F869D0C222FC83A00E20833 /* FloatInputCell.swift in Sources */,
-				6F668AE92256082F00DCA33A /* ResultViewController.swift in Sources */,
 				6FFECF352232CD38005CE4CD /* OverlayDataSource.swift in Sources */,
 				6F869D2422311F3000E20833 /* CameraTableViewController.swift in Sources */,
 				6F361E6C223A4285009744EF /* SymbologySettingsDataSource.swift in Sources */,

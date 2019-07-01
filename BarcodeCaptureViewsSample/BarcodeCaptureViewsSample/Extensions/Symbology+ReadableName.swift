@@ -18,16 +18,9 @@
  */
 
 import ScanditBarcodeCapture
-import UIKit
 
-class ModesViewController: UITableViewController {
-
-    @IBOutlet weak var versionLabel: UILabel!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        versionLabel.text = "Barcode Capture Views Sample \n SDK \(Constants.sdkVersion)"
+extension Symbology {
+    var readableName: String {
+        return SymbologyDescription(symbology: self).readableName
     }
-
-    @IBAction func unwindFromModalControllerMode(unwindSegue: UIStoryboardSegue) {}
 }

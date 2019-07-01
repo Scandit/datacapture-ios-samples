@@ -17,17 +17,15 @@
  * under the License.
  */
 
-import ScanditBarcodeCapture
 import UIKit
 
-class ModesViewController: UITableViewController {
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    @IBOutlet weak var versionLabel: UILabel!
+    var window: UIWindow?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        versionLabel.text = "Barcode Capture Views Sample \n SDK \(Constants.sdkVersion)"
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        return true
     }
-
-    @IBAction func unwindFromModalControllerMode(unwindSegue: UIStoryboardSegue) {}
 }

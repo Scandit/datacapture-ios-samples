@@ -91,6 +91,10 @@ class SplitViewScannerViewController: UIViewController {
         // for one second once it's recognized.
         barcodeCaptureSettings.codeDuplicateFilter = 1
 
+        // By setting the radius to zero, the barcode's frame has to contain the point of interest.
+        // The point of interest is at the center of the data capture view by default, as in this case.
+        barcodeCaptureSettings.locationSelection = RadiusLocationSelection(radius: .zero)
+
         // Create data capture context using your license key and set the camera as the frame source.
         context = DataCaptureContext.licensed
         context.setFrameSource(camera, completionHandler: nil)
@@ -119,10 +123,6 @@ class SplitViewScannerViewController: UIViewController {
         let viewFinder = LaserlineViewfinder()
         viewFinder.width = FloatWithUnit(value: 0.9, unit: .fraction)
         barcodeCaptureOverlay.viewfinder = viewFinder
-
-        // As we don't want to highlight any barcode, we disable the highlighting
-        // by setting overlay's brush with the appropriate values.
-        barcodeCaptureOverlay.brush = Brush(fill: .clear, stroke: .clear, strokeWidth: 0)
 
         // We are resizing the capture view to not to take the whole screen,
         // but just fill it's parent, both horizontally and vertically.

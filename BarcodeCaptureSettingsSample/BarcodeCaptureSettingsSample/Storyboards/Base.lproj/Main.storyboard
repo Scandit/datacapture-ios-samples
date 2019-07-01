@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scan View Controller-->
+        <!--BCSettings-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ScanViewController" customModule="BarcodeCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,9 +20,6 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74x-yY-Z09">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <connections>
-                                    <segue destination="OqO-DD-weH" kind="embed" id="meV-Ih-BOc"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,7 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2r2-f1-weS">
+                    <navigationItem key="navigationItem" title="BCSettings" id="2r2-f1-weS">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="LFf-gD-QGl">
                             <connections>
                                 <segue destination="bPA-OG-9QG" kind="show" id="JGV-xc-dDJ"/>
@@ -54,7 +51,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERSION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BLV-8P-seU">
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERSION" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BLV-8P-seU">
                             <rect key="frame" x="0.0" y="229" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
@@ -201,81 +198,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcl-vg-WhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3926" y="67"/>
-        </scene>
-        <!--Result View Controller-->
-        <scene sceneID="oQK-gJ-1lS">
-            <objects>
-                <viewController id="OqO-DD-weH" customClass="ResultViewController" customModule="BarcodeCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Euf-Dv-zBO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to close" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X21-R8-QIF">
-                                <rect key="frame" x="141" y="634" width="93" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2R3-e5-Ta5" userLabel="Content View">
-                                <rect key="frame" x="20" y="32" width="335" height="582"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MML-yk-AWB">
-                                        <rect key="frame" x="116" y="20" width="103" height="21"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xMX-st-HHX">
-                                        <rect key="frame" x="20" y="61" width="295" height="501"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="xMX-st-HHX" firstAttribute="leading" secondItem="2R3-e5-Ta5" secondAttribute="leading" constant="20" id="2wz-ur-Fq2"/>
-                                    <constraint firstItem="MML-yk-AWB" firstAttribute="centerX" secondItem="2R3-e5-Ta5" secondAttribute="centerX" id="HeM-6v-4w7"/>
-                                    <constraint firstItem="xMX-st-HHX" firstAttribute="top" secondItem="MML-yk-AWB" secondAttribute="bottom" constant="20" id="Mai-gT-GsB"/>
-                                    <constraint firstItem="MML-yk-AWB" firstAttribute="top" secondItem="2R3-e5-Ta5" secondAttribute="top" constant="20" id="aI6-8r-SSn"/>
-                                    <constraint firstAttribute="bottom" secondItem="xMX-st-HHX" secondAttribute="bottom" constant="20" id="sQ9-Ik-TYf"/>
-                                    <constraint firstAttribute="trailing" secondItem="xMX-st-HHX" secondAttribute="trailing" constant="20" id="sur-ea-LoL"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="18"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.25291630993150682" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="2R3-e5-Ta5" firstAttribute="topMargin" secondItem="Euf-Dv-zBO" secondAttribute="topMargin" constant="20" id="0rv-ui-YtL"/>
-                            <constraint firstItem="X21-R8-QIF" firstAttribute="top" secondItem="2R3-e5-Ta5" secondAttribute="bottom" constant="20" id="267-qp-dkn"/>
-                            <constraint firstAttribute="trailing" secondItem="2R3-e5-Ta5" secondAttribute="trailing" constant="20" id="8DE-el-mAj"/>
-                            <constraint firstItem="2R3-e5-Ta5" firstAttribute="centerX" secondItem="Euf-Dv-zBO" secondAttribute="centerX" id="Cx5-TD-Xb9"/>
-                            <constraint firstItem="X21-R8-QIF" firstAttribute="centerX" secondItem="Euf-Dv-zBO" secondAttribute="centerX" id="RXA-Pk-9uX"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="X21-R8-QIF" secondAttribute="bottomMargin" constant="20" id="bdI-u5-5L3"/>
-                            <constraint firstItem="2R3-e5-Ta5" firstAttribute="leading" secondItem="Euf-Dv-zBO" secondAttribute="leading" constant="20" id="iSG-bA-6WD"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="uGK-GI-rh7" appends="YES" id="5W0-FE-o0z"/>
-                        </connections>
-                    </view>
-                    <connections>
-                        <outlet property="resultTextView" destination="xMX-st-HHX" id="yaR-Lw-J56"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7J1-Qi-CDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="uGK-GI-rh7">
-                    <connections>
-                        <action selector="hideInitiatedByUserInteraction:" destination="OqO-DD-weH" id="cnb-Ao-XvH"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="2212" y="952"/>
         </scene>
         <!--Result-->
         <scene sceneID="3ho-X5-Pbk">

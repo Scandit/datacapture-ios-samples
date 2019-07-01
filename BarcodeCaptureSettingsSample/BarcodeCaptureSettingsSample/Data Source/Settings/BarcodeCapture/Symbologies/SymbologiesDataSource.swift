@@ -36,7 +36,7 @@ class SymbologiesDataSource: DataSource {
                            didSelect: { [weak self] _, _ in
                             SettingsManager.current.setAllSymbologies(enabled: true)
                             self?.delegate?.didChangeData() }),
-                Row.action(title: "Remove All",
+                Row.action(title: "Disable All",
                            didSelect: { [weak self] _, _ in
                             SettingsManager.current.setAllSymbologies(enabled: false)
                             self?.delegate?.didChangeData() })

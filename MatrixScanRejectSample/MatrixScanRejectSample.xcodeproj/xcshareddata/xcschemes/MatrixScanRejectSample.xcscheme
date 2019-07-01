@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A23A015321E88A9500206642"
-               BuildableName = "MatrixScanSimpleSample.app"
-               BlueprintName = "MatrixScanSimpleSample"
-               ReferencedContainer = "container:MatrixScanSimpleSample.xcodeproj">
+               BuildableName = "MatrixScanRejectSample.app"
+               BlueprintName = "MatrixScanRejectSample"
+               ReferencedContainer = "container:MatrixScanRejectSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A23A015321E88A9500206642"
-            BuildableName = "MatrixScanSimpleSample.app"
-            BlueprintName = "MatrixScanSimpleSample"
-            ReferencedContainer = "container:MatrixScanSimpleSample.xcodeproj">
+            BuildableName = "MatrixScanRejectSample.app"
+            BlueprintName = "MatrixScanRejectSample"
+            ReferencedContainer = "container:MatrixScanRejectSample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A23A015321E88A9500206642"
-            BuildableName = "MatrixScanSimpleSample.app"
-            BlueprintName = "MatrixScanSimpleSample"
-            ReferencedContainer = "container:MatrixScanSimpleSample.xcodeproj">
+            BuildableName = "MatrixScanRejectSample.app"
+            BlueprintName = "MatrixScanRejectSample"
+            ReferencedContainer = "container:MatrixScanRejectSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A23A015321E88A9500206642"
-            BuildableName = "MatrixScanSimpleSample.app"
-            BlueprintName = "MatrixScanSimpleSample"
-            ReferencedContainer = "container:MatrixScanSimpleSample.xcodeproj">
+            BuildableName = "MatrixScanRejectSample.app"
+            BlueprintName = "MatrixScanRejectSample"
+            ReferencedContainer = "container:MatrixScanRejectSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

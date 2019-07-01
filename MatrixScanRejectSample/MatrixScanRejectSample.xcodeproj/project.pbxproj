@@ -44,7 +44,7 @@
 		6FF0A9C02208633D002C0D21 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		A204A062224CC6600081469F /* ScanditCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScanditCaptureCore.framework; sourceTree = "<group>"; };
 		A204A063224CC6600081469F /* ScanditBarcodeCapture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScanditBarcodeCapture.framework; sourceTree = "<group>"; };
-		A23A015421E88A9500206642 /* MatrixScanSimpleSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatrixScanSimpleSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A23A015421E88A9500206642 /* MatrixScanRejectSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatrixScanRejectSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6FF0A9AA22083686002C0D21 /* MatrixScanSimpleSample */ = {
+		6FF0A9AA22083686002C0D21 /* MatrixScanRejectSample */ = {
 			isa = PBXGroup;
 			children = (
 				6FF0A9B222083686002C0D21 /* AppDelegate.swift */,
@@ -71,13 +71,13 @@
 				6FF0A9AC22083686002C0D21 /* Assets.xcassets */,
 				6FF0A9B322083686002C0D21 /* Info.plist */,
 			);
-			path = MatrixScanSimpleSample;
+			path = MatrixScanRejectSample;
 			sourceTree = "<group>";
 		};
 		A23A014B21E88A9500206642 = {
 			isa = PBXGroup;
 			children = (
-				6FF0A9AA22083686002C0D21 /* MatrixScanSimpleSample */,
+				6FF0A9AA22083686002C0D21 /* MatrixScanRejectSample */,
 				A23A016921E88C0C00206642 /* Frameworks */,
 				A23A015521E88A9500206642 /* Products */,
 			);
@@ -86,7 +86,7 @@
 		A23A015521E88A9500206642 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A23A015421E88A9500206642 /* MatrixScanSimpleSample.app */,
+				A23A015421E88A9500206642 /* MatrixScanRejectSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A23A015321E88A9500206642 /* MatrixScanSimpleSample */ = {
+		A23A015321E88A9500206642 /* MatrixScanRejectSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A23A016621E88A9700206642 /* Build configuration list for PBXNativeTarget "MatrixScanSimpleSample" */;
+			buildConfigurationList = A23A016621E88A9700206642 /* Build configuration list for PBXNativeTarget "MatrixScanRejectSample" */;
 			buildPhases = (
 				A23A015021E88A9500206642 /* Sources */,
 				A23A015121E88A9500206642 /* Frameworks */,
@@ -118,9 +118,9 @@
 			);
 			dependencies = (
 			);
-			name = MatrixScanSimpleSample;
+			name = MatrixScanRejectSample;
 			productName = MatrixScanSimpleSample;
-			productReference = A23A015421E88A9500206642 /* MatrixScanSimpleSample.app */;
+			productReference = A23A015421E88A9500206642 /* MatrixScanRejectSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,7 +139,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A23A014F21E88A9500206642 /* Build configuration list for PBXProject "MatrixScanSimpleSample" */;
+			buildConfigurationList = A23A014F21E88A9500206642 /* Build configuration list for PBXProject "MatrixScanRejectSample" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -152,7 +152,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A23A015321E88A9500206642 /* MatrixScanSimpleSample */,
+				A23A015321E88A9500206642 /* MatrixScanRejectSample */,
 			);
 		};
 /* End PBXProject section */
@@ -346,13 +346,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
-				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanSimpleSample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanRejectSample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.MatrixScanSimpleSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.MatrixScanRejectSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -366,13 +366,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
-				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanSimpleSample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanRejectSample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.MatrixScanSimpleSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.MatrixScanRejectSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,7 +382,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A23A014F21E88A9500206642 /* Build configuration list for PBXProject "MatrixScanSimpleSample" */ = {
+		A23A014F21E88A9500206642 /* Build configuration list for PBXProject "MatrixScanRejectSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A23A016421E88A9700206642 /* Debug */,
@@ -391,7 +391,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A23A016621E88A9700206642 /* Build configuration list for PBXNativeTarget "MatrixScanSimpleSample" */ = {
+		A23A016621E88A9700206642 /* Build configuration list for PBXNativeTarget "MatrixScanRejectSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A23A016721E88A9700206642 /* Debug */,

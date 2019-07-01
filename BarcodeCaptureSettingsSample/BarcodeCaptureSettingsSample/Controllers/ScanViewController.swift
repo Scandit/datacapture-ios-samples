@@ -22,6 +22,12 @@ import ScanditBarcodeCapture
 
 class ScanViewController: UIViewController {
 
+    typealias CompletionHandler = () -> Void
+
+    private enum Constants {
+        static let shownDurationInContinuourMode: TimeInterval = 0.5
+    }
+
     var context: DataCaptureContext {
         return SettingsManager.current.context
     }
@@ -37,14 +43,9 @@ class ScanViewController: UIViewController {
     private var captureView: DataCaptureView!
     private var overlay: BarcodeCaptureOverlay!
 
-    var resultViewController: ResultViewController {
-        return children.first { $0 is ResultViewController } as! ResultViewController
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecognition()
-        resultViewController.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,20 +83,22 @@ class ScanViewController: UIViewController {
 
     private func showResult(_ result: [Barcode], completion: @escaping () -> Void) {
         DispatchQueue.main.async { [weak self] in
-            self?.resultViewController.isContinuousModeEnabled = SettingsManager.current.isContinuousModeEnabled
-            self?.resultViewController.show(barcodes: result, completion: completion)
+            let result = Result(barcodes: result)
+            let alert = UIAlertController(title: "Scan Results", message: result.text, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                self?.dismiss(animated: true, completion: nil)
+                completion()
+            }))
+            self?.present(alert, animated: true, completion: {
+                if SettingsManager.current.isContinuousModeEnabled {
+                    let continuousModeDismissWorkItem = DispatchWorkItem(block: {
+                        self?.dismiss(animated: true, completion: completion)
+                    })
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Constants.shownDurationInContinuourMode,
+                                                  execute: continuousModeDismissWorkItem)
+                }
+            })
         }
-    }
-
-}
-
-extension ScanViewController: ResultViewControllerDelegate {
-    func willShow(resultViewController: ResultViewController) {
-        resultViewController.view.superview?.isHidden = false
-    }
-
-    func didHide(resultViewController: ResultViewController) {
-        resultViewController.view.superview?.isHidden = true
     }
 }
 
@@ -119,5 +122,23 @@ extension ScanViewController: BarcodeCaptureListener {
             }
         }
     }
+}
 
+private struct Result {
+    let barcodes: [Barcode]
+
+    var text: String {
+        return barcodes.reduce(into: "") { result, barcode in
+            if barcode.symbolCount == -1 {
+                result += """
+                \(barcode.symbology.readableName): \(barcode.data)
+                """
+            } else {
+                result += """
+                \(barcode.symbology.readableName): \(barcode.data)
+                Symbol Count: \(barcode.symbolCount)\n\n
+                """
+            }
+        }
+    }
 }

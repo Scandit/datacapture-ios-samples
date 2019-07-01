@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERSION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="wSi-7H-PDD">
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERSION" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="wSi-7H-PDD">
                             <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
@@ -113,7 +113,7 @@
                             <outlet property="delegate" destination="6aa-rN-d34" id="IKl-1E-TSJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Modes" id="Ndm-Yj-2J5"/>
+                    <navigationItem key="navigationItem" title="BCViews" id="Ndm-Yj-2J5"/>
                     <connections>
                         <outlet property="versionLabel" destination="wSi-7H-PDD" id="UgK-cz-nxQ"/>
                     </connections>

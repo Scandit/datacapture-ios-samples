@@ -59,7 +59,7 @@ extension SplitViewModeViewController: UITableViewDataSource {
         }
         let scanResult = scanResults[indexPath.row]
         cell.textLabel?.text = scanResult.data
-        cell.detailTextLabel?.text = scanResult.symbology.description
+        cell.detailTextLabel?.text = scanResult.symbology.readableName
         return cell
     }
 }

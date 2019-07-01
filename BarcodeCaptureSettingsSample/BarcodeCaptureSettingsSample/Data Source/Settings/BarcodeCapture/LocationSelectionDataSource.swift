@@ -266,9 +266,9 @@ class LocationSelectionDataSource: DataSource {
                 RectangularLocationSelection(width: currentSize.size,
                                              aspectRatio: aspect)
         case .heightAndAspectRatio:
-            let currentSize = rectangularSelection.sizeWithUnitAndAspect.widthAndAspectRatio
+            let currentSize = rectangularSelection.sizeWithUnitAndAspect.heightAndAspectRatio
             SettingsManager.current.locationSelection =
-                RectangularLocationSelection(width: currentSize.size,
+                RectangularLocationSelection(height: currentSize.size,
                                              aspectRatio: aspect)
         case .widthAndHeight:
             break

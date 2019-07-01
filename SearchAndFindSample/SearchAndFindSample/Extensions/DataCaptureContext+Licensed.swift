@@ -17,17 +17,13 @@
  * under the License.
  */
 
-import ScanditBarcodeCapture
-import UIKit
+import ScanditCaptureCore
 
-class ModesViewController: UITableViewController {
+extension DataCaptureContext {
+    private static let licenseKey = "-- ENTER YOUR SCANDIT LICENSE KEY HERE --"
 
-    @IBOutlet weak var versionLabel: UILabel!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        versionLabel.text = "Barcode Capture Views Sample \n SDK \(Constants.sdkVersion)"
+    // Get a licensed DataCaptureContext.
+    static var licensed: DataCaptureContext {
+        return DataCaptureContext(licenseKey: licenseKey)
     }
-
-    @IBAction func unwindFromModalControllerMode(unwindSegue: UIStoryboardSegue) {}
 }

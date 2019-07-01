@@ -65,7 +65,7 @@ class SettingsManager {
 
         // Make sure that references to some settings are actually the current settings
         internalCamera?.apply(cameraSettings, completionHandler: nil)
-        internalCamera?.setDesiredTorchState(internalTorchState)
+        internalCamera?.desiredTorchState = internalTorchState
     }
 
     // MARK: - Barcode Capture
@@ -148,7 +148,7 @@ class SettingsManager {
         set {
             internalTorchState = newValue
 
-            camera?.setDesiredTorchState(internalTorchState)
+            camera?.desiredTorchState = internalTorchState
         }
     }
 
@@ -276,6 +276,18 @@ class SettingsManager {
         }
         set {
             overlay.viewfinder = newValue
+            if let rectangular = newValue as? RectangularViewfinder {
+                switch rectangular.sizeWithUnitAndAspect.sizingMode {
+                case .widthAndHeight:
+                    let widthAndHeight = rectangular.sizeWithUnitAndAspect.widthAndHeight
+                    rectangularWidth = widthAndHeight.width
+                    rectangularHeight = widthAndHeight.height
+                case .widthAndAspectRatio:
+                    rectangularWidthAspect = rectangular.sizeWithUnitAndAspect.widthAndAspectRatio.aspect
+                case .heightAndAspectRatio:
+                    rectangularHeightAspect = rectangular.sizeWithUnitAndAspect.heightAndAspectRatio.aspect
+                }
+            }
         }
     }
 

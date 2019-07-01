@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MatrixScan Simple Sample-->
+        <!--MatrixScan Reject Sample-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ScanningViewController" customModule="MatrixScanSimpleSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ScanningViewController" customModule="MatrixScanRejectSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MatrixScan Simple Sample" id="vkr-W1-yMc"/>
+                    <navigationItem key="navigationItem" title="MatrixScan Reject Sample" id="vkr-W1-yMc"/>
                     <connections>
                         <outlet property="showResultsButton" destination="cNM-UY-mrm" id="sC6-Eg-6ji"/>
                     </connections>
@@ -53,7 +53,7 @@
         <!--Scan Results-->
         <scene sceneID="CQL-Sx-DEG">
             <objects>
-                <viewController title="Scan Results" id="9gC-Y3-y3L" customClass="ResultsViewController" customModule="MatrixScanSimpleSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Scan Results" id="9gC-Y3-y3L" customClass="ResultsViewController" customModule="MatrixScanRejectSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lyl-KQ-GMY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultCell" textLabel="VXT-hD-YOc" detailTextLabel="fNL-T9-eDr" style="IBUITableViewCellStyleSubtitle" id="QRw-4a-iB4" customClass="ResultCell" customModule="MatrixScanSimpleSample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultCell" textLabel="VXT-hD-YOc" detailTextLabel="fNL-T9-eDr" style="IBUITableViewCellStyleSubtitle" id="QRw-4a-iB4" customClass="ResultCell" customModule="MatrixScanRejectSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QRw-4a-iB4" id="bcj-uJ-wth">

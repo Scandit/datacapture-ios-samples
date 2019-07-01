@@ -23,7 +23,7 @@ import UIKit
 class ScanViewController: UIViewController {
 
     private enum Constants {
-        static let barcodeToScreenTresholdRation: CGFloat = 0.25
+        static let barcodeToScreenTresholdRation: CGFloat = 0.1
         static let shelfCount = 4
         static let backRoomCount = 8
     }

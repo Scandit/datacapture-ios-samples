@@ -80,16 +80,30 @@ class CommonScannerViewController: UIViewController {
         // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
         captureView = DataCaptureView(for: context, frame: view.bounds)
+
+        // Add a barcode capture overlay to the data capture view to render the tracked barcodes on top of the video
+        // preview. This is optional, but recommended for better visual feedback.
+        let barcodeCaptureOverlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, for: captureView)
+
+        // We have to add the overlay to the capture view.
+        captureView.addOverlay(barcodeCaptureOverlay)
+
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
     }
 
-    private func showResult(_ result: String, symbology: String, symbolCount: Int, completion: @escaping () -> Void) {
+    private func showResult(_ result: String,
+                            symbology: Symbology,
+                            symbolCount: Int,
+                            completion: @escaping () -> Void) {
         // Assemble the message part.
-        let message = "\(symbology) \(result)\nSymbol count: \(symbolCount)"
+        var message = "\(symbology.readableName): \(result)"
+        if symbolCount != -1 {
+            message += "\nSymbol count: \(symbolCount)"
+        }
 
         let alert = UIAlertController(title: "Scanned", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Tap to continue", style: .default, handler: { _ in completion() }))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in completion() }))
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
@@ -109,13 +123,10 @@ extension CommonScannerViewController: BarcodeCaptureListener {
         // continues to stream frames until it is turned off.
         barcodeCapture.isEnabled = false
 
-        // Get the human readable name of the symbology.
-        let symbology = barcode.symbology.description
-
         // This method is invoked on a non-UI thread, so in order to perform UI work,
         // we have to switch to the main thread.
         DispatchQueue.main.async { [weak self] in
-            self?.showResult(barcode.data, symbology: symbology, symbolCount: barcode.symbolCount) {
+            self?.showResult(barcode.data, symbology: barcode.symbology, symbolCount: barcode.symbolCount) {
                 // Enable recognizing barcodes when the result is not shown anymore.
                 self?.barcodeCapture.isEnabled = true
             }

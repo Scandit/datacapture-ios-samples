@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MatrixScan Reject Sample-->
+        <!--MatrixScan Reject-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ScanningViewController" customModule="MatrixScanRejectSample" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MatrixScan Reject Sample" id="vkr-W1-yMc"/>
+                    <navigationItem key="navigationItem" title="MatrixScan Reject" id="vkr-W1-yMc"/>
                     <connections>
                         <outlet property="showResultsButton" destination="cNM-UY-mrm" id="sC6-Eg-6ji"/>
                     </connections>

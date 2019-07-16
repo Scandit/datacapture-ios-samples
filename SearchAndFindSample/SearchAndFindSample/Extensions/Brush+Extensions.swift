@@ -21,8 +21,8 @@ import ScanditCaptureCore
 
 extension Brush {
     static var matching: Brush {
-        let fillColor = UIColor(red: 57.0/255.0, green: 204.0/255.0, blue: 97.0/255.0, alpha: 0.6)
-        return Brush(fill: fillColor, stroke: .clear, strokeWidth: 0)
+        let matchColor = UIColor(red: 76.0/255.0, green: 175.0/255.0, blue: 80.0/255.0, alpha: 0.6)
+        return Brush(fill: matchColor, stroke: matchColor, strokeWidth: 2)
     }
 
     static var nonMatching: Brush {

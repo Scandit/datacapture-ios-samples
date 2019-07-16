@@ -113,7 +113,7 @@
                             <outlet property="delegate" destination="6aa-rN-d34" id="IKl-1E-TSJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="BCViews" id="Ndm-Yj-2J5"/>
+                    <navigationItem key="navigationItem" title="Barcode Capture Views" id="Ndm-Yj-2J5"/>
                     <connections>
                         <outlet property="versionLabel" destination="wSi-7H-PDD" id="UgK-cz-nxQ"/>
                     </connections>

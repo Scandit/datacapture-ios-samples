@@ -13,7 +13,7 @@
         <!--BCSettings-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ScanViewController" customModule="BarcodeCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="BCSettings" id="BYZ-38-t0r" customClass="ScanViewController" customModule="BarcodeCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="BCSettings" id="2r2-f1-weS">
+                    <navigationItem key="navigationItem" title="Barcode Capture Settings" id="2r2-f1-weS">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="LFf-gD-QGl">
                             <connections>
                                 <segue destination="bPA-OG-9QG" kind="show" id="JGV-xc-dDJ"/>

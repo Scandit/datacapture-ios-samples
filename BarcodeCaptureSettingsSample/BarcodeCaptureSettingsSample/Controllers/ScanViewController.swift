@@ -46,6 +46,9 @@ class ScanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecognition()
+        if #available(iOS 11.0, *) {} else {
+            edgesForExtendedLayout = []
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,8 +76,7 @@ class ScanViewController: UIViewController {
 
         // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(frame: view.bounds)
-        captureView.context = context
+        captureView = DataCaptureView(for: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)

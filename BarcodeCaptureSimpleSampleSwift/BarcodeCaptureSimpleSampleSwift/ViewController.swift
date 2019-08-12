@@ -70,6 +70,10 @@ class ViewController: UIViewController {
         camera = Camera.default
         context.setFrameSource(camera, completionHandler: nil)
 
+        // Use the recommended camera settings for the BarcodeCapture mode.
+        let recommenededCameraSettings = BarcodeCapture.recommendedCameraSettings()
+        camera?.apply(recommenededCameraSettings)
+
         // The barcode capturing process is configured through barcode capture settings  
         // and are then applied to the barcode capture instance that manages barcode recognition.
         let settings = BarcodeCaptureSettings()
@@ -102,8 +106,7 @@ class ViewController: UIViewController {
 
         // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(frame: view.bounds)
-        captureView.context = context
+        captureView = DataCaptureView(for: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
 

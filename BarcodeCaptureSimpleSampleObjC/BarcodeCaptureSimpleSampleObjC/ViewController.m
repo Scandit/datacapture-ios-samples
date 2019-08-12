@@ -76,6 +76,11 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
     // is off by default and must be turned on to start streaming frames to the data capture context
     // for recognition. See viewWillAppear and viewDidDisappear above.
     self.camera = SDCCamera.defaultCamera;
+
+    // Use the recommended camera settings for the BarcodeCapture mode.
+    SDCCameraSettings *recommendedCameraSettings = [SDCBarcodeCapture recommendedCameraSettings];
+    [self.camera applySettings:recommendedCameraSettings completionHandler:nil];
+
     [self.context setFrameSource:self.camera completionHandler:nil];
 
     // The barcode capturing process is configured through barcode capture settings that first need

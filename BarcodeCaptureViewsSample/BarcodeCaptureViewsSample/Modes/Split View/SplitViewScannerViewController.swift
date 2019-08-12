@@ -99,6 +99,10 @@ class SplitViewScannerViewController: UIViewController {
         context = DataCaptureContext.licensed
         context.setFrameSource(camera, completionHandler: nil)
 
+        // Use the recommended camera settings for the BarcodeCapture mode.
+        let recommenededCameraSettings = BarcodeCapture.recommendedCameraSettings()
+        camera?.apply(recommenededCameraSettings)
+
         // Register self as a listener to get informed whenever the status of the license changes.
         context.addListener(self)
 

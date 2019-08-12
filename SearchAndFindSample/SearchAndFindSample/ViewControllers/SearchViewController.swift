@@ -101,9 +101,10 @@ class SearchViewController: UIViewController {
         camera = Camera.default
         context.setFrameSource(camera, completionHandler: nil)
 
-        // The preferred resolution is automatically chosen, which currently defaults to HD on all devices. Setting the
-        // preferred resolution to full HD helps to get a better decode range.
-        let cameraSettings = CameraSettings()
+        // Use the recommended camera settings for the BarcodeCapture mode as default settings.
+        // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
+        // Setting the preferred resolution to full HD helps to get a better decode range.
+        let cameraSettings = BarcodeCapture.recommendedCameraSettings()
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 

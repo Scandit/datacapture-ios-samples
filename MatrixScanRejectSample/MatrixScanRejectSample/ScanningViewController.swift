@@ -75,9 +75,10 @@ class ScanningViewController: UIViewController {
         camera = Camera.default
         context.setFrameSource(camera, completionHandler: nil)
 
-        // The preferred resolution is automatically chosen, which currently defaults to HD on all devices. Setting the
-        // preferred resolution to full HD helps to get a better decode range.
-        let cameraSettings = CameraSettings()
+        // Use the recommended camera settings for the BarcodeTracking mode as default settings.
+        // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
+        // Setting the preferred resolution to full HD helps to get a better decode range.
+        let cameraSettings = BarcodeTracking.recommendedCameraSettings()
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 
@@ -102,8 +103,7 @@ class ScanningViewController: UIViewController {
 
         // To visualize the on-going barcode tracking process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(frame: view.bounds)
-        captureView.context = context
+        captureView = DataCaptureView(for: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)

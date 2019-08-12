@@ -46,7 +46,8 @@ class SettingsManager {
 
     private var internalCamera: Camera? = Camera.default
     private var internalTorchState: TorchState = .off
-    private var cameraSettings: CameraSettings = CameraSettings()
+    // Use the recommended camera settings for the BarcodeCapture mode.
+    private var cameraSettings: CameraSettings = BarcodeCapture.recommendedCameraSettings()
     private var internalTorchSwitch: TorchSwitchControl = TorchSwitchControl()
 
     init() {

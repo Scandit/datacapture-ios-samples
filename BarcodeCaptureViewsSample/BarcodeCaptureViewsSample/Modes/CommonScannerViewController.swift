@@ -71,6 +71,10 @@ class CommonScannerViewController: UIViewController {
         context = DataCaptureContext.licensed
         context.setFrameSource(camera, completionHandler: nil)
 
+        // Use the recommended camera settings for the BarcodeCapture mode.
+        let recommenededCameraSettings = BarcodeCapture.recommendedCameraSettings()
+        camera?.apply(recommenededCameraSettings)
+
         // Create new barcode capture mode with the settings from above.
         barcodeCapture = BarcodeCapture(context: context, settings: barcodeCaptureSettings)
 

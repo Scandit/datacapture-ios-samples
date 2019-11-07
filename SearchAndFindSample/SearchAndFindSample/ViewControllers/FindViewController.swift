@@ -1,20 +1,15 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 import ScanditBarcodeCapture
@@ -37,7 +32,7 @@ class FindViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
 
     var symbology: Symbology!
-    var selectedBarcodeData: String!
+    var selectedBarcodeData: Data!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +71,7 @@ class FindViewController: UIViewController {
         // Use the recommended camera settings for the BarcodeTracking mode as default settings.
         // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
         // Setting the preferred resolution to full HD helps to get a better decode range.
-        let cameraSettings = BarcodeTracking.recommendedCameraSettings()
+        let cameraSettings = BarcodeTracking.recommendedCameraSettings
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 
@@ -94,14 +89,14 @@ class FindViewController: UIViewController {
 
         // To visualize the on-going barcode tracking process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(for: context, frame: view.bounds)
+        captureView = DataCaptureView(context: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
 
         view.bringSubviewToFront(closeButton)
         view.bringSubviewToFront(scanningIndicatorView)
 
-        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, for: captureView)
+        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView)
         overlay.delegate = self
     }
 }
@@ -109,7 +104,7 @@ class FindViewController: UIViewController {
 extension FindViewController: BarcodeTrackingBasicOverlayDelegate {
     func barcodeTrackingBasicOverlay(_ overlay: BarcodeTrackingBasicOverlay,
                                      brushFor trackedBarcode: TrackedBarcode) -> Brush? {
-        if trackedBarcode.barcode.data == selectedBarcodeData {
+        if trackedBarcode.barcode.rawData == selectedBarcodeData {
             return Brush.matching
         } else {
             return Brush.nonMatching

@@ -10,6 +10,11 @@ The simple samples allow you to get going quickly, while the advanced samples sh
 | ![alt text](/images/sample-bc-simple-1.jpg?raw=true "Simple Sample") ![alt text](/images/sample-bc-simple-2.jpg?raw=true "Simple Sample") | ![alt text](/images/sample-bc-view-1.jpg?raw=true "View Sample") ![alt text](/images/sample-bc-view-2.jpg?raw=true "View Sample") | ![alt text](/images/sample-bc-settings-1.jpg?raw=true "Settings Sample") ![alt text](/images/sample-bc-settings-2.jpg?raw=true "Settings Sample") |
  Basic sample that uses the camera to read a single barcode.              | Demonstrates the various ways to best integrate the scanner into the UI of your app. | Demonstrates how you can adapt the scanner settings best to your needs and experiment with all the options. |
 
+|                               Reject Sample                              |
+|:------------------------------------------------------------------------:|
+| ![alt text](/images/sample-bc-reject-1.jpg?raw=true "Reject Sample") ![alt text](/images/sample-bc-reject-2.jpg?raw=true "Reject Sample") |
+ Sample that uses the camera to read<br> a single QR code that starts with "09:"<br> but ignores/rejects all other codes. |
+
 
 ## MatrixScan Samples
 
@@ -17,6 +22,15 @@ The simple samples allow you to get going quickly, while the advanced samples sh
 |:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
 | ![alt text](/images/sample-ms-reject-1.jpg?raw=true "Reject Sample") ![alt text](/images/sample-ms-reject-2.jpg?raw=true "Reject Sample") | ![alt text](/images/sample-ms-bubble-1.jpg?raw=true "Bubble Sample") ![alt text](/images/sample-ms-bubble-2.jpg?raw=true "Bubble Sample") | ![alt text](/images/sample-ms-saf-1.jpg?raw=true "Search") ![alt text](/images/sample-ms-saf-2.jpg?raw=true "Find") |
 | Sample which shows how you can highlight selected (by a custom condition) barcodes on screen with the Scandit Data Capture SDK. | Demonstrates the use of more advanced augmented reality use cases with the Scandit Data Capture SDK. | Demonstrates a use case that requires a consecutive use of both Barcode Capture and MatrixScan in a single app. |
+
+
+## Text Capture Samples
+
+|                           Text Recognition Sample                        |
+|:------------------------------------------------------------------------:|
+| ![alt text](/images/sample-tc-textrecognition-1.png?raw=true "Text Recognition Sample - Scan Screen") ![alt text](/images/sample-tc-textrecognition-2.png?raw=true "Text Recognition Sample - Result Dialog") ![alt text](/images/sample-tc-textrecognition-3.png?raw=true "Text Recognition Sample - Settings Screen") |
+| Shows how to recognize various kinds of texts<br \>in the specific locations in the frame. |
+
 
 # Run the Samples
 
@@ -54,3 +68,7 @@ Before you can run a sample app, you need to go through a few simple steps:
 Try to disable and enable again the `Automatic manage signing` settings in Xcode. You might want to change the bundle id.
 
 For more code signing troubleshooting please refer to the [Apple developer support page](https://help.apple.com/xcode/mac/current/#/dev60b6fbbc7)
+
+# Documentation & Getting Started Guides
+
+If you want to learn more, check the complete documentation and getting started guides [here](https://docs.scandit.com/data-capture-sdk/ios/)

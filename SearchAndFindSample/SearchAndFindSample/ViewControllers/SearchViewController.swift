@@ -1,20 +1,15 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 import ScanditBarcodeCapture
@@ -33,7 +28,7 @@ class SearchViewController: UIViewController {
     private var captureView: DataCaptureView!
     private var overlay: BarcodeCaptureOverlay!
 
-    private var displayedData = ""
+    private var displayedData: Data?
     private var selectedSymbology: Symbology?
 
     @IBOutlet weak var dismissOverlayButton: UIButton!
@@ -69,6 +64,7 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func searchButtonDidTouchUpInside(_ sender: Any) {
+        guard displayedData != nil else { return }
         scannedBarcodeLabel.text = nil
         scannedBarcodeOverlay.isHidden = true
         dismissOverlayButton.isHidden = true
@@ -85,7 +81,7 @@ class SearchViewController: UIViewController {
     @IBAction func dismissOverlayButtonDidTouchUpInside(_ sender: Any) {
         scannedBarcodeOverlay.isHidden = true
         dismissOverlayButton.isHidden = true
-        displayedData = ""
+        displayedData = nil
         selectedSymbology = nil
     }
 
@@ -104,7 +100,7 @@ class SearchViewController: UIViewController {
         // Use the recommended camera settings for the BarcodeCapture mode as default settings.
         // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
         // Setting the preferred resolution to full HD helps to get a better decode range.
-        let cameraSettings = BarcodeCapture.recommendedCameraSettings()
+        let cameraSettings = BarcodeCapture.recommendedCameraSettings
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 
@@ -138,7 +134,7 @@ class SearchViewController: UIViewController {
 
         // To visualize the on-going barcode tracking process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(for: context, frame: view.bounds)
+        captureView = DataCaptureView(context: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
 
@@ -165,7 +161,7 @@ extension SearchViewController: BarcodeCaptureListener {
             guard let self = self, session.newlyRecognizedBarcodes.count > 0 else { return }
             let code = session.newlyRecognizedBarcodes.first!
             self.scannedBarcodeLabel.text = code.data
-            self.displayedData = code.data
+            self.displayedData = code.rawData
             self.selectedSymbology = code.symbology
             if self.scannedBarcodeOverlay.isHidden {
                 self.scannedBarcodeOverlay.isHidden = false

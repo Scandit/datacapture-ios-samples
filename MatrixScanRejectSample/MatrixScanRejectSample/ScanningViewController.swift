@@ -1,20 +1,15 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 import UIKit
@@ -78,7 +73,7 @@ class ScanningViewController: UIViewController {
         // Use the recommended camera settings for the BarcodeTracking mode as default settings.
         // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
         // Setting the preferred resolution to full HD helps to get a better decode range.
-        let cameraSettings = BarcodeTracking.recommendedCameraSettings()
+        let cameraSettings = BarcodeTracking.recommendedCameraSettings
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 
@@ -103,14 +98,14 @@ class ScanningViewController: UIViewController {
 
         // To visualize the on-going barcode tracking process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(for: context, frame: view.bounds)
+        captureView = DataCaptureView(context: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)
 
         // Add a barcode tracking overlay to the data capture view to render the tracked barcodes on top of the video
         // preview. This is optional, but recommended for better visual feedback.
-        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, for: captureView)
+        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView)
         captureView.addOverlay(overlay)
         overlay.delegate = self
     }
@@ -128,7 +123,7 @@ class ScanningViewController: UIViewController {
 
 fileprivate extension Barcode {
     var isRejected: Bool {
-        return data.first == "7"
+        return data?.first == "7"
     }
 }
 
@@ -142,8 +137,8 @@ extension ScanningViewController: BarcodeTrackingListener {
         DispatchQueue.main.async {
             session.trackedBarcodes.values.compactMap({ $0.barcode }).forEach { barcode in
                 // The `isRejected` property is for illustrative purposes only, not part of the official API.
-                if !barcode.data.isEmpty, !barcode.isRejected {
-                    self.results[barcode.data] = barcode
+                if let data = barcode.data, !data.isEmpty, !barcode.isRejected {
+                    self.results[data] = barcode
                 }
             }
         }

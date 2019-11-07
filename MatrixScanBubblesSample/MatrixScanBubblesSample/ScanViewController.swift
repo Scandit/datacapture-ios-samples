@@ -1,20 +1,15 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 import ScanditBarcodeCapture
@@ -66,7 +61,7 @@ class ScanViewController: UIViewController {
         // Use the recommended camera settings for the BarcodeTracking mode as default settings.
         // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
         // Setting the preferred resolution to full HD helps to get a better decode range.
-        let cameraSettings = BarcodeTracking.recommendedCameraSettings()
+        let cameraSettings = BarcodeTracking.recommendedCameraSettings
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 
@@ -91,7 +86,7 @@ class ScanViewController: UIViewController {
 
         // To visualize the on-going barcode tracking process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(for: context, frame: view.bounds)
+        captureView = DataCaptureView(context: context, frame: view.bounds)
         captureView.context = context
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
@@ -99,12 +94,12 @@ class ScanViewController: UIViewController {
 
         // Add a barcode tracking overlay to the data capture view to render the tracked barcodes on top of the video
         // preview. This is optional, but recommended for better visual feedback.
-        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, for: captureView)
+        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView)
         captureView.addOverlay(overlay)
         overlay.delegate = self
 
         // Add another barcode tracking overlay to the data capture view to render other views.
-        advancedOverlay = BarcodeTrackingAdvancedOverlay(barcodeTracking: barcodeTracking, for: captureView)
+        advancedOverlay = BarcodeTrackingAdvancedOverlay(barcodeTracking: barcodeTracking, view: captureView)
         captureView.addOverlay(advancedOverlay)
         advancedOverlay.delegate = self
     }
@@ -176,10 +171,11 @@ extension ScanViewController: BarcodeTrackingListener {
                 self.overlays.removeValue(forKey: identifier.intValue)
             }
             for trackedCode in session.trackedBarcodes.values {
-                let code = trackedCode.barcode.data
-                if code.isEmpty {
+
+                guard let code = trackedCode.barcode.data, !code.isEmpty else {
                     return
                 }
+
                 self.overlays[trackedCode.identifier]?.isHidden = !self.canShowOverlay(of: trackedCode)
             }
         }

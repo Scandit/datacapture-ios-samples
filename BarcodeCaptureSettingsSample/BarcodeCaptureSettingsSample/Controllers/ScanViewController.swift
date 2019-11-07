@@ -1,20 +1,15 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 import UIKit
@@ -76,7 +71,7 @@ class ScanViewController: UIViewController {
 
         // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(for: context, frame: view.bounds)
+        captureView = DataCaptureView(context: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)
@@ -131,15 +126,15 @@ private struct Result {
 
     var text: String {
         return barcodes.reduce(into: "") { result, barcode in
-            if barcode.symbolCount == -1 {
-                result += """
-                \(barcode.symbology.readableName): \(barcode.data)
-                """
-            } else {
-                result += """
-                \(barcode.symbology.readableName): \(barcode.data)
-                Symbol Count: \(barcode.symbolCount)\n\n
-                """
+
+            result += "Symbology: \(barcode.symbology.readableName)"
+
+            if let data = barcode.data {
+                 result += " \(data)"
+            }
+
+            if barcode.symbolCount != -1 {
+                result += "Symbol Count: \(barcode.symbolCount)\n\n"
             }
         }
     }

@@ -30,8 +30,7 @@ class SettingsManager {
             // Add a barcode capture overlay to the data capture view to render the location
             // of captured barcodes on top of the video preview.
             // This is optional, but recommended for better visual feedback.
-            overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture)
-            captureView.addOverlay(overlay)
+            overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView)
         }
     }
 

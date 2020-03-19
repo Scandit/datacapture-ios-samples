@@ -17,7 +17,7 @@ import ScanditCaptureCore
 extension VideoResolution: CaseIterable, CustomStringConvertible, CustomDebugStringConvertible {
     public typealias AllCases = [VideoResolution]
     public static var allCases: AllCases {
-        return [.hd, .fullHD, .highest, .auto]
+        return [.hd, .fullHD, .uhd4k, .auto]
     }
 
     public var description: String {
@@ -28,8 +28,6 @@ extension VideoResolution: CaseIterable, CustomStringConvertible, CustomDebugStr
             return "Full HD"
         case .uhd4k:
             return "Ultra HD 4K"
-        case .highest:
-            return "Highest"
         case .auto:
             return "Auto"
         }

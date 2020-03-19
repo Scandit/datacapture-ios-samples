@@ -112,11 +112,9 @@ class SplitViewScannerViewController: UIViewController {
         captureView = DataCaptureView(context: context, frame: .zero)
 
         // Add a barcode capture overlay to the data capture view to render the tracked barcodes on top of the video
-        // preview. This is optional, but recommended for better visual feedback.
+        // preview. This is optional, but recommended for better visual feedback. The overlay is automatically added
+        // to the view.
         let barcodeCaptureOverlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView)
-
-        // We have to add the overlay to the capture view.
-        captureView.addOverlay(barcodeCaptureOverlay)
 
         // We have to add the laser line viewfinder to the overlay.
         let viewFinder = LaserlineViewfinder()

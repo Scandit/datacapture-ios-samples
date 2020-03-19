@@ -7,12 +7,12 @@ The simple samples allow you to get going quickly, while the advanced samples sh
 
 |                               Simple Sample                              |                                View Sample                               |                             Settings Sample                              |
 |:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
-| ![alt text](/images/sample-bc-simple-1.jpg?raw=true "Simple Sample") ![alt text](/images/sample-bc-simple-2.jpg?raw=true "Simple Sample") | ![alt text](/images/sample-bc-view-1.jpg?raw=true "View Sample") ![alt text](/images/sample-bc-view-2.jpg?raw=true "View Sample") | ![alt text](/images/sample-bc-settings-1.jpg?raw=true "Settings Sample") ![alt text](/images/sample-bc-settings-2.jpg?raw=true "Settings Sample") |
+| ![alt text](images/sample-bc-simple-1.jpg?raw=true "Simple Sample") ![alt text](images/sample-bc-simple-2.jpg?raw=true "Simple Sample") | ![alt text](images/sample-bc-view-1.jpg?raw=true "View Sample") ![alt text](images/sample-bc-view-2.jpg?raw=true "View Sample") | ![alt text](images/sample-bc-settings-1.jpg?raw=true "Settings Sample") ![alt text](images/sample-bc-settings-2.jpg?raw=true "Settings Sample") |
  Basic sample that uses the camera to read a single barcode.              | Demonstrates the various ways to best integrate the scanner into the UI of your app. | Demonstrates how you can adapt the scanner settings best to your needs and experiment with all the options. |
 
 |                               Reject Sample                              |
 |:------------------------------------------------------------------------:|
-| ![alt text](/images/sample-bc-reject-1.jpg?raw=true "Reject Sample") ![alt text](/images/sample-bc-reject-2.jpg?raw=true "Reject Sample") |
+| ![alt text](images/sample-bc-reject-1.jpg?raw=true "Reject Sample") ![alt text](images/sample-bc-reject-2.jpg?raw=true "Reject Sample") |
  Sample that uses the camera to read<br> a single QR code that starts with "09:"<br> but ignores/rejects all other codes. |
 
 
@@ -20,16 +20,16 @@ The simple samples allow you to get going quickly, while the advanced samples sh
 
 |                               Reject Sample                              |                               Bubble Sample                              |                          Search And Find Sample                          |
 |:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
-| ![alt text](/images/sample-ms-reject-1.jpg?raw=true "Reject Sample") ![alt text](/images/sample-ms-reject-2.jpg?raw=true "Reject Sample") | ![alt text](/images/sample-ms-bubble-1.jpg?raw=true "Bubble Sample") ![alt text](/images/sample-ms-bubble-2.jpg?raw=true "Bubble Sample") | ![alt text](/images/sample-ms-saf-1.jpg?raw=true "Search") ![alt text](/images/sample-ms-saf-2.jpg?raw=true "Find") |
+| ![alt text](images/sample-ms-reject-1.jpg?raw=true "Reject Sample") ![alt text](images/sample-ms-reject-2.jpg?raw=true "Reject Sample") | ![alt text](images/sample-ms-bubble-1.jpg?raw=true "Bubble Sample") ![alt text](images/sample-ms-bubble-2.jpg?raw=true "Bubble Sample") | ![alt text](images/sample-ms-saf-1.jpg?raw=true "Search") ![alt text](images/sample-ms-saf-2.jpg?raw=true "Find") |
 | Sample which shows how you can highlight selected (by a custom condition) barcodes on screen with the Scandit Data Capture SDK. | Demonstrates the use of more advanced augmented reality use cases with the Scandit Data Capture SDK. | Demonstrates a use case that requires a consecutive use of both Barcode Capture and MatrixScan in a single app. |
 
 
 ## Text Capture Samples
 
-|                           Text Recognition Sample                        |
-|:------------------------------------------------------------------------:|
-| ![alt text](/images/sample-tc-textrecognition-1.png?raw=true "Text Recognition Sample - Scan Screen") ![alt text](/images/sample-tc-textrecognition-2.png?raw=true "Text Recognition Sample - Result Dialog") ![alt text](/images/sample-tc-textrecognition-3.png?raw=true "Text Recognition Sample - Settings Screen") |
-| Shows how to recognize various kinds of texts<br \>in the specific locations in the frame. |
+|                           Text Recognition Sample                        |                             MRZ Scanner Sample                           |
+|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
+| ![alt text](images/sample-tc-textrecognition-1.jpg?raw=true "Text Recognition Sample - Scan Screen") ![alt text](images/sample-tc-textrecognition-2.jpg?raw=true "Text Recognition Sample - Result Dialog") ![alt text](images/sample-tc-textrecognition-3.jpg?raw=true "Text Recognition Sample - Settings Screen") | ![MRZ Scanner Sample - Scan Screen](images/sample-tc-mrz-1.jpg?raw=true "MRZ Scanner Sample - Scan Screen") ![MRZ Scanner Sample - Result Dialog](images/sample-tc-mrz-2.jpg?raw=true "MRZ Scanner Sample - Result Dialog") |
+| Shows how to recognize various kinds of texts <br> in the specific locations in the frame. | Demonstrates MRZ recognition by combining Text Capture and Parser. |
 
 
 # Run the Samples
@@ -42,7 +42,7 @@ Before you can run a sample app, you need to go through a few simple steps:
   
   2. Sign in to your Scandit account and download the newest iOS Framework at <https://ssl.scandit.com/sdk/>. Unzip the archive and copy the `frameworks` directory into the parent directory of the one with all the samples. It should look like this:
   
-  ![alt text](/images/samples-libs-setup.png?raw=true "Frameworks setup")
+  ![alt text](images/samples-libs-setup.jpg?raw=true "Frameworks setup")
   
   3. Open the project file in Xcode. Make sure you always have the most recent version of Xcode installed.
   

@@ -46,7 +46,7 @@ Before you can run a sample app, you need to go through a few simple steps:
   
   3. Open the project file in Xcode. Make sure you always have the most recent version of Xcode installed.
   
-  4. Set the license key. To do this, sign in to your Scandit account and find your license key at <https://ssl.scandit.com/licenses/>`. Once you have the license key, add it to the sample:
+  4. Set the license key. To do this, sign in to your Scandit account and find your license key at <https://ssl.scandit.com/licenses/>. Once you have the license key, add it to the sample:
   
   ```swift
   extension DataCaptureContext {

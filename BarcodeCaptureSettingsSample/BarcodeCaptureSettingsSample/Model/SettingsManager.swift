@@ -14,8 +14,6 @@
 
 import ScanditBarcodeCapture
 
-#warning("TODO: add persistence: https://jira.scandit.com/browse/SDK-10091")
-
 class SettingsManager {
     static let current = SettingsManager()
 

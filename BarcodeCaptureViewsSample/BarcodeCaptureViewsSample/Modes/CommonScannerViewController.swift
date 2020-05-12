@@ -20,6 +20,7 @@ class CommonScannerViewController: UIViewController {
     private var context: DataCaptureContext!
     private var camera = Camera.default
     private var barcodeCapture: BarcodeCapture!
+    private var barcodeCaptureOverlay: BarcodeCaptureOverlay!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +84,7 @@ class CommonScannerViewController: UIViewController {
         // Add a barcode capture overlay to the data capture view to render the tracked barcodes on top of the video
         // preview. This is optional, but recommended for better visual feedback. The overlay is automatically added 
         // to the view.
-        let barcodeCaptureOverlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView)
+        barcodeCaptureOverlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView)
 
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)

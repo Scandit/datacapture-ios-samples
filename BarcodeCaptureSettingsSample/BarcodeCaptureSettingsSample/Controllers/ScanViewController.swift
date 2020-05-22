@@ -127,14 +127,14 @@ private struct Result {
     var text: String {
         return barcodes.reduce(into: "") { result, barcode in
 
-            result += "Symbology: \(barcode.symbology.readableName)"
+            result += "\(barcode.symbology.readableName): "
 
             if let data = barcode.data {
                  result += " \(data)"
             }
 
             if barcode.symbolCount != -1 {
-                result += "Symbol Count: \(barcode.symbolCount)\n\n"
+                result += "\nSymbol Count: \(barcode.symbolCount)\n\n"
             }
         }
     }

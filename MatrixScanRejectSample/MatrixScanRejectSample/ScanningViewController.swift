@@ -164,7 +164,7 @@ extension ScanningViewController: BarcodeTrackingBasicOverlayDelegate {
         if trackedBarcode.barcode.isRejected {
             return .rejected
         } else {
-            return overlay.defaultBrush
+            return overlay.brush
         }
     }
 

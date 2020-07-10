@@ -111,7 +111,6 @@ class ScannerViewController: UIViewController {
 }
 
 // MARK: - BarcodeTrackingListener
-
 extension ScannerViewController: BarcodeTrackingListener {
      // This function is called whenever objects are updated and it's the right place to react to the tracking results.
     func barcodeTracking(_ barcodeTracking: BarcodeTracking,

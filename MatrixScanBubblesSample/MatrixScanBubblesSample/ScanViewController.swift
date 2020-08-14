@@ -150,7 +150,7 @@ class ScanViewController: UIViewController {
 
         // If the barcode is wider than the desired percent of the data capture view's width,
         // show it to the user.
-        let width = trackedCode.barcode.location.width(in: captureView)
+        let width = trackedCode.location.width(in: captureView)
         return (width / captureViewWidth) >= Constants.barcodeToScreenTresholdRation
     }
 }

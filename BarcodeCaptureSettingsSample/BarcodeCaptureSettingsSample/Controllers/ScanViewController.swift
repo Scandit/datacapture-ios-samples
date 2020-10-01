@@ -133,6 +133,10 @@ private struct Result {
                  result += " \(data)"
             }
 
+            if let addOnData = barcode.addOnData {
+                 result += " \(addOnData)"
+            }
+
             if barcode.symbolCount != -1 {
                 result += "\nSymbol Count: \(barcode.symbolCount)\n\n"
             }

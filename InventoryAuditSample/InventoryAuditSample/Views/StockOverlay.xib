@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StockOverlay" customModule="InventoryAudit" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundImageView" destination="g6f-by-K05" id="6jQ-it-fux"/>
+                <outlet property="countTextField" destination="IfZ-gD-bhV" id="bS2-bB-uBn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="60" height="66"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overlay.background" translatesAutoresizingMaskIntoConstraints="NO" id="g6f-by-K05">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="66"/>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IfZ-gD-bhV" customClass="TouchIgnoringTextField" customModule="InventoryAudit" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="20.5" width="60" height="25.5"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="g6f-by-K05" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="4Ay-g3-Zl5"/>
+                <constraint firstItem="g6f-by-K05" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4Ho-4f-LZB"/>
+                <constraint firstItem="g6f-by-K05" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Nvi-3O-QY9"/>
+                <constraint firstItem="IfZ-gD-bhV" firstAttribute="centerY" secondItem="g6f-by-K05" secondAttribute="centerY" id="Vn5-2t-0w7"/>
+                <constraint firstAttribute="trailing" secondItem="IfZ-gD-bhV" secondAttribute="trailing" id="apx-TN-hnF"/>
+                <constraint firstItem="IfZ-gD-bhV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f71-jw-UK0"/>
+                <constraint firstItem="IfZ-gD-bhV" firstAttribute="centerX" secondItem="g6f-by-K05" secondAttribute="centerX" id="ljR-T9-vF0"/>
+                <constraint firstItem="g6f-by-K05" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="yEi-C7-JfV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="jtq-AC-Agr" appends="YES" id="Bnj-lO-ZBq"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="-46.540178571428569"/>
+        </view>
+        <tapGestureRecognizer id="jtq-AC-Agr">
+            <connections>
+                <action selector="didTapOnOverlay:" destination="-1" id="eyz-UT-oig"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="overlay.background" width="60" height="67"/>
+    </resources>
+</document>

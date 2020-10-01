@@ -62,12 +62,12 @@ class ScanViewController: UIViewController {
         // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
         // Setting the preferred resolution to full HD helps to get a better decode range.
         let cameraSettings = BarcodeTracking.recommendedCameraSettings
-        cameraSettings.preferredResolution = .fullHD
+        cameraSettings.preferredResolution = .uhd4k
         camera?.apply(cameraSettings, completionHandler: nil)
 
         // The barcode tracking process is configured through barcode tracking settings
         // and are then applied to the barcode tracking instance that manages barcode tracking.
-        let settings = BarcodeTrackingSettings()
+        let settings = BarcodeTrackingSettings(scenario: .a)
 
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
         // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the

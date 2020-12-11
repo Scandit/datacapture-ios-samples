@@ -137,6 +137,10 @@ private struct Result {
                  result += " \(addOnData)"
             }
 
+            if let compositeData = barcode.compositeData {
+                result += " \(compositeData)"
+            }
+
             if barcode.symbolCount != -1 {
                 result += "\nSymbol Count: \(barcode.symbolCount)\n\n"
             }

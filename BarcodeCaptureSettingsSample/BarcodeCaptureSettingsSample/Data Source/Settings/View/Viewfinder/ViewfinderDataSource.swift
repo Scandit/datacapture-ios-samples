@@ -22,12 +22,16 @@ class ViewfinderDataSource: DataSource {
         self.delegate = delegate
     }
 
-    var isRectangular: Bool {
+    private var isRectangular: Bool {
         return (rectangular.getValue?() as? Bool) == true
     }
 
-    var isLaserline: Bool {
+    private var isLaserline: Bool {
         return (laserline.getValue?() as? Bool) == true
+    }
+
+    private var isAimer: Bool {
+        return (aimer.getValue?() as? Bool) == true
     }
 
     // MARK: - Sections
@@ -44,6 +48,8 @@ class ViewfinderDataSource: DataSource {
             }
         } else if isLaserline {
             sections.append(laserlineSettings)
+        } else if isAimer {
+            sections.append(aimerSettings)
         }
 
         return sections
@@ -52,7 +58,7 @@ class ViewfinderDataSource: DataSource {
     // MARK: Section: Type
 
     lazy var viewfinderType: Section = {
-        return Section(title: "Type", rows: [none, rectangular, laserline])
+        return Section(title: "Type", rows: [none, rectangular, laserline, aimer])
     }()
 
     lazy var none: Row = {
@@ -73,6 +79,13 @@ class ViewfinderDataSource: DataSource {
         return Row.option(title: "Laserline",
                           getValue: { SettingsManager.current.viewfinder is LaserlineViewfinder },
                           didSelect: { _, _ in SettingsManager.current.viewfinder = LaserlineViewfinder() },
+                          dataSourceDelegate: self.delegate)
+    }()
+
+    lazy var aimer: Row = {
+        return Row.option(title: "Aimer",
+                          getValue: { SettingsManager.current.viewfinder is AimerViewfinder },
+                          didSelect: { _, _ in SettingsManager.current.viewfinder = AimerViewfinder() },
                           dataSourceDelegate: self.delegate)
     }()
 
@@ -151,6 +164,28 @@ class ViewfinderDataSource: DataSource {
                           options: LaserlineViewfinderDisabledColor.allCases,
                           getValue: { SettingsManager.current.laserlineViewfinderDisabledColor },
                           didChangeValue: { SettingsManager.current.laserlineViewfinderDisabledColor = $0 },
+                          dataSourceDelegate: self.delegate)
+    }()
+
+    // MARK: Section: Aimer Viewfinder Settings
+
+    lazy var aimerSettings: Section = {
+        return Section(title: "Aimer", rows: [aimerFrameColor, aimerDotColor])
+    }()
+
+    lazy var aimerFrameColor: Row = {
+        return Row.choice(title: "Aimer Frame Color",
+                          options: AimerViewfinderFrameColor.allCases,
+                          getValue: { SettingsManager.current.aimerViewfinderFrameColor },
+                          didChangeValue: { SettingsManager.current.aimerViewfinderFrameColor = $0 },
+                          dataSourceDelegate: self.delegate)
+    }()
+
+    lazy var aimerDotColor: Row = {
+        return Row.choice(title: "Aimer Dot Color",
+                          options: AimerViewfinderDotColor.allCases,
+                          getValue: { SettingsManager.current.aimerViewfinderDotColor },
+                          didChangeValue: { SettingsManager.current.aimerViewfinderDotColor = $0 },
                           dataSourceDelegate: self.delegate)
     }()
 }

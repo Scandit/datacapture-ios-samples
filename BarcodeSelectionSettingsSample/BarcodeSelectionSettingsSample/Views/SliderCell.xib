@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="83" id="HLv-VF-NII" customClass="SliderCell" customModule="BarcodeCaptureSettingsSample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HLv-VF-NII" id="1Pk-Ye-VAW">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TmY-f9-WbB">
+                        <rect key="frame" x="14" y="42" width="347" height="31"/>
+                        <connections>
+                            <action selector="sliderChanged:" destination="HLv-VF-NII" eventType="valueChanged" id="OqQ-1W-3ZH"/>
+                        </connections>
+                    </slider>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EP-m0-lmq">
+                        <rect key="frame" x="16" y="11" width="34" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvB-wO-a8J">
+                        <rect key="frame" x="335" y="11" width="24" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TmY-f9-WbB" firstAttribute="leading" secondItem="1Pk-Ye-VAW" secondAttribute="leadingMargin" id="9aU-rt-IJ1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="TmY-f9-WbB" secondAttribute="trailing" id="Pgf-b4-spR"/>
+                    <constraint firstItem="6EP-m0-lmq" firstAttribute="top" secondItem="1Pk-Ye-VAW" secondAttribute="topMargin" id="Ui6-U5-Nha"/>
+                    <constraint firstItem="6EP-m0-lmq" firstAttribute="leading" secondItem="1Pk-Ye-VAW" secondAttribute="leadingMargin" id="UyK-pA-RPC"/>
+                    <constraint firstItem="vvB-wO-a8J" firstAttribute="top" secondItem="1Pk-Ye-VAW" secondAttribute="topMargin" id="V9l-Ih-qkB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vvB-wO-a8J" secondAttribute="trailing" id="egU-rB-x5C"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="TmY-f9-WbB" secondAttribute="bottom" id="hHz-hJ-X2q"/>
+                    <constraint firstItem="TmY-f9-WbB" firstAttribute="top" secondItem="6EP-m0-lmq" secondAttribute="bottom" constant="10" id="pro-UK-PeW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="slider" destination="TmY-f9-WbB" id="d2o-vQ-v31"/>
+                <outlet property="titleLabel" destination="6EP-m0-lmq" id="xAv-XA-HWz"/>
+                <outlet property="valueLabel" destination="vvB-wO-a8J" id="b9T-kX-TKX"/>
+            </connections>
+            <point key="canvasLocation" x="-407.19999999999999" y="-33.733133433283363"/>
+        </tableViewCell>
+    </objects>
+</document>

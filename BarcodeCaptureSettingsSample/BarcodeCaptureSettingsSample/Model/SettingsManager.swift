@@ -36,11 +36,11 @@ class SettingsManager {
 
     var defaultBrush: Brush!
 
-    private var internalCamera: Camera? = Camera.default
-    private var internalTorchState: TorchState = .off
+    var internalCamera: Camera? = Camera.default
+    var internalTorchState: TorchState = .off
     // Use the recommended camera settings for the BarcodeCapture mode.
-    private var cameraSettings: CameraSettings = BarcodeCapture.recommendedCameraSettings
-    private var internalTorchSwitch: TorchSwitchControl = TorchSwitchControl()
+    var cameraSettings: CameraSettings = BarcodeCapture.recommendedCameraSettings
+    var internalTorchSwitch: TorchSwitchControl = TorchSwitchControl()
 
     init() {
         // The barcode capturing process is configured through barcode capture settings  
@@ -61,205 +61,7 @@ class SettingsManager {
         internalCamera?.desiredTorchState = internalTorchState
     }
 
-    // MARK: - Barcode Capture
-
-    // MARK: Symbologies
-
-    var anySymbologyEnabled: Bool {
-        return !barcodeCaptureSettings.enabledSymbologyValues.isEmpty
-    }
-
-    func setAllSymbologies(enabled: Bool) {
-        if enabled {
-            let allSymbologies = Set(Symbology.allCases.map { NSNumber(value: $0.rawValue) })
-            barcodeCaptureSettings.enableSymbologies(allSymbologies)
-        } else {
-            barcodeCaptureSettings.enabledSymbologyValues.forEach { symbologyValue in
-                let symbology = Symbology(rawValue: symbologyValue.uintValue)!
-                barcodeCaptureSettings.set(symbology: symbology, enabled: false)
-            }
-        }
-        barcodeCapture.apply(barcodeCaptureSettings, completionHandler: nil)
-    }
-
-    func isSymbologyEnabled(_ symbology: Symbology) -> Bool {
-        return barcodeCaptureSettings.enabledSymbologyValues.contains(NSNumber(value: symbology.rawValue))
-    }
-
-    func getSymbologySettings(for symbology: Symbology) -> SymbologySettings {
-        return barcodeCaptureSettings.settings(for: symbology)
-    }
-
-    func symbologySettingsChanged() {
-        // Apply barcode capture settings, which includes symbology settings that might've
-        // been potentially updated
-        return barcodeCapture.apply(barcodeCaptureSettings, completionHandler: nil)
-    }
-
-    // MARK: Feedback
-
-    var feedback: Feedback {
-        get {
-            return barcodeCapture.feedback.success
-        }
-        set {
-            barcodeCapture.feedback.success = newValue
-        }
-    }
-
-    // MARK: Location Selection
-
-    var locationSelection: LocationSelection? {
-        get {
-            return barcodeCaptureSettings.locationSelection
-        }
-        set {
-            barcodeCaptureSettings.locationSelection = newValue
-            barcodeCapture.apply(barcodeCaptureSettings, completionHandler: nil)
-        }
-    }
-
-    // MARK: - Camera
-
-    var camera: Camera? {
-        get {
-            return internalCamera
-        }
-        set {
-            // ⚠️ The new camera might be nil, e.g. the device doesn't have a specific or any camera
-            internalCamera = newValue
-
-            internalCamera?.apply(cameraSettings, completionHandler: nil)
-            context.setFrameSource(internalCamera, completionHandler: nil)
-        }
-    }
-
-    var torchState: TorchState {
-        get {
-            return internalTorchState
-        }
-        set {
-            internalTorchState = newValue
-
-            camera?.desiredTorchState = internalTorchState
-        }
-    }
-
-    var maxFrameRate: CGFloat {
-        get {
-            return cameraSettings.maxFrameRate
-        }
-        set {
-            cameraSettings.maxFrameRate = newValue
-            camera?.apply(cameraSettings, completionHandler: nil)
-        }
-    }
-
-    var preferredResolution: VideoResolution {
-        get {
-            return cameraSettings.preferredResolution
-        }
-        set {
-            cameraSettings.preferredResolution = newValue
-            camera?.apply(cameraSettings, completionHandler: nil)
-        }
-    }
-
-    var focusRange: FocusRange {
-        get {
-            return cameraSettings.focusRange
-        }
-        set {
-            cameraSettings.focusRange = newValue
-            camera?.apply(cameraSettings, completionHandler: nil)
-        }
-    }
-
-    var zoomFactor: CGFloat {
-        get {
-            return cameraSettings.zoomFactor
-        }
-        set {
-            cameraSettings.zoomFactor = newValue
-            camera?.apply(cameraSettings, completionHandler: nil)
-        }
-    }
-
     // MARK: - View
-
-    // MARK: Scan Area
-
-    var scanAreaMargins: MarginsWithUnit {
-        get {
-            return captureView.scanAreaMargins
-        }
-        set {
-            captureView.scanAreaMargins = newValue
-        }
-    }
-
-    var shouldShowScanAreaGuides: Bool {
-        get {
-            return overlay.shouldShowScanAreaGuides
-        }
-        set {
-            overlay.shouldShowScanAreaGuides = newValue
-        }
-    }
-
-    // MARK: Point of Interest
-
-    var pointOfInterest: PointWithUnit {
-        get {
-            return captureView.pointOfInterest
-        }
-        set {
-            captureView.pointOfInterest = newValue
-        }
-    }
-
-    // MARK: Overlay
-
-    var brush: Brush {
-        get {
-            return overlay.brush
-        }
-        set {
-            overlay.brush = newValue
-        }
-    }
-
-    // MARK: Logo
-
-    var logoAnchor: Anchor {
-        get {
-            return captureView.logoAnchor
-        }
-        set {
-            captureView.logoAnchor = newValue
-        }
-    }
-
-    var logoOffset: PointWithUnit {
-        get {
-            return captureView.logoOffset
-        }
-        set {
-            captureView.logoOffset = newValue
-        }
-    }
-
-    // MARK: Controls
-
-    var torchSwitchShown: Bool = false {
-        didSet {
-            if torchSwitchShown {
-                captureView.addControl(internalTorchSwitch)
-            } else {
-                captureView.removeControl(internalTorchSwitch)
-            }
-        }
-    }
 
     // MARK: Viewfinder
 
@@ -281,6 +83,18 @@ class SettingsManager {
                     rectangularHeightAspect = rectangular.sizeWithUnitAndAspect.heightAndAspectRatio.aspect
                 }
             }
+        }
+    }
+
+    func setViewfinderSize() {
+        guard let viewfinder = viewfinder as? RectangularViewfinder else { return }
+        switch viewfinderSizeSpecification {
+        case .widthAndHeight:
+            viewfinder.setSize(SizeWithUnit(width: rectangularWidth, height: rectangularHeight))
+        case .widthAndHeightAspect:
+            viewfinder.setWidth(rectangularWidth, aspectRatio: rectangularHeightAspect)
+        case .heightAndWidthAspect:
+            viewfinder.setHeight(rectangularHeight, aspectRatio: rectangularWidthAspect)
         }
     }
 
@@ -311,6 +125,24 @@ class SettingsManager {
         }
     }
 
+    lazy var defaultAimerViewfinderFrameColor = AimerViewfinder().frameColor
+
+    /// Note: AimerViewfinderFrameColor is not part of the SDK, see LaserlineViewfinderDisabledColor.swift
+    var aimerViewfinderFrameColor: AimerViewfinderFrameColor = .default {
+        didSet {
+            (viewfinder as? AimerViewfinder)?.frameColor = aimerViewfinderFrameColor.uiColor
+        }
+    }
+
+    lazy var defaultAimerViewfinderDotColor = AimerViewfinder().dotColor
+
+    /// Note: AimerViewfinderDotColor is not part of the SDK, see LaserlineViewfinderDisabledColor.swift
+    var aimerViewfinderDotColor: AimerViewfinderDotColor = .default {
+        didSet {
+            (viewfinder as? AimerViewfinder)?.dotColor = aimerViewfinderDotColor.uiColor
+        }
+    }
+
     var viewfinderSizeSpecification: RectangularSizeSpecification = .widthAndHeight
 
     var rectangularWidth: FloatWithUnit = .zero {
@@ -337,16 +169,15 @@ class SettingsManager {
         }
     }
 
-    private func setViewfinderSize() {
-        guard let viewfinder = viewfinder as? RectangularViewfinder else { return }
-        switch viewfinderSizeSpecification {
-        case .widthAndHeight:
-            viewfinder.setSize(SizeWithUnit(width: rectangularWidth, height: rectangularHeight))
-        case .widthAndHeightAspect:
-            viewfinder.setWidth(rectangularWidth, aspectRatio: rectangularHeightAspect)
-        case .heightAndWidthAspect:
-            viewfinder.setHeight(rectangularHeight, aspectRatio: rectangularWidthAspect)
+    // MARK: Controls
+
+    var torchSwitchShown: Bool = false {
+        didSet {
+            if torchSwitchShown {
+                captureView.addControl(internalTorchSwitch)
+            } else {
+                captureView.removeControl(internalTorchSwitch)
+            }
         }
     }
-
 }

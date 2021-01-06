@@ -47,12 +47,12 @@ class ViewfinderDataSource: DataSource {
 
     lazy var colors: Section = {
         return Section(rows: [
-            Row.choice(title: "Dot Color",
+            Row.choice(title: "Frame Color",
                        options: ViewfinderDataSource.frameColors,
                        getValue: { ColorWrapper(uicolor: SettingsManager.current.frameColor) },
                        didChangeValue: { SettingsManager.current.frameColor = $0.uicolor },
                        dataSourceDelegate: self.delegate),
-            Row.choice(title: "Frame Color",
+            Row.choice(title: "Dot Color",
                        options: ViewfinderDataSource.dotColors,
                        getValue: { ColorWrapper(uicolor: SettingsManager.current.dotColor) },
                        didChangeValue: { SettingsManager.current.dotColor = $0.uicolor },

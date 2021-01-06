@@ -28,9 +28,9 @@ class DuplicateFilterDataSource: DataSource {
         return [Section(rows: [
             Row(title: "Duplicate Filter",
                 kind: .float,
-                getValue: { CGFloat(SettingsManager.current.barcodeSelectionSettings.codeDuplicateFilter) },
+                getValue: { CGFloat(SettingsManager.current.codeDuplicateFilter) },
                 didChangeValue: {
-                    SettingsManager.current.barcodeSelectionSettings.codeDuplicateFilter = TimeInterval($0)
+                    SettingsManager.current.codeDuplicateFilter = TimeInterval($0)
                 })])]
     }()
 }

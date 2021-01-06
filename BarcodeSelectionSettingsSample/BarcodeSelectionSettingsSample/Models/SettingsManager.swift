@@ -86,14 +86,15 @@ class SettingsManager {
         barcodeSelection.apply(barcodeSelectionSettings, completionHandler: nil)
     }
 
-    // MARK: Feedback
+    // MARK: Selection Type
 
-    var feedback: Feedback {
+    var selectionType: BarcodeSelectionType {
         get {
-            barcodeSelection.feedback.selection
+            barcodeSelectionSettings.selectionType
         }
         set {
-            barcodeSelection.feedback.selection = newValue
+            barcodeSelectionSettings.selectionType = newValue
+            barcodeSelection.apply(barcodeSelectionSettings, completionHandler: nil)
         }
     }
 
@@ -109,14 +110,25 @@ class SettingsManager {
         }
     }
 
-    // MARK: Selection Type
+    // MARK: Feedback
 
-    var selectionType: BarcodeSelectionType {
+    var feedback: Feedback {
         get {
-            barcodeSelectionSettings.selectionType
+            barcodeSelection.feedback.selection
         }
         set {
-            barcodeSelectionSettings.selectionType = newValue
+            barcodeSelection.feedback.selection = newValue
+        }
+    }
+
+    // MARK: Duplicate Filter
+
+    var codeDuplicateFilter: TimeInterval {
+        get {
+            return barcodeSelectionSettings.codeDuplicateFilter
+        }
+        set {
+            barcodeSelectionSettings.codeDuplicateFilter = newValue
             barcodeSelection.apply(barcodeSelectionSettings, completionHandler: nil)
         }
     }

@@ -94,7 +94,7 @@ class MRZScanViewController: UIViewController {
 extension MRZScanViewController: IdCaptureListener {
 
     func idCapture(_ idCapture: IdCapture, didCaptureIn session: IdCaptureSession, frameData: FrameData) {
-        //Pause the running TextCapture while processing the captured text.
+        // Pause the running IdCapture while processing the captured id.
         idCapture.isEnabled = false
         guard let capturedId = session.newlyCapturedId else {
             idCapture.isEnabled = true

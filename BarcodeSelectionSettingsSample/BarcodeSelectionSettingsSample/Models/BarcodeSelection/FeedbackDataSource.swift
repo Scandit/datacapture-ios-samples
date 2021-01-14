@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-import ScanditCaptureCore
+import ScanditBarcodeCapture
 
 class FeedbackDataSource: DataSource {
 
@@ -28,8 +28,12 @@ class FeedbackDataSource: DataSource {
         let row = Row(title: "Sound",
                       kind: .switch,
                       getValue: { SettingsManager.current.feedback.sound != nil },
-                      didChangeValue: {
-                        SettingsManager.current.feedback = Feedback(vibration: nil, sound: $0 ? Sound.default : nil)
+                      didChangeValue: { value in
+                        if value {
+                            SettingsManager.current.feedback = BarcodeSelectionFeedback.default.selection
+                        } else {
+                            SettingsManager.current.feedback = Feedback(vibration: nil, sound: nil)
+                        }
                       })
         return [Section(rows: [row])]
     }()

@@ -130,15 +130,25 @@ private struct Result {
             result += "\(barcode.symbology.readableName): "
 
             if let data = barcode.data {
-                 result += " \(data)"
+                result += " \(data)"
             }
 
             if let addOnData = barcode.addOnData {
-                 result += " \(addOnData)"
+                result += " \(addOnData)"
             }
 
             if let compositeData = barcode.compositeData {
-                result += " \(compositeData)"
+                switch barcode.compositeFlag {
+                case .gs1TypeA:
+                    result = "CC Type A\n" + result
+                case .gs1TypeB:
+                    result = "CC Type B\n" + result
+                case .gs1TypeC:
+                    result = "CC Type C\n" + result
+                default:
+                    break
+                }
+                result += "\n\(compositeData)"
             }
 
             if barcode.symbolCount != -1 {

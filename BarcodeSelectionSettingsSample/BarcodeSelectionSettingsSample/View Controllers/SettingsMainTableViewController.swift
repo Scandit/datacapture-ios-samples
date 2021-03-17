@@ -20,4 +20,10 @@ class SettingsMainTableViewController: UITableViewController {
             versionLabel.text = "Barcode Selection Settings Sample\n SDK " + DataCaptureVersion.version()
         }
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 1 else { return }
+        SettingsManager.current.resetSession()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

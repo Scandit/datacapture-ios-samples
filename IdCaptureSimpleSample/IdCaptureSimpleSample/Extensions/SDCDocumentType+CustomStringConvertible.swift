@@ -73,6 +73,24 @@ extension DocumentType: CustomStringConvertible {
             return "Visa"
         case .sPass:
             return "sPass"
+        case .addressCard:
+            return "Address Card"
+        case .alienId:
+            return "Alien ID"
+        case .alienPassport:
+            return "Alien Passport"
+        case .greenCard:
+            return "Green Card"
+        case .minorsId:
+            return "Minors ID"
+        case .postalId:
+            return "Postal ID"
+        case .professionalDL:
+            return "Professional DL"
+        case .taxId:
+            return "Tax ID"
+        case .weaponPermit:
+            return "Weapon Permit"
         }
     }
 }

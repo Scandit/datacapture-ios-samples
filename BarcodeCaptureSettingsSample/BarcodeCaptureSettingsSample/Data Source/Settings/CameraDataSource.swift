@@ -67,10 +67,6 @@ class CameraDataSource: DataSource {
     lazy var cameraSettings: Section = {
         return Section(title: "Camera Settings",
                        rows: [
-                        Row(title: "Max Frame Rate",
-                            kind: .float,
-                            getValue: { SettingsManager.current.maxFrameRate },
-                            didChangeValue: { SettingsManager.current.maxFrameRate = $0 }),
                         Row.choice(title: "Preferred Resolution",
                                    options: VideoResolution.allCases,
                                    getValue: { SettingsManager.current.preferredResolution },

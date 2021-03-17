@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ztt-vE-GCU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ztt-vE-GCU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -106,7 +106,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Duplicate Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p8w-wW-59q">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Code Duplicate Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p8w-wW-59q">
                                                     <rect key="frame" x="20" y="0.0" width="355" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="141" y="139"/>
         </scene>
-        <!--Duplicate Filter-->
+        <!--Code Duplicate Filter-->
         <scene sceneID="eU9-aO-mDf">
             <objects>
-                <tableViewController title="Duplicate Filter" id="sxX-mz-IVH" customClass="DuplicateFilterTableViewController" customModule="BarcodeSelectionSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Code Duplicate Filter" id="sxX-mz-IVH" customClass="DuplicateFilterTableViewController" customModule="BarcodeSelectionSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tMz-uz-f4V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,7 +176,7 @@
                             <outlet property="delegate" destination="sxX-mz-IVH" id="EYD-Gw-qCQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Duplicate Filter" id="0Vn-NZ-4RQ"/>
+                    <navigationItem key="navigationItem" title="Code Duplicate Filter" id="0Vn-NZ-4RQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXE-Uv-xz5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

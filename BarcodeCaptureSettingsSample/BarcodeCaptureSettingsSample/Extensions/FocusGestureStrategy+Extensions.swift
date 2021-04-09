@@ -17,7 +17,7 @@ import ScanditCaptureCore
 extension FocusGestureStrategy: CaseIterable, CustomStringConvertible, CustomDebugStringConvertible {
     public typealias AllCases = [FocusGestureStrategy]
     public static var allCases: AllCases {
-        return [.none, .manual, .manualUntilCapture]
+        return [.none, .manual, .manualUntilCapture, .autoOnLocation]
     }
 
     public var description: String {
@@ -28,6 +28,8 @@ extension FocusGestureStrategy: CaseIterable, CustomStringConvertible, CustomDeb
             return "Manual"
         case .manualUntilCapture:
             return "ManualUntilCapture"
+        case .autoOnLocation:
+            return "AutoOnLocation"
         }
     }
 

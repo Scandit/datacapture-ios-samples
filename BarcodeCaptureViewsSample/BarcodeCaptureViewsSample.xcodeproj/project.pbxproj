@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,10 +12,6 @@
 		0036C7D72254F24400AC8CDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0036C7D52254F24400AC8CDC /* Main.storyboard */; };
 		0036C7D92254F24600AC8CDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0036C7D82254F24600AC8CDC /* Assets.xcassets */; };
 		0036C7DC2254F24600AC8CDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0036C7DA2254F24600AC8CDC /* LaunchScreen.storyboard */; };
-		0036C7E72254F2FA00AC8CDC /* ScanditBarcodeCapture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0036C7E52254F2FA00AC8CDC /* ScanditBarcodeCapture.framework */; };
-		0036C7E82254F2FA00AC8CDC /* ScanditBarcodeCapture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0036C7E52254F2FA00AC8CDC /* ScanditBarcodeCapture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0036C7E92254F2FA00AC8CDC /* ScanditCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0036C7E62254F2FA00AC8CDC /* ScanditCaptureCore.framework */; };
-		0036C7EA2254F2FA00AC8CDC /* ScanditCaptureCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0036C7E62254F2FA00AC8CDC /* ScanditCaptureCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0036C7F12254FD7800AC8CDC /* DataCaptureContext+Licensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036C7F02254FD7800AC8CDC /* DataCaptureContext+Licensed.swift */; };
 		00683C09225C981B0043578C /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00683C08225C981B0043578C /* ScanResult.swift */; };
 		00683C0E225CB4310043578C /* Modal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00683C0D225CB4310043578C /* Modal.storyboard */; };
@@ -26,6 +22,11 @@
 		00D5A63F225CBBD700A9283D /* Push.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D5A63E225CBBD700A9283D /* Push.storyboard */; };
 		00D5A644225CBEA000A9283D /* SplitViewScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D5A643225CBEA000A9283D /* SplitViewScannerViewController.swift */; };
 		00D5A646225CC96400A9283D /* SplitView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D5A645225CC96400A9283D /* SplitView.storyboard */; };
+		65203C942577F850006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C932577F850006246C6 /* SampleCode.xcconfig */; };
+		65A7987D25C04E770032289B /* ScanditCaptureCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7987B25C04E770032289B /* ScanditCaptureCore.xcframework */; };
+		65A7987E25C04E770032289B /* ScanditCaptureCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7987B25C04E770032289B /* ScanditCaptureCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65A7987F25C04E770032289B /* ScanditBarcodeCapture.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7987C25C04E770032289B /* ScanditBarcodeCapture.xcframework */; };
+		65A7988025C04E770032289B /* ScanditBarcodeCapture.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7987C25C04E770032289B /* ScanditBarcodeCapture.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,8 +36,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0036C7E82254F2FA00AC8CDC /* ScanditBarcodeCapture.framework in Embed Frameworks */,
-				0036C7EA2254F2FA00AC8CDC /* ScanditCaptureCore.framework in Embed Frameworks */,
+				65A7988025C04E770032289B /* ScanditBarcodeCapture.xcframework in Embed Frameworks */,
+				65A7987E25C04E770032289B /* ScanditCaptureCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,8 +52,6 @@
 		0036C7D82254F24600AC8CDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0036C7DB2254F24600AC8CDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0036C7DD2254F24600AC8CDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0036C7E52254F2FA00AC8CDC /* ScanditBarcodeCapture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanditBarcodeCapture.framework; path = ../../frameworks/ScanditBarcodeCapture.framework; sourceTree = "<group>"; };
-		0036C7E62254F2FA00AC8CDC /* ScanditCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanditCaptureCore.framework; path = ../../frameworks/ScanditCaptureCore.framework; sourceTree = "<group>"; };
 		0036C7F02254FD7800AC8CDC /* DataCaptureContext+Licensed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+Licensed.swift"; sourceTree = "<group>"; };
 		00683C08225C981B0043578C /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
 		00683C0D225CB4310043578C /* Modal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Modal.storyboard; sourceTree = "<group>"; };
@@ -63,6 +62,9 @@
 		00D5A63E225CBBD700A9283D /* Push.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Push.storyboard; sourceTree = "<group>"; };
 		00D5A643225CBEA000A9283D /* SplitViewScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewScannerViewController.swift; sourceTree = "<group>"; };
 		00D5A645225CC96400A9283D /* SplitView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplitView.storyboard; sourceTree = "<group>"; };
+		65203C932577F850006246C6 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
+		65A7987B25C04E770032289B /* ScanditCaptureCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditCaptureCore.xcframework; path = ../../frameworks/ScanditCaptureCore.xcframework; sourceTree = "<group>"; };
+		65A7987C25C04E770032289B /* ScanditBarcodeCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditBarcodeCapture.xcframework; path = ../../frameworks/ScanditBarcodeCapture.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0036C7E72254F2FA00AC8CDC /* ScanditBarcodeCapture.framework in Frameworks */,
-				0036C7E92254F2FA00AC8CDC /* ScanditCaptureCore.framework in Frameworks */,
+				65A7987F25C04E770032289B /* ScanditBarcodeCapture.xcframework in Frameworks */,
+				65A7987D25C04E770032289B /* ScanditCaptureCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +83,7 @@
 		0036C7C52254F24400AC8CDC = {
 			isa = PBXGroup;
 			children = (
+				65203C922577F850006246C6 /* Configuration */,
 				0036C7D02254F24400AC8CDC /* BarcodeCaptureViewsSample */,
 				0036C7CF2254F24400AC8CDC /* Products */,
 				0036C7EC2254F30200AC8CDC /* Frameworks */,
@@ -134,8 +137,8 @@
 		0036C7EC2254F30200AC8CDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0036C7E52254F2FA00AC8CDC /* ScanditBarcodeCapture.framework */,
-				0036C7E62254F2FA00AC8CDC /* ScanditCaptureCore.framework */,
+				65A7987C25C04E770032289B /* ScanditBarcodeCapture.xcframework */,
+				65A7987B25C04E770032289B /* ScanditCaptureCore.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -175,6 +178,15 @@
 			path = Modal;
 			sourceTree = "<group>";
 		};
+		65203C922577F850006246C6 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				65203C932577F850006246C6 /* SampleCode.xcconfig */,
+			);
+			name = Configuration;
+			path = ../Configuration;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,7 +198,6 @@
 				0036C7CB2254F24400AC8CDC /* Frameworks */,
 				0036C7CC2254F24400AC8CDC /* Resources */,
 				0036C7EB2254F2FA00AC8CDC /* Embed Frameworks */,
-				655AC78E228DA47D0076E445 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -239,6 +250,7 @@
 				00D5A646225CC96400A9283D /* SplitView.storyboard in Resources */,
 				00D5A63F225CBBD700A9283D /* Push.storyboard in Resources */,
 				0036C7DC2254F24600AC8CDC /* LaunchScreen.storyboard in Resources */,
+				65203C942577F850006246C6 /* SampleCode.xcconfig in Resources */,
 				0036C7D92254F24600AC8CDC /* Assets.xcassets in Resources */,
 				0036C7D72254F24400AC8CDC /* Main.storyboard in Resources */,
 				00683C0E225CB4310043578C /* Modal.storyboard in Resources */,
@@ -246,26 +258,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		655AC78E228DA47D0076E445 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanditCaptureCore.framework/strip-frameworks.sh\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0036C7CA2254F24400AC8CDC /* Sources */ = {
@@ -308,6 +300,7 @@
 /* Begin XCBuildConfiguration section */
 		0036C7DE2254F24600AC8CDC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65203C932577F850006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -369,6 +362,7 @@
 		};
 		0036C7DF2254F24600AC8CDC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65203C932577F850006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -424,6 +418,7 @@
 		};
 		0036C7E12254F24600AC8CDC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65203C932577F850006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -436,7 +431,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.sdc.viewssample;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.viewssample${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 5.0;
@@ -446,6 +441,7 @@
 		};
 		0036C7E22254F24600AC8CDC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65203C932577F850006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,7 +454,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.sdc.viewssample;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.viewssample${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 5.0;

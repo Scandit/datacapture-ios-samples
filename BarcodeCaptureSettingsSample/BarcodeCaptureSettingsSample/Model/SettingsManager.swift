@@ -41,6 +41,7 @@ class SettingsManager {
     // Use the recommended camera settings for the BarcodeCapture mode.
     var cameraSettings: CameraSettings = BarcodeCapture.recommendedCameraSettings
     var internalTorchSwitch: TorchSwitchControl = TorchSwitchControl()
+    var internalVibration = FeedbackVibration.default
 
     init() {
         // The barcode capturing process is configured through barcode capture settings  

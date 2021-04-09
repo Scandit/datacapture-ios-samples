@@ -39,6 +39,16 @@ extension SettingsManager {
         }
     }
 
+    var maxFrameRate: CGFloat {
+        get {
+            return cameraSettings.maxFrameRate
+        }
+        set {
+            cameraSettings.maxFrameRate = newValue
+            camera?.apply(cameraSettings, completionHandler: nil)
+        }
+    }
+
     var preferredResolution: VideoResolution {
         get {
             return cameraSettings.preferredResolution

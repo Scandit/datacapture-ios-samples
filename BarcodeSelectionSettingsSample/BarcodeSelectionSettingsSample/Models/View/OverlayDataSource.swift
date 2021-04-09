@@ -15,14 +15,14 @@
 import ScanditBarcodeCapture
 
 extension Brush {
-    static let scanditTrackedBrush = Brush(fill: .clear, stroke: .scanditBlue, strokeWidth: 3)
-    static let scanditAimedBrush = Brush(fill: .scanditBlue, stroke: .clear, strokeWidth: 3)
-    static let scanditSelectingBrush = Brush(fill: UIColor.clear, stroke: .scanditBlue, strokeWidth: 3)
-    static let scanditSelectedBrush = Brush(fill: UIColor.clear, stroke: .scanditBlue, strokeWidth: 3)
+    static let cyanTrackedBrush = Brush(fill: .clear, stroke: .cyan, strokeWidth: 3)
+    static let cyanAimedBrush = Brush(fill: .cyan, stroke: .clear, strokeWidth: 3)
+    static let cyanSelectingBrush = Brush(fill: UIColor.clear, stroke: .cyan, strokeWidth: 3)
+    static let cyanSelectedBrush = Brush(fill: UIColor.clear, stroke: .cyan, strokeWidth: 3)
 
     open override var description: String {
-        if strokeColor ~= .scanditBlue || fillColor ~= .scanditBlue {
-            return "Blue"
+        if strokeColor == .cyan || fillColor == .cyan {
+            return "Cyan"
         } else {
             return "Default"
         }
@@ -31,10 +31,10 @@ extension Brush {
 
 class OverlayDataSource: DataSource {
 
-    static let trackedBrushes = [BarcodeSelectionBasicOverlay.defaultTrackedBrush, Brush.scanditTrackedBrush]
-    static let aimedBrushes = [BarcodeSelectionBasicOverlay.defaultAimedBrush, Brush.scanditAimedBrush]
-    static let selectingBrushes = [BarcodeSelectionBasicOverlay.defaultSelectingBrush, Brush.scanditSelectingBrush]
-    static let selectedBrushes = [BarcodeSelectionBasicOverlay.defaultSelectedBrush, Brush.scanditSelectedBrush]
+    static let trackedBrushes = [BarcodeSelectionBasicOverlay.defaultTrackedBrush, Brush.cyanTrackedBrush]
+    static let aimedBrushes = [BarcodeSelectionBasicOverlay.defaultAimedBrush, Brush.cyanAimedBrush]
+    static let selectingBrushes = [BarcodeSelectionBasicOverlay.defaultSelectingBrush, Brush.cyanSelectingBrush]
+    static let selectedBrushes = [BarcodeSelectionBasicOverlay.defaultSelectedBrush, Brush.cyanSelectedBrush]
 
     weak var delegate: DataSourceDelegate?
 

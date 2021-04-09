@@ -18,20 +18,20 @@ struct ColorWrapper: CustomStringConvertible {
     let uicolor: UIColor
 
     var description: String {
-        // We need to compare the full alpha version.
-        // dotColor will force some alpha so even if we pass a color with alpha = 1, it will get back with 0.7 alpha.
-        switch uicolor.withAlphaComponent(1) {
-        case .scanditBlue:
-            return "Blue"
-        default:
-            return "White"
+        var white: CGFloat = 0
+        uicolor.getWhite(&white, alpha: nil)
+        let epsilon: CGFloat = 0.001
+        if white > 1 - epsilon {
+            return "Default"
+        } else {
+            return "Cyan"
         }
     }
 }
 
 class ViewfinderDataSource: DataSource {
-    static let frameColors = [ColorWrapper(uicolor: .white), ColorWrapper(uicolor: .scanditBlue)]
-    static let dotColors = [ColorWrapper(uicolor: UIColor(white: 1, alpha: 0.7)), ColorWrapper(uicolor: .scanditBlue)]
+    static let frameColors = [ColorWrapper(uicolor: .white), ColorWrapper(uicolor: .cyan)]
+    static let dotColors = [ColorWrapper(uicolor: UIColor(white: 1, alpha: 0.7)), ColorWrapper(uicolor: .cyan)]
 
     weak var delegate: DataSourceDelegate?
 

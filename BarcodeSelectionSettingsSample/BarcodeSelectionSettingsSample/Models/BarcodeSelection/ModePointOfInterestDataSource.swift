@@ -35,7 +35,7 @@ class ModePointOfInterestDataSource: DataSource {
             Row(title: "Enable",
                           kind: .switch,
                           getValue: {
-                            !SettingsManager.current.modePointOfInterest.isNull
+                            !SDCPointWithUnitIsNull(SettingsManager.current.modePointOfInterest)
                           },
                           didChangeValue: {
                             if !$0 {

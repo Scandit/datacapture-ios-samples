@@ -3,22 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65203C9A2577F8F5006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */; };
-		65A7988325C04E940032289B /* ScanditBarcodeCapture.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7988125C04E940032289B /* ScanditBarcodeCapture.xcframework */; };
-		65A7988425C04E940032289B /* ScanditBarcodeCapture.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7988125C04E940032289B /* ScanditBarcodeCapture.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65A7988525C04E940032289B /* ScanditCaptureCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7988225C04E940032289B /* ScanditCaptureCore.xcframework */; };
-		65A7988625C04E940032289B /* ScanditCaptureCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7988225C04E940032289B /* ScanditCaptureCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A22C489C2546E27A00176E29 /* UITableView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48972546E27700176E29 /* UITableView+Utils.swift */; };
 		A22C489D2546E27A00176E29 /* FloatInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48982546E27700176E29 /* FloatInputCell.swift */; };
 		A22C489E2546E27A00176E29 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48992546E27800176E29 /* SwitchCell.swift */; };
 		A22C48A02546E27A00176E29 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C489B2546E27A00176E29 /* BasicCell.swift */; };
 		A22C48A22546FD7600176E29 /* NumberFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48A12546FD7500176E29 /* NumberFormatter+Extensions.swift */; };
 		A22C48A42546FD9E00176E29 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48A32546FD9E00176E29 /* UITableViewCell+Extensions.swift */; };
-		A233E41C259DD55A0063AB20 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */; };
 		A23F2C612542CEA8006BC2A5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F2C602542CEA8006BC2A5 /* NavigationController.swift */; };
 		A23F2C632542D115006BC2A5 /* SettingsMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F2C622542D115006BC2A5 /* SettingsMainTableViewController.swift */; };
 		A242981A256E52D900532436 /* PointWithUnit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2429819256E52D900532436 /* PointWithUnit+Extensions.swift */; };
@@ -52,6 +46,10 @@
 		A2C457A2253DD3460032DD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2C457A1253DD3460032DD4D /* Assets.xcassets */; };
 		A2C457A5253DD3460032DD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C457A3253DD3460032DD4D /* LaunchScreen.storyboard */; };
 		A2C457BC253F12C10032DD4D /* DataCaptureContext+Licensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C457BB253F12C10032DD4D /* DataCaptureContext+Licensed.swift */; };
+		A2C457C8253F15FB0032DD4D /* ScanditBarcodeCapture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C457C4253F158A0032DD4D /* ScanditBarcodeCapture.framework */; };
+		A2C457C9253F15FB0032DD4D /* ScanditBarcodeCapture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A2C457C4253F158A0032DD4D /* ScanditBarcodeCapture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A2C457CB253F15FC0032DD4D /* ScanditCaptureCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C457C3253F158A0032DD4D /* ScanditCaptureCore.framework */; };
+		A2C457CC253F15FC0032DD4D /* ScanditCaptureCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A2C457C3253F158A0032DD4D /* ScanditCaptureCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A2C8800425497AC200F05009 /* BarcodeSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C8800325497AC200F05009 /* BarcodeSelection.storyboard */; };
 		A2C8800625497CC200F05009 /* DuplicateFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8800525497CC200F05009 /* DuplicateFilterTableViewController.swift */; };
 		A2C8800825497CDF00F05009 /* DuplicateFilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8800725497CDF00F05009 /* DuplicateFilterDataSource.swift */; };
@@ -82,8 +80,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				65A7988625C04E940032289B /* ScanditCaptureCore.xcframework in Embed Frameworks */,
-				65A7988425C04E940032289B /* ScanditBarcodeCapture.xcframework in Embed Frameworks */,
+				A2C457C9253F15FB0032DD4D /* ScanditBarcodeCapture.framework in Embed Frameworks */,
+				A2C457CC253F15FC0032DD4D /* ScanditCaptureCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,16 +89,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		65203C992577F8F5006246C6 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
-		65A7988125C04E940032289B /* ScanditBarcodeCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditBarcodeCapture.xcframework; sourceTree = "<group>"; };
-		65A7988225C04E940032289B /* ScanditCaptureCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditCaptureCore.xcframework; sourceTree = "<group>"; };
 		A22C48972546E27700176E29 /* UITableView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Utils.swift"; sourceTree = "<group>"; };
 		A22C48982546E27700176E29 /* FloatInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatInputCell.swift; sourceTree = "<group>"; };
 		A22C48992546E27800176E29 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		A22C489B2546E27A00176E29 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		A22C48A12546FD7500176E29 /* NumberFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		A22C48A32546FD9E00176E29 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
-		A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		A23F2C602542CEA8006BC2A5 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = ../../../BarcodeCaptureSettingsSample/BarcodeCaptureSettingsSample/Controllers/Other/NavigationController.swift; sourceTree = "<group>"; };
 		A23F2C622542D115006BC2A5 /* SettingsMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainTableViewController.swift; sourceTree = "<group>"; };
 		A2429819256E52D900532436 /* PointWithUnit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointWithUnit+Extensions.swift"; sourceTree = "<group>"; };
@@ -137,6 +131,8 @@
 		A2C457A6253DD3460032DD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2C457BB253F12C10032DD4D /* DataCaptureContext+Licensed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+Licensed.swift"; sourceTree = "<group>"; };
 		A2C457C1253F14F20032DD4D /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		A2C457C3253F158A0032DD4D /* ScanditCaptureCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScanditCaptureCore.framework; sourceTree = "<group>"; };
+		A2C457C4253F158A0032DD4D /* ScanditBarcodeCapture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScanditBarcodeCapture.framework; sourceTree = "<group>"; };
 		A2C8800325497AC200F05009 /* BarcodeSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BarcodeSelection.storyboard; sourceTree = "<group>"; };
 		A2C8800525497CC200F05009 /* DuplicateFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateFilterTableViewController.swift; sourceTree = "<group>"; };
 		A2C8800725497CDF00F05009 /* DuplicateFilterDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateFilterDataSource.swift; sourceTree = "<group>"; };
@@ -164,23 +160,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65A7988525C04E940032289B /* ScanditCaptureCore.xcframework in Frameworks */,
-				65A7988325C04E940032289B /* ScanditBarcodeCapture.xcframework in Frameworks */,
+				A2C457C8253F15FB0032DD4D /* ScanditBarcodeCapture.framework in Frameworks */,
+				A2C457CB253F15FC0032DD4D /* ScanditCaptureCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		65203C982577F8F5006246C6 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				65203C992577F8F5006246C6 /* SampleCode.xcconfig */,
-			);
-			name = Configuration;
-			path = ../Configuration;
-			sourceTree = "<group>";
-		};
 		A22C48962546E26200176E29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,7 +212,6 @@
 		A2C4578C253DD3450032DD4D = {
 			isa = PBXGroup;
 			children = (
-				65203C982577F8F5006246C6 /* Configuration */,
 				A2C45797253DD3450032DD4D /* BarcodeSelectionSettingsSample */,
 				A2C457B3253F12010032DD4D /* Frameworks */,
 				A2C45796253DD3450032DD4D /* Products */,
@@ -258,8 +244,8 @@
 		A2C457B3253F12010032DD4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65A7988125C04E940032289B /* ScanditBarcodeCapture.xcframework */,
-				65A7988225C04E940032289B /* ScanditCaptureCore.xcframework */,
+				A2C457C4253F158A0032DD4D /* ScanditBarcodeCapture.framework */,
+				A2C457C3253F158A0032DD4D /* ScanditCaptureCore.framework */,
 			);
 			name = Frameworks;
 			path = ../../frameworks;
@@ -295,7 +281,6 @@
 				A26BB4EB254727C80088CCF9 /* FocusRange+Extensions.swift */,
 				A26BB4EC254727C80088CCF9 /* VideoResolution+Extensions.swift */,
 				A2429819256E52D900532436 /* PointWithUnit+Extensions.swift */,
-				A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,6 +346,7 @@
 				A2C45792253DD3450032DD4D /* Frameworks */,
 				A2C45793253DD3450032DD4D /* Resources */,
 				A2C457CA253F15FB0032DD4D /* Embed Frameworks */,
+				A2B2EAE0254DB5F80032F276 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -416,11 +402,30 @@
 				A2C457A2253DD3460032DD4D /* Assets.xcassets in Resources */,
 				A2C457A0253DD3450032DD4D /* Main.storyboard in Resources */,
 				A2C8802A254ABD6D00F05009 /* ViewSettings.storyboard in Resources */,
-				65203C9A2577F8F5006246C6 /* SampleCode.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A2B2EAE0254DB5F80032F276 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/ScanditCaptureCore.framework/strip-frameworks.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A2C45791253DD3450032DD4D /* Sources */ = {
@@ -452,7 +457,6 @@
 				A23F2C612542CEA8006BC2A5 /* NavigationController.swift in Sources */,
 				A26BB4CC25471C970088CCF9 /* Section.swift in Sources */,
 				A2C45799253DD3450032DD4D /* AppDelegate.swift in Sources */,
-				A233E41C259DD55A0063AB20 /* UIColor+Extensions.swift in Sources */,
 				A26BB4E5254726EF0088CCF9 /* SymbologiesDataSource.swift in Sources */,
 				A26BB4E8254727180088CCF9 /* Set+Extensions.swift in Sources */,
 				A22C48A42546FD9E00176E29 /* UITableViewCell+Extensions.swift in Sources */,
@@ -508,7 +512,6 @@
 /* Begin XCBuildConfiguration section */
 		A2C457A7253DD3460032DD4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -570,7 +573,6 @@
 		};
 		A2C457A8253DD3460032DD4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -626,7 +628,6 @@
 		};
 		A2C457AA253DD3460032DD4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -641,7 +642,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.BarcodeSelectionSettingsSample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.BarcodeSelectionSettingsSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -653,7 +654,6 @@
 		};
 		A2C457AB253DD3460032DD4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -668,7 +668,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.BarcodeSelectionSettingsSample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.BarcodeSelectionSettingsSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

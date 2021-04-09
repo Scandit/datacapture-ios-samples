@@ -51,12 +51,6 @@ class SettingsManager {
         internalCamera?.desiredTorchState = internalTorchState
     }
 
-    // MARK: - Clear Session
-
-    func resetSession() {
-        barcodeSelection.reset()
-    }
-
     // MARK: - Barcode Selection
 
     // MARK: Symbologies
@@ -127,7 +121,7 @@ class SettingsManager {
         }
     }
 
-    // MARK: Code Duplicate Filter
+    // MARK: Duplicate Filter
 
     var codeDuplicateFilter: TimeInterval {
         get {

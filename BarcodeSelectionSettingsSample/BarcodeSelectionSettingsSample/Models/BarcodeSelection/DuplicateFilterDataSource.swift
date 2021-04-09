@@ -26,7 +26,7 @@ class DuplicateFilterDataSource: DataSource {
 
     lazy var sections: [Section] = {
         return [Section(rows: [
-            Row(title: "Code Duplicate Filter (s)",
+            Row(title: "Duplicate Filter",
                 kind: .float,
                 getValue: { CGFloat(SettingsManager.current.codeDuplicateFilter) },
                 didChangeValue: {

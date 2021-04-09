@@ -73,18 +73,6 @@ extension SettingsManager {
         }
     }
 
-    var vibration: FeedbackVibration {
-        get {
-            return internalVibration
-        }
-
-        set {
-            internalVibration = newValue
-            feedback = Feedback(vibration: internalVibration.feedbackVibration,
-                                sound: feedback.sound)
-        }
-    }
-
     // MARK: Location Selection
 
     var locationSelection: LocationSelection? {
@@ -97,7 +85,7 @@ extension SettingsManager {
         }
     }
 
-    // MARK: Code Duplicate Filter
+    // MARK: Duplicate Filter
 
     var codeDuplicateFilter: TimeInterval {
         get {

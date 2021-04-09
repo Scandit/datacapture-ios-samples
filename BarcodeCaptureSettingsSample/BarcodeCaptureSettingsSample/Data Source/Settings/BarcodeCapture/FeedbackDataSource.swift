@@ -14,39 +14,6 @@
 
 import ScanditCaptureCore
 
-enum FeedbackVibration: String, CaseIterable, CustomStringConvertible {
-    case none
-    case `default`
-    case selectionHapticFeedback
-    case successHapticFeedback
-
-    var description: String {
-        switch self {
-        case .none:
-            return "No Vibration"
-        case .default:
-            return "Default Vibration"
-        case .selectionHapticFeedback:
-            return "Selection Haptic Feedback"
-        case .successHapticFeedback:
-            return "Success Haptic Feedback"
-        }
-    }
-
-    var feedbackVibration: Vibration? {
-        switch self {
-        case .none:
-            return nil
-        case .default:
-            return .default
-        case .selectionHapticFeedback:
-            return .selectionHapticFeedback
-        case .successHapticFeedback:
-            return .successHapticFeedback
-        }
-    }
-}
-
 class FeedbackDataSource: DataSource {
 
     weak var delegate: DataSourceDelegate?
@@ -56,21 +23,21 @@ class FeedbackDataSource: DataSource {
     }
 
     // MARK: - Sections
+
     lazy var sections: [Section] = {
-        return [
-            Section(rows: [
-                        Row(title: "Sound",
-                            kind: .switch,
-                            getValue: { SettingsManager.current.feedback.sound != nil },
-                            didChangeValue: {
-                                SettingsManager.current.feedback =
-                                    Feedback(vibration: SettingsManager.current.feedback.vibration,
-                                             sound: $0 ? Sound.default : nil)
-                            }),
-                        Row.choice(title: "Vibration", options: FeedbackVibration.allCases,
-                                   getValue: { return SettingsManager.current.vibration },
-                                   didChangeValue: { SettingsManager.current.vibration = $0 },
-                                   dataSourceDelegate: delegate)])
-        ]
+        return [Section(rows: [
+            Row(title: "Sound",
+                kind: .switch,
+                getValue: { SettingsManager.current.feedback.sound != nil },
+                didChangeValue: {
+                    SettingsManager.current.feedback = Feedback(vibration: SettingsManager.current.feedback.vibration,
+                                                                sound: $0 ? Sound.default : nil) }),
+            Row(title: "Vibration",
+                kind: .switch,
+                getValue: { SettingsManager.current.feedback.vibration != nil },
+                didChangeValue: {
+                    SettingsManager.current.feedback = Feedback(vibration: $0 ? Vibration.default : nil,
+                                                                sound: SettingsManager.current.feedback.sound) })])]
     }()
+
 }

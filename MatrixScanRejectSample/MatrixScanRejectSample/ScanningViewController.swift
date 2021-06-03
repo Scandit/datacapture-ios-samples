@@ -158,6 +158,7 @@ fileprivate extension Brush {
 
 extension ScanningViewController: BarcodeTrackingBasicOverlayDelegate {
     // This function is called to get the brush to be used for tracked barcodes, for example to visualize rejected ones.
+    // Note that modifying a barcode's brush color requires the MatrixScan AR add-on.
     func barcodeTrackingBasicOverlay(_ overlay: BarcodeTrackingBasicOverlay,
                                      brushFor trackedBarcode: TrackedBarcode) -> Brush? {
         // The `isRejected` property is for illustrative purposes only, not part of the official API.

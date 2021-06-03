@@ -91,6 +91,26 @@ extension DocumentType: CustomStringConvertible {
             return "Tax ID"
         case .weaponPermit:
             return "Weapon Permit"
+        case .borderCrossingCard:
+            return "Border Crossing Card"
+        case .driverCard:
+            return "Driver Card"
+        case .globalEntryCard:
+            return "Global Entry Card"
+        case .myPolis:
+            return "MyPolis"
+        case .nexusCard:
+            return "Nesux Card"
+        case .passportCard:
+            return "Passport Card"
+        case .proofOfAgeCard:
+            return "Proof of age Card"
+        case .refugeeId:
+            return "Refugee ID"
+        case .tribalId:
+            return "Tribal ID"
+        case .veteranId:
+            return "Veteran ID"
         }
     }
 }

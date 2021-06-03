@@ -141,7 +141,7 @@ class SearchViewController: UIViewController {
         overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture)
         // By setting the default brush to the overlay, no captured barcodes will be visualized.
         overlay.brush = Brush()
-        let viewFinder = LaserlineViewfinder()
+        let viewFinder = LaserlineViewfinder(style: .animated)
         // The width of the laser will be 90 percent of the data capture view's width.
         viewFinder.width = FloatWithUnit(value: 0.9, unit: .fraction)
         overlay.viewfinder = viewFinder

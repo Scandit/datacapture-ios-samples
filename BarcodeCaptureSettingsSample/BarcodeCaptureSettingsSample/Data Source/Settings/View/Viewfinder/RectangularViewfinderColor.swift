@@ -17,6 +17,16 @@ import UIKit
 enum RectangularViewfinderColor: CaseIterable, CustomStringConvertible {
     case `default`, blue, black
 
+    init(color: UIColor) {
+        if color ~= .blue {
+            self = .blue
+        } else if color ~= .black {
+            self = .black
+        } else {
+            self = .default
+        }
+    }
+
     var description: String {
         switch self {
         case .default: return "Default"

@@ -72,101 +72,194 @@ class SettingsManager {
         }
         set {
             overlay.viewfinder = newValue
-            if let rectangular = newValue as? RectangularViewfinder {
-                switch rectangular.sizeWithUnitAndAspect.sizingMode {
-                case .widthAndHeight:
-                    let widthAndHeight = rectangular.sizeWithUnitAndAspect.widthAndHeight
-                    rectangularWidth = widthAndHeight.width
-                    rectangularHeight = widthAndHeight.height
-                case .widthAndAspectRatio:
-                    rectangularWidthAspect = rectangular.sizeWithUnitAndAspect.widthAndAspectRatio.aspect
-                case .heightAndAspectRatio:
-                    rectangularHeightAspect = rectangular.sizeWithUnitAndAspect.heightAndAspectRatio.aspect
-                }
-            }
         }
     }
 
-    func setViewfinderSize() {
-        guard let viewfinder = viewfinder as? RectangularViewfinder else { return }
-        switch viewfinderSizeSpecification {
-        case .widthAndHeight:
-            viewfinder.setSize(SizeWithUnit(width: rectangularWidth, height: rectangularHeight))
-        case .widthAndHeightAspect:
-            viewfinder.setWidth(rectangularWidth, aspectRatio: rectangularHeightAspect)
-        case .heightAndWidthAspect:
-            viewfinder.setHeight(rectangularHeight, aspectRatio: rectangularWidthAspect)
+    var laserlineStyle: LaserlineViewfinderStyle {
+        get {
+            (viewfinder as! LaserlineViewfinder).style
+        }
+        set {
+            viewfinder = LaserlineViewfinder(style: newValue)
+        }
+    }
+
+    var rectangularStyle: RectangularViewfinderStyle {
+        get {
+            (viewfinder as! RectangularViewfinder).style
+        }
+        set {
+            viewfinder = RectangularViewfinder(style: newValue)
+        }
+    }
+
+    var rectangularLineStyle: RectangularViewfinderLineStyle {
+        get {
+            (viewfinder as! RectangularViewfinder).lineStyle
+        }
+        set {
+            viewfinder = RectangularViewfinder(style: rectangularStyle, lineStyle: newValue)
+        }
+    }
+
+    var rectangularDimming: CGFloat {
+        get {
+            (viewfinder as! RectangularViewfinder).dimming
+        }
+        set {
+            (viewfinder as! RectangularViewfinder).dimming = newValue
         }
     }
 
     lazy var defaultRectangularViewfinderColor = RectangularViewfinder().color
+    lazy var defaultRectangularViewfinderDisabledColor = RectangularViewfinder().disabledColor
 
     /// Note: RectangularViewfinderColor is not part of the SDK, see RectangularViewfinderColor.swift
-    var rectangularViewfinderColor: RectangularViewfinderColor = .default {
-        didSet {
-            (viewfinder as? RectangularViewfinder)?.color = rectangularViewfinderColor.uiColor
+    var rectangularViewfinderColor: RectangularViewfinderColor {
+        get {
+            let color = (viewfinder as! RectangularViewfinder).color
+            return RectangularViewfinderColor(color: color)
+        }
+        set {
+            (viewfinder as! RectangularViewfinder).color = newValue.uiColor
+        }
+    }
+
+    /// Note: RectangularViewfinderDisabledColor is not part of the SDK, see RectangularViewfinderColor.swift
+    var rectangularViewfinderDisabledColor: RectangularViewfinderDisabledColor {
+        get {
+            let color = (viewfinder as! RectangularViewfinder).disabledColor
+            return RectangularViewfinderDisabledColor(color: color)
+        }
+        set {
+            (viewfinder as! RectangularViewfinder).disabledColor = newValue.uiColor
+        }
+    }
+
+    var rectangularAnimation: RectangularViewfinderAnimation? {
+        get {
+            (viewfinder as! RectangularViewfinder).animation
+        }
+        set {
+            (viewfinder as! RectangularViewfinder).animation = newValue
         }
     }
 
     lazy var defaultLaserlineViewfinderEnabledColor = LaserlineViewfinder().enabledColor
 
     /// Note: LaserlineViewfinderEnabledColor is not part of the SDK, see LaserlineViewfinderEnabledColor.swift
-    var laserlineViewfinderEnabledColor: LaserlineViewfinderEnabledColor = .default {
-        didSet {
-            (viewfinder as? LaserlineViewfinder)?.enabledColor = laserlineViewfinderEnabledColor.uiColor
+    var laserlineViewfinderEnabledColor: LaserlineViewfinderEnabledColor {
+        get {
+            let color = (viewfinder as! LaserlineViewfinder).enabledColor
+            return LaserlineViewfinderEnabledColor(color: color)
+        }
+        set {
+            (viewfinder as! LaserlineViewfinder).enabledColor = newValue.uiColor
         }
     }
 
     lazy var defaultLaserlineViewfinderDisabledColor = LaserlineViewfinder().disabledColor
 
     /// Note: LaserlineViewfinderDisabledColor is not part of the SDK, see LaserlineViewfinderDisabledColor.swift
-    var laserlineViewfinderDisabledColor: LaserlineViewfinderDisabledColor = .default {
-        didSet {
-            (viewfinder as? LaserlineViewfinder)?.disabledColor = laserlineViewfinderDisabledColor.uiColor
+    var laserlineViewfinderDisabledColor: LaserlineViewfinderDisabledColor {
+        get {
+            let color = (viewfinder as! LaserlineViewfinder).disabledColor
+            return LaserlineViewfinderDisabledColor(color: color)
+        }
+        set {
+            (viewfinder as! LaserlineViewfinder).disabledColor = newValue.uiColor
         }
     }
 
     lazy var defaultAimerViewfinderFrameColor = AimerViewfinder().frameColor
 
     /// Note: AimerViewfinderFrameColor is not part of the SDK, see LaserlineViewfinderDisabledColor.swift
-    var aimerViewfinderFrameColor: AimerViewfinderFrameColor = .default {
-        didSet {
-            (viewfinder as? AimerViewfinder)?.frameColor = aimerViewfinderFrameColor.uiColor
+    var aimerViewfinderFrameColor: AimerViewfinderFrameColor {
+        get {
+            let color = (viewfinder as! AimerViewfinder).frameColor
+            return AimerViewfinderFrameColor(color: color)
+        }
+        set {
+            (viewfinder as! AimerViewfinder).frameColor = newValue.uiColor
         }
     }
 
     lazy var defaultAimerViewfinderDotColor = AimerViewfinder().dotColor
 
     /// Note: AimerViewfinderDotColor is not part of the SDK, see LaserlineViewfinderDisabledColor.swift
-    var aimerViewfinderDotColor: AimerViewfinderDotColor = .default {
-        didSet {
-            (viewfinder as? AimerViewfinder)?.dotColor = aimerViewfinderDotColor.uiColor
+    var aimerViewfinderDotColor: AimerViewfinderDotColor {
+        get {
+            let color = (viewfinder as! AimerViewfinder).dotColor
+            return AimerViewfinderDotColor(color: color)
+        }
+        set {
+            (viewfinder as! AimerViewfinder).dotColor = newValue.uiColor
         }
     }
 
-    var viewfinderSizeSpecification: RectangularSizeSpecification = .widthAndHeight
-
-    var rectangularWidth: FloatWithUnit = .zero {
+    var viewfinderSizeSpecification: RectangularSizeSpecification = .widthAndHeight {
         didSet {
-            setViewfinderSize()
+            /// Update the viewfinder when we update the size specification.
+            let rectangular = viewfinder as! RectangularViewfinder
+            switch viewfinderSizeSpecification {
+            case .widthAndHeight:
+                let widthAndHeight = rectangular.sizeWithUnitAndAspect.widthAndHeight
+                rectangularWidthAndHeight = widthAndHeight
+            case .widthAndHeightAspect:
+                rectangularWidthAndAspectRatio = rectangular.sizeWithUnitAndAspect.widthAndAspectRatio
+            case .heightAndWidthAspect:
+                rectangularHeightAndAspectRatio = rectangular.sizeWithUnitAndAspect.heightAndAspectRatio
+            case .shorterDimensionAndAspect:
+                rectangularShorterDimensionAndAspectRatio =
+                    (rectangular.sizeWithUnitAndAspect.shorterDimensionAndAspectRatio.size.value,
+                     rectangular.sizeWithUnitAndAspect.shorterDimensionAndAspectRatio.aspect)
+            }
         }
     }
 
-    var rectangularHeight: FloatWithUnit = .zero {
-        didSet {
-            setViewfinderSize()
+    var rectangularWidthAndHeight: SizeWithUnit {
+        get {
+            let sizeWithUnitAndAspect = (viewfinder as! RectangularViewfinder).sizeWithUnitAndAspect
+            return sizeWithUnitAndAspect.widthAndHeight
+        }
+        set {
+            let rectangular = viewfinder as! RectangularViewfinder
+            rectangular.setSize(newValue)
         }
     }
 
-    var rectangularWidthAspect: CGFloat = 0 {
-        didSet {
-            setViewfinderSize()
+    var rectangularWidthAndAspectRatio: SizeWithAspect {
+        get {
+            let sizeWithUnitAndAspect = (viewfinder as! RectangularViewfinder).sizeWithUnitAndAspect
+            return sizeWithUnitAndAspect.widthAndAspectRatio
+        }
+        set {
+            let rectangular = viewfinder as! RectangularViewfinder
+            rectangular.setWidth(newValue.size, aspectRatio: newValue.aspect)
         }
     }
 
-    var rectangularHeightAspect: CGFloat = 0 {
-        didSet {
-            setViewfinderSize()
+    var rectangularHeightAndAspectRatio: SizeWithAspect {
+        get {
+            let sizeWithUnitAndAspect = (viewfinder as! RectangularViewfinder).sizeWithUnitAndAspect
+            return sizeWithUnitAndAspect.heightAndAspectRatio
+        }
+        set {
+            let rectangular = viewfinder as! RectangularViewfinder
+            rectangular.setWidth(newValue.size, aspectRatio: newValue.aspect)
+        }
+    }
+
+    var rectangularShorterDimensionAndAspectRatio: (CGFloat, CGFloat) {
+        get {
+            let sizeWithUnitAndAspect = (viewfinder as! RectangularViewfinder).sizeWithUnitAndAspect
+            return (sizeWithUnitAndAspect.shorterDimensionAndAspectRatio.size.value,
+                    sizeWithUnitAndAspect.shorterDimensionAndAspectRatio.aspect)
+        }
+        set {
+            let rectangular = viewfinder as! RectangularViewfinder
+            rectangular.setShorterDimension(newValue.0,
+                                            aspectRatio: newValue.1)
         }
     }
 

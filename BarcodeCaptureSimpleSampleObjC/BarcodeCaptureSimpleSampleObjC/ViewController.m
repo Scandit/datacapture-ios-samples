@@ -49,6 +49,8 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
 
     // Switch camera on to start streaming frames. The camera is started asynchronously and will
     // take some time to completely turn on.
+    // To be notified when the camera is completely on, pass non nil block as completion to
+    // [self.camera switchToDesiredState: completionHandler:];
     self.barcodeCapture.enabled = YES;
     [self.camera switchToDesiredState:SDCFrameSourceStateOn];
 }
@@ -59,6 +61,8 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
     // Switch camera off to stop streaming frames. The camera is stopped asynchronously and will
     // take some time to completely turn off. Until it is completely stopped, it is still possible
     // to receive further results, hence it's a good idea to first disable barcode capture as well.
+    // To be notified when the camera is completely stopped, pass non nil block as completion to
+    // [self.camera switchToDesiredState: completionHandler:];
     self.barcodeCapture.enabled = NO;
     [self.camera switchToDesiredState:SDCFrameSourceStateOff];
 }
@@ -124,7 +128,9 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
     // barcodes on top of the video preview. This is optional, but recommended for better visual
     // feedback.
     self.overlay = [SDCBarcodeCaptureOverlay overlayWithBarcodeCapture:self.barcodeCapture];
-    self.overlay.viewfinder = [SDCRectangularViewfinder viewfinder];
+    self.overlay.viewfinder = [SDCRectangularViewfinder
+        viewfinderWithStyle:SDCRectangularViewfinderStyleSquare
+                  lineStyle:SDCRectangularViewfinderLineStyleLight];
     [self.captureView addOverlay:self.overlay];
 }
 

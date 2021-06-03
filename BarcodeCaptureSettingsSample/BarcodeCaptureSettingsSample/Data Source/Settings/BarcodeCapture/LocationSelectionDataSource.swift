@@ -36,6 +36,7 @@ class LocationSelectionDataSource: DataSource {
             case .widthAndHeight: sections.append(Section(rows: [rectangularWidth, rectangularHeight]))
             case .widthAndAspectRatio: sections.append(Section(rows: [rectangularWidth, rectangularHeightAspect]))
             case .heightAndAspectRatio: sections.append(Section(rows: [rectangularHeight, rectangularWidthAspect]))
+            case .shorterDimensionAndAspectRatio: break
             }
         default:
             break
@@ -89,7 +90,9 @@ class LocationSelectionDataSource: DataSource {
     lazy var rectangularSettings: Section = {
         return Section(title: "Rectangular", rows: [
             Row.choice(title: "Size Specification",
-                       options: RectangularSizeSpecification.allCases,
+                       options: [RectangularSizeSpecification.widthAndHeight,
+                                 RectangularSizeSpecification.widthAndHeightAspect,
+                                 RectangularSizeSpecification.heightAndWidthAspect],
                        getValue: getCurrentSizeSpecification,
                        didChangeValue: setCurrentSizeSpecification,
                        dataSourceDelegate: self.delegate)])
@@ -137,6 +140,8 @@ class LocationSelectionDataSource: DataSource {
             return .widthAndHeightAspect
         case .heightAndAspectRatio:
             return .heightAndWidthAspect
+        case .shorterDimensionAndAspectRatio:
+            return .shorterDimensionAndAspect
         }
     }
 
@@ -153,6 +158,8 @@ class LocationSelectionDataSource: DataSource {
         case .heightAndWidthAspect:
             SettingsManager.current.locationSelection = RectangularLocationSelection(height: .zero,
                                                                                      aspectRatio: 1)
+        case .shorterDimensionAndAspect:
+            break
         }
     }
 
@@ -175,6 +182,8 @@ class LocationSelectionDataSource: DataSource {
             SettingsManager.current.locationSelection =
                 RectangularLocationSelection(width: width,
                                              aspectRatio: currentSize.aspect)
+        case .shorterDimensionAndAspectRatio:
+            break
         }
     }
 
@@ -197,6 +206,8 @@ class LocationSelectionDataSource: DataSource {
                                              aspectRatio: currentSize.aspect)
         case .widthAndAspectRatio:
             break
+        case .shorterDimensionAndAspectRatio:
+            break
         }
     }
 
@@ -212,6 +223,8 @@ class LocationSelectionDataSource: DataSource {
         case .widthAndHeight:
             return rectangularSelection.sizeWithUnitAndAspect.widthAndHeight.height
         case .widthAndAspectRatio:
+            return .zero
+        case .shorterDimensionAndAspectRatio:
             return .zero
         }
     }
@@ -229,6 +242,8 @@ class LocationSelectionDataSource: DataSource {
             return rectangularSelection.sizeWithUnitAndAspect.widthAndHeight.width
         case .heightAndAspectRatio:
             return .zero
+        case .shorterDimensionAndAspectRatio:
+            return .zero
         }
     }
 
@@ -244,6 +259,8 @@ class LocationSelectionDataSource: DataSource {
         case .heightAndAspectRatio:
             return rectangularSelection.sizeWithUnitAndAspect.heightAndAspectRatio.aspect
         case .widthAndHeight:
+            return .zero
+        case .shorterDimensionAndAspectRatio:
             return .zero
         }
     }
@@ -266,6 +283,8 @@ class LocationSelectionDataSource: DataSource {
                 RectangularLocationSelection(height: currentSize.size,
                                              aspectRatio: aspect)
         case .widthAndHeight:
+            break
+        case .shorterDimensionAndAspectRatio:
             break
         }
     }

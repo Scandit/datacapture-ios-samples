@@ -65,8 +65,8 @@ class GS1ParserSample: UIViewController {
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the IdCapture mode.
-        let recommenededCameraSettings = BarcodeCapture.recommendedCameraSettings
-        camera?.apply(recommenededCameraSettings)
+        let recommendedCameraSettings = BarcodeCapture.recommendedCameraSettings
+        camera?.apply(recommendedCameraSettings)
 
         // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.

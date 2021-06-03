@@ -64,8 +64,8 @@ class IdCaptureViewController: UIViewController {
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the IdCapture mode.
-        let recommenededCameraSettings = IdCapture.recommendedCameraSettings
-        camera?.apply(recommenededCameraSettings)
+        let recommendedCameraSettings = IdCapture.recommendedCameraSettings
+        camera?.apply(recommendedCameraSettings)
 
         // To visualize the on-going id capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
@@ -85,6 +85,7 @@ class IdCaptureViewController: UIViewController {
         // Add an id capture overlay to the data capture view to render the location of captured ids on top of
         // the video preview. This is optional, but recommended for better visual feedback.
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
+        overlay.idLayoutStyle = .square
     }
 }
 
@@ -115,7 +116,7 @@ extension IdCaptureViewController: IdCaptureListener {
         } else if capturedId.usUniformedServicesBarcodeResult != nil {
             // If the capturedResultType is `.usUniformedServicesBarcodeResult`
             // then `capturedId` is guaranteed to have the usUniformedServicesBarcodeResult property not nil.
-            idDescription = descriptionForUsDriverLicenseBarcodeResult(result: capturedId)
+            idDescription = descriptionForUsUniformedServicesBarcodeResult(result: capturedId)
         } else {
             idDescription = descriptionForCapturedId(result: capturedId)
         }
@@ -139,8 +140,8 @@ extension IdCaptureViewController: IdCaptureListener {
                    session: IdCaptureSession,
                    frameData: FrameData) {
 
+        // Implement to handle an error encountered during the capture process.
         // The error message can be retrieved from the Error localizedDescription.
-        print(error.localizedDescription)
     }
 
     func descriptionForMrzResult(result: CapturedId) -> String {

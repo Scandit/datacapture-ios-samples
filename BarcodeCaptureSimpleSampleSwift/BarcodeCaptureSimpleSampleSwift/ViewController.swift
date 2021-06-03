@@ -40,7 +40,8 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
 
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
-        // completely turn on.
+        // completely turn on. To be notified when the camera is completely on, pass non nil block as completion to
+        // camera?.switch(toDesiredState:completionHandler:)
         barcodeCapture.isEnabled = true
         camera?.switch(toDesiredState: .on)
     }
@@ -51,6 +52,8 @@ class ViewController: UIViewController {
         // Switch camera off to stop streaming frames. The camera is stopped asynchronously and will take some time to
         // completely turn off. Until it is completely stopped, it is still possible to receive further results, hence
         // it's a good idea to first disable barcode capture as well.
+        // To be notified when the camera is completely stopped, pass a non nil block as completion to
+        // camera?.switch(toDesiredState:completionHandler:)
         barcodeCapture.isEnabled = false
         camera?.switch(toDesiredState: .off)
     }
@@ -66,8 +69,8 @@ class ViewController: UIViewController {
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the BarcodeCapture mode.
-        let recommenededCameraSettings = BarcodeCapture.recommendedCameraSettings
-        camera?.apply(recommenededCameraSettings)
+        let recommendedCameraSettings = BarcodeCapture.recommendedCameraSettings
+        camera?.apply(recommendedCameraSettings)
 
         // The barcode capturing process is configured through barcode capture settings  
         // and are then applied to the barcode capture instance that manages barcode recognition.
@@ -108,7 +111,7 @@ class ViewController: UIViewController {
         // Add a barcode capture overlay to the data capture view to render the location of captured barcodes on top of
         // the video preview. This is optional, but recommended for better visual feedback.
         overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture)
-        overlay.viewfinder = RectangularViewfinder()
+        overlay.viewfinder = RectangularViewfinder(style: .square, lineStyle: .light)
         captureView.addOverlay(overlay)
     }
 

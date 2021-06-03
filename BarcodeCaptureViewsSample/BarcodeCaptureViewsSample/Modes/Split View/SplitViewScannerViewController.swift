@@ -15,7 +15,7 @@
 import ScanditBarcodeCapture
 import UIKit
 
-@objc protocol SplitViewScannerViewControllerDelegate: class {
+@objc protocol SplitViewScannerViewControllerDelegate: AnyObject {
     func splitViewScannerViewController(_ splitViewScannerViewController: SplitViewScannerViewController,
                                         didScan scanResult: ScanResult)
 }
@@ -95,8 +95,8 @@ class SplitViewScannerViewController: UIViewController {
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the BarcodeCapture mode.
-        let recommenededCameraSettings = BarcodeCapture.recommendedCameraSettings
-        camera?.apply(recommenededCameraSettings)
+        let recommendedCameraSettings = BarcodeCapture.recommendedCameraSettings
+        camera?.apply(recommendedCameraSettings)
 
         // Register self as a listener to get informed whenever the status of the license changes.
         context.addListener(self)
@@ -117,7 +117,7 @@ class SplitViewScannerViewController: UIViewController {
         let barcodeCaptureOverlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView)
 
         // We have to add the laser line viewfinder to the overlay.
-        let viewFinder = LaserlineViewfinder()
+        let viewFinder = LaserlineViewfinder(style: .animated)
         viewFinder.width = FloatWithUnit(value: 0.9, unit: .fraction)
         barcodeCaptureOverlay.viewfinder = viewFinder
 

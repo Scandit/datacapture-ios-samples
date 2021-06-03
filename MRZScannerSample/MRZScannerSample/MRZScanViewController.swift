@@ -68,8 +68,8 @@ class MRZScanViewController: UIViewController {
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the TextCapture mode.
-        let recommenededCameraSettings = IdCapture.recommendedCameraSettings
-        camera?.apply(recommenededCameraSettings)
+        let recommendedCameraSettings = IdCapture.recommendedCameraSettings
+        camera?.apply(recommendedCameraSettings)
 
         // To visualize the on-going id capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.

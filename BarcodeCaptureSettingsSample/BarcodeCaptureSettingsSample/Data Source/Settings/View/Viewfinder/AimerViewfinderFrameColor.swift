@@ -17,6 +17,16 @@ import UIKit
 enum AimerViewfinderFrameColor: CaseIterable, CustomStringConvertible {
     case `default`, blue, red
 
+    init(color: UIColor) {
+        if color ~= .red {
+            self = .red
+        } else if color ~= .blue {
+            self = .blue
+        } else {
+            self = .default
+        }
+    }
+
     var description: String {
         switch self {
         case .default: return "Default"

@@ -55,9 +55,9 @@ class ViewController: UIViewController {
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the BarcodeCapture mode.
-        let recommenededCameraSettings = BarcodeTracking.recommendedCameraSettings
-        recommenededCameraSettings.preferredResolution = .uhd4k
-        camera?.apply(recommenededCameraSettings)
+        let recommendedCameraSettings = BarcodeTracking.recommendedCameraSettings
+        recommendedCameraSettings.preferredResolution = .uhd4k
+        camera?.apply(recommendedCameraSettings)
 
         // The barcode capturing process is configured through barcode capture settings
         // and are then applied to the barcode capture instance that manages barcode recognition.

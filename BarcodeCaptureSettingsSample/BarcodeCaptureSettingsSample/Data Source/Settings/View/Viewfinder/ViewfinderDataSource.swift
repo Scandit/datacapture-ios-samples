@@ -22,17 +22,9 @@ class ViewfinderDataSource: DataSource {
         self.delegate = delegate
     }
 
-    private var isRectangular: Bool {
-        return (rectangular.getValue?() as? Bool) == true
-    }
-
-    private var isLaserline: Bool {
-        return (laserline.getValue?() as? Bool) == true
-    }
-
-    private var isAimer: Bool {
-        return (aimer.getValue?() as? Bool) == true
-    }
+    private var isRectangular: Bool { (rectangular.getValue?() as? Bool) == true }
+    private var isLaserline: Bool { (laserline.getValue?() as? Bool) == true }
+    private var isAimer: Bool { (aimer.getValue?() as? Bool) == true }
 
     // MARK: - Sections
 
@@ -40,11 +32,12 @@ class ViewfinderDataSource: DataSource {
         var sections = [viewfinderType]
 
         if isRectangular {
-            sections.append(contentsOf: [rectangularSettings, rectangularSizeType])
+            sections.append(contentsOf: [rectangularSettings, animation, rectangularSizeType])
             switch SettingsManager.current.viewfinderSizeSpecification {
-            case .widthAndHeight: sections.append(Section(rows: [rectangularWidth, rectangularHeight]))
-            case .widthAndHeightAspect: sections.append(Section(rows: [rectangularWidth, rectangularHeightAspect]))
-            case .heightAndWidthAspect: sections.append(Section(rows: [rectangularWidthAspect, rectangularHeight]))
+            case .widthAndHeight: sections.append(widthAndHeight)
+            case .widthAndHeightAspect: sections.append(widthAndHeightAspect)
+            case .heightAndWidthAspect: sections.append(heightAndAspectRatio)
+            case .shorterDimensionAndAspect: sections.append(shorterDimensionAndAspectRatio)
             }
         } else if isLaserline {
             sections.append(laserlineSettings)
@@ -93,54 +86,163 @@ class ViewfinderDataSource: DataSource {
 
     lazy var rectangularSettings: Section = {
         return Section(title: "Rectangular", rows: [
-            Row.choice(title: "Color",
-                       options: RectangularViewfinderColor.allCases,
-                       getValue: { SettingsManager.current.rectangularViewfinderColor },
-                       didChangeValue: { SettingsManager.current.rectangularViewfinderColor = $0 },
-                       dataSourceDelegate: self.delegate)])
+                        Row.choice(title: "Style",
+                                   options: RectangularViewfinderStyle.allCases,
+                                   getValue: { SettingsManager.current.rectangularStyle },
+                                   didChangeValue: { SettingsManager.current.rectangularStyle = $0 },
+                                   dataSourceDelegate: self.delegate),
+                        Row.choice(title: "Line Style",
+                                   options: RectangularViewfinderLineStyle.allCases,
+                                   getValue: { SettingsManager.current.rectangularLineStyle },
+                                   didChangeValue: { SettingsManager.current.rectangularLineStyle = $0 },
+                                   dataSourceDelegate: self.delegate),
+                        Row.init(title: "Dimming (0.0 - 1.0)",
+                                        kind: .float,
+                                        getValue: { SettingsManager.current.rectangularDimming },
+                                        didChangeValue: { SettingsManager.current.rectangularDimming = $0 }),
+                        Row.choice(title: "Color",
+                                   options: RectangularViewfinderColor.allCases,
+                                   getValue: { SettingsManager.current.rectangularViewfinderColor },
+                                   didChangeValue: { SettingsManager.current.rectangularViewfinderColor = $0 },
+                                   dataSourceDelegate: self.delegate),
+                        Row.choice(title: "Disabled Color",
+                                   options: RectangularViewfinderDisabledColor.allCases,
+                                   getValue: { SettingsManager.current.rectangularViewfinderDisabledColor },
+                                   didChangeValue: { SettingsManager.current.rectangularViewfinderDisabledColor = $0 },
+                                   dataSourceDelegate: self.delegate)])
     }()
+
+    var animation: Section {
+        let animationRow = Row(title: "Animation",
+                               kind: .switch,
+                               getValue: { SettingsManager.current.rectangularAnimation != nil },
+                               didChangeValue: { value in
+                                    let animation = value ? RectangularViewfinderAnimation() : nil
+                                   SettingsManager.current.rectangularAnimation = animation
+                                self.delegate?.didChangeData()
+                               })
+        var rows = [animationRow]
+        if SettingsManager.current.rectangularAnimation != nil {
+            rows.append(Row(title: "Looping",
+                            kind: .switch,
+                            getValue: {
+                                guard let animation = SettingsManager.current.rectangularAnimation else {
+                                    return false
+                                }
+                                return animation.isLooping
+                            },
+                            didChangeValue: { value in
+                                SettingsManager.current.rectangularAnimation =
+                                    RectangularViewfinderAnimation(looping: value)
+                            }))
+        }
+        return Section(rows: rows)
+    }
 
     lazy var rectangularSizeType: Section = {
         return Section(rows: [
-            Row.choice(title: "Size Specification",
-                       options: RectangularSizeSpecification.allCases,
-                       getValue: { SettingsManager.current.viewfinderSizeSpecification },
-                       didChangeValue: { SettingsManager.current.viewfinderSizeSpecification = $0 },
-                       dataSourceDelegate: self.delegate)])
+                        Row.choice(title: "Size Specification",
+                                   options: RectangularSizeSpecification.allCases,
+                                   getValue: { SettingsManager.current.viewfinderSizeSpecification },
+                                   didChangeValue: { SettingsManager.current.viewfinderSizeSpecification = $0 },
+                                   dataSourceDelegate: self.delegate)])
     }()
 
-    lazy var rectangularWidth: Row = {
-        return Row.valueWithUnit(title: "Width",
-                                 getValue: { SettingsManager.current.rectangularWidth },
-                                 didChangeValue: { SettingsManager.current.rectangularWidth = $0 },
-                                 dataSourceDelegate: self.delegate)
+    lazy var widthAndHeight: Section = {
+        Section(rows: [
+            Row.valueWithUnit(title: "Width",
+                              getValue: { SettingsManager.current.rectangularWidthAndHeight.width },
+                              didChangeValue: {
+                                let height = SettingsManager.current.rectangularWidthAndHeight.height
+                                let size = SizeWithUnit(width: $0, height: height)
+                                SettingsManager.current.rectangularWidthAndHeight = size
+                              },
+                              dataSourceDelegate: self.delegate),
+            Row.valueWithUnit(title: "Height",
+                              getValue: { SettingsManager.current.rectangularWidthAndHeight.height },
+                              didChangeValue: {
+                                let width = SettingsManager.current.rectangularWidthAndHeight.width
+                                let size = SizeWithUnit(width: width, height: $0)
+                                SettingsManager.current.rectangularWidthAndHeight = size
+                              },
+                              dataSourceDelegate: self.delegate)
+        ])
     }()
 
-    lazy var rectangularHeight: Row = {
-        return Row.valueWithUnit(title: "Height",
-                                 getValue: { SettingsManager.current.rectangularHeight },
-                                 didChangeValue: { SettingsManager.current.rectangularHeight = $0 },
-                                 dataSourceDelegate: self.delegate)
+    lazy var widthAndHeightAspect: Section = {
+        Section(rows: [
+            Row.valueWithUnit(title: "Width",
+                              getValue: { SettingsManager.current.rectangularWidthAndAspectRatio.size },
+                              didChangeValue: {
+                                let aspect = SettingsManager.current.rectangularWidthAndAspectRatio.aspect
+                                let size = SizeWithAspect(size: $0, aspect: aspect)
+                                SettingsManager.current.rectangularWidthAndAspectRatio = size
+                              },
+                              dataSourceDelegate: self.delegate),
+            Row.init(title: "Height Aspect",
+                     kind: .float,
+                     getValue: { SettingsManager.current.rectangularWidthAndAspectRatio.aspect },
+                     didChangeValue: {
+                        let width = SettingsManager.current.rectangularWidthAndAspectRatio.size
+                        let size = SizeWithAspect(size: width, aspect: $0)
+                        SettingsManager.current.rectangularWidthAndAspectRatio = size
+                     })
+        ])
     }()
 
-    lazy var rectangularWidthAspect: Row = {
-        return Row.init(title: "Width Aspect",
-                        kind: .float,
-                        getValue: { SettingsManager.current.rectangularWidthAspect },
-                        didChangeValue: { SettingsManager.current.rectangularWidthAspect = $0 })
+    lazy var heightAndAspectRatio: Section = {
+        Section(rows: [
+            Row.valueWithUnit(title: "Height",
+                              getValue: { SettingsManager.current.rectangularHeightAndAspectRatio.size },
+                              didChangeValue: {
+                                let aspect = SettingsManager.current.rectangularHeightAndAspectRatio.aspect
+                                let size = SizeWithAspect(size: $0, aspect: aspect)
+                                SettingsManager.current.rectangularHeightAndAspectRatio = size
+                              },
+                              dataSourceDelegate: self.delegate),
+            Row.init(title: "Width Aspect",
+                     kind: .float,
+                     getValue: { SettingsManager.current.rectangularHeightAndAspectRatio.aspect },
+                     didChangeValue: {
+                        let height = SettingsManager.current.rectangularHeightAndAspectRatio.size
+                        let size = SizeWithAspect(size: height, aspect: $0)
+                        SettingsManager.current.rectangularHeightAndAspectRatio = size
+                     })
+        ])
     }()
 
-    lazy var rectangularHeightAspect: Row = {
-        return Row.init(title: "Height Aspect",
-                        kind: .float,
-                        getValue: { SettingsManager.current.rectangularHeightAspect },
-                        didChangeValue: { SettingsManager.current.rectangularHeightAspect = $0 })
+    lazy var shorterDimensionAndAspectRatio: Section = {
+        Section(rows: [
+            Row.init(title: "Fraction of Shorter Scan Area Dimension",
+                     kind: .float,
+                     getValue: { SettingsManager.current.rectangularShorterDimensionAndAspectRatio.0 },
+                     didChangeValue: {
+                        let aspect = SettingsManager.current.rectangularShorterDimensionAndAspectRatio.1
+                        SettingsManager.current.rectangularShorterDimensionAndAspectRatio = ($0, aspect)
+                     }),
+            Row.init(title: "Aspect",
+                     kind: .float,
+                     getValue: { SettingsManager.current.rectangularShorterDimensionAndAspectRatio.1 },
+                     didChangeValue: {
+                        let dimension = SettingsManager.current.rectangularShorterDimensionAndAspectRatio.0
+                        SettingsManager.current.rectangularShorterDimensionAndAspectRatio = (dimension, $0)
+                     })
+        ])
     }()
 
     // MARK: Section: Laserline Viewfinder Settings
 
     lazy var laserlineSettings: Section = {
-        return Section(title: "Laserline", rows: [laserlineWidth, laserlineEnabledColor, laserlineDisabledColor])
+        return Section(title: "Laserline",
+                       rows: [laserlineStyle, laserlineWidth, laserlineEnabledColor, laserlineDisabledColor])
+    }()
+
+    lazy var laserlineStyle: Row = {
+        return Row.choice(title: "Style",
+                          options: LaserlineViewfinderStyle.allCases,
+                          getValue: { SettingsManager.current.laserlineStyle },
+                          didChangeValue: { SettingsManager.current.laserlineStyle = $0 },
+                          dataSourceDelegate: self.delegate)
     }()
 
     lazy var laserlineWidth: Row = {

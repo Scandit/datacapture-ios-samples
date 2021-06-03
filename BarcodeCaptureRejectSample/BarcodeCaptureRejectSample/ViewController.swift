@@ -67,8 +67,8 @@ class ViewController: UIViewController {
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the BarcodeCapture mode.
-        let recommenededCameraSettings = BarcodeCapture.recommendedCameraSettings
-        camera?.apply(recommenededCameraSettings)
+        let recommendedCameraSettings = BarcodeCapture.recommendedCameraSettings
+        camera?.apply(recommendedCameraSettings)
 
         // The barcode capturing process is configured through barcode capture settings
         // and are then applied to the barcode capture instance that manages barcode recognition.
@@ -100,8 +100,7 @@ class ViewController: UIViewController {
         overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture)
 
         // Add a square viewfinder as we are only scanning square QR codes.
-        let viewfinder = RectangularViewfinder()
-        viewfinder.setWidth(FloatWithUnit(value: 0.8, unit: .fraction), aspectRatio: 1)
+        let viewfinder = RectangularViewfinder(style: .square, lineStyle: .light)
         overlay.viewfinder = viewfinder
         captureView.addOverlay(overlay)
     }

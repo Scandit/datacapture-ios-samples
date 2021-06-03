@@ -13,13 +13,14 @@
  */
 
 enum RectangularSizeSpecification: CaseIterable, CustomStringConvertible {
-    case widthAndHeight, widthAndHeightAspect, heightAndWidthAspect
+    case widthAndHeight, widthAndHeightAspect, heightAndWidthAspect, shorterDimensionAndAspect
 
     var description: String {
         switch self {
         case .widthAndHeight: return "Width and Height"
         case .widthAndHeightAspect: return "Width and Height Aspect"
         case .heightAndWidthAspect: return "Height and Width Aspect"
+        case .shorterDimensionAndAspect: return "Fraction of Shorter Dimension and Aspect"
         }
     }
 }

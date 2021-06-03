@@ -26,6 +26,14 @@ extension CapturedResultType: CustomStringConvertible {
             return "US Uniformed Services Barcode Result"
         case .vizResult:
             return "VIZ Result"
+        case .colombiaIdBarcodeResult:
+            return "Colombia ID Barcode Result"
+        case .argentinaIdBarcodeResult:
+            return "Argentina ID Barcode Result"
+        case .southAfricaDLBarcodeResult:
+            return "South Africa DL Barcode Result"
+        case .southAfricaIdBarcodeResult:
+            return "South Africa Id Barcode Result"
         }
     }
 }

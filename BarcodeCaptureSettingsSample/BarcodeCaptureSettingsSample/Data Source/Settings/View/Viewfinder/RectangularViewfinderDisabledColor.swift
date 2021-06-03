@@ -14,14 +14,14 @@
 
 import UIKit
 
-enum LaserlineViewfinderEnabledColor: CaseIterable, CustomStringConvertible {
-    case `default`, red, white
+enum RectangularViewfinderDisabledColor: CaseIterable, CustomStringConvertible {
+    case `default`, black, white
 
     init(color: UIColor) {
-        if color ~= .red {
-            self = .red
-        } else if color ~= .white {
+        if color ~= .white {
             self = .white
+        } else if color ~= .black {
+            self = .black
         } else {
             self = .default
         }
@@ -30,15 +30,15 @@ enum LaserlineViewfinderEnabledColor: CaseIterable, CustomStringConvertible {
     var description: String {
         switch self {
         case .default: return "Default"
-        case .red: return "Red"
+        case .black: return "Black"
         case .white: return "White"
         }
     }
 
     var uiColor: UIColor {
         switch self {
-        case .default: return SettingsManager.current.defaultLaserlineViewfinderEnabledColor
-        case .red: return .red
+        case .default: return SettingsManager.current.defaultRectangularViewfinderDisabledColor
+        case .black: return .black
         case .white: return .white
         }
     }

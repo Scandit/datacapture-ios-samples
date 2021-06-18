@@ -93,8 +93,9 @@ class ViewController: UIViewController {
 
         // Add TextCaptureOverlay with RectangularViewfinder to DataCaptureView. This will visualize
         // the part of the frame currently taken into account for the text recognition.
-        let viewFinder = RectangularViewfinder()
-        viewFinder.setSize(SizeWithUnit(size: CGSize(width: 1, height: 0.4), unit: .fraction))
+        let viewFinder = RectangularViewfinder(style: .square, lineStyle: .light)
+        viewFinder.dimming = 0.2
+        viewFinder.setSize(SizeWithUnit(size: CGSize(width: 0.9, height: 0.1), unit: .fraction))
 
         overlay = TextCaptureOverlay(textCapture: textCapture, view: captureView)
         overlay.viewfinder = viewFinder

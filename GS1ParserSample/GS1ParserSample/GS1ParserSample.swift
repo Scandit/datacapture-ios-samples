@@ -84,6 +84,12 @@ class GS1ParserSample: UIViewController {
         // Register self as a listener to get informed whenever a new barcode is recognized.
         barcodeCapture.addListener(self)
 
+        // Add a barcode capture overlay to the data capture view to render the location of captured barcodes on top of
+        // the video preview. This is optional, but recommended for better visual feedback.
+        let overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture)
+        overlay.viewfinder = RectangularViewfinder(style: .square, lineStyle: .bold)
+        captureView.addOverlay(overlay)
+
         // Let's create the Parser object that will parse the GS1 strings.
         parser = try! Parser(context: context, format: .gs1AI)
     }

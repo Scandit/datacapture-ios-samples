@@ -116,6 +116,11 @@ class SplitViewScannerViewController: UIViewController {
         // to the view.
         let barcodeCaptureOverlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView)
 
+        // Adjust the overlay's barcode highlighting to match the new viewfinder styles and improve the visibility of
+        // feedback. With 6.10 we will introduce this visual treatment as a new style for the overlay.
+        let brush = Brush(fill: .clear, stroke: .white, strokeWidth: 3)
+        barcodeCaptureOverlay.brush = brush
+
         // We have to add the laser line viewfinder to the overlay.
         let viewFinder = LaserlineViewfinder(style: .animated)
         viewFinder.width = FloatWithUnit(value: 0.9, unit: .fraction)

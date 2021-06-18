@@ -145,6 +145,12 @@ class SearchViewController: UIViewController {
         // The width of the laser will be 90 percent of the data capture view's width.
         viewFinder.width = FloatWithUnit(value: 0.9, unit: .fraction)
         overlay.viewfinder = viewFinder
+
+        // Adjust the overlay's barcode highlighting to match the new viewfinder styles and improve the visibility of
+        // feedback. With 6.10 we will introduce this visual treatment as a new style for the overlay.
+        let brush = Brush(fill: .clear, stroke: .white, strokeWidth: 3)
+        overlay.brush = brush
+
         // Add the overlay to the data capture view.
         captureView.addOverlay(overlay)
     }
@@ -157,9 +163,10 @@ extension SearchViewController: BarcodeCaptureListener {
     func barcodeCapture(_ barcodeCapture: BarcodeCapture,
                         didScanIn session: BarcodeCaptureSession,
                         frameData: FrameData) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self, session.newlyRecognizedBarcodes.count > 0 else { return }
-            let code = session.newlyRecognizedBarcodes.first!
+        let newlyRecognizedBarcodes = session.newlyRecognizedBarcodes
+        guard newlyRecognizedBarcodes.count > 0 else { return }
+        DispatchQueue.main.async {
+            let code = newlyRecognizedBarcodes.first!
             self.scannedBarcodeLabel.text = code.data
             self.displayedData = code.rawData
             self.selectedSymbology = code.symbology

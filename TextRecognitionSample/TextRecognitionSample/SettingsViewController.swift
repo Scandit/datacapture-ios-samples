@@ -14,7 +14,7 @@
 
 import UIKit
 
-protocol SettingsViewControllerDelegate: class {
+protocol SettingsViewControllerDelegate: AnyObject {
     func didCancel()
     func didChangeSettings(_ settings: Settings)
 }

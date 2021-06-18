@@ -162,16 +162,16 @@ extension ScanViewController: BarcodeTrackingListener {
     func barcodeTracking(_ barcodeTracking: BarcodeTracking,
                          didUpdate session: BarcodeTrackingSession,
                          frameData: FrameData) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+        let removedTrackedBarcodes = session.removedTrackedBarcodes
+        let trackedBarcodes = session.trackedBarcodes.values
+        DispatchQueue.main.async {
             if !self.barcodeTracking.isEnabled {
                 return
             }
-            for identifier in session.removedTrackedBarcodes {
+            for identifier in removedTrackedBarcodes {
                 self.overlays.removeValue(forKey: identifier.intValue)
             }
-            for trackedCode in session.trackedBarcodes.values {
-
+            for trackedCode in trackedBarcodes {
                 guard let code = trackedCode.barcode.data, !code.isEmpty else {
                     return
                 }

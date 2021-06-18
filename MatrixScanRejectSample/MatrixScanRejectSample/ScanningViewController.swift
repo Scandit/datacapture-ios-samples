@@ -134,8 +134,9 @@ extension ScanningViewController: BarcodeTrackingListener {
     func barcodeTracking(_ barcodeTracking: BarcodeTracking,
                          didUpdate session: BarcodeTrackingSession,
                          frameData: FrameData) {
+        let barcodes = session.trackedBarcodes.values.compactMap { $0.barcode }
         DispatchQueue.main.async {
-            session.trackedBarcodes.values.compactMap({ $0.barcode }).forEach { barcode in
+            barcodes.forEach { barcode in
                 // The `isRejected` property is for illustrative purposes only, not part of the official API.
                 if let data = barcode.data, !data.isEmpty, !barcode.isRejected {
                     self.results[data] = barcode

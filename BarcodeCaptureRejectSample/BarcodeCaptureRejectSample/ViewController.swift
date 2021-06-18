@@ -133,8 +133,8 @@ extension ViewController: BarcodeCaptureListener {
             return
         }
 
-        // If the code is recognized, we want to make sure to use the default brush to highlight the code.
-        self.overlay.brush = BarcodeCaptureOverlay.defaultBrush
+        // If the code is recognized, we want to make sure to use a brush to highlight the code.
+        self.overlay.brush = Brush(fill: .clear, stroke: .white, strokeWidth: 3)
 
         // We also want to emit a feedback (vibration and, if enabled, sound).
         feedback.emit()

@@ -116,8 +116,9 @@ extension ScannerViewController: BarcodeTrackingListener {
     func barcodeTracking(_ barcodeTracking: BarcodeTracking,
                          didUpdate session: BarcodeTrackingSession,
                          frameData: FrameData) {
+        let barcodes = session.trackedBarcodes.values.compactMap { $0.barcode }
         DispatchQueue.main.async { [weak self] in
-            session.trackedBarcodes.values.compactMap({ $0.barcode }).forEach {
+            barcodes.forEach {
                 if let self = self, let data = $0.data, !data.isEmpty {
                     self.results[data] = $0
                 }

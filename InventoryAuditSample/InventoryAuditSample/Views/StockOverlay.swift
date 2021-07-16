@@ -35,7 +35,7 @@ extension NibLoadable where Self: UIView {
     }
 }
 
-fileprivate extension UIView {
+private extension UIView {
     func constrainToFill(superview: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         superview.addConstraints([
@@ -51,6 +51,8 @@ class StockOverlay: UIView, NibLoadable {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var countTextField: UITextField!
 
+    var onChange: ((Int) -> Void)?
+
     private var shouldClearContents = true
 
     override init(frame: CGRect) {
@@ -63,12 +65,13 @@ class StockOverlay: UIView, NibLoadable {
         commonInit()
     }
 
-    func bind(to barcode: String) {
-        let lastDigit = barcode.last!.wholeNumberValue!
-        if lastDigit % 2 == 0 {
-            backgroundImageView.tintColor = .red
-        } else {
+    func set(value: Int, barcode: String, edited: Bool) {
+        countTextField.text = String(value)
+        let lastDigit = barcode.last?.wholeNumberValue ?? 0
+        if lastDigit % 2 != 0 || edited {
             backgroundImageView.tintColor = .white
+        } else {
+            backgroundImageView.tintColor = .red
         }
     }
 
@@ -103,6 +106,9 @@ extension StockOverlay: StockInputHandling {
             countTextField.text = text
         case .accept:
             countTextField.resignFirstResponder()
+            countTextField.text.flatMap(Int.init).flatMap {
+                self.onChange?($0)
+            }
         }
     }
 }

@@ -127,6 +127,21 @@ class SettingsManager {
         }
     }
 
+    var sound: Sound? {
+        get {
+            feedback.sound
+        }
+        set {
+            feedback = Feedback(vibration: hapticAndVibration.sdcVibration, sound: newValue)
+        }
+    }
+
+    var hapticAndVibration: HapticAndVibration = .noVibration {
+        didSet {
+            feedback = Feedback(vibration: hapticAndVibration.sdcVibration, sound: sound)
+        }
+    }
+
     // MARK: Code Duplicate Filter
 
     var codeDuplicateFilter: TimeInterval {

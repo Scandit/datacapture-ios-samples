@@ -92,7 +92,7 @@ class ScanViewController: UIViewController {
         resultLabel.layer.cornerRadius = 3
         view.addSubview(resultLabel)
         view.addConstraints([
-            resultLabel.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8),
+            resultLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
         ])

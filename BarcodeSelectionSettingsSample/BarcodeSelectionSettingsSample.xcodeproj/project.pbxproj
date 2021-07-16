@@ -378,7 +378,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					A2C45794253DD3450032DD4D = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -636,7 +636,7 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				INFOPLIST_FILE = "$(SRCROOT)/BarcodeSelectionSettingsSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -663,7 +663,7 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				INFOPLIST_FILE = "$(SRCROOT)/BarcodeSelectionSettingsSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

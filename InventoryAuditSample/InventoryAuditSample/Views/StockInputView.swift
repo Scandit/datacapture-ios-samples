@@ -29,7 +29,7 @@ enum StockInputValue: Int {
     case accept = 11
 }
 
-protocol StockInputHandling: class {
+protocol StockInputHandling: AnyObject {
     func stockInputView(_ view: StockInputView,
                         didReceive value: StockInputValue)
 }

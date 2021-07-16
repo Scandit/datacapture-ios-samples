@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     private var barcodeTrackingOverlay: BarcodeTrackingAdvancedOverlay!
     private var captureView: DataCaptureView!
 
+    private var barcodeValueMap: [String: Int] = [:]
+
     @IBOutlet weak var freezeButton: UIButton! {
         didSet {
             freezeButton.backgroundColor = .white
@@ -116,7 +118,11 @@ extension ViewController: BarcodeTrackingAdvancedOverlayDelegate {
             return nil
         }
         let view = StockOverlay(frame: CGRect(x: 0, y: 0, width: 60, height: 66))
-        view.bind(to: barcode)
+        let value = barcodeValueMap[barcode, default: 4]
+        view.set(value: value, barcode: barcode, edited: barcodeValueMap[barcode] != nil)
+        view.onChange = { value in
+            self.barcodeValueMap[barcode] = value
+        }
         return view
     }
 

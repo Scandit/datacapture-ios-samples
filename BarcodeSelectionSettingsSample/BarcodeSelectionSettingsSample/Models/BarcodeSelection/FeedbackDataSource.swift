@@ -14,8 +14,40 @@
 
 import ScanditBarcodeCapture
 
-class FeedbackDataSource: DataSource {
+enum HapticAndVibration: CustomStringConvertible, CaseIterable {
+    case noVibration
+    case defaultVibration
+    case selectionHapticFeedback
+    case successHapticFeedback
 
+    var description: String {
+        switch self {
+        case .noVibration:
+            return "No Vibration"
+        case .defaultVibration:
+            return "Default Vibration"
+        case .selectionHapticFeedback:
+            return "Selection Haptic Feedback"
+        case .successHapticFeedback:
+            return "Success Haptic Feedback"
+        }
+    }
+
+    var sdcVibration: Vibration? {
+        switch self {
+        case .noVibration:
+            return nil
+        case .defaultVibration:
+            return Vibration.default
+        case .selectionHapticFeedback:
+            return Vibration.selectionHapticFeedback
+        case .successHapticFeedback:
+            return Vibration.successHapticFeedback
+        }
+    }
+}
+
+class FeedbackDataSource: DataSource {
     weak var delegate: DataSourceDelegate?
 
     init(delegate: DataSourceDelegate) {
@@ -25,16 +57,24 @@ class FeedbackDataSource: DataSource {
     // MARK: - Sections
 
     lazy var sections: [Section] = {
-        let row = Row(title: "Sound",
+        let sound = Row(title: "Sound",
                       kind: .switch,
-                      getValue: { SettingsManager.current.feedback.sound != nil },
+                      getValue: { SettingsManager.current.sound != nil },
                       didChangeValue: { value in
+                        let vibration = SettingsManager.current.hapticAndVibration.sdcVibration
                         if value {
-                            SettingsManager.current.feedback = BarcodeSelectionFeedback.default.selection
+                            SettingsManager.current.sound = BarcodeSelectionFeedback.default.selection.sound
                         } else {
-                            SettingsManager.current.feedback = Feedback(vibration: nil, sound: nil)
+                            SettingsManager.current.sound = nil
                         }
                       })
-        return [Section(rows: [row])]
+        let vibration = Row.choice(title: "Vibration",
+                   options: HapticAndVibration.allCases,
+                   getValue: { SettingsManager.current.hapticAndVibration },
+                   didChangeValue: {
+                    SettingsManager.current.hapticAndVibration = $0
+                   },
+                   dataSourceDelegate: self.delegate)
+        return [Section(rows: [sound, vibration])]
     }()
 }

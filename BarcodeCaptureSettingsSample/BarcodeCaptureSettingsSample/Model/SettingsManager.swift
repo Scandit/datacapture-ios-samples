@@ -15,6 +15,12 @@
 import ScanditBarcodeCapture
 
 class SettingsManager {
+
+    private let defaultLegacyViewFinderSize = RectangularViewfinder(
+        style: .legacy).sizeWithUnitAndAspect.widthAndHeight
+    private let defaultNonLegacyViewFinderSize = RectangularViewfinder(
+        style: .square).sizeWithUnitAndAspect.shorterDimensionAndAspectRatio
+
     static let current = SettingsManager()
 
     var isContinuousModeEnabled = false
@@ -200,19 +206,20 @@ class SettingsManager {
     var viewfinderSizeSpecification: RectangularSizeSpecification = .widthAndHeight {
         didSet {
             /// Update the viewfinder when we update the size specification.
-            let rectangular = viewfinder as! RectangularViewfinder
             switch viewfinderSizeSpecification {
             case .widthAndHeight:
-                let widthAndHeight = rectangular.sizeWithUnitAndAspect.widthAndHeight
-                rectangularWidthAndHeight = widthAndHeight
+                rectangularWidthAndHeight = defaultLegacyViewFinderSize
             case .widthAndHeightAspect:
-                rectangularWidthAndAspectRatio = rectangular.sizeWithUnitAndAspect.widthAndAspectRatio
+                rectangularWidthAndAspectRatio = SizeWithAspect(
+                    size: .init(value: defaultLegacyViewFinderSize.width.value, unit: .fraction),
+                    aspect: 0.0)
             case .heightAndWidthAspect:
-                rectangularHeightAndAspectRatio = rectangular.sizeWithUnitAndAspect.heightAndAspectRatio
+                rectangularHeightAndAspectRatio = SizeWithAspect(
+                    size: .init(value: defaultLegacyViewFinderSize.height.value, unit: .fraction),
+                    aspect: 0.0)
             case .shorterDimensionAndAspect:
-                rectangularShorterDimensionAndAspectRatio =
-                    (rectangular.sizeWithUnitAndAspect.shorterDimensionAndAspectRatio.size.value,
-                     rectangular.sizeWithUnitAndAspect.shorterDimensionAndAspectRatio.aspect)
+                rectangularShorterDimensionAndAspectRatio = (defaultNonLegacyViewFinderSize.size.value,
+                                                             defaultNonLegacyViewFinderSize.aspect)
             }
         }
     }
@@ -246,7 +253,7 @@ class SettingsManager {
         }
         set {
             let rectangular = viewfinder as! RectangularViewfinder
-            rectangular.setWidth(newValue.size, aspectRatio: newValue.aspect)
+            rectangular.setHeight(newValue.size, aspectRatio: newValue.aspect)
         }
     }
 

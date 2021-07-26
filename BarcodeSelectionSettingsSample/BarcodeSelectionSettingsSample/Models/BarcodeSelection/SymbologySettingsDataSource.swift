@@ -19,6 +19,10 @@ class SymbologySettingsDataSource: DataSource {
 
     var symbologySettings: SymbologySettings
 
+    private var supportedExtensions: Set<String> {
+        return symbologyDescription.supportedExtensions.filter({ !$0.hasSuffix("add_on") })
+    }
+
     lazy var symbologyDescription: SymbologyDescription = {
         // Get the symbology description for the symbology
         SymbologyDescription(symbology: symbologySettings.symbology)
@@ -38,7 +42,7 @@ class SymbologySettingsDataSource: DataSource {
             sections.append(activeSymbolCountRange)
         }
 
-        if !symbologyDescription.supportedExtensions.isEmpty {
+        if !supportedExtensions.isEmpty {
             sections.append(extensions)
         }
 
@@ -95,7 +99,7 @@ class SymbologySettingsDataSource: DataSource {
 
     lazy var extensions: Section = {
         return Section(title: "Extensions",
-                       rows: symbologyDescription.supportedExtensions.map({ supportedExtension in
+                       rows: supportedExtensions.map({ supportedExtension in
                         Row.option(title: supportedExtension,
                                    getValue: { self.symbologySettings.enabledExtensions.contains(supportedExtension)},
                                    didChangeValue: { self.symbologySettings.set(extension: supportedExtension,

@@ -62,6 +62,7 @@ class MainViewController: UIViewController {
         return tooltip
     }()
 
+    var frontSideTooltipWasShown = false
     var dlScanningMode = ScanningMode.barcode {
         didSet {
             configureUI()
@@ -97,7 +98,6 @@ class MainViewController: UIViewController {
     func stopManualScanTimer() {
         manualScanTimer?.invalidate()
         manualScanTimer = nil
-        manualScanButton.isHidden = true
     }
 
     func stopFrontScanTimer() {
@@ -118,8 +118,14 @@ class MainViewController: UIViewController {
     func startFrontScanTimer() {
         guard frontScanTimer == nil else { return }
         guard mode == .drivingLicense, dlScanningMode == .barcode else { return }
+        guard !frontSideTooltipWasShown else {
+            self.frontSideTooltip.isHidden = false
+            return
+        }
+
         frontScanTimer = Timer(timeInterval: 4, repeats: false, block: { [unowned self] _ in
             self.stopFrontScanTimer()
+            self.frontSideTooltipWasShown = true
             self.frontSideTooltip.isHidden = false
         })
         RunLoop.main.add(frontScanTimer!, forMode: .default)
@@ -207,9 +213,6 @@ class MainViewController: UIViewController {
             .constraint(equalToConstant: 96)
             .isActive = true
 
-        stopFrontScanTimer()
-        stopManualScanTimer()
-
         scanningModeToggle.delegate = self
         context.setFrameSource(camera, completionHandler: nil)
 
@@ -221,8 +224,17 @@ class MainViewController: UIViewController {
             .addObserver(forName: .deliveryResultDidComplete,
                          object: nil,
                          queue: .main) { _ in
-                self.startScanning()
+                self.reset()
             }
+    }
+
+    func reset() {
+        frontSideTooltipWasShown = false
+        manualScanButton.isHidden = true
+        frontSideTooltip.isHidden = true
+        mode = .drivingLicense
+        dlScanningMode = .barcode
+        startScanning()
     }
 
     func startScanning() {
@@ -231,7 +243,6 @@ class MainViewController: UIViewController {
         stopManualScanTimer()
 
         startFrontScanTimer()
-        startManualScanTimer()
 
         // Start scanning
         configureIdCapture()
@@ -240,11 +251,13 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         camera?.switch(toDesiredState: .on)
-        startScanning()
+        reset()
     }
 
     @IBAction func modeButtonAction(_ sender: UIButton) {
         mode = sender == dlModeButton ? .drivingLicense : .passport
+        stopManualScanTimer()
+        startManualScanTimer()
     }
 
     @IBAction func manualScanAction(_ sender: Any) {
@@ -279,6 +292,13 @@ extension MainViewController: DocumentTypeToggleListener {
     func toggleDidChange(newState: ScanningMode) {
         dlScanningMode = newState
         stopFrontScanTimer()
+
+        switch dlScanningMode {
+        case .barcode:
+            startFrontScanTimer()
+        case .viz:
+            startManualScanTimer()
+        }
     }
 }
 

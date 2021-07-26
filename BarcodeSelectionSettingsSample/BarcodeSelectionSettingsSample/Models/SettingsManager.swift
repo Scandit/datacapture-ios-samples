@@ -136,7 +136,7 @@ class SettingsManager {
         }
     }
 
-    var hapticAndVibration: HapticAndVibration = .noVibration {
+    var hapticAndVibration: HapticAndVibration = .selectionHapticFeedback {
         didSet {
             feedback = Feedback(vibration: hapticAndVibration.sdcVibration, sound: sound)
         }

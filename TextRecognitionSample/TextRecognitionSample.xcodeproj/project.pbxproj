@@ -108,11 +108,11 @@
 				653160D62360721200634186 /* SettingsViewController.swift */,
 				653160B3236068EE00634186 /* AppDelegate.swift */,
 				653160B5236068EE00634186 /* ViewController.swift */,
+				653160D323606C5800634186 /* DataCaptureContext+Extensions.swift */,
 				653160B7236068EE00634186 /* Main.storyboard */,
 				653160BA236068EF00634186 /* Assets.xcassets */,
 				653160BC236068EF00634186 /* LaunchScreen.storyboard */,
 				653160BF236068EF00634186 /* Info.plist */,
-				653160D323606C5800634186 /* DataCaptureContext+Extensions.swift */,
 			);
 			path = TextRecognitionSample;
 			sourceTree = "<group>";

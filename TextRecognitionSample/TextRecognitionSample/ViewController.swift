@@ -70,20 +70,9 @@ class ViewController: UIViewController {
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 
-        let textCaptureSettings = self.textCaptureSettings()
-
-        // We will limit the recognition to the specific area. It's a rectangle taking the full
-        // width of a frame, and 40% of it's height. We will move the center of this rectangle
-        // depending on whether `.bottom`, `.center`, and `.top` ScanPosition is selected,
-        // by controlling TextCapture's `pointOfInterest` property.
-
-        let locationSelection = RectangularLocationSelection(size: SizeWithUnit(size: CGSize(width: 1, height: 0.4),
-                                                                                unit: .fraction))
-        textCaptureSettings.locationSelection = locationSelection
-
         // Create a mode responsible for recognizing the text. This mode is automatically added
         // to the passed DataCaptureContext.
-        textCapture = TextCapture(context: context, settings: textCaptureSettings)
+        textCapture = TextCapture(context: context, settings: textCaptureSettings())
 
         // Start listening on TextCapture events.
         textCapture.addListener(self)
@@ -135,6 +124,14 @@ class ViewController: UIViewController {
         guard let textCaptureSettings = try? TextCaptureSettings(jsonString: jsonSettings) else {
             fatalError("Invalid text capture settings json")
         }
+
+        // We will limit the recognition to the specific area. It's a rectangle taking the full
+        // width of a frame, and 40% of it's height. We will move the center of this rectangle
+        // depending on whether `.bottom`, `.center`, and `.top` ScanPosition is selected,
+        // by controlling TextCapture's `pointOfInterest` property.
+        let locationSelection = RectangularLocationSelection(size: SizeWithUnit(size: CGSize(width: 1, height: 0.4),
+                                                                                unit: .fraction))
+        textCaptureSettings.locationSelection = locationSelection
 
         return textCaptureSettings
     }

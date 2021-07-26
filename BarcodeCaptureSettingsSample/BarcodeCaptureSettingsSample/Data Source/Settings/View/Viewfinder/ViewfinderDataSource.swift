@@ -27,7 +27,6 @@ class ViewfinderDataSource: DataSource {
     private var isAimer: Bool { (aimer.getValue?() as? Bool) == true }
 
     // MARK: - Sections
-
     var sections: [Section] {
         var sections = [viewfinderType]
 
@@ -89,7 +88,14 @@ class ViewfinderDataSource: DataSource {
                         Row.choice(title: "Style",
                                    options: RectangularViewfinderStyle.allCases,
                                    getValue: { SettingsManager.current.rectangularStyle },
-                                   didChangeValue: { SettingsManager.current.rectangularStyle = $0 },
+                                   didChangeValue: { value in
+                                    SettingsManager.current.rectangularStyle = value
+                                    switch value {
+                                    case .square, .rounded:
+                                        SettingsManager.current.viewfinderSizeSpecification = .shorterDimensionAndAspect
+                                    default:
+                                        break
+                                    }},
                                    dataSourceDelegate: self.delegate),
                         Row.choice(title: "Line Style",
                                    options: RectangularViewfinderLineStyle.allCases,
@@ -111,33 +117,6 @@ class ViewfinderDataSource: DataSource {
                                    didChangeValue: { SettingsManager.current.rectangularViewfinderDisabledColor = $0 },
                                    dataSourceDelegate: self.delegate)])
     }()
-
-    var animation: Section {
-        let animationRow = Row(title: "Animation",
-                               kind: .switch,
-                               getValue: { SettingsManager.current.rectangularAnimation != nil },
-                               didChangeValue: { value in
-                                    let animation = value ? RectangularViewfinderAnimation() : nil
-                                   SettingsManager.current.rectangularAnimation = animation
-                                self.delegate?.didChangeData()
-                               })
-        var rows = [animationRow]
-        if SettingsManager.current.rectangularAnimation != nil {
-            rows.append(Row(title: "Looping",
-                            kind: .switch,
-                            getValue: {
-                                guard let animation = SettingsManager.current.rectangularAnimation else {
-                                    return false
-                                }
-                                return animation.isLooping
-                            },
-                            didChangeValue: { value in
-                                SettingsManager.current.rectangularAnimation =
-                                    RectangularViewfinderAnimation(looping: value)
-                            }))
-        }
-        return Section(rows: rows)
-    }
 
     lazy var rectangularSizeType: Section = {
         return Section(rows: [
@@ -290,4 +269,33 @@ class ViewfinderDataSource: DataSource {
                           didChangeValue: { SettingsManager.current.aimerViewfinderDotColor = $0 },
                           dataSourceDelegate: self.delegate)
     }()
+}
+
+extension ViewfinderDataSource {
+    var animation: Section {
+        let animationRow = Row(title: "Animation",
+                               kind: .switch,
+                               getValue: { SettingsManager.current.rectangularAnimation != nil },
+                               didChangeValue: { value in
+                                    let animation = value ? RectangularViewfinderAnimation() : nil
+                                   SettingsManager.current.rectangularAnimation = animation
+                                self.delegate?.didChangeData()
+                               })
+        var rows = [animationRow]
+        if SettingsManager.current.rectangularAnimation != nil {
+            rows.append(Row(title: "Looping",
+                            kind: .switch,
+                            getValue: {
+                                guard let animation = SettingsManager.current.rectangularAnimation else {
+                                    return false
+                                }
+                                return animation.isLooping
+                            },
+                            didChangeValue: { value in
+                                SettingsManager.current.rectangularAnimation =
+                                    RectangularViewfinderAnimation(looping: value)
+                            }))
+        }
+        return Section(rows: rows)
+    }
 }

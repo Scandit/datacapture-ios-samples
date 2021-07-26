@@ -16,7 +16,14 @@ import ScanditCaptureCore
 
 extension Quadrilateral {
     func width(in view: DataCaptureView) -> CGFloat {
+        // In order to obtain the coordinates of a barcode we need to convert the quadrilateral
+        // that contains it from the FrameSource coordinate system into the DataCaptureView's coordinate system
+        // using viewQuadrilateral(forFrameQuadrilateral:)
+        // You can check https://docs.scandit.com/data-capture-sdk/android/add-augmented-reality-overlay.html
+        // for more information about overlays, views and coordinates.
         let viewFrame = view.viewQuadrilateral(forFrameQuadrilateral: self)
+
+        // We then return the maximum width between two opposite corners of the quadrilateral as the width
         return max(viewFrame.bottomRight.x - viewFrame.bottomLeft.x,
                    viewFrame.topRight.x - viewFrame.topLeft.x)
     }

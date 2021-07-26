@@ -99,6 +99,10 @@ class IdCaptureViewController: UIViewController {
 
     private func configure(mode: IdCaptureViewController.Mode) {
         context.removeAllModes()
+        idCapture?.removeListener(self)
+        if overlay != nil {
+            captureView?.removeOverlay(overlay)
+        }
         isScanningBackSide = false
 
         let settings = IdCaptureSettings()

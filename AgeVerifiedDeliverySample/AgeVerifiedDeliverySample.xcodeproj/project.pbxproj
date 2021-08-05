@@ -154,13 +154,13 @@
 			children = (
 				65E5372E238545E0002CA693 /* AppDelegate.swift */,
 				65E53735238545E2002CA693 /* Assets.xcassets */,
-				65E5375323855430002CA693 /* Extensions */,
 				65E5373A238545E2002CA693 /* Info.plist */,
 				65E53737238545E2002CA693 /* LaunchScreen.storyboard */,
 				65E53732238545E0002CA693 /* Main.storyboard */,
 				651872BD2688B1630043ABC7 /* Toggle */,
 				65A45564268DEDD300A61D6F /* Utils */,
 				65A45565268DEDE400A61D6F /* Views */,
+				65E5375323855430002CA693 /* Extensions */,
 			);
 			path = AgeVerifiedDeliverySample;
 			sourceTree = "<group>";

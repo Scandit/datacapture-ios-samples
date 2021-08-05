@@ -119,7 +119,7 @@ class IdCaptureViewController: UIViewController {
         idCapture.addListener(self)
 
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
-        overlay.idLayoutStyle = .square
+        overlay.idLayoutStyle = .rounded
     }
 
     @objc

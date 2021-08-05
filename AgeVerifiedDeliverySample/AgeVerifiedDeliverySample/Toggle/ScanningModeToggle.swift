@@ -21,17 +21,17 @@ enum ScanningMode {
 
 final class ScanningModeToggle: UIView {
 
-    @IBOutlet var backgroundLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet var barcodeImageView: UIImageView!
-    @IBOutlet var vizImageView: UIImageView!
+    @IBOutlet private var backgroundLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet private var barcodeImageView: UIImageView!
+    @IBOutlet private var vizImageView: UIImageView!
 
-    var gestureRecognizer: UITapGestureRecognizer?
-    var leftSwipeRecognizer: UISwipeGestureRecognizer?
-    var rightSwipeRecognizer: UISwipeGestureRecognizer?
+    private var gestureRecognizer: UITapGestureRecognizer?
+    private var leftSwipeRecognizer: UISwipeGestureRecognizer?
+    private var rightSwipeRecognizer: UISwipeGestureRecognizer?
 
     weak var delegate: DocumentTypeToggleListener?
 
-    var state: ScanningMode = .barcode
+    private(set) var state: ScanningMode = .barcode
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,19 +58,19 @@ final class ScanningModeToggle: UIView {
         addGestureRecognizer(rightSwipeRecognizer)
     }
 
-    @objc func toggleSwipedLeft() {
+    @objc private func toggleSwipedLeft() {
         if state == .viz {
             switchToggle()
         }
     }
 
-    @objc func toggleSwipedRight() {
+    @objc private func toggleSwipedRight() {
         if state == .barcode {
             switchToggle()
         }
     }
 
-    @objc func toggleTapped() {
+    @objc private func toggleTapped() {
         switchToggle()
     }
 
@@ -87,21 +87,25 @@ final class ScanningModeToggle: UIView {
         delegate?.toggleDidChange(newState: state)
     }
 
-    func setVizScanning() {
+    private func setVizScanning() {
         self.state = .viz
         self.backgroundLeadingConstraint.isActive = false
         self.barcodeImageView.tintColor = .white
         self.vizImageView.tintColor = .black
     }
 
-    func setBarcodeScanning() {
+    private func setBarcodeScanning() {
         self.state = .barcode
         self.backgroundLeadingConstraint.isActive = true
         self.barcodeImageView.tintColor = .black
         self.vizImageView.tintColor = .white
     }
 
-    func loadNib() {
+    func reset() {
+        setBarcodeScanning()
+    }
+
+    private func loadNib() {
         guard let view = Bundle.main.loadNibNamed(String(describing: type(of: self)),
                                                   owner: self,
                                                   options: nil)?.first as? UIView

@@ -13,12 +13,11 @@
  */
 
 import UIKit
-import ScanditCaptureCore
 import ScanditIdCapture
 
 class MainViewController: UIViewController {
 
-    enum DocumentType {
+    private enum DocumentType {
         case drivingLicense
         case passport
 
@@ -32,27 +31,24 @@ class MainViewController: UIViewController {
         }
     }
 
-    lazy var context = DataCaptureContext.licensed
-    lazy var camera = Camera.default
-    lazy var captureView = DataCaptureView(context: context, frame: view.bounds)
+    private lazy var context = DataCaptureContext.licensed
+    private lazy var camera = Camera.default
+    private lazy var captureView = DataCaptureView(context: context, frame: view.bounds)
 
-    var idCaptureSettings: IdCaptureSettings {
-        let settings = IdCaptureSettings()
-        return settings
-    }
+    private var idCaptureSettings = IdCaptureSettings()
 
-    lazy var idCapture = IdCapture(context: nil,
+    private lazy var idCapture = IdCapture(context: nil,
                                    settings: idCaptureSettings)
-    lazy var idCaptureOverlay = IdCaptureOverlay(idCapture: idCapture,
+    private lazy var idCaptureOverlay = IdCaptureOverlay(idCapture: idCapture,
                                                  view: captureView)
 
-    @IBOutlet weak var scanningModeToggle: ScanningModeToggle!
-    @IBOutlet weak var passportModeButton: UIButton!
-    @IBOutlet weak var dlModeButton: UIButton!
-    @IBOutlet weak var manualScanButton: UIButton!
-    @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet private weak var scanningModeToggle: ScanningModeToggle!
+    @IBOutlet private weak var passportModeButton: UIButton!
+    @IBOutlet private weak var dlModeButton: UIButton!
+    @IBOutlet private weak var manualScanButton: UIButton!
+    @IBOutlet private weak var instructionLabel: UILabel!
 
-    lazy var frontSideTooltip: PopOver<UILabel> = {
+    private lazy var frontSideTooltip: PopOver<UILabel> = {
         let tooltip = PopOver<UILabel>(frame: CGRect(x: 0, y: 0, width: 176, height: 106))
         tooltip.content.text = "Can't scan? Try scanning the front of card."
         tooltip.content.numberOfLines = 0
@@ -62,22 +58,22 @@ class MainViewController: UIViewController {
         return tooltip
     }()
 
-    var frontSideTooltipWasShown = false
-    var dlScanningMode = ScanningMode.barcode {
+    private var frontSideTooltipWasShown = false
+    private var dlScanningMode = ScanningMode.barcode {
         didSet {
             configureUI()
             configureIdCapture()
         }
     }
 
-    var mode: DocumentType = .drivingLicense {
+    private var mode: DocumentType = .drivingLicense {
         didSet {
             configureUI()
             configureIdCapture()
         }
     }
 
-    var supportedDocument: IdDocumentType {
+    private var supportedDocument: IdDocumentType {
         switch mode {
         case .drivingLicense:
             switch dlScanningMode {
@@ -91,22 +87,22 @@ class MainViewController: UIViewController {
         }
     }
 
-    var manualScanTimer: Timer?
-    var frontScanTimer: Timer?
-    var verificationDidCompleteToken: NSObjectProtocol?
+    private var manualScanTimer: Timer?
+    private var frontScanTimer: Timer?
+    private var verificationDidCompleteToken: NSObjectProtocol?
 
-    func stopManualScanTimer() {
+    private func stopManualScanTimer() {
         manualScanTimer?.invalidate()
         manualScanTimer = nil
     }
 
-    func stopFrontScanTimer() {
+    private func stopFrontScanTimer() {
         frontScanTimer?.invalidate()
         frontScanTimer = nil
         frontSideTooltip.isHidden = true
     }
 
-    func startManualScanTimer() {
+    private func startManualScanTimer() {
         guard manualScanTimer == nil else { return }
         manualScanTimer = Timer(timeInterval: 8, repeats: false, block: { [unowned self] _ in
             self.stopManualScanTimer()
@@ -115,7 +111,7 @@ class MainViewController: UIViewController {
         RunLoop.main.add(manualScanTimer!, forMode: .default)
     }
 
-    func startFrontScanTimer() {
+    private func startFrontScanTimer() {
         guard frontScanTimer == nil else { return }
         guard mode == .drivingLicense, dlScanningMode == .barcode else { return }
         guard !frontSideTooltipWasShown else {
@@ -146,7 +142,7 @@ class MainViewController: UIViewController {
         idCaptureOverlay.setIdLayout(.auto)
     }
 
-    func configureUI() {
+    private func configureUI() {
         dlModeButton.isSelected = mode == .drivingLicense
         passportModeButton.isSelected = mode == .passport
 
@@ -228,16 +224,24 @@ class MainViewController: UIViewController {
             }
     }
 
-    func reset() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        camera?.switch(toDesiredState: .on)
+        reset()
+    }
+
+    private func reset() {
         frontSideTooltipWasShown = false
         manualScanButton.isHidden = true
         frontSideTooltip.isHidden = true
+        scanningModeToggle.reset()
         mode = .drivingLicense
         dlScanningMode = .barcode
+
         startScanning()
     }
 
-    func startScanning() {
+    private func startScanning() {
         // Reset the timers
         stopFrontScanTimer()
         stopManualScanTimer()
@@ -248,19 +252,13 @@ class MainViewController: UIViewController {
         configureIdCapture()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        camera?.switch(toDesiredState: .on)
-        reset()
-    }
-
-    @IBAction func modeButtonAction(_ sender: UIButton) {
+    @IBAction private func modeButtonAction(_ sender: UIButton) {
         mode = sender == dlModeButton ? .drivingLicense : .passport
         stopManualScanTimer()
         startManualScanTimer()
     }
 
-    @IBAction func manualScanAction(_ sender: Any) {
+    @IBAction private func manualScanAction(_ sender: Any) {
         let identifier = "ManualDocumentInputTableTableViewController"
         guard
             let manualDocumentInputVC = storyboard?
@@ -274,7 +272,7 @@ class MainViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
 
-    func showResultViewController(capturedId: CapturedId) {
+    private func showResultViewController(capturedId: CapturedId) {
         guard
             let deliveryResultViewController = storyboard?
                 .instantiateViewController(identifier: "DeliveryResultViewController")
@@ -313,12 +311,5 @@ extension MainViewController: IdCaptureListener {
             self.stopManualScanTimer()
             self.showResultViewController(capturedId: capturedId)
         }
-    }
-
-    func idCapture(_ idCapture: IdCapture,
-                   didFailWithError error: Error,
-                   session: IdCaptureSession,
-                   frameData: FrameData) {
-
     }
 }

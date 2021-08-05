@@ -31,6 +31,7 @@ class DeliveryResultViewController: UIViewController {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+
     func configure(capturedId: CapturedId) {
         let document = capturedId.documentType == .passport ? "Passport" : "Driver's License"
         configureWith(expirationDate: capturedId.dateOfExpiry?.date,

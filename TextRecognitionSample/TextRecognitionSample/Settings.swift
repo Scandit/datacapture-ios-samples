@@ -46,9 +46,9 @@ struct Settings {
         /// The scan area y coordinate
         var scanAreaY: CGFloat {
             switch self {
-            case .top: return 0.2
-            case .center: return 0.45
-            case .bottom: return 0.7
+            case .top: return 0.25
+            case .center: return 0.5
+            case .bottom: return 0.75
             }
         }
     }

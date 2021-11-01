@@ -29,7 +29,7 @@ extension Brush {
 
 class OverlayDataSource: DataSource {
 
-    static let brushes: [Brush] = [SettingsManager.current.defaultBrush, Brush.red, Brush.green]
+    static let brushes: [Brush] = [BarcodeCaptureOverlay.defaultBrush, Brush.red, Brush.green]
 
     weak var delegate: DataSourceDelegate?
 
@@ -45,6 +45,13 @@ class OverlayDataSource: DataSource {
                        options: OverlayDataSource.brushes,
                        getValue: { SettingsManager.current.brush },
                        didChangeValue: { SettingsManager.current.brush = $0 },
+                       dataSourceDelegate: self.delegate)
+        ]),
+        Section(rows: [
+            Row.choice(title: "Style",
+                       options: BarcodeCaptureOverlayStyle.allCases,
+                       getValue: { SettingsManager.current.overlayStyle },
+                       didChangeValue: { SettingsManager.current.overlayStyle = $0 },
                        dataSourceDelegate: self.delegate)
         ])]
     }()

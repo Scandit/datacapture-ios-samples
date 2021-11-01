@@ -106,7 +106,8 @@ class ScanningViewController: UIViewController {
         // Add a barcode tracking overlay to the data capture view to render the tracked barcodes on top of the video
         // preview. This is optional, but recommended for better visual feedback. The overlay is automatically added
         // to the view.
-        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView)
+        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView, style: .frame)
+        overlay.brush = .accepted
         overlay.delegate = self
     }
 
@@ -150,8 +151,23 @@ extension ScanningViewController: BarcodeTrackingListener {
 
 fileprivate extension Brush {
     static let rejected: Brush = {
-        let red = UIColor(red: 255/255, green: 57/255, blue: 57/255, alpha: 1)
-        return Brush(fill: red.withAlphaComponent(0.3), stroke: red, strokeWidth: 1)
+        let defaultBrush = BarcodeTrackingBasicOverlay.defaultBrush
+        guard let brushBorderColor = UIColor(sdcHexString: "#FA4446FF") else {
+            return .transparent
+        }
+        return Brush(fill: defaultBrush.fillColor,
+                     stroke: brushBorderColor,
+                     strokeWidth: defaultBrush.strokeWidth)
+    }()
+
+    static let accepted: Brush = {
+        let defaultBrush = BarcodeTrackingBasicOverlay.defaultBrush
+        guard let brushBorderColor = UIColor(sdcHexString: "#26D381FF") else {
+            return .transparent
+        }
+        return Brush(fill: defaultBrush.fillColor,
+                     stroke: brushBorderColor,
+                     strokeWidth: defaultBrush.strokeWidth)
     }()
 }
 

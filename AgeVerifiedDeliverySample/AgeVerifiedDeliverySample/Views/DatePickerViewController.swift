@@ -37,4 +37,17 @@ class DatePickerViewController: UIViewController {
     func saveAction() {
         didPickDateCompletion?(datePicker.date)
     }
+
+    override var preferredContentSize: CGSize {
+        get {
+            let size = view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize,
+                                                    withHorizontalFittingPriority: .fittingSizeLevel,
+                                                    verticalFittingPriority: .fittingSizeLevel)
+            return size
+        }
+
+        set {
+            super.preferredContentSize = newValue
+        }
+    }
 }

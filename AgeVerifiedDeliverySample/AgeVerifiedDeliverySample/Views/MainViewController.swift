@@ -15,11 +15,14 @@
 import UIKit
 import ScanditIdCapture
 
+// swiftlint:disable file_length
+// swiftlint:disable:next type_body_length
 class MainViewController: UIViewController {
 
-    private enum DocumentType {
-        case drivingLicense
-        case passport
+    private enum DocumentType: String, CaseIterable {
+
+        case drivingLicense = "Driver's License"
+        case passport = "Passport / Visa"
 
         var documentType: IdDocumentType {
             switch self {
@@ -43,18 +46,29 @@ class MainViewController: UIViewController {
                                                  view: captureView)
 
     @IBOutlet private weak var scanningModeToggle: ScanningModeToggle!
-    @IBOutlet private weak var passportModeButton: UIButton!
-    @IBOutlet private weak var dlModeButton: UIButton!
     @IBOutlet private weak var manualScanButton: UIButton!
     @IBOutlet private weak var instructionLabel: UILabel!
+    @IBOutlet private weak var dimmingOverlay: UIView!
 
     private lazy var frontSideTooltip: PopOver<UILabel> = {
-        let tooltip = PopOver<UILabel>(frame: CGRect(x: 0, y: 0, width: 176, height: 106))
-        tooltip.content.text = "Can't scan? Try scanning the front of card."
+        let tooltip = PopOver<UILabel>()
+        tooltip.content.text = "Can't scan? Toggle here to scan front of license."
         tooltip.content.numberOfLines = 0
         tooltip.content.textAlignment = .center
-        tooltip.content.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        tooltip.translatesAutoresizingMaskIntoConstraints = false
+        tooltip.content.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        tooltip.anchorEdge = .top
+        tooltip.margins = .init(top: 12, left: 12, bottom: 12, right: 12)
+        return tooltip
+    }()
+
+    private lazy var documentSelectionTooltip: PopOver<UILabel> = {
+        let tooltip = PopOver<UILabel>()
+        tooltip.content.text = "Choose your document and start scanning."
+        tooltip.content.numberOfLines = 0
+        tooltip.content.textAlignment = .center
+        tooltip.content.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        tooltip.anchorEdge = .bottom
+        tooltip.margins = .init(top: 12, left: 12, bottom: 12, right: 12)
         return tooltip
     }()
 
@@ -89,6 +103,7 @@ class MainViewController: UIViewController {
 
     private var manualScanTimer: Timer?
     private var frontScanTimer: Timer?
+    private var cantRecognizeDocumentTimer: Timer?
     private var verificationDidCompleteToken: NSObjectProtocol?
 
     private func stopManualScanTimer() {
@@ -100,26 +115,37 @@ class MainViewController: UIViewController {
         frontScanTimer?.invalidate()
         frontScanTimer = nil
         frontSideTooltip.isHidden = true
+        frontSideTooltipWasShown = false
+    }
+
+    private func stopCantRecognizeDocumentTimer() {
+        cantRecognizeDocumentTimer?.invalidate()
+        cantRecognizeDocumentTimer = nil
     }
 
     private func startManualScanTimer() {
         guard manualScanTimer == nil else { return }
-        manualScanTimer = Timer(timeInterval: 8, repeats: false, block: { [unowned self] _ in
+        manualScanTimer = Timer(timeInterval: 20, repeats: false, block: { [unowned self] _ in
             self.stopManualScanTimer()
             self.manualScanButton.isHidden = false
         })
         RunLoop.main.add(manualScanTimer!, forMode: .default)
     }
 
+    private func startCantRecognizeDocumentTimer() {
+        guard cantRecognizeDocumentTimer == nil else { return }
+        cantRecognizeDocumentTimer = Timer(timeInterval: 5, repeats: false, block: { [unowned self] _ in
+            self.stopFrontScanTimer()
+            self.stopManualScanTimer()
+            self.showResultViewController()
+        })
+        RunLoop.main.add(cantRecognizeDocumentTimer!, forMode: .default)
+    }
+
     private func startFrontScanTimer() {
         guard frontScanTimer == nil else { return }
         guard mode == .drivingLicense, dlScanningMode == .barcode else { return }
-        guard !frontSideTooltipWasShown else {
-            self.frontSideTooltip.isHidden = false
-            return
-        }
-
-        frontScanTimer = Timer(timeInterval: 4, repeats: false, block: { [unowned self] _ in
+        frontScanTimer = Timer(timeInterval: 8, repeats: false, block: { [unowned self] _ in
             self.stopFrontScanTimer()
             self.frontSideTooltipWasShown = true
             self.frontSideTooltip.isHidden = false
@@ -131,7 +157,6 @@ class MainViewController: UIViewController {
         idCapture.removeListener(self)
         captureView.removeOverlay(idCaptureOverlay)
         context.removeAllModes()
-
         let settings = idCaptureSettings
         settings.supportedDocuments = supportedDocument
         idCapture = IdCapture(context: context, settings: settings)
@@ -143,9 +168,6 @@ class MainViewController: UIViewController {
     }
 
     private func configureUI() {
-        dlModeButton.isSelected = mode == .drivingLicense
-        passportModeButton.isSelected = mode == .passport
-
         switch mode {
         case .passport:
             stopFrontScanTimer()
@@ -153,91 +175,88 @@ class MainViewController: UIViewController {
         case .drivingLicense:
             switch dlScanningMode {
             case .barcode:
-                instructionLabel.text = "Align Back of Card"
+                instructionLabel.text = "Align Back of License"
             case .viz:
-                instructionLabel.text = "Align Front of Card"
+                instructionLabel.text = "Align Front of License"
             }
         }
-
-        let selectedFont = UIFont.boldSystemFont(ofSize: 16)
-        let normalFont = UIFont.systemFont(ofSize: 16)
-        dlModeButton.titleLabel?.font = dlModeButton.isSelected ? selectedFont : normalFont
-        passportModeButton.titleLabel?.font = passportModeButton.isSelected ? selectedFont : normalFont
-
         scanningModeToggle.isHidden = mode == .passport
+    }
+
+    private func setupCaptureView() {
+        view.addSubview(captureView)
+        view.sendSubviewToBack(captureView)
+        captureView.translatesAutoresizingMaskIntoConstraints = false
+        captureView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        captureView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        captureView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        captureView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+
+    private func setupFrontSideTooltip() {
+        view.addSubview(frontSideTooltip)
+        frontSideTooltip.translatesAutoresizingMaskIntoConstraints = false
+        frontSideTooltip.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        frontSideTooltip.topAnchor.constraint(equalTo: scanningModeToggle.bottomAnchor,
+                                              constant: 16).isActive = true
+        frontSideTooltip.widthAnchor.constraint(equalToConstant: 176).isActive = true
+        frontSideTooltip.heightAnchor.constraint(equalToConstant: 96).isActive = true
+    }
+
+    private func setupDocumentSelectionTooltip() {
+        view.addSubview(documentSelectionTooltip)
+        documentSelectionTooltip.translatesAutoresizingMaskIntoConstraints = false
+        documentSelectionTooltip.leadingAnchor.constraint(equalTo: modeCollection.view.leadingAnchor,
+                                                          constant: 16).isActive = true
+        documentSelectionTooltip.bottomAnchor.constraint(equalTo: modeCollection.view.topAnchor).isActive = true
+        documentSelectionTooltip.widthAnchor.constraint(equalToConstant: 126).isActive = true
+        documentSelectionTooltip.heightAnchor.constraint(equalToConstant: 96).isActive = true
+    }
+
+    lazy var modeCollection: ModeCollectionViewController = {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumInteritemSpacing = 10
+        layout.scrollDirection = .horizontal
+        let modeCollection = ModeCollectionViewController(collectionViewLayout: layout)
+        modeCollection.items = DocumentType.allCases.map(\.rawValue)
+        return modeCollection
+    }()
+
+    private func setupModeCollection() {
+        addChild(modeCollection)
+        view.addSubview(modeCollection.view)
+        modeCollection.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            modeCollection.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            modeCollection.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            modeCollection.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        modeCollection.delegate = self
+        modeCollection.selectItem(atIndex: 0)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.addSubview(captureView)
-        view.sendSubviewToBack(captureView)
-        captureView.translatesAutoresizingMaskIntoConstraints = false
-        captureView
-            .topAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-            .isActive = true
-        captureView
-            .leadingAnchor
-            .constraint(equalTo: view.leadingAnchor)
-            .isActive = true
-        captureView
-            .trailingAnchor
-            .constraint(equalTo: view.trailingAnchor)
-            .isActive = true
-        captureView
-            .bottomAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            .isActive = true
-
-        view.addSubview(frontSideTooltip)
-        frontSideTooltip
-            .centerXAnchor
-            .constraint(equalTo: view.centerXAnchor)
-            .isActive = true
-        frontSideTooltip
-            .topAnchor
-            .constraint(equalTo: scanningModeToggle.bottomAnchor,
-                        constant: 16)
-            .isActive = true
-        frontSideTooltip
-            .widthAnchor
-            .constraint(equalToConstant: 176)
-            .isActive = true
-        frontSideTooltip
-            .heightAnchor
-            .constraint(equalToConstant: 96)
-            .isActive = true
+        setupCaptureView()
+        setupFrontSideTooltip()
+        setupModeCollection()
+        setupDocumentSelectionTooltip()
 
         scanningModeToggle.delegate = self
         context.setFrameSource(camera, completionHandler: nil)
 
         configureUI()
-
-        verificationDidCompleteToken =
-            NotificationCenter
-            .default
-            .addObserver(forName: .deliveryResultDidComplete,
-                         object: nil,
-                         queue: .main) { _ in
-                self.reset()
-            }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        camera?.switch(toDesiredState: .on)
         reset()
+        startFrontScanTimer()
     }
 
     private func reset() {
-        frontSideTooltipWasShown = false
+        camera?.switch(toDesiredState: .on)
         manualScanButton.isHidden = true
         frontSideTooltip.isHidden = true
-        scanningModeToggle.reset()
-        mode = .drivingLicense
-        dlScanningMode = .barcode
-
+        dimmingOverlay.isHidden = true
         startScanning()
     }
 
@@ -245,25 +264,36 @@ class MainViewController: UIViewController {
         // Reset the timers
         stopFrontScanTimer()
         stopManualScanTimer()
-
-        startFrontScanTimer()
-
+        stopCantRecognizeDocumentTimer()
         // Start scanning
         configureIdCapture()
     }
 
-    @IBAction private func modeButtonAction(_ sender: UIButton) {
-        mode = sender == dlModeButton ? .drivingLicense : .passport
-        stopManualScanTimer()
-        startManualScanTimer()
+    private func stopScanning() {
+        dimmingOverlay.isHidden = false
+        idCapture.isEnabled = false
+        camera?.switch(toDesiredState: .off)
+        captureView.removeOverlay(idCaptureOverlay)
     }
 
     @IBAction private func manualScanAction(_ sender: Any) {
+        stopCantRecognizeDocumentTimer()
+        showManualInput()
+    }
+
+    private func showManualInput() {
         let identifier = "ManualDocumentInputTableTableViewController"
         guard
             let manualDocumentInputVC = storyboard?
                 .instantiateViewController(identifier: identifier)
-                as? ManualDocumentInputTableTableViewController else { return }
+                as? ManualDocumentInputTableViewController else { return }
+        stopScanning()
+        manualDocumentInputVC.mainButtonTapped = {
+            self.reset()
+        }
+        manualDocumentInputVC.secondaryButtonTapped = {
+            self.reset()
+        }
         let transitionManager = TransitionManager()
         let navigationController = CompactNavigationController(rootViewController: manualDocumentInputVC)
         navigationController.transitioningDelegate = transitionManager
@@ -272,25 +302,83 @@ class MainViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
 
-    private func showResultViewController(capturedId: CapturedId) {
+    private func showResultViewController(capturedId: CapturedId? = nil) {
         guard
             let deliveryResultViewController = storyboard?
                 .instantiateViewController(identifier: "DeliveryResultViewController")
                 as? DeliveryResultViewController else { return }
+        stopScanning()
         let transitionManager = TransitionManager()
         deliveryResultViewController.transitioningDelegate = transitionManager
-        deliveryResultViewController.modalPresentationStyle = .overCurrentContext
+        deliveryResultViewController.modalPresentationStyle = .custom
         deliveryResultViewController.transitionManager = transitionManager
-        deliveryResultViewController.configure(capturedId: capturedId)
+        if let capturedId = capturedId {
+            deliveryResultViewController.configure(capturedId: capturedId)
+            deliveryResultViewController.mainButtonTapped = {
+                self.reset()
+            }
+            deliveryResultViewController.secondaryButtonTapped = {
+                self.reset()
+            }
+        } else {
+            switch mode {
+            case .drivingLicense:
+                switch dlScanningMode {
+                case .barcode:
+                    deliveryResultViewController.configureUnparsableBarcode()
+                    deliveryResultViewController.mainButtonTapped = {
+                        self.reset()
+                        self.dlScanningMode = .viz
+                        self.scanningModeToggle.setVizScanning()
+                    }
+                case .viz:
+                    deliveryResultViewController.configureUnparsableOCR()
+                    deliveryResultViewController.mainButtonTapped = {
+                        self.showManualInput()
+                    }
+                }
+                deliveryResultViewController.secondaryButtonTapped = {
+                    self.reset()
+                }
+            case .passport:
+                deliveryResultViewController.configureUnparsableOCR()
+                deliveryResultViewController.mainButtonTapped = {
+                    self.showManualInput()
+                }
+                deliveryResultViewController.secondaryButtonTapped = {
+                    self.reset()
+                }
+            }
+        }
         present(deliveryResultViewController, animated: true, completion: nil)
     }
+
+}
+
+extension MainViewController: ModeCollectionViewControllerDelegate {
+
+    func selectedItem(atIndex index: Int) {
+        mode = DocumentType.allCases[index]
+        stopCantRecognizeDocumentTimer()
+        stopManualScanTimer()
+        startManualScanTimer()
+
+        if mode == .drivingLicense, dlScanningMode == .barcode {
+            stopFrontScanTimer()
+            startFrontScanTimer()
+        }
+
+        documentSelectionTooltip.isHidden = true
+    }
+
 }
 
 extension MainViewController: DocumentTypeToggleListener {
+
     func toggleDidChange(newState: ScanningMode) {
         dlScanningMode = newState
         stopFrontScanTimer()
-
+        stopCantRecognizeDocumentTimer()
         switch dlScanningMode {
         case .barcode:
             startFrontScanTimer()
@@ -298,9 +386,19 @@ extension MainViewController: DocumentTypeToggleListener {
             startManualScanTimer()
         }
     }
+
 }
 
 extension MainViewController: IdCaptureListener {
+
+    func idCapture(_ idCapture: IdCapture,
+                   didLocalizeIn session: IdCaptureSession,
+                   frameData: FrameData) {
+        DispatchQueue.main.async {
+            self.startCantRecognizeDocumentTimer()
+        }
+    }
+
     func idCapture(_ idCapture: IdCapture,
                    didCaptureIn session: IdCaptureSession,
                    frameData: FrameData) {
@@ -312,4 +410,15 @@ extension MainViewController: IdCaptureListener {
             self.showResultViewController(capturedId: capturedId)
         }
     }
+
+    func idCapture(_ idCapture: IdCapture,
+                   didRejectIn session: IdCaptureSession,
+                   frameData: FrameData) {
+        DispatchQueue.main.async {
+            self.stopFrontScanTimer()
+            self.stopManualScanTimer()
+            self.showResultViewController()
+        }
+    }
+
 }

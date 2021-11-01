@@ -11,6 +11,8 @@
 		652F0B3D2615D0650075D4C2 /* RectangularViewfinderDisabledColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0B3C2615D0650075D4C2 /* RectangularViewfinderDisabledColor.swift */; };
 		655010FC253459D900DB4708 /* DuplicateFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655010FB253459D900DB4708 /* DuplicateFilterTableViewController.swift */; };
 		655010FE25345B1E00DB4708 /* DuplicateFilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655010FD25345B1E00DB4708 /* DuplicateFilterDataSource.swift */; };
+		6561015726F1D6BE00431290 /* LogoStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561015626F1D6BE00431290 /* LogoStyle+Extensions.swift */; };
+		6561015926F1FC0300431290 /* BarcodeCaptureOverlayStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561015826F1FC0300431290 /* BarcodeCaptureOverlayStyle+Extensions.swift */; };
 		657F19A322A90A5E002F73F4 /* RectangularSizeSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F19A222A90A5E002F73F4 /* RectangularSizeSpecification.swift */; };
 		65A7986525C04DCD0032289B /* ScanditCaptureCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7986325C04DCC0032289B /* ScanditCaptureCore.xcframework */; };
 		65A7986625C04DCD0032289B /* ScanditCaptureCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7986325C04DCC0032289B /* ScanditCaptureCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -116,6 +118,8 @@
 		652F0B3C2615D0650075D4C2 /* RectangularViewfinderDisabledColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangularViewfinderDisabledColor.swift; sourceTree = "<group>"; };
 		655010FB253459D900DB4708 /* DuplicateFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateFilterTableViewController.swift; sourceTree = "<group>"; };
 		655010FD25345B1E00DB4708 /* DuplicateFilterDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateFilterDataSource.swift; sourceTree = "<group>"; };
+		6561015626F1D6BE00431290 /* LogoStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogoStyle+Extensions.swift"; sourceTree = "<group>"; };
+		6561015826F1FC0300431290 /* BarcodeCaptureOverlayStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarcodeCaptureOverlayStyle+Extensions.swift"; sourceTree = "<group>"; };
 		657F19A222A90A5E002F73F4 /* RectangularSizeSpecification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangularSizeSpecification.swift; sourceTree = "<group>"; };
 		65A7986325C04DCC0032289B /* ScanditCaptureCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditCaptureCore.xcframework; sourceTree = "<group>"; };
 		65A7986425C04DCD0032289B /* ScanditBarcodeCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditBarcodeCapture.xcframework; sourceTree = "<group>"; };
@@ -272,6 +276,8 @@
 				A24906E1255EB19C0024A9F3 /* FocusGestureStrategy+Extensions.swift */,
 				A2B1653E25DD6B5D008FF68A /* ViewfinderStyles.swift */,
 				A2E5EA1D261766D100D43871 /* UIColor+Extensions.swift */,
+				6561015626F1D6BE00431290 /* LogoStyle+Extensions.swift */,
+				6561015826F1FC0300431290 /* BarcodeCaptureOverlayStyle+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -513,7 +519,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = Scandit;
 				TargetAttributes = {
 					6FA0B28C219AE7B600FF780A = {
@@ -624,9 +630,11 @@
 				6F361E6022393AFE009744EF /* SymbologiesTableViewController.swift in Sources */,
 				6F869D1122300A0C00E20833 /* SettingsManager.swift in Sources */,
 				6F361E6A22396026009744EF /* SymbologySettingsViewController.swift in Sources */,
+				6561015726F1D6BE00431290 /* LogoStyle+Extensions.swift in Sources */,
 				6FAC8BBF228067450055CFD6 /* CompositeTypes+Extensions.swift in Sources */,
 				6F361E6422393D0D009744EF /* Symbology+Extensions.swift in Sources */,
 				6FFECF3B22367440005CE4CD /* Anchor+Extensions.swift in Sources */,
+				6561015926F1FC0300431290 /* BarcodeCaptureOverlayStyle+Extensions.swift in Sources */,
 				655010FC253459D900DB4708 /* DuplicateFilterTableViewController.swift in Sources */,
 				6F361E6222393B42009744EF /* SymbologiesDataSource.swift in Sources */,
 				6F361E6622394A56009744EF /* NavigationController.swift in Sources */,
@@ -828,7 +836,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -854,7 +862,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.settingssample${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

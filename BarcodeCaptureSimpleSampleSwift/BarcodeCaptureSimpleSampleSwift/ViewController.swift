@@ -110,14 +110,8 @@ class ViewController: UIViewController {
 
         // Add a barcode capture overlay to the data capture view to render the location of captured barcodes on top of
         // the video preview. This is optional, but recommended for better visual feedback.
-        overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture)
+        overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView, style: .frame)
         overlay.viewfinder = RectangularViewfinder(style: .square, lineStyle: .light)
-        captureView.addOverlay(overlay)
-
-        // Adjust the overlay's barcode highlighting to match the new viewfinder styles and improve the visibility of
-        // feedback. With 6.10 we will introduce this visual treatment as a new style for the overlay.
-        let brush = Brush(fill: .clear, stroke: .white, strokeWidth: 3)
-        overlay.brush = brush
     }
 
     private func showResult(_ result: String, completion: @escaping () -> Void) {

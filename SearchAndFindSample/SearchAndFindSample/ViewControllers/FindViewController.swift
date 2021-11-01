@@ -96,7 +96,7 @@ class FindViewController: UIViewController {
         view.bringSubviewToFront(closeButton)
         view.bringSubviewToFront(scanningIndicatorView)
 
-        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView)
+        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView, style: .frame)
         overlay.delegate = self
     }
 }

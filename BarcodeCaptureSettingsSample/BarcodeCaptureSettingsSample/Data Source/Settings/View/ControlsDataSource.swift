@@ -30,7 +30,19 @@ class ControlsDataSource: DataSource {
                          kind: .switch,
                          getValue: { SettingsManager.current.torchSwitchShown },
                          didChangeValue: { SettingsManager.current.torchSwitchShown = $0 })
-                ])
+            ]),
+            Section(rows: [
+                Row.init(title: "Camera Switch Button",
+                         kind: .switch,
+                         getValue: { SettingsManager.current.cameraSwitchShown },
+                         didChangeValue: { SettingsManager.current.cameraSwitchShown = $0 })
+            ]),
+            Section(rows: [
+                Row.init(title: "Zoom Switch Button",
+                         kind: .switch,
+                         getValue: { SettingsManager.current.zoomSwitchShown },
+                         didChangeValue: { SettingsManager.current.zoomSwitchShown = $0 })
+            ])
         ]
     }()
 }

@@ -13,9 +13,10 @@
  */
 
 import ScanditCaptureCore
+import ScanditBarcodeCapture
 
 extension Brush {
     static var highlighted: Brush {
-        return Brush(fill: .clear, stroke: .white, strokeWidth: 2)
+        return Brush(fill: .white, stroke: .white, strokeWidth: 2)
     }
 }

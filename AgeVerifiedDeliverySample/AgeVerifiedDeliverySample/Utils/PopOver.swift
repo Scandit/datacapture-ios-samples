@@ -14,6 +14,7 @@
 
 import Foundation
 import UIKit
+
 public class PopOver<View: UIView>: UIView {
 
     public let content: View = (View.self as View.Type).init()
@@ -24,7 +25,7 @@ public class PopOver<View: UIView>: UIView {
 
     private let triangleHeight: CGFloat = 10
 
-    public var cornerRadius: CGFloat = 6 {
+    public var cornerRadius: CGFloat = 0 {
         didSet {
             contentContainer.layer.cornerRadius = cornerRadius
         }
@@ -51,9 +52,7 @@ public class PopOver<View: UIView>: UIView {
 
     public var tipCenter: CGPoint {
         get {
-            let center = self.center
-            let b = self.bounds
-            let deltaY = b.maxY - (b.maxY - b.minY) / 2
+            let deltaY = bounds.maxY - (bounds.maxY - bounds.minY) / 2
 
             return CGPoint(
                 x: center.x, // Always centered horizontally
@@ -68,6 +67,15 @@ public class PopOver<View: UIView>: UIView {
                 x: self.center.x + deltaX,
                 y: self.center.y + deltaY
             )
+        }
+    }
+
+    public enum AnchorEdge {
+        case top, bottom
+    }
+    public var anchorEdge: AnchorEdge = .top {
+        didSet {
+            setupTip()
         }
     }
 
@@ -91,65 +99,107 @@ public class PopOver<View: UIView>: UIView {
     private var contentBottomConstraint: NSLayoutConstraint!
     private var contentRightConstraint: NSLayoutConstraint!
 
+    private var contentContainerTopConstraint: NSLayoutConstraint!
+    private var contentContainerBottomConstraint: NSLayoutConstraint!
+    private var arrowTopConstraint: NSLayoutConstraint!
+    private var arrowBottomConstraint: NSLayoutConstraint!
+
     func setupUI() {
         [arrow, contentContainer, content].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        self.addSubview(arrow)
-        self.addSubview(contentContainer)
+        addSubview(arrow)
+        addSubview(contentContainer)
         contentContainer.addSubview(content)
-
-        contentTopConstraint = content.topAnchor
-            .constraint(equalTo: contentContainer.topAnchor, constant: margins.top)
-        contentLeftConstraint = content.leftAnchor
-            .constraint(equalTo: contentContainer.leftAnchor, constant: margins.left)
-        contentBottomConstraint = contentContainer.bottomAnchor
-            .constraint(equalTo: content.bottomAnchor, constant: margins.bottom)
-        contentRightConstraint = contentContainer.rightAnchor
-            .constraint(equalTo: content.rightAnchor, constant: margins.right)
-        [contentTopConstraint, contentLeftConstraint, contentBottomConstraint, contentRightConstraint].forEach {
-            $0?.priority = .required
-            $0?.isActive = true
-        }
-
-        NSLayoutConstraint.activate([
-            contentContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            contentContainer.widthAnchor.constraint(equalTo: self.widthAnchor),
-            contentContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            contentContainer.widthAnchor.constraint(
-                greaterThanOrEqualTo: arrow.widthAnchor, constant: cornerRadius * 2),
-            contentContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 8)
-        ])
-
+        setupContentConstraints()
+        setupContentContainerConstraints()
+        setupArrowConstraints()
         [self, contentContainer, content].forEach {
             $0.setContentHuggingPriority(.required, for: .horizontal)
             $0.setContentHuggingPriority(.required, for: .vertical)
             $0.setContentCompressionResistancePriority(.required, for: .horizontal)
             $0.setContentCompressionResistancePriority(.required, for: .vertical)
         }
-
-        let arrowWidth = arrow.widthAnchor.constraint(equalToConstant: (triangleHeight+1) * 2)
-        arrowWidth.priority = .required
-        let arrowHeight = arrow.heightAnchor.constraint(equalToConstant: (triangleHeight+1))
-        arrowHeight.priority = .required
-
-        NSLayoutConstraint.activate([
-            arrow.topAnchor.constraint(equalTo: self.topAnchor),
-            arrow.bottomAnchor.constraint(equalTo: contentContainer.topAnchor),
-            arrow.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            arrowWidth,
-            arrowHeight
-        ])
-
         contentContainer.clipsToBounds = true
         contentContainer.layer.cornerRadius = cornerRadius
-
         super.backgroundColor = .clear
         self.backgroundColor = .white
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hide)))
+    }
+
+    private func setupContentConstraints() {
+        contentTopConstraint = content.topAnchor.constraint(equalTo: contentContainer.topAnchor,
+                                                            constant: margins.top)
+        contentLeftConstraint = content.leftAnchor.constraint(equalTo: contentContainer.leftAnchor,
+                                                              constant: margins.left)
+        contentBottomConstraint = contentContainer.bottomAnchor.constraint(equalTo: content.bottomAnchor,
+                                                                           constant: margins.bottom)
+        contentRightConstraint = contentContainer.rightAnchor.constraint(equalTo: content.rightAnchor,
+                                                                         constant: margins.right)
+        [contentTopConstraint, contentLeftConstraint, contentBottomConstraint, contentRightConstraint].forEach {
+            $0?.priority = .required
+            $0?.isActive = true
+        }
+    }
+
+    private func setupContentContainerConstraints() {
+        NSLayoutConstraint.activate([
+            contentContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            contentContainer.widthAnchor.constraint(equalTo: self.widthAnchor),
+            contentContainer.widthAnchor.constraint(greaterThanOrEqualTo: arrow.widthAnchor,
+                                                    constant: cornerRadius * 2),
+            contentContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 8)
+        ])
+    }
+
+    private func setupArrowConstraints() {
+        let arrowWidthConstraint = arrow.widthAnchor.constraint(equalToConstant: (triangleHeight+1) * 2)
+        arrowWidthConstraint.priority = .required
+        let arrowHeightConstraint = arrow.heightAnchor.constraint(equalToConstant: (triangleHeight+1))
+        arrowHeightConstraint.priority = .required
+        NSLayoutConstraint.activate([
+            arrow.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            arrowWidthConstraint,
+            arrowHeightConstraint
+        ])
+        setupTip()
     }
 
     public override func sizeToFit() {
         self.frame.size = self.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+    }
+
+    private func setupTip() {
+        [
+            arrowTopConstraint,
+            arrowBottomConstraint,
+            contentContainerTopConstraint,
+            contentContainerBottomConstraint
+        ].forEach {
+            $0?.isActive = false
+        }
+        switch anchorEdge {
+        case .top:
+            arrowTopConstraint = arrow.topAnchor.constraint(equalTo: self.topAnchor)
+            arrowBottomConstraint = arrow.bottomAnchor.constraint(equalTo: contentContainer.topAnchor)
+            contentContainerBottomConstraint = contentContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            arrow.transform = .identity
+        case .bottom:
+            contentContainerTopConstraint = contentContainer.topAnchor.constraint(equalTo: self.topAnchor)
+            arrowTopConstraint = arrow.topAnchor.constraint(equalTo: contentContainer.bottomAnchor)
+            arrowBottomConstraint = arrow.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            arrow.transform = .init(scaleX: 1, y: -1)
+        }
+        NSLayoutConstraint.activate([
+            arrowTopConstraint,
+            arrowBottomConstraint,
+            contentTopConstraint,
+            contentBottomConstraint
+        ])
+    }
+
+    @objc private func hide() {
+        isHidden = true
     }
 }
 

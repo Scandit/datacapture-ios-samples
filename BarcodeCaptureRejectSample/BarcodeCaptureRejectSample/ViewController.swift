@@ -97,12 +97,11 @@ class ViewController: UIViewController {
 
         // Add a barcode capture overlay to the data capture view to render the location of captured barcodes on top of
         // the video preview. This is optional, but recommended for better visual feedback.
-        overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture)
+        overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView, style: .frame)
 
         // Add a square viewfinder as we are only scanning square QR codes.
         let viewfinder = RectangularViewfinder(style: .square, lineStyle: .light)
         overlay.viewfinder = viewfinder
-        captureView.addOverlay(overlay)
     }
 
     private func showResult(_ result: String, completion: @escaping () -> Void) {

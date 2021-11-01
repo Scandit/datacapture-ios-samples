@@ -15,7 +15,7 @@
 		65203CA02577F956006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C9F2577F956006246C6 /* SampleCode.xcconfig */; };
 		65A45557268C634500A61D6F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A45556268C634400A61D6F /* Date+Extensions.swift */; };
 		65A45559268C929E00A61D6F /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A45558268C929E00A61D6F /* UIKit+Extensions.swift */; };
-		65A4555B268C93EB00A61D6F /* ManualDocumentInputTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4555A268C93EB00A61D6F /* ManualDocumentInputTableTableViewController.swift */; };
+		65A4555B268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4555A268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift */; };
 		65A4555D268CB0BD00A61D6F /* CompactNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4555C268CB0BD00A61D6F /* CompactNavigationController.swift */; };
 		65A4555F268CB49A00A61D6F /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4555E268CB49A00A61D6F /* DatePickerViewController.swift */; };
 		65A45563268DCE5700A61D6F /* PopOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A45562268DCE5700A61D6F /* PopOver.swift */; };
@@ -32,6 +32,8 @@
 		65E53736238545E2002CA693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65E53735238545E2002CA693 /* Assets.xcassets */; };
 		65E53739238545E2002CA693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65E53737238545E2002CA693 /* LaunchScreen.storyboard */; };
 		65E5375523855449002CA693 /* DataCaptureContext+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5375423855449002CA693 /* DataCaptureContext+License.swift */; };
+		E799B41A26FCFC6C002C1548 /* ModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799B41826FCFC6C002C1548 /* ModeCell.swift */; };
+		E799B41B26FCFC6C002C1548 /* ModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799B41926FCFC6C002C1548 /* ModeCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,7 +61,7 @@
 		65203C9F2577F956006246C6 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
 		65A45556268C634400A61D6F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		65A45558268C929E00A61D6F /* UIKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
-		65A4555A268C93EB00A61D6F /* ManualDocumentInputTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualDocumentInputTableTableViewController.swift; sourceTree = "<group>"; };
+		65A4555A268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualDocumentInputTableViewController.swift; sourceTree = "<group>"; };
 		65A4555C268CB0BD00A61D6F /* CompactNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactNavigationController.swift; sourceTree = "<group>"; };
 		65A4555E268CB49A00A61D6F /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		65A45562268DCE5700A61D6F /* PopOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOver.swift; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 		65E53738238545E2002CA693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65E5373A238545E2002CA693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E5375423855449002CA693 /* DataCaptureContext+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+License.swift"; sourceTree = "<group>"; };
+		E799B41826FCFC6C002C1548 /* ModeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeCell.swift; sourceTree = "<group>"; };
+		E799B41926FCFC6C002C1548 /* ModeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +130,8 @@
 				65A4555E268CB49A00A61D6F /* DatePickerViewController.swift */,
 				65B6CB06268B1F6700093D8C /* DeliveryResultViewController.swift */,
 				651872C22688B7FA0043ABC7 /* MainViewController.swift */,
-				65A4555A268C93EB00A61D6F /* ManualDocumentInputTableTableViewController.swift */,
+				65A4555A268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift */,
+				E799B41D26FCFCBD002C1548 /* ModeCollection */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +189,15 @@
 				65A45558268C929E00A61D6F /* UIKit+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E799B41D26FCFCBD002C1548 /* ModeCollection */ = {
+			isa = PBXGroup;
+			children = (
+				E799B41826FCFC6C002C1548 /* ModeCell.swift */,
+				E799B41926FCFC6C002C1548 /* ModeCollectionViewController.swift */,
+			);
+			path = ModeCollection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65A4555B268C93EB00A61D6F /* ManualDocumentInputTableTableViewController.swift in Sources */,
+				65A4555B268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift in Sources */,
+				E799B41B26FCFC6C002C1548 /* ModeCollectionViewController.swift in Sources */,
 				651872C32688B7FA0043ABC7 /* MainViewController.swift in Sources */,
+				E799B41A26FCFC6C002C1548 /* ModeCell.swift in Sources */,
 				65A45567268DEDFD00A61D6F /* TransitionManager.swift in Sources */,
 				65A45557268C634500A61D6F /* Date+Extensions.swift in Sources */,
 				65A45563268DCE5700A61D6F /* PopOver.swift in Sources */,

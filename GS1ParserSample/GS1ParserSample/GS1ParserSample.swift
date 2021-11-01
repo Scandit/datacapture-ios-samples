@@ -86,9 +86,8 @@ class GS1ParserSample: UIViewController {
 
         // Add a barcode capture overlay to the data capture view to render the location of captured barcodes on top of
         // the video preview. This is optional, but recommended for better visual feedback.
-        let overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture)
+        let overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView, style: .frame)
         overlay.viewfinder = RectangularViewfinder(style: .square, lineStyle: .bold)
-        captureView.addOverlay(overlay)
 
         // Let's create the Parser object that will parse the GS1 strings.
         parser = try! Parser(context: context, format: .gs1AI)
@@ -103,18 +102,23 @@ extension GS1ParserSample: BarcodeCaptureListener {
               let barcodeValue = capturedBarcode.data else { return }
 
         do {
-            let message: String
             let parsedData = try parser.parseString(barcodeValue)
             // Let's pause the barcodeCapture mode while we show the captured GS1 data.
             barcodeCapture.isEnabled = false
-            message = parsedData.fields.reduce("") { (result, field) -> String in
-                guard let parsed = field.parsed else { return result }
-                return "\(result) \n\(field.name): \(parsed)"
-            }
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .left
+            let attributedMessage = NSAttributedString(
+                string: parsedData.prettyPrinted,
+                attributes: [
+                    NSAttributedString.Key.paragraphStyle: paragraphStyle
+                ]
+            )
 
             // Show the parsed data.
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Parser result", message: message, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Parser result", message: nil, preferredStyle: .alert)
+                alert.setValue(attributedMessage, forKey: "attributedMessage")
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
                     self.barcodeCapture.isEnabled = true
                 }))

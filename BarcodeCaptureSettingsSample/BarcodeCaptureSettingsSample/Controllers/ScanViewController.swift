@@ -20,7 +20,7 @@ class ScanViewController: UIViewController {
     typealias CompletionHandler = () -> Void
 
     private enum Constants {
-        static let shownDurationInContinuourMode: TimeInterval = 0.5
+        static let shownDurationInContinuousMode: TimeInterval = 0.5
     }
 
     var context: DataCaptureContext {
@@ -41,9 +41,6 @@ class ScanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecognition()
-        if #available(iOS 11.0, *) {} else {
-            edgesForExtendedLayout = []
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +57,7 @@ class ScanViewController: UIViewController {
 
         // Switch camera off to stop streaming frames. The camera is stopped asynchronously and will take some time to
         // completely turn off. Until it is completely stopped, it is still possible to receive further results, hence
-        // it's a good idea to first disable barcode tracking as well.
+        // it's a good idea to first disable barcode capture as well.
         barcodeCapture.isEnabled = false
         camera?.switch(toDesiredState: .off)
     }
@@ -91,7 +88,7 @@ class ScanViewController: UIViewController {
                     let continuousModeDismissWorkItem = DispatchWorkItem(block: {
                         self?.dismiss(animated: true, completion: completion)
                     })
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Constants.shownDurationInContinuourMode,
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Constants.shownDurationInContinuousMode,
                                                   execute: continuousModeDismissWorkItem)
                 }
             })

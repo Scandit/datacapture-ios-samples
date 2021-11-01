@@ -15,10 +15,6 @@
 import UIKit
 import ScanditIdCapture
 
-extension Notification.Name {
-    static let deliveryResultDidComplete = Notification.Name("deliveryResultDidComplete")
-}
-
 class DeliveryResultViewController: UIViewController {
 
     @IBOutlet weak var deliveryStatusImage: UIImageView!
@@ -27,6 +23,9 @@ class DeliveryResultViewController: UIViewController {
     @IBOutlet weak var secondaryButton: UIButton!
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
+
+    var mainButtonTapped: (() -> Void)?
+    var secondaryButtonTapped: (() -> Void)?
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -99,26 +98,46 @@ class DeliveryResultViewController: UIViewController {
         configureSuccessfullDelivery()
     }
 
+    func configureUnparsableBarcode() {
+        _ = view
+        titleLabel.text = "Verification Failed!"
+        deliveryStatusLabel.text = "This barcode cannot be read."
+        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
+        mainButton.setAttributedTitle(NSAttributedString(string: "SCAN FRONT OF LICENSE",
+                                                         attributes: titleAttributes),
+                                      for: .normal)
+        secondaryButton.setTitle("RETRY", for: .normal)
+    }
+
+    func configureUnparsableOCR() {
+        _ = view
+        titleLabel.text = "Verification Failed!"
+        deliveryStatusLabel.text = "This document cannot be read."
+        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
+        mainButton.setAttributedTitle(NSAttributedString(string: "ENTER MANUALLY",
+                                                         attributes: titleAttributes),
+                                      for: .normal)
+        secondaryButton.setTitle("RETRY", for: .normal)
+    }
+
     @IBAction func mainButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: {
-            NotificationCenter.default.post(name: NSNotification.Name.deliveryResultDidComplete,
-                                            object: nil)
-        })
+        dismiss(animated: true) {
+            self.mainButtonTapped?()
+        }
     }
 
     @IBAction func secondaryButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: {
-            NotificationCenter.default.post(name: NSNotification.Name.deliveryResultDidComplete,
-                                            object: nil)
-        })
+        dismiss(animated: true) {
+            self.secondaryButtonTapped?()
+        }
     }
 
     override var preferredContentSize: CGSize {
         get {
-            let size = mainStackView.systemLayoutSizeFitting(CGSize(width: 0, height: 0),
-                                                             withHorizontalFittingPriority: .required,
-                                                             verticalFittingPriority: .defaultLow)
-            return CGSize(width: size.width+64, height: size.height+64)
+            let size = view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize,
+                                                    withHorizontalFittingPriority: .fittingSizeLevel,
+                                                    verticalFittingPriority: .fittingSizeLevel)
+            return size
         }
 
         set {

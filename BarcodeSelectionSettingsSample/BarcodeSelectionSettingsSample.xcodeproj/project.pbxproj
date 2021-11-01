@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		65203C9A2577F8F5006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */; };
+		6561015B26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561015A26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift */; };
 		65A7988325C04E940032289B /* ScanditBarcodeCapture.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7988125C04E940032289B /* ScanditBarcodeCapture.xcframework */; };
 		65A7988425C04E940032289B /* ScanditBarcodeCapture.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7988125C04E940032289B /* ScanditBarcodeCapture.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65A7988525C04E940032289B /* ScanditCaptureCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7988225C04E940032289B /* ScanditCaptureCore.xcframework */; };
@@ -92,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		65203C992577F8F5006246C6 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
+		6561015A26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarcodeSelectionBasicOverlayStyle+Extension.swift"; sourceTree = "<group>"; };
 		65A7988125C04E940032289B /* ScanditBarcodeCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditBarcodeCapture.xcframework; sourceTree = "<group>"; };
 		65A7988225C04E940032289B /* ScanditCaptureCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditCaptureCore.xcframework; sourceTree = "<group>"; };
 		A22C48972546E27700176E29 /* UITableView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Utils.swift"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				A26BB4EC254727C80088CCF9 /* VideoResolution+Extensions.swift */,
 				A2429819256E52D900532436 /* PointWithUnit+Extensions.swift */,
 				A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */,
+				6561015A26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				A2C8803A254C409000F05009 /* ModePointOfInterestDataSource.swift in Sources */,
 				A22C489D2546E27A00176E29 /* FloatInputCell.swift in Sources */,
 				A26BB4D1254725690088CCF9 /* SliderCell.swift in Sources */,
+				6561015B26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift in Sources */,
 				A26BB4EA254727A30088CCF9 /* Float+Extensions.swift in Sources */,
 				A242981A256E52D900532436 /* PointWithUnit+Extensions.swift in Sources */,
 				A2C8801A254ABC6D00F05009 /* PointOfInterestTableViewController.swift in Sources */,

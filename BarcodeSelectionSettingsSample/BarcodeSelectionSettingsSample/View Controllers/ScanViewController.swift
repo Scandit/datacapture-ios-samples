@@ -44,9 +44,6 @@ class ScanViewController: UIViewController {
         super.viewDidLoad()
         setupRecognition()
         setupResultLabel()
-        if #available(iOS 11.0, *) {} else {
-            edgesForExtendedLayout = []
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

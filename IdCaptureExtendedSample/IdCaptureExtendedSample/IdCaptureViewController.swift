@@ -19,10 +19,12 @@ import ScanditIdCapture
 
 class IdCaptureViewController: UIViewController {
 
-    enum Mode: Int {
-        case barcode
-        case mrz
-        case viz
+    enum Mode: String, CaseIterable {
+
+        case barcode = "Barcode"
+        case mrz = "MRZ"
+        case viz = "VIZ"
+
     }
 
     private var context: DataCaptureContext!
@@ -33,19 +35,10 @@ class IdCaptureViewController: UIViewController {
 
     private var isScanningBackSide: Bool = false
 
-    private lazy var modeControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "Barcode", at: 0, animated: false)
-        segmentedControl.insertSegment(withTitle: "MRZ", at: 1, animated: false)
-        segmentedControl.insertSegment(withTitle: "Viz", at: 2, animated: false)
-        segmentedControl.addTarget(self, action: #selector(didChangeMode(_:)), for: .valueChanged)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        return segmentedControl
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecognition()
+        setupModeCollection()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,14 +80,26 @@ class IdCaptureViewController: UIViewController {
         // camera preview. The view must be connected to the data capture context.
         captureView = DataCaptureView(context: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(captureView)
-
-        captureView.addSubview(modeControl)
-        modeControl.bottomAnchor.constraint(equalTo: captureView.safeAreaLayoutGuide.bottomAnchor,
-                                            constant: -20).isActive = true
-        modeControl.centerXAnchor.constraint(equalTo: captureView.centerXAnchor).isActive = true
-        modeControl.selectedSegmentIndex = 0
+        view.insertSubview(captureView, at: 0)
         configure(mode: .barcode)
+    }
+
+    private func setupModeCollection() {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumInteritemSpacing = 10
+        layout.scrollDirection = .horizontal
+        let modeCollection = ModeCollectionViewController(collectionViewLayout: layout)
+        modeCollection.items = Mode.allCases.map(\.rawValue)
+        addChild(modeCollection)
+        view.addSubview(modeCollection.view)
+        modeCollection.view.translatesAutoresizingMaskIntoConstraints = false
+        modeCollection.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        modeCollection.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        modeCollection.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        modeCollection.view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        modeCollection.delegate = self
+        modeCollection.selectItem(atIndex: 0)
     }
 
     private func configure(mode: IdCaptureViewController.Mode) {
@@ -122,12 +127,6 @@ class IdCaptureViewController: UIViewController {
         overlay.idLayoutStyle = .rounded
     }
 
-    @objc
-    private func didChangeMode(_ sender: UISegmentedControl) {
-        guard let mode = Mode(rawValue: sender.selectedSegmentIndex) else { fatalError("Unknown mode") }
-        configure(mode: mode)
-    }
-
     private func configureBarcodeMode(settings: IdCaptureSettings) {
         settings.supportedDocuments = [.aamvaBarcode, .argentinaIdBarcode, .colombiaIdBarcode,
                                        .southAfricaDLBarcode, .southAfricaIdBarcode, .ususIdBarcode]
@@ -144,6 +143,14 @@ class IdCaptureViewController: UIViewController {
     private func configureMRZMode(settings: IdCaptureSettings) {
         settings.supportedDocuments = [.visaMRZ, .passportMRZ, .idCardMRZ, .swissDLMRZ]
     }
+}
+
+extension IdCaptureViewController: ModeCollectionViewControllerDelegate {
+
+    func selectedItem(atIndex index: Int) {
+        configure(mode: Mode.allCases[index])
+    }
+
 }
 
 extension IdCaptureViewController: IdCaptureListener {
@@ -183,6 +190,20 @@ extension IdCaptureViewController: IdCaptureListener {
         }
     }
 
+    func idCapture(_ idCapture: IdCapture, didRejectIn session: IdCaptureSession, frameData: FrameData) {
+        // Implement to handle documents recognized in a frame, but rejected.
+        // A document or its part is considered rejected when (a) it's valid, but not enabled in the settings,
+        // (b) it's a barcode of a correct symbology or a Machine Readable Zone (MRZ),
+        // but the data is encoded in an unexpected/incorrect format.
+
+        // Pause the idCapture to not capture while showing the result.
+        idCapture.isEnabled = false
+        showAlert(message: "Document not supported", completion: {
+            // Resume the idCapture.
+            idCapture.isEnabled = true
+        })
+    }
+
     func idCapture(_ idCapture: IdCapture,
                    didFailWithError error: Error,
                    session: IdCaptureSession,
@@ -216,4 +237,18 @@ extension IdCaptureViewController: IdCaptureListener {
 
         present(alertController, animated: true, completion: nil)
     }
+
+    func showAlert(title: String? = nil, message: String? = nil, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title,
+                                          message: message,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                completion()
+            }))
+
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
 }

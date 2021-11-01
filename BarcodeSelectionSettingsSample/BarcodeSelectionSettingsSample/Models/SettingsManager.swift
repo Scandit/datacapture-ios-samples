@@ -329,4 +329,13 @@ class SettingsManager {
             }
         }
     }
+
+    var overlayStyle: BarcodeSelectionBasicOverlayStyle = .frame {
+        didSet {
+            captureView.removeOverlay(overlay)
+            overlay = BarcodeSelectionBasicOverlay(barcodeSelection: barcodeSelection,
+                                            view: captureView,
+                                            style: overlayStyle)
+        }
+    }
 }

@@ -16,6 +16,8 @@ import ScanditBarcodeCapture
 
 class SettingsManager {
 
+    private lazy var settingsManagerProxyListener = SettingsManagerProxyListener(settingsManager: self)
+
     private let defaultLegacyViewFinderSize = RectangularViewfinder(
         style: .legacy).sizeWithUnitAndAspect.widthAndHeight
     private let defaultNonLegacyViewFinderSize = RectangularViewfinder(
@@ -34,19 +36,26 @@ class SettingsManager {
             // Add a barcode capture overlay to the data capture view to render the location
             // of captured barcodes on top of the video preview.
             // This is optional, but recommended for better visual feedback.
-            overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView)
+            overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView, style: overlayStyle)
         }
     }
 
     var overlay: BarcodeCaptureOverlay!
-
-    var defaultBrush: Brush!
 
     var internalCamera: Camera? = Camera.default
     var internalTorchState: TorchState = .off
     // Use the recommended camera settings for the BarcodeCapture mode.
     var cameraSettings: CameraSettings = BarcodeCapture.recommendedCameraSettings
     var internalTorchSwitch: TorchSwitchControl = TorchSwitchControl()
+    lazy var internalCameraSwitch: CameraSwitchControl? = {
+        guard let worldFacingCamera = Camera(position: .worldFacing),
+              let userFacingCamera = Camera(position: .userFacing) else {
+            return nil
+        }
+        return CameraSwitchControl(primaryCamera: worldFacingCamera, secondaryCamera: userFacingCamera)
+    }()
+    var internalZoomSwitch: ZoomSwitchControl = ZoomSwitchControl()
+
     var internalVibration = FeedbackVibration.default
 
     init() {
@@ -61,11 +70,11 @@ class SettingsManager {
         // Create new barcode capture mode with the settings from above.
         barcodeCapture = BarcodeCapture(context: context, settings: barcodeCaptureSettings)
 
-        defaultBrush = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture).brush
-
         // Make sure that references to some settings are actually the current settings
         internalCamera?.apply(cameraSettings, completionHandler: nil)
         internalCamera?.desiredTorchState = internalTorchState
+
+        context.addListener(settingsManagerProxyListener)
     }
 
     // MARK: - View
@@ -114,6 +123,15 @@ class SettingsManager {
         }
         set {
             (viewfinder as! RectangularViewfinder).dimming = newValue
+        }
+    }
+
+    var rectangularDisabledDimming: CGFloat {
+        get {
+            (viewfinder as! RectangularViewfinder).disabledDimming
+        }
+        set {
+            (viewfinder as! RectangularViewfinder).disabledDimming = newValue
         }
     }
 
@@ -280,5 +298,71 @@ class SettingsManager {
                 captureView.removeControl(internalTorchSwitch)
             }
         }
+    }
+
+    var cameraSwitchShown: Bool = false {
+        didSet {
+            guard let internalCameraSwitch = internalCameraSwitch else {
+                return
+            }
+
+            if cameraSwitchShown {
+                captureView.addControl(internalCameraSwitch)
+            } else {
+                captureView.removeControl(internalCameraSwitch)
+            }
+        }
+    }
+
+    var zoomSwitchShown: Bool = false {
+        didSet {
+            if zoomSwitchShown {
+                captureView.addControl(internalZoomSwitch)
+            } else {
+                captureView.removeControl(internalZoomSwitch)
+            }
+        }
+    }
+
+    var logoStyle: LogoStyle {
+        get {
+            return captureView.logoStyle
+        }
+
+        set {
+            captureView.logoStyle = newValue
+        }
+    }
+
+    var overlayStyle: BarcodeCaptureOverlayStyle = .frame {
+        didSet {
+            captureView.removeOverlay(overlay)
+            overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture,
+                                            view: captureView,
+                                            style: overlayStyle)
+        }
+    }
+}
+
+class SettingsManagerProxyListener: NSObject {
+
+    weak var settingsManager: SettingsManager?
+
+    init(settingsManager: SettingsManager) {
+        super.init()
+        self.settingsManager = settingsManager
+    }
+}
+
+extension SettingsManagerProxyListener: DataCaptureContextListener {
+    func context(_ context: DataCaptureContext, didAdd mode: DataCaptureMode) {}
+
+    func context(_ context: DataCaptureContext, didRemove mode: DataCaptureMode) {}
+
+    func context(_ context: DataCaptureContext, didChange contextStatus: ContextStatus) {}
+
+    func context(_ context: DataCaptureContext, didChange frameSource: FrameSource?) {
+        guard let newCamera = frameSource as? Camera?  else { return }
+        settingsManager?.internalCamera = newCamera
     }
 }

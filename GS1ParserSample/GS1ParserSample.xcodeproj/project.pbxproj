@@ -20,6 +20,8 @@
 		65E53736238545E2002CA693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65E53735238545E2002CA693 /* Assets.xcassets */; };
 		65E53739238545E2002CA693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65E53737238545E2002CA693 /* LaunchScreen.storyboard */; };
 		65E5375523855449002CA693 /* DataCaptureContext+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5375423855449002CA693 /* DataCaptureContext+License.swift */; };
+		E74C1D5326F4961D0089AF42 /* ParsedData+PrettyPrinted.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C1D5226F4961D0089AF42 /* ParsedData+PrettyPrinted.swift */; };
+		E74C9D4426F8B11F007ECEBF /* ParsedDataPrettyPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C9D4326F8B11F007ECEBF /* ParsedDataPrettyPrinter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		65E53738238545E2002CA693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65E5373A238545E2002CA693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E5375423855449002CA693 /* DataCaptureContext+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+License.swift"; sourceTree = "<group>"; };
+		E74C1D5226F4961D0089AF42 /* ParsedData+PrettyPrinted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParsedData+PrettyPrinted.swift"; sourceTree = "<group>"; };
+		E74C9D4326F8B11F007ECEBF /* ParsedDataPrettyPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedDataPrettyPrinter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 				65E5375323855430002CA693 /* Extensions */,
 				65E5372E238545E0002CA693 /* AppDelegate.swift */,
 				65E53730238545E0002CA693 /* GS1ParserSample.swift */,
+				E74C9D4326F8B11F007ECEBF /* ParsedDataPrettyPrinter.swift */,
 				65E53732238545E0002CA693 /* Main.storyboard */,
 				65E53735238545E2002CA693 /* Assets.xcassets */,
 				65E53737238545E2002CA693 /* LaunchScreen.storyboard */,
@@ -122,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				65E5375423855449002CA693 /* DataCaptureContext+License.swift */,
+				E74C1D5226F4961D0089AF42 /* ParsedData+PrettyPrinted.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,8 +206,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				65E53731238545E0002CA693 /* GS1ParserSample.swift in Sources */,
+				E74C9D4426F8B11F007ECEBF /* ParsedDataPrettyPrinter.swift in Sources */,
 				65E5372F238545E0002CA693 /* AppDelegate.swift in Sources */,
 				65E5375523855449002CA693 /* DataCaptureContext+License.swift in Sources */,
+				E74C1D5326F4961D0089AF42 /* ParsedData+PrettyPrinted.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

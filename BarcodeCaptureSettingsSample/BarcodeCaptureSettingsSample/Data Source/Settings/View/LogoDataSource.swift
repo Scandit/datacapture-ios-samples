@@ -30,7 +30,15 @@ class LogoDataSource: DataSource {
                            options: Anchor.allCases,
                            getValue: { SettingsManager.current.logoAnchor },
                            didChangeValue: { SettingsManager.current.logoAnchor = $0 },
-                           dataSourceDelegate: self.delegate) ]),
+                           dataSourceDelegate: self.delegate)
+            ]),
+            Section(rows: [
+                Row.choice(title: "Style",
+                           options: LogoStyle.allCases,
+                           getValue: { SettingsManager.current.logoStyle },
+                           didChangeValue: { SettingsManager.current.logoStyle = $0 },
+                           dataSourceDelegate: self.delegate)
+            ]),
             Section(title: "Offset", rows: [
                 Row.valueWithUnit(title: "X",
                                   getValue: { SettingsManager.current.logoOffset.x },

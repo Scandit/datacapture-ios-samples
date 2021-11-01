@@ -86,7 +86,7 @@ class IdCaptureViewController: UIViewController {
         // Add an id capture overlay to the data capture view to render the location of captured ids on top of
         // the video preview. This is optional, but recommended for better visual feedback.
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
-        overlay.idLayoutStyle = .square
+        overlay.idLayoutStyle = .rounded
     }
 }
 
@@ -123,17 +123,24 @@ extension IdCaptureViewController: IdCaptureListener {
         }
 
         let title = capturedId.capturedResultType.description
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: title,
-                                          message: idDescription,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                // Resume the idCapture.
-                idCapture.isEnabled = true
-            }))
+        showAlert(title: title, message: idDescription, completion: {
+            // Resume the idCapture.
+            idCapture.isEnabled = true
+        })
+    }
 
-            self.present(alert, animated: true, completion: nil)
-        }
+    func idCapture(_ idCapture: IdCapture, didRejectIn session: IdCaptureSession, frameData: FrameData) {
+        // Implement to handle documents recognized in a frame, but rejected.
+        // A document or its part is considered rejected when (a) it's valid, but not enabled in the settings,
+        // (b) it's a barcode of a correct symbology or a Machine Readable Zone (MRZ),
+        // but the data is encoded in an unexpected/incorrect format.
+
+        // Pause the idCapture to not capture while showing the result.
+        idCapture.isEnabled = false
+        showAlert(message: "Document not supported", completion: {
+            // Resume the idCapture.
+            idCapture.isEnabled = true
+        })
     }
 
     func idCapture(_ idCapture: IdCapture,
@@ -143,6 +150,19 @@ extension IdCaptureViewController: IdCaptureListener {
 
         // Implement to handle an error encountered during the capture process.
         // The error message can be retrieved from the Error localizedDescription.
+    }
+
+    func showAlert(title: String? = nil, message: String? = nil, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title,
+                                          message: message,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                completion()
+            }))
+
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     func descriptionForMrzResult(result: CapturedId) -> String {

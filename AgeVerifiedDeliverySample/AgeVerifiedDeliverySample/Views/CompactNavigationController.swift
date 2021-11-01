@@ -22,6 +22,7 @@ class CompactNavigationController: UINavigationController {
     var currentOffest: CGFloat = 0
 
     override func viewDidLoad() {
+        delegate = self
         super.viewDidLoad()
 
         navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -29,7 +30,10 @@ class CompactNavigationController: UINavigationController {
         navigationBar.backgroundColor = .clear
         navigationBar.isTranslucent = true
         navigationBar.tintColor = .black
+        setupKeyboardNotifications()
+    }
 
+    private func setupKeyboardNotifications() {
         keyboardWillShowToken = NotificationCenter
             .default
             .addObserver(forName: UIResponder.keyboardWillShowNotification,
@@ -95,5 +99,17 @@ class CompactNavigationController: UINavigationController {
      // Pass the selected object to the new view controller.
      }
      */
+}
 
+extension CompactNavigationController: UINavigationControllerDelegate {
+    // We listen to the navigation controller delegate methods so we can adjust
+    // the size of the sheet on the fly when a new controller is pushed.
+    func navigationController(_ navigationController: UINavigationController,
+                              willShow viewController: UIViewController,
+                              animated: Bool) {
+        let newSize = viewController.preferredContentSize
+        let diff = view.frame.size.height - newSize.height
+        view.center.y += diff
+        view.frame.size.height = newSize.height
+    }
 }

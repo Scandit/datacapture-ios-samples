@@ -47,7 +47,8 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
               let toViewController = transitionContext.viewController(forKey: .to) else { fatalError() }
         transitionContext.containerView.addSubview(toView)
 
-        toView.layer.cornerRadius = 4
+        toView.layer.cornerRadius = 16
+        toView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         var size = toViewController.preferredContentSize
         size.width = transitionContext.containerView.frame.width
 

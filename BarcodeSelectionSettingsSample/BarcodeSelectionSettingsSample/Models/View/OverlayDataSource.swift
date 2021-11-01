@@ -45,7 +45,17 @@ class OverlayDataSource: DataSource {
     // MARK: - Sections
 
     lazy var sections: [Section] = {
-        return [brushes, hints]
+        return [styles, brushes, hints]
+    }()
+
+    lazy var styles: Section = {
+        return Section(rows: [
+            Row.choice(title: "Style",
+                       options: BarcodeSelectionBasicOverlayStyle.allCases,
+                       getValue: { SettingsManager.current.overlayStyle },
+                       didChangeValue: { SettingsManager.current.overlayStyle = $0 },
+                       dataSourceDelegate: self.delegate)
+        ])
     }()
 
     lazy var brushes: Section = {

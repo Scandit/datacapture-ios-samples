@@ -87,7 +87,7 @@ final class ScanningModeToggle: UIView {
         delegate?.toggleDidChange(newState: state)
     }
 
-    private func setVizScanning() {
+    func setVizScanning() {
         self.state = .viz
         self.backgroundLeadingConstraint.isActive = false
         self.barcodeImageView.tintColor = .white

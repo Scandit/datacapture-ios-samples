@@ -29,7 +29,11 @@ extension Brush {
 
 class OverlayDataSource: DataSource {
 
-    static let brushes: [Brush] = [BarcodeCaptureOverlay.defaultBrush, Brush.red, Brush.green]
+    static let brushes = [
+        BarcodeCaptureOverlay.defaultBrush(forStyle: SettingsManager.current.overlayStyle),
+        Brush.red,
+        Brush.green
+    ]
 
     weak var delegate: DataSourceDelegate?
 

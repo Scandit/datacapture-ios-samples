@@ -151,7 +151,7 @@ extension ScanningViewController: BarcodeTrackingListener {
 
 fileprivate extension Brush {
     static let rejected: Brush = {
-        let defaultBrush = BarcodeTrackingBasicOverlay.defaultBrush
+        let defaultBrush = BarcodeTrackingBasicOverlay.defaultBrush(forStyle: .frame)
         guard let brushBorderColor = UIColor(sdcHexString: "#FA4446FF") else {
             return .transparent
         }
@@ -161,7 +161,7 @@ fileprivate extension Brush {
     }()
 
     static let accepted: Brush = {
-        let defaultBrush = BarcodeTrackingBasicOverlay.defaultBrush
+        let defaultBrush = BarcodeTrackingBasicOverlay.defaultBrush(forStyle: .frame)
         guard let brushBorderColor = UIColor(sdcHexString: "#26D381FF") else {
             return .transparent
         }

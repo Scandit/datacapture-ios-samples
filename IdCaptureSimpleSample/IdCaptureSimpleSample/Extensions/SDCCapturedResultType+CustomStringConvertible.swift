@@ -15,7 +15,32 @@
 import Foundation
 import ScanditIdCapture
 
+extension CapturedResultType: Hashable, CaseIterable {
+
+    public static var allCases: [CapturedResultType] {
+        return [.aamvaBarcodeResult, .argentinaIdBarcodeResult,
+                .colombiaIdBarcodeResult, .mrzResult,
+                .southAfricaDLBarcodeResult, .southAfricaIdBarcodeResult,
+                .usUniformedServicesBarcodeResult, .vizResult]
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.description)
+    }
+
+    public var singleValues: [CapturedResultType] {
+        return Self.allCases.filter({self.contains($0)})
+    }
+}
+
 extension CapturedResultType: CustomStringConvertible {
+
+    public var combinedDescription: String {
+        return self
+        .singleValues.map(\.description)
+        .joined(separator: ", ")
+    }
+
     public var description: String {
         switch self {
         case .mrzResult:
@@ -34,6 +59,8 @@ extension CapturedResultType: CustomStringConvertible {
             return "South Africa DL Barcode Result"
         case .southAfricaIdBarcodeResult:
             return "South Africa Id Barcode Result"
+        default:
+            return "No result"
         }
     }
 }

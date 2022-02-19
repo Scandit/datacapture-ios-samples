@@ -42,6 +42,10 @@ class SymbologySettingsDataSource: DataSource {
             sections.append(extensions)
         }
 
+        if !symbologyDescription.supportedChecksums.isEmpty {
+            sections.append(supportedChecksums)
+        }
+
         return sections
     }
 
@@ -102,5 +106,25 @@ class SymbologySettingsDataSource: DataSource {
                                                                                 enabled: $0) },
                                    dataSourceDelegate: self.delegate)
                        }))
+    }()
+
+    lazy var supportedChecksums: Section = {
+        let supportedChecksums = Checksum.allCases.filter({
+            symbologyDescription.supportedChecksums.contains($0)
+        })
+
+        return Section(title: "Checksums",
+                       rows: supportedChecksums.map({ supportedChecksum in
+                        Row.option(title: supportedChecksum.description,
+                                   getValue: {
+                                        self.symbologySettings.checksums.contains(supportedChecksum)},
+                                   didChangeValue: { didEnable in
+                                        if didEnable {
+                                            self.symbologySettings.checksums.insert(supportedChecksum)
+                                        } else {
+                                            self.symbologySettings.checksums.remove(supportedChecksum)
+                                        }},
+                                   dataSourceDelegate: self.delegate)
+                        }))
     }()
 }

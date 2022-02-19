@@ -136,7 +136,7 @@ extension MRZScanViewController: IdCaptureListener {
         Nationality: \(result.nationality ?? "<nil>")
         Address: \(result.address ?? "<nil>")
         Document Type: \(result.documentType)
-        Captured Result Type: \(result.capturedResultType)
+        Captured Result Type: MRZ Document
         Issuing Country: \(result.issuingCountry ?? "<nil>")
         Issuing Country ISO: \(result.issuingCountryISO ?? "<nil>")
         Document Number: \(result.documentNumber ?? "<nil>")

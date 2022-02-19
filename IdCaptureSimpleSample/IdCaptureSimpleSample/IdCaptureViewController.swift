@@ -122,7 +122,8 @@ extension IdCaptureViewController: IdCaptureListener {
             idDescription = descriptionForCapturedId(result: capturedId)
         }
 
-        let title = capturedId.capturedResultType.description
+        let title = capturedId.capturedResultTypes.combinedDescription
+
         showAlert(title: title, message: idDescription, completion: {
             // Resume the idCapture.
             idCapture.isEnabled = true
@@ -287,7 +288,7 @@ extension IdCaptureViewController: IdCaptureListener {
         Nationality: \(result.nationality ?? "<nil>")
         Address: \(result.address ?? "<nil>")
         Document Type: \(result.documentType)
-        Captured Result Type: \(result.capturedResultType)
+        Captured Result Type: \(result.capturedResultTypes.combinedDescription)
         Issuing Country: \(result.issuingCountry ?? "<nil>")
         Issuing Country ISO: \(result.issuingCountryISO ?? "<nil>")
         Document Number: \(result.documentNumber ?? "<nil>")

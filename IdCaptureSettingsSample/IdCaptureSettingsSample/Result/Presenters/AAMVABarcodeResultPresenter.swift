@@ -20,7 +20,7 @@ class AAMVABarcodeResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultType == .aamvaBarcodeResult)
+        assert(capturedId.capturedResultTypes.contains(.aamvaBarcodeResult))
         guard let aamvaBarcodeResult = capturedId.aamvaBarcodeResult else {
             fatalError("Unexpected null AAMVABarcodeResult")
         }

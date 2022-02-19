@@ -20,7 +20,7 @@ class SouthAfricaIdResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultType == .southAfricaIdBarcodeResult)
+        assert(capturedId.capturedResultTypes.contains(.southAfricaIdBarcodeResult))
         guard let southAfricaIdBarcodeResult = capturedId.southAfricaIdBarcodeResult else {
             fatalError("Unexpected null SouthAfricaDLBarcodeResult")
         }

@@ -27,6 +27,10 @@ class IdCaptureViewController: UIViewController {
 
     }
 
+    private enum Constants {
+        static let modeCollectionHeight: CGFloat = 80
+    }
+
     private var context: DataCaptureContext!
     private var camera: Camera?
     private var idCapture: IdCapture!
@@ -78,9 +82,15 @@ class IdCaptureViewController: UIViewController {
 
         // To visualize the on-going id capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(context: context, frame: view.bounds)
-        captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.insertSubview(captureView, at: 0)
+        captureView = DataCaptureView(context: context, frame: .zero)
+        view.addSubview(captureView)
+        captureView.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints([
+            captureView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            captureView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            captureView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            captureView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constants.modeCollectionHeight)
+        ])
         configure(mode: .barcode)
     }
 
@@ -97,7 +107,7 @@ class IdCaptureViewController: UIViewController {
         modeCollection.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         modeCollection.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         modeCollection.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        modeCollection.view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        modeCollection.view.heightAnchor.constraint(equalToConstant: Constants.modeCollectionHeight).isActive = true
         modeCollection.delegate = self
         modeCollection.selectItem(atIndex: 0)
     }

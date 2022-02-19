@@ -34,6 +34,8 @@ extension CapturedResultType: CustomStringConvertible {
             return "South Africa DL Barcode Result"
         case .southAfricaIdBarcodeResult:
             return "South Africa Id Barcode Result"
+        default:
+            return "No Result"
         }
     }
 }

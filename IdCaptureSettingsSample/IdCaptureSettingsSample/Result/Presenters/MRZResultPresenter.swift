@@ -20,7 +20,7 @@ class MRZResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultType == .mrzResult)
+        assert(capturedId.capturedResultTypes.contains(.mrzResult))
         guard let mrzResult = capturedId.mrzResult else { fatalError("Unexpected null MRZResult") }
         let commonRows = Self.getCommonRows(for: capturedId)
         let mrzRows: [CellProvider] = [

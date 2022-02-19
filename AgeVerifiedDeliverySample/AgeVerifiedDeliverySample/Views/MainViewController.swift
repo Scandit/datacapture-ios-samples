@@ -15,7 +15,6 @@
 import UIKit
 import ScanditIdCapture
 
-// swiftlint:disable file_length
 // swiftlint:disable:next type_body_length
 class MainViewController: UIViewController {
 
@@ -49,17 +48,6 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var manualScanButton: UIButton!
     @IBOutlet private weak var instructionLabel: UILabel!
     @IBOutlet private weak var dimmingOverlay: UIView!
-
-    private lazy var frontSideTooltip: PopOver<UILabel> = {
-        let tooltip = PopOver<UILabel>()
-        tooltip.content.text = "Can't scan? Toggle here to scan front of license."
-        tooltip.content.numberOfLines = 0
-        tooltip.content.textAlignment = .center
-        tooltip.content.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        tooltip.anchorEdge = .top
-        tooltip.margins = .init(top: 12, left: 12, bottom: 12, right: 12)
-        return tooltip
-    }()
 
     private lazy var documentSelectionTooltip: PopOver<UILabel> = {
         let tooltip = PopOver<UILabel>()
@@ -114,7 +102,6 @@ class MainViewController: UIViewController {
     private func stopFrontScanTimer() {
         frontScanTimer?.invalidate()
         frontScanTimer = nil
-        frontSideTooltip.isHidden = true
         frontSideTooltipWasShown = false
     }
 
@@ -148,7 +135,6 @@ class MainViewController: UIViewController {
         frontScanTimer = Timer(timeInterval: 8, repeats: false, block: { [unowned self] _ in
             self.stopFrontScanTimer()
             self.frontSideTooltipWasShown = true
-            self.frontSideTooltip.isHidden = false
         })
         RunLoop.main.add(frontScanTimer!, forMode: .default)
     }
@@ -193,16 +179,6 @@ class MainViewController: UIViewController {
         captureView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
-    private func setupFrontSideTooltip() {
-        view.addSubview(frontSideTooltip)
-        frontSideTooltip.translatesAutoresizingMaskIntoConstraints = false
-        frontSideTooltip.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        frontSideTooltip.topAnchor.constraint(equalTo: scanningModeToggle.bottomAnchor,
-                                              constant: 16).isActive = true
-        frontSideTooltip.widthAnchor.constraint(equalToConstant: 176).isActive = true
-        frontSideTooltip.heightAnchor.constraint(equalToConstant: 96).isActive = true
-    }
-
     private func setupDocumentSelectionTooltip() {
         view.addSubview(documentSelectionTooltip)
         documentSelectionTooltip.translatesAutoresizingMaskIntoConstraints = false
@@ -240,7 +216,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupCaptureView()
-        setupFrontSideTooltip()
         setupModeCollection()
         setupDocumentSelectionTooltip()
 
@@ -255,7 +230,6 @@ class MainViewController: UIViewController {
     private func reset() {
         camera?.switch(toDesiredState: .on)
         manualScanButton.isHidden = true
-        frontSideTooltip.isHidden = true
         dimmingOverlay.isHidden = true
         startScanning()
     }

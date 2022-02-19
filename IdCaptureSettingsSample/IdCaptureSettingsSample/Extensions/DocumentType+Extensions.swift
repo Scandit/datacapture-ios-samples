@@ -111,6 +111,8 @@ extension DocumentType: CustomStringConvertible {
             return "Tribal ID"
         case .veteranId:
             return "Veteran ID"
+        case .citizenshipCertificate:
+            return "Citizenship Certificate"
         }
     }
 }

@@ -20,7 +20,7 @@ class VizResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultType == .vizResult)
+        assert(capturedId.capturedResultTypes.contains(.vizResult))
         guard let vizResult = capturedId.vizResult else { fatalError("Unexpected null VizResult") }
         let commonRows = Self.getCommonRows(for: capturedId)
         let vizRows: [CellProvider] = [

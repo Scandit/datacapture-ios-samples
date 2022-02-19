@@ -61,6 +61,7 @@ final class ModeCell: UICollectionViewCell {
         label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
         label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
         label.font = UIFont(name: "Helvetica-Neue", size: 16)
+        update()
     }
 
     private func update() {

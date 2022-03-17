@@ -93,6 +93,7 @@
 		A24906E4255EB8360024A9F3 /* SettingsManager+BarcodeCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24906E3255EB8360024A9F3 /* SettingsManager+BarcodeCapture.swift */; };
 		A24906E6255EB83E0024A9F3 /* SettingsManager+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24906E5255EB83E0024A9F3 /* SettingsManager+Camera.swift */; };
 		A24906E8255EB8440024A9F3 /* SettingsManager+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24906E7255EB8440024A9F3 /* SettingsManager+View.swift */; };
+		A28FDC9127884115004FFC3F /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28FDC9027884115004FFC3F /* ResultView.swift */; };
 		A2B1653F25DD6B5D008FF68A /* ViewfinderStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B1653E25DD6B5D008FF68A /* ViewfinderStyles.swift */; };
 		A2CC098C255E9D7600C2E3EA /* GesturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC098B255E9D7600C2E3EA /* GesturesTableViewController.swift */; };
 		A2CC098E255E9DE700C2E3EA /* GesturesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC098D255E9DE700C2E3EA /* GesturesDataSource.swift */; };
@@ -201,6 +202,7 @@
 		A24906E3255EB8360024A9F3 /* SettingsManager+BarcodeCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsManager+BarcodeCapture.swift"; sourceTree = "<group>"; };
 		A24906E5255EB83E0024A9F3 /* SettingsManager+Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsManager+Camera.swift"; sourceTree = "<group>"; };
 		A24906E7255EB8440024A9F3 /* SettingsManager+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsManager+View.swift"; sourceTree = "<group>"; };
+		A28FDC9027884115004FFC3F /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		A2B1653E25DD6B5D008FF68A /* ViewfinderStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewfinderStyles.swift; sourceTree = "<group>"; };
 		A2CC098B255E9D7600C2E3EA /* GesturesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesTableViewController.swift; sourceTree = "<group>"; };
 		A2CC098D255E9DE700C2E3EA /* GesturesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesDataSource.swift; sourceTree = "<group>"; };
@@ -263,8 +265,8 @@
 		6F144A1B222E92EA002C5C3E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				91A75B4A273C11B00051DEA2 /* Checksum+Extensions.swift */,
 				6F144A1C222E9EE7002C5C3E /* DataCaptureContext+Licensed.swift */,
+				91A75B4A273C11B00051DEA2 /* Checksum+Extensions.swift */,
 				6F144A29222FBEF2002C5C3E /* MeasureUnit+Extensions.swift */,
 				6F869D2D223161F900E20833 /* VideoResolution+Extensions.swift */,
 				6F869D2F22316EA700E20833 /* FocusRange+Extensions.swift */,
@@ -305,6 +307,7 @@
 				6F869D0B222FC83A00E20833 /* FloatInputCell.swift */,
 				6F869D352232624A00E20833 /* SliderCell */,
 				6F144A17222E90A5002C5C3E /* UITableView+Utils.swift */,
+				A28FDC9027884115004FFC3F /* ResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				A24906E2255EB19C0024A9F3 /* FocusGestureStrategy+Extensions.swift in Sources */,
 				655010FE25345B1E00DB4708 /* DuplicateFilterDataSource.swift in Sources */,
 				6F361E6022393AFE009744EF /* SymbologiesTableViewController.swift in Sources */,
+				A28FDC9127884115004FFC3F /* ResultView.swift in Sources */,
 				6F869D1122300A0C00E20833 /* SettingsManager.swift in Sources */,
 				6F361E6A22396026009744EF /* SymbologySettingsViewController.swift in Sources */,
 				6561015726F1D6BE00431290 /* LogoStyle+Extensions.swift in Sources */,

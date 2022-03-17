@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fC7-0T-rll">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Upw-lN-zIR">
+            <objects>
+                <navigationController id="fC7-0T-rll" customClass="NavigationController" customModule="ReorderFromCatalogueSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kEK-ph-9M8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Zcw-lM-obt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zJ-f2-4xV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-155" y="92"/>
+        </scene>
+        <!--ReorderFromCatalog-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ScanViewController" customModule="ReorderFromCatalogueSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ReorderFromCatalog" id="qcD-VA-5iR">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="list.bullet" catalog="system" id="ynU-TL-qzY">
+                            <connections>
+                                <segue destination="5ri-m3-Baq" kind="presentation" destinationCreationSelector="prepareForSegue:" modalPresentationStyle="fullScreen" id="lWG-YA-YQU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809" y="92"/>
+        </scene>
+        <!--Results-->
+        <scene sceneID="e9K-3u-vIi">
+            <objects>
+                <viewController title="Results" modalPresentationStyle="fullScreen" id="uwJ-DC-Eaw" customClass="ResultsViewController" customModule="ReorderFromCatalogueSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ig3-Xn-5H1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="goV-C4-Mgp">
+                                <rect key="frame" x="0.0" y="88" width="414" height="592"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLE-ls-slr" userLabel="Bottom Container View">
+                                <rect key="frame" x="0.0" y="680" width="414" height="216"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xl2-Sz-qgI">
+                                        <rect key="frame" x="32" y="32" width="350" height="118"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT5-BC-KES" userLabel="Resume Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="51"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="51" id="PUT-Nk-YJC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="RESUME SCANNING"/>
+                                                <connections>
+                                                    <action selector="resumeButtonTapped:" destination="uwJ-DC-Eaw" eventType="touchUpInside" id="g1c-AL-v49"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYU-tx-cAr" userLabel="Clear Button">
+                                                <rect key="frame" x="0.0" y="67" width="350" height="51"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="CLEAR LIST">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clearButtonTapped:" destination="uwJ-DC-Eaw" eventType="touchUpInside" id="CCI-m5-zDJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Xl2-Sz-qgI" firstAttribute="leading" secondItem="yLE-ls-slr" secondAttribute="leading" constant="32" id="6Ly-cS-Qb6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xl2-Sz-qgI" secondAttribute="trailing" constant="32" id="TGy-pg-0Ge"/>
+                                    <constraint firstItem="Xl2-Sz-qgI" firstAttribute="top" secondItem="yLE-ls-slr" secondAttribute="top" constant="32" id="zTr-pw-eWb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fdr-pC-6Iw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fdr-pC-6Iw" firstAttribute="bottom" secondItem="Xl2-Sz-qgI" secondAttribute="bottom" constant="32" id="ABr-qM-cId"/>
+                            <constraint firstItem="fdr-pC-6Iw" firstAttribute="trailing" secondItem="goV-C4-Mgp" secondAttribute="trailing" id="UE2-mq-zph"/>
+                            <constraint firstItem="goV-C4-Mgp" firstAttribute="top" secondItem="fdr-pC-6Iw" secondAttribute="top" id="Yhu-IC-q8I"/>
+                            <constraint firstItem="goV-C4-Mgp" firstAttribute="leading" secondItem="fdr-pC-6Iw" secondAttribute="leading" id="Z6n-Ax-h47"/>
+                            <constraint firstItem="yLE-ls-slr" firstAttribute="top" secondItem="goV-C4-Mgp" secondAttribute="bottom" id="ZcM-i9-PtX"/>
+                            <constraint firstAttribute="bottom" secondItem="yLE-ls-slr" secondAttribute="bottom" id="gX3-qN-9EM"/>
+                            <constraint firstItem="yLE-ls-slr" firstAttribute="leading" secondItem="fdr-pC-6Iw" secondAttribute="leading" id="sxG-5g-5ut"/>
+                            <constraint firstItem="fdr-pC-6Iw" firstAttribute="trailing" secondItem="yLE-ls-slr" secondAttribute="trailing" id="zTJ-Si-kz1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Items" id="lA3-u6-1cH">
+                        <barButtonItem key="rightBarButtonItem" title="Close" image="xmark" catalog="system" id="U4F-PG-2FD">
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="uwJ-DC-Eaw" id="Y6V-as-Hc5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomContainerView" destination="yLE-ls-slr" id="5RA-MP-PMI"/>
+                        <outlet property="clearButton" destination="UYU-tx-cAr" id="2Fh-mK-qmU"/>
+                        <outlet property="tableView" destination="goV-C4-Mgp" id="pMt-gp-MC6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6ER-5q-eXo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2732" y="92"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ufB-M2-js9">
+            <objects>
+                <navigationController id="5ri-m3-Baq" customClass="NavigationController" customModule="ReorderFromCatalogueSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hcy-Pv-6G8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uwJ-DC-Eaw" kind="relationship" relationship="rootViewController" id="rED-wB-cZn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yV8-gB-gH9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="92"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

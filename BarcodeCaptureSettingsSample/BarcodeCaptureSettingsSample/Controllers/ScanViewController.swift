@@ -38,6 +38,9 @@ class ScanViewController: UIViewController {
     private var captureView: DataCaptureView!
     private var overlay: BarcodeCaptureOverlay!
 
+    private var resultView: ResultView?
+    private var lastScan = NSDate()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecognition()
@@ -62,7 +65,7 @@ class ScanViewController: UIViewController {
         camera?.switch(toDesiredState: .off)
     }
 
-    func setupRecognition() {
+    private func setupRecognition() {
         // Register self as a listener to get informed whenever a new barcode got recognized.
         barcodeCapture.addListener(self)
 
@@ -75,23 +78,39 @@ class ScanViewController: UIViewController {
         SettingsManager.current.captureView = captureView
     }
 
+    private func setupResultViewIfNeeded() -> ResultView {
+        if let resultView = resultView {
+            return resultView
+        }
+        let resultView = ResultView()
+        resultView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(resultView)
+        NSLayoutConstraint.activate([
+            resultView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            resultView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
+        ])
+        self.resultView = resultView
+        return resultView
+    }
+
     private func showResult(_ result: [Barcode], completion: @escaping () -> Void) {
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async { [unowned self] in
             let result = Result(barcodes: result)
-            let alert = UIAlertController(title: "Scan Results", message: result.text, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                self?.dismiss(animated: true, completion: nil)
-                completion()
-            }))
-            self?.present(alert, animated: true, completion: {
-                if SettingsManager.current.isContinuousModeEnabled {
-                    let continuousModeDismissWorkItem = DispatchWorkItem(block: {
-                        self?.dismiss(animated: true, completion: completion)
-                    })
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Constants.shownDurationInContinuousMode,
-                                                  execute: continuousModeDismissWorkItem)
-                }
-            })
+            if SettingsManager.current.isContinuousModeEnabled {
+                let resultView = self.setupResultViewIfNeeded()
+                resultView.resultLabel.text = result.text
+                resultView.isHidden = false
+                self.lastScan = NSDate()
+            } else {
+                let alert = UIAlertController(title: "Scan Results", message: result.text, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                    self.dismiss(animated: true, completion: nil)
+                    completion()
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
 }
@@ -113,6 +132,16 @@ extension ScanViewController: BarcodeCaptureListener {
             if !SettingsManager.current.isContinuousModeEnabled {
                 // Enable recognizing barcodes when the result is not shown anymore.
                 barcodeCapture.isEnabled = true
+            }
+        }
+    }
+
+    func barcodeCapture(_ barcodeCapture: BarcodeCapture,
+                        didUpdate session: BarcodeCaptureSession,
+                        frameData: FrameData) {
+        DispatchQueue.main.async {
+            if -self.lastScan.timeIntervalSinceNow > Constants.shownDurationInContinuousMode {
+                self.resultView?.isHidden = true
             }
         }
     }

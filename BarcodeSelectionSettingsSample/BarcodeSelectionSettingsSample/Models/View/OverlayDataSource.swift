@@ -29,12 +29,28 @@ extension Brush {
     }
 }
 
-class OverlayDataSource: DataSource {
+private struct ColorWrapper: CustomStringConvertible {
+    let uicolor: UIColor
 
-    static let trackedBrushes = [BarcodeSelectionBasicOverlay.defaultTrackedBrush, Brush.scanditTrackedBrush]
-    static let aimedBrushes = [BarcodeSelectionBasicOverlay.defaultAimedBrush, Brush.scanditAimedBrush]
-    static let selectingBrushes = [BarcodeSelectionBasicOverlay.defaultSelectingBrush, Brush.scanditSelectingBrush]
-    static let selectedBrushes = [BarcodeSelectionBasicOverlay.defaultSelectedBrush, Brush.scanditSelectedBrush]
+    var description: String {
+        var alpha: CGFloat = 0.0
+        uicolor.getWhite(nil, alpha: &alpha)
+        if alpha == 0 {
+            return "Transparent"
+        }
+        // For simplicity, let's ignore the alpha.
+        switch uicolor.withAlphaComponent(1) {
+        case .scanditBlue:
+            return "Blue"
+        case .black:
+            return "Default"
+        default:
+            fatalError("Unhandled color")
+        }
+    }
+}
+
+class OverlayDataSource: DataSource {
 
     weak var delegate: DataSourceDelegate?
 
@@ -45,11 +61,11 @@ class OverlayDataSource: DataSource {
     // MARK: - Sections
 
     lazy var sections: [Section] = {
-        return [styles, brushes, hints]
+        [styles, brushes, frozenBackgroundColor, hints]
     }()
 
     lazy var styles: Section = {
-        return Section(rows: [
+        Section(rows: [
             Row.choice(title: "Style",
                        options: BarcodeSelectionBasicOverlayStyle.allCases,
                        getValue: { SettingsManager.current.overlayStyle },
@@ -59,32 +75,64 @@ class OverlayDataSource: DataSource {
     }()
 
     lazy var brushes: Section = {
+        let style = SettingsManager.current.overlayStyle
+        let trackedBrushes = [
+            BarcodeSelectionBasicOverlay.defaultTrackedBrush(forStyle: style),
+            Brush.scanditTrackedBrush
+        ]
+        let aimedBrushes = [
+            BarcodeSelectionBasicOverlay.defaultAimedBrush(forStyle: style),
+            Brush.scanditAimedBrush
+        ]
+        let selectingBrushes = [
+            BarcodeSelectionBasicOverlay.defaultSelectingBrush(forStyle: style),
+            Brush.scanditSelectingBrush
+        ]
+        let selectedBrushes = [
+            BarcodeSelectionBasicOverlay.defaultSelectedBrush(forStyle: style),
+            Brush.scanditSelectedBrush
+        ]
         return Section(rows: [
             Row.choice(title: "Tracked Brush",
-                       options: OverlayDataSource.trackedBrushes,
+                       options: trackedBrushes,
                        getValue: { SettingsManager.current.trackedBrush },
                        didChangeValue: { SettingsManager.current.trackedBrush = $0 },
                        dataSourceDelegate: self.delegate),
             Row.choice(title: "Aimed Brush",
-                       options: OverlayDataSource.aimedBrushes,
+                       options: aimedBrushes,
                        getValue: { SettingsManager.current.aimedBrush },
                        didChangeValue: { SettingsManager.current.aimedBrush = $0 },
                        dataSourceDelegate: self.delegate),
             Row.choice(title: "Selecting Brush",
-                       options: OverlayDataSource.selectingBrushes,
+                       options: selectingBrushes,
                        getValue: { SettingsManager.current.selectingBrush },
                        didChangeValue: { SettingsManager.current.selectingBrush = $0 },
                        dataSourceDelegate: self.delegate),
             Row.choice(title: "Selected Brush",
-                       options: OverlayDataSource.selectedBrushes,
+                       options: selectedBrushes,
                        getValue: { SettingsManager.current.selectedBrush },
                        didChangeValue: { SettingsManager.current.selectedBrush = $0 },
                        dataSourceDelegate: self.delegate)
         ])
     }()
 
+    private static let backgroundColors = [
+        ColorWrapper(uicolor: .black),
+        ColorWrapper(uicolor: .clear),
+        ColorWrapper(uicolor: .scanditBlue.withAlphaComponent(0.5))
+    ]
+    lazy var frozenBackgroundColor: Section = {
+        Section(rows: [
+            Row.choice(title: "Frozen Background Color",
+                       options: Self.backgroundColors,
+                       getValue: { ColorWrapper(uicolor: SettingsManager.current.frozenBackgroundColor) },
+                       didChangeValue: { SettingsManager.current.frozenBackgroundColor = $0.uicolor },
+                       dataSourceDelegate: self.delegate)
+        ])
+    }()
+
     lazy var hints: Section = {
-        return Section(rows: [
+        Section(rows: [
             Row(title: "Should Show Hints",
                 kind: .switch,
                 getValue: { SettingsManager.current.shouldShowHints },

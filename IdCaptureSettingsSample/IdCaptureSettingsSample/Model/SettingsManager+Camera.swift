@@ -59,26 +59,6 @@ extension SettingsManager {
         }
     }
 
-    var zoomFactor: CGFloat {
-        get {
-            return cameraSettings.zoomFactor
-        }
-        set {
-            cameraSettings.zoomFactor = newValue
-            camera?.apply(cameraSettings, completionHandler: nil)
-        }
-    }
-
-    var zoomGestureZoomFactor: CGFloat {
-        get {
-            return cameraSettings.zoomGestureZoomFactor
-        }
-        set {
-            cameraSettings.zoomGestureZoomFactor = newValue
-            camera?.apply(cameraSettings, completionHandler: nil)
-        }
-    }
-
     var focusGestureStrategy: FocusGestureStrategy {
         get {
             return cameraSettings.focusGestureStrategy

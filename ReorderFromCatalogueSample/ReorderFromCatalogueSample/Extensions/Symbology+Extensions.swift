@@ -12,24 +12,10 @@
  * limitations under the License.
  */
 
-import ScanditCaptureCore
+import ScanditBarcodeCapture
 
-class GesturesDataSource: DataSource {
-    weak var delegate: DataSourceDelegate?
-
-    init(delegate: DataSourceDelegate) {
-        self.delegate = delegate
+extension Symbology {
+    var readableName: String {
+        return SymbologyDescription(symbology: self).readableName
     }
-
-    // MARK: - Sections
-
-    lazy var sections: [Section] = {
-        return [
-            Section(rows: [
-                Row(title: "Tap to Focus",
-                    kind: .switch,
-                    getValue: { SettingsManager.current.tapToFocus },
-                    didChangeValue: { SettingsManager.current.tapToFocus = $0 })
-            ])]
-    }()
 }

@@ -69,6 +69,12 @@ extension DocumentType: CustomStringConvertible {
             return "Health Insurance Card"
         case .passport:
             return "Passport"
+        case .diplomaticPassport:
+            return "Diplomatic Passport"
+        case .servicePassport:
+            return "Service Passport"
+        case .temporaryPassport:
+            return "Temporary Passport"
         case .visa:
             return "Visa"
         case .sPass:

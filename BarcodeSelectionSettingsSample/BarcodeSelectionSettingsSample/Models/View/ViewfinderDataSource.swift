@@ -14,7 +14,7 @@
 
 import ScanditCaptureCore
 
-struct ColorWrapper: CustomStringConvertible {
+private struct ColorWrapper: CustomStringConvertible {
     let uicolor: UIColor
 
     var description: String {
@@ -30,8 +30,9 @@ struct ColorWrapper: CustomStringConvertible {
 }
 
 class ViewfinderDataSource: DataSource {
-    static let frameColors = [ColorWrapper(uicolor: .white), ColorWrapper(uicolor: .scanditBlue)]
-    static let dotColors = [ColorWrapper(uicolor: UIColor(white: 1, alpha: 0.7)), ColorWrapper(uicolor: .scanditBlue)]
+    private static let frameColors = [ColorWrapper(uicolor: .white), ColorWrapper(uicolor: .scanditBlue)]
+    private static let dotColors = [ColorWrapper(uicolor: UIColor(white: 1, alpha: 0.7)),
+                                    ColorWrapper(uicolor: .scanditBlue)]
 
     weak var delegate: DataSourceDelegate?
 
@@ -48,12 +49,12 @@ class ViewfinderDataSource: DataSource {
     lazy var colors: Section = {
         return Section(rows: [
             Row.choice(title: "Frame Color",
-                       options: ViewfinderDataSource.frameColors,
+                       options: Self.frameColors,
                        getValue: { ColorWrapper(uicolor: SettingsManager.current.frameColor) },
                        didChangeValue: { SettingsManager.current.frameColor = $0.uicolor },
                        dataSourceDelegate: self.delegate),
             Row.choice(title: "Dot Color",
-                       options: ViewfinderDataSource.dotColors,
+                       options: Self.dotColors,
                        getValue: { ColorWrapper(uicolor: SettingsManager.current.dotColor) },
                        didChangeValue: { SettingsManager.current.dotColor = $0.uicolor },
                        dataSourceDelegate: self.delegate)

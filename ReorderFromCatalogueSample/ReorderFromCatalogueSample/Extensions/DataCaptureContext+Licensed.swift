@@ -14,22 +14,11 @@
 
 import ScanditCaptureCore
 
-class GesturesDataSource: DataSource {
-    weak var delegate: DataSourceDelegate?
+extension DataCaptureContext {
+    private static let licenseKey = "-- ENTER YOUR SCANDIT LICENSE KEY HERE --"
 
-    init(delegate: DataSourceDelegate) {
-        self.delegate = delegate
+    // Get a licensed DataCaptureContext.
+    static var licensed: DataCaptureContext {
+        return DataCaptureContext(licenseKey: licenseKey)
     }
-
-    // MARK: - Sections
-
-    lazy var sections: [Section] = {
-        return [
-            Section(rows: [
-                Row(title: "Tap to Focus",
-                    kind: .switch,
-                    getValue: { SettingsManager.current.tapToFocus },
-                    didChangeValue: { SettingsManager.current.tapToFocus = $0 })
-            ])]
-    }()
 }

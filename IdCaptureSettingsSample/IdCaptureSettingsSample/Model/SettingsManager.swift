@@ -30,6 +30,9 @@ class SettingsManager {
             // of captured IDs on top of the video preview.
             // This is optional, but recommended for better visual feedback.
             overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
+
+            // Disable the zoom gesture
+            captureView.zoomGesture = nil
         }
     }
 

@@ -12,24 +12,15 @@
  * limitations under the License.
  */
 
-import ScanditCaptureCore
+import UIKit
 
-class GesturesDataSource: DataSource {
-    weak var delegate: DataSourceDelegate?
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    init(delegate: DataSourceDelegate) {
-        self.delegate = delegate
+    var window: UIWindow?
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        return true
     }
-
-    // MARK: - Sections
-
-    lazy var sections: [Section] = {
-        return [
-            Section(rows: [
-                Row(title: "Tap to Focus",
-                    kind: .switch,
-                    getValue: { SettingsManager.current.tapToFocus },
-                    didChangeValue: { SettingsManager.current.tapToFocus = $0 })
-            ])]
-    }()
 }

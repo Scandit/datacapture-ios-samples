@@ -15,7 +15,5 @@
 import ScanditCaptureCore
 
 struct Constants {
-    public static let sdkVersion: String = {
-        return Bundle(for: DataCaptureView.self).infoDictionary!["CFBundleShortVersionString"] as! String
-    }()
+    public static let sdkVersion = DataCaptureVersion.version()
 }

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-               BuildableName = "BarcodeSelectionSettingsSample.app"
-               BlueprintName = "BarcodeSelectionSettingsSample"
-               ReferencedContainer = "container:BarcodeSelectionSettingsSample.xcodeproj">
+               BuildableName = "ReorderFromCatalogueSample.app"
+               BlueprintName = "ReorderFromCatalogueSample"
+               ReferencedContainer = "container:ReorderFromCatalogueSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-            BuildableName = "BarcodeSelectionSettingsSample.app"
-            BlueprintName = "BarcodeSelectionSettingsSample"
-            ReferencedContainer = "container:BarcodeSelectionSettingsSample.xcodeproj">
+            BuildableName = "ReorderFromCatalogueSample.app"
+            BlueprintName = "ReorderFromCatalogueSample"
+            ReferencedContainer = "container:ReorderFromCatalogueSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-            BuildableName = "BarcodeSelectionSettingsSample.app"
-            BlueprintName = "BarcodeSelectionSettingsSample"
-            ReferencedContainer = "container:BarcodeSelectionSettingsSample.xcodeproj">
+            BuildableName = "ReorderFromCatalogueSample.app"
+            BlueprintName = "ReorderFromCatalogueSample"
+            ReferencedContainer = "container:ReorderFromCatalogueSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

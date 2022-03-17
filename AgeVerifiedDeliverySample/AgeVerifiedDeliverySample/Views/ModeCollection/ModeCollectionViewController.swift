@@ -36,7 +36,7 @@ final class ModeCollectionViewController: UICollectionViewController {
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         collectionView.backgroundColor = nil
         view.backgroundColor = UIColor(red: 27/255, green: 32/255, blue: 38/255, alpha: 1)
     }

@@ -46,13 +46,4 @@ extension SettingsManager {
             captureView.focusGesture = newValue ? TapToFocus() : nil
         }
     }
-
-    var swipeToZoom: Bool {
-        get {
-            return captureView.zoomGesture != nil
-        }
-        set {
-            captureView.zoomGesture = newValue ? SwipeToZoom() : nil
-        }
-    }
 }

@@ -58,11 +58,14 @@ class ScanViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        // Switch camera off to stop streaming frames. The camera is stopped asynchronously and will take some time to
-        // completely turn off. Until it is completely stopped, it is still possible to receive further results, hence
-        // it's a good idea to first disable barcode tracking as well.
-        barcodeSelection.isEnabled = false
+        // Switch camera off to stop streaming frames.
         camera?.switch(toDesiredState: .off)
+    }
+
+    deinit {
+        // It is good practice to properly disable the mode.
+        barcodeSelection.isEnabled = false
+        barcodeSelection.removeListener(self)
     }
 
     private func setupRecognition() {

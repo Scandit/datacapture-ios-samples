@@ -291,6 +291,15 @@ class SettingsManager {
         }
     }
 
+    var frozenBackgroundColor: UIColor {
+        get {
+            overlay.frozenBackgroundColor
+        }
+        set {
+            overlay.frozenBackgroundColor = newValue
+        }
+    }
+
     var shouldShowHints: Bool {
         get {
             overlay.shouldShowHints

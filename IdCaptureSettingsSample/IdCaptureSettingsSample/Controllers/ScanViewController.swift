@@ -36,23 +36,9 @@ class ScanViewController: UIViewController {
     }
 
     private var isScanningBackSide: Bool = false
+    private var dismissResultTimer: Timer?
 
-    lazy var resultLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.backgroundColor = UIColor(white: 0, alpha: 0.1)
-        label.textColor = .white
-        label.textAlignment = .center
-        view.addSubview(label)
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8)
-        ])
-        return label
-    }()
-    var dismissResultTimer: Timer?
+    private lazy var resultLabel: UILabel = makeResultLabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,71 +99,65 @@ class ScanViewController: UIViewController {
         idCapture.reset()
     }
 
-    private func displayBackOfCardAlert(capturedId: CapturedId) {
+    private func shouldSuggestBackSideCapture(for capturedId: CapturedId) -> Bool {
+        guard let vizResult = capturedId.vizResult else { return false }
+
+        return vizResult.isBackSideCaptureSupported && vizResult.capturedSides == .frontOnly
+    }
+
+    private func suggestBackSideCapture(onConfirm: @escaping () -> Void, onReject: @escaping () -> Void) {
         let message = "This documents has additional data in the visual inspection zone on the back of the card"
         let alertController = UIAlertController(title: "Back of Card",
                                                 message: message,
                                                 preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Scan",
-                                                style: .default,
-                                                handler: { _ in
-                                                    self.isScanningBackSide = true
-                                                    self.idCapture.isEnabled = true
-                                                }))
-        alertController.addAction(UIAlertAction(title: "Skip",
-                                                style: .cancel,
-                                                handler: { _ in
-                                                    self.display(capturedId: capturedId)
-                                                }))
+        [ UIAlertAction(title: "Scan", style: .default, handler: { _ in onConfirm() }),
+          UIAlertAction(title: "Skip", style: .cancel, handler: { _ in onReject() }) ]
+            .forEach(alertController.addAction)
 
         present(alertController, animated: true, completion: nil)
     }
 }
 
 extension ScanViewController: IdCaptureListener {
-
     func idCapture(_ idCapture: IdCapture, didCaptureIn session: IdCaptureSession, frameData: FrameData) {
-        guard let capturedId = session.newlyCapturedId else {
-            return
-        }
+        guard let capturedId = session.newlyCapturedId else { return }
 
         // Pause the idCapture to not capture while showing the result.
         idCapture.isEnabled = false
 
-        // Viz documents support multiple sides scanning.
-        // In case the back side is supported and not yet captured we inform the user about the feature.
-        if let vizResult = capturedId.vizResult,
-           vizResult.isBackSideCaptureSupported,
-           vizResult.capturedSides == .frontOnly {
-
-            // Until the back side is scanned, IdCapture will keep reporting the front side.
-            // Here if we are looking for the back side we just return.
-            guard !isScanningBackSide else {
-                idCapture.isEnabled = true
-                return
+        if !isScanningBackSide && shouldSuggestBackSideCapture(for: capturedId) {
+            DispatchQueue.main.async { [unowned self] in
+                suggestBackSideCapture(onConfirm: { [unowned self] in
+                    idCapture.isEnabled = true
+                    isScanningBackSide = true
+                }, onReject: { [unowned self] in
+                    idCapture.isEnabled = true
+                    isScanningBackSide = false
+                    display(capturedId: capturedId)
+                })
             }
-            DispatchQueue.main.async {
-                self.displayBackOfCardAlert(capturedId: capturedId)
+        } else {
+            DispatchQueue.main.async { [unowned self] in
+                display(capturedId: capturedId)
             }
-
-            return
-        }
-
-        // Show the result
-        DispatchQueue.main.async {
-            if SettingsManager.current.isContinuousModeEnabled {
-                idCapture.isEnabled = true
-            }
-            self.display(capturedId: capturedId)
         }
     }
+}
 
-    func idCapture(_ idCapture: IdCapture,
-                   didFailWithError error: Error,
-                   session: IdCaptureSession,
-                   frameData: FrameData) {
-
-        // Implement to handle an error encountered during the capture process.
-        // The error message can be retrieved from the Error localizedDescription.
+extension ScanViewController {
+    func makeResultLabel() -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        label.textColor = .white
+        label.textAlignment = .center
+        view.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8)
+        ])
+        return label
     }
 }

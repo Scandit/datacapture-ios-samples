@@ -12,7 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Upw-lN-zIR">
             <objects>
-                <navigationController id="fC7-0T-rll" customClass="NavigationController" customModule="ReorderFromCatalogueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="fC7-0T-rll" customClass="NavigationController" customModule="ReorderFromCatalogSample" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kEK-ph-9M8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -28,7 +28,7 @@
         <!--ReorderFromCatalog-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ScanViewController" customModule="ReorderFromCatalogueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ScanViewController" customModule="ReorderFromCatalogSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
         <!--Results-->
         <scene sceneID="e9K-3u-vIi">
             <objects>
-                <viewController title="Results" modalPresentationStyle="fullScreen" id="uwJ-DC-Eaw" customClass="ResultsViewController" customModule="ReorderFromCatalogueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Results" modalPresentationStyle="fullScreen" id="uwJ-DC-Eaw" customClass="ResultsViewController" customModule="ReorderFromCatalogSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ig3-Xn-5H1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +136,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ufB-M2-js9">
             <objects>
-                <navigationController id="5ri-m3-Baq" customClass="NavigationController" customModule="ReorderFromCatalogueSample" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="5ri-m3-Baq" customClass="NavigationController" customModule="ReorderFromCatalogSample" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hcy-Pv-6G8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -43,7 +43,6 @@ class SettingsManager {
     var overlay: BarcodeCaptureOverlay!
 
     var internalCamera: Camera? = Camera.default
-    var internalTorchState: TorchState = .off
     // Use the recommended camera settings for the BarcodeCapture mode.
     var cameraSettings: CameraSettings = BarcodeCapture.recommendedCameraSettings
     var internalTorchSwitch: TorchSwitchControl = TorchSwitchControl()
@@ -72,7 +71,7 @@ class SettingsManager {
 
         // Make sure that references to some settings are actually the current settings
         internalCamera?.apply(cameraSettings, completionHandler: nil)
-        internalCamera?.desiredTorchState = internalTorchState
+        internalCamera?.desiredTorchState =  .off
 
         context.addListener(settingsManagerProxyListener)
     }

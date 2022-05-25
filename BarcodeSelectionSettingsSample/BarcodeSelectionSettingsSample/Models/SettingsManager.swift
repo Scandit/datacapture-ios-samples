@@ -22,7 +22,9 @@ class SettingsManager {
     var barcodeSelection: BarcodeSelection
     var captureView: DataCaptureView! {
         didSet {
-            overlay = BarcodeSelectionBasicOverlay(barcodeSelection: barcodeSelection, view: captureView)
+            overlay = BarcodeSelectionBasicOverlay(barcodeSelection: barcodeSelection,
+                                                   view: captureView,
+                                                   style: overlayStyle)
         }
     }
 
@@ -49,12 +51,6 @@ class SettingsManager {
         // Make sure that references to some settings are actually the current settings
         internalCamera?.apply(cameraSettings, completionHandler: nil)
         internalCamera?.desiredTorchState = internalTorchState
-    }
-
-    // MARK: - Clear Session
-
-    func resetSession() {
-        barcodeSelection.reset()
     }
 
     // MARK: - Barcode Selection
@@ -255,39 +251,44 @@ class SettingsManager {
 
     // MARK: Overlay
 
+    var trackedBrushStyle: Brush.Style = .default
+    var aimedBrushStyle: Brush.Style = .default
+    var selectingBrushStyle: Brush.Style = .default
+    var selectedBrushStyle: Brush.Style = .default
+
     var trackedBrush: Brush {
-        get {
-            overlay.trackedBrush
-        }
-        set {
-            overlay.trackedBrush = newValue
+        switch trackedBrushStyle {
+        case .default:
+            return BarcodeSelectionBasicOverlay.defaultTrackedBrush(forStyle: overlayStyle)
+        case .blue:
+            return Brush.scanditTrackedBrush(for: overlayStyle)
         }
     }
 
     var aimedBrush: Brush {
-        get {
-            overlay.aimedBrush
-        }
-        set {
-            overlay.aimedBrush = newValue
+        switch aimedBrushStyle {
+        case .default:
+            return BarcodeSelectionBasicOverlay.defaultAimedBrush(forStyle: overlayStyle)
+        case .blue:
+            return Brush.scanditAimedBrush(for: overlayStyle)
         }
     }
 
     var selectingBrush: Brush {
-        get {
-            overlay.selectingBrush
-        }
-        set {
-            overlay.selectingBrush = newValue
+        switch selectingBrushStyle {
+        case .default:
+            return BarcodeSelectionBasicOverlay.defaultSelectingBrush(forStyle: overlayStyle)
+        case .blue:
+            return Brush.scanditSelectingBrush(for: overlayStyle)
         }
     }
 
     var selectedBrush: Brush {
-        get {
-            overlay.selectedBrush
-        }
-        set {
-            overlay.selectedBrush = newValue
+        switch selectedBrushStyle {
+        case .default:
+            return BarcodeSelectionBasicOverlay.defaultSelectedBrush(forStyle: overlayStyle)
+        case .blue:
+            return Brush.scanditSelectedBrush(for: overlayStyle)
         }
     }
 
@@ -339,12 +340,26 @@ class SettingsManager {
         }
     }
 
-    var overlayStyle: BarcodeSelectionBasicOverlayStyle = .frame {
-        didSet {
-            captureView.removeOverlay(overlay)
-            overlay = BarcodeSelectionBasicOverlay(barcodeSelection: barcodeSelection,
-                                            view: captureView,
-                                            style: overlayStyle)
+    var overlayStyle: BarcodeSelectionBasicOverlayStyle = .frame
+
+    func createAndSetupBarcodeSelectionBasicOverlay() {
+        captureView.removeOverlay(overlay)
+        let newOverlay = BarcodeSelectionBasicOverlay(barcodeSelection: barcodeSelection,
+                                        view: captureView,
+                                        style: overlayStyle)
+        newOverlay.shouldShowScanAreaGuides = shouldShowScanAreaGuides
+        newOverlay.trackedBrush = trackedBrush
+        newOverlay.aimedBrush = aimedBrush
+        newOverlay.selectedBrush = selectedBrush
+        newOverlay.selectingBrush = selectingBrush
+        newOverlay.frozenBackgroundColor = frozenBackgroundColor
+        newOverlay.shouldShowHints = shouldShowHints
+        if let aimerViewfinder = newOverlay.viewfinder as? AimerViewfinder {
+            aimerViewfinder.frameColor = frameColor
         }
+        if let aimerViewfinder = newOverlay.viewfinder as? AimerViewfinder {
+            aimerViewfinder.dotColor = dotColor
+        }
+        overlay = newOverlay
     }
 }

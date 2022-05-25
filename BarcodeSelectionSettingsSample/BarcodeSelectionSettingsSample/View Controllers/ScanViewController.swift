@@ -53,12 +53,15 @@ class ScanViewController: UIViewController {
         // completely turn on.
         barcodeSelection.isEnabled = true
         camera?.switch(toDesiredState: .on)
+        // When returning from the settings screen, update overlay accordingly.
+        SettingsManager.current.createAndSetupBarcodeSelectionBasicOverlay()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Switch camera off to stop streaming frames.
+        barcodeSelection.isEnabled = false
         camera?.switch(toDesiredState: .off)
     }
 
@@ -76,6 +79,8 @@ class ScanViewController: UIViewController {
         // camera preview. The view must be connected to the data capture context.
         captureView = DataCaptureView(context: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        // Disable the zoom gesture.
+        captureView.zoomGesture = nil
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)
         SettingsManager.current.captureView = captureView

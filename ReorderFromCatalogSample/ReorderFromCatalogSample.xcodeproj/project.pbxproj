@@ -54,7 +54,7 @@
 		65A7988225C04E940032289B /* ScanditCaptureCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditCaptureCore.xcframework; sourceTree = "<group>"; };
 		A26BB4CF254725690088CCF9 /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		A26BB4D0254725690088CCF9 /* ResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
-		A2C45795253DD3450032DD4D /* ReorderFromCatalogueSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReorderFromCatalogueSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2C45795253DD3450032DD4D /* ReorderFromCatalogSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReorderFromCatalogSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45798253DD3450032DD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2C4579C253DD3450032DD4D /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		A2C4579F253DD3450032DD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				65203C982577F8F5006246C6 /* Configuration */,
-				A2C45797253DD3450032DD4D /* ReorderFromCatalogueSample */,
+				A2C45797253DD3450032DD4D /* ReorderFromCatalogSample */,
 				A2C457B3253F12010032DD4D /* Frameworks */,
 				A2C45796253DD3450032DD4D /* Products */,
 			);
@@ -118,12 +118,12 @@
 		A2C45796253DD3450032DD4D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A2C45795253DD3450032DD4D /* ReorderFromCatalogueSample.app */,
+				A2C45795253DD3450032DD4D /* ReorderFromCatalogSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A2C45797253DD3450032DD4D /* ReorderFromCatalogueSample */ = {
+		A2C45797253DD3450032DD4D /* ReorderFromCatalogSample */ = {
 			isa = PBXGroup;
 			children = (
 				A2C45798253DD3450032DD4D /* AppDelegate.swift */,
@@ -134,7 +134,7 @@
 				A2C457A1253DD3460032DD4D /* Assets.xcassets */,
 				A2C457A6253DD3460032DD4D /* Info.plist */,
 			);
-			path = ReorderFromCatalogueSample;
+			path = ReorderFromCatalogSample;
 			sourceTree = "<group>";
 		};
 		A2C457B3253F12010032DD4D /* Frameworks */ = {
@@ -169,9 +169,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A2C45794253DD3450032DD4D /* ReorderFromCatalogueSample */ = {
+		A2C45794253DD3450032DD4D /* ReorderFromCatalogSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A2C457A9253DD3460032DD4D /* Build configuration list for PBXNativeTarget "ReorderFromCatalogueSample" */;
+			buildConfigurationList = A2C457A9253DD3460032DD4D /* Build configuration list for PBXNativeTarget "ReorderFromCatalogSample" */;
 			buildPhases = (
 				A2C45791253DD3450032DD4D /* Sources */,
 				A2C45792253DD3450032DD4D /* Frameworks */,
@@ -182,9 +182,9 @@
 			);
 			dependencies = (
 			);
-			name = ReorderFromCatalogueSample;
+			name = ReorderFromCatalogSample;
 			productName = BarcodeSelectionSettingsSample;
-			productReference = A2C45795253DD3450032DD4D /* ReorderFromCatalogueSample.app */;
+			productReference = A2C45795253DD3450032DD4D /* ReorderFromCatalogSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -202,7 +202,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A2C45790253DD3450032DD4D /* Build configuration list for PBXProject "ReorderFromCatalogueSample" */;
+			buildConfigurationList = A2C45790253DD3450032DD4D /* Build configuration list for PBXProject "ReorderFromCatalogSample" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -215,7 +215,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A2C45794253DD3450032DD4D /* ReorderFromCatalogueSample */,
+				A2C45794253DD3450032DD4D /* ReorderFromCatalogSample */,
 			);
 		};
 /* End PBXProject section */
@@ -403,13 +403,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
-				INFOPLIST_FILE = "$(SRCROOT)/ReorderFromCatalogueSample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ReorderFromCatalogSample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.ReorderFromCatalogueSample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.ReorderFromCatalogSample${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -430,13 +430,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
-				INFOPLIST_FILE = "$(SRCROOT)/ReorderFromCatalogueSample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ReorderFromCatalogSample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.ReorderFromCatalogueSample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.ReorderFromCatalogSample${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -448,7 +448,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A2C45790253DD3450032DD4D /* Build configuration list for PBXProject "ReorderFromCatalogueSample" */ = {
+		A2C45790253DD3450032DD4D /* Build configuration list for PBXProject "ReorderFromCatalogSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2C457A7253DD3460032DD4D /* Debug */,
@@ -457,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A2C457A9253DD3460032DD4D /* Build configuration list for PBXNativeTarget "ReorderFromCatalogueSample" */ = {
+		A2C457A9253DD3460032DD4D /* Build configuration list for PBXNativeTarget "ReorderFromCatalogSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2C457AA253DD3460032DD4D /* Debug */,

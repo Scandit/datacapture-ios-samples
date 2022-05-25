@@ -21,7 +21,7 @@ extension CapturedResultType: Hashable, CaseIterable {
 
     public static var allCases: [CapturedResultType] {
         return [.aamvaBarcodeResult, .argentinaIdBarcodeResult,
-                .colombiaIdBarcodeResult, .mrzResult,
+                .colombiaIdBarcodeResult, .colombiaDlBarcodeResult, .mrzResult,
                 .southAfricaDLBarcodeResult, .southAfricaIdBarcodeResult,
                 .usUniformedServicesBarcodeResult, .vizResult]
     }
@@ -83,6 +83,7 @@ struct ResultPresenterFactory {
         return [.aamvaBarcodeResult: AAMVABarcodeResultPresenter.self,
                 .argentinaIdBarcodeResult: ArgentinaIdResultPresenter.self,
                 .colombiaIdBarcodeResult: ColombiaIdBarcodeResultPresenter.self,
+                .colombiaDlBarcodeResult: ColombiaDlBarcodeResultPresenter.self,
                 .mrzResult: MRZResultPresenter.self,
                 .southAfricaDLBarcodeResult: SouthAfricaDLResultPresenter.self,
                 .southAfricaIdBarcodeResult: SouthAfricaIdResultPresenter.self,

@@ -111,6 +111,10 @@ class ScanViewController: UIViewController {
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)
+        // Disable the zoom gesture.
+        captureView.zoomGesture = nil
+        // Disable the focus gesture.
+        captureView.focusGesture = nil
 
         // Add a barcode capture overlay to the data capture view to render the location of captured barcodes on top of
         // the video preview. This is optional, but recommended for better visual feedback.

@@ -15,16 +15,56 @@
 import ScanditBarcodeCapture
 
 extension Brush {
-    static let scanditTrackedBrush = Brush(fill: .clear, stroke: .scanditBlue, strokeWidth: 3)
-    static let scanditAimedBrush = Brush(fill: .scanditBlue, stroke: .clear, strokeWidth: 3)
-    static let scanditSelectingBrush = Brush(fill: UIColor.clear, stroke: .scanditBlue, strokeWidth: 3)
-    static let scanditSelectedBrush = Brush(fill: UIColor.clear, stroke: .scanditBlue, strokeWidth: 3)
+    enum Style: CaseIterable, CustomStringConvertible {
+        case `default`
+        case blue
 
-    open override var description: String {
-        if strokeColor ~= .scanditBlue || fillColor ~= .scanditBlue {
-            return "Blue"
-        } else {
-            return "Default"
+        var description: String {
+            switch self {
+            case .default:
+                return "Default"
+            case .blue:
+                return "Blue"
+            }
+        }
+    }
+
+    private static let scanditFilledBrush = Brush(fill: .scanditBlue, stroke: .clear, strokeWidth: 0)
+    private static let scanditUnfilledBrush = Brush(fill: .clear, stroke: .scanditBlue, strokeWidth: 3)
+
+    static func scanditTrackedBrush(for overlayStyle: BarcodeSelectionBasicOverlayStyle) -> Brush {
+        switch overlayStyle {
+        case .frame:
+            return scanditUnfilledBrush
+        case .dot:
+            return scanditFilledBrush
+        }
+    }
+
+    static func scanditAimedBrush(for overlayStyle: BarcodeSelectionBasicOverlayStyle) -> Brush {
+        switch overlayStyle {
+        case .frame:
+            return scanditFilledBrush
+        case .dot:
+            return scanditFilledBrush
+        }
+    }
+
+    static func scanditSelectingBrush(for overlayStyle: BarcodeSelectionBasicOverlayStyle) -> Brush {
+        switch overlayStyle {
+        case .frame:
+            return scanditUnfilledBrush
+        case .dot:
+            return scanditFilledBrush
+        }
+    }
+
+    static func scanditSelectedBrush(for overlayStyle: BarcodeSelectionBasicOverlayStyle) -> Brush {
+        switch overlayStyle {
+        case .frame:
+            return scanditUnfilledBrush
+        case .dot:
+            return scanditFilledBrush
         }
     }
 }
@@ -75,49 +115,32 @@ class OverlayDataSource: DataSource {
     }()
 
     lazy var brushes: Section = {
-        let style = SettingsManager.current.overlayStyle
-        let trackedBrushes = [
-            BarcodeSelectionBasicOverlay.defaultTrackedBrush(forStyle: style),
-            Brush.scanditTrackedBrush
-        ]
-        let aimedBrushes = [
-            BarcodeSelectionBasicOverlay.defaultAimedBrush(forStyle: style),
-            Brush.scanditAimedBrush
-        ]
-        let selectingBrushes = [
-            BarcodeSelectionBasicOverlay.defaultSelectingBrush(forStyle: style),
-            Brush.scanditSelectingBrush
-        ]
-        let selectedBrushes = [
-            BarcodeSelectionBasicOverlay.defaultSelectedBrush(forStyle: style),
-            Brush.scanditSelectedBrush
-        ]
         return Section(rows: [
             Row.choice(title: "Tracked Brush",
-                       options: trackedBrushes,
-                       getValue: { SettingsManager.current.trackedBrush },
-                       didChangeValue: { SettingsManager.current.trackedBrush = $0 },
+                       options: Brush.Style.allCases,
+                       getValue: { SettingsManager.current.trackedBrushStyle },
+                       didChangeValue: { SettingsManager.current.trackedBrushStyle = $0 },
                        dataSourceDelegate: self.delegate),
             Row.choice(title: "Aimed Brush",
-                       options: aimedBrushes,
-                       getValue: { SettingsManager.current.aimedBrush },
-                       didChangeValue: { SettingsManager.current.aimedBrush = $0 },
+                       options: Brush.Style.allCases,
+                       getValue: { SettingsManager.current.aimedBrushStyle },
+                       didChangeValue: { SettingsManager.current.aimedBrushStyle = $0 },
                        dataSourceDelegate: self.delegate),
             Row.choice(title: "Selecting Brush",
-                       options: selectingBrushes,
-                       getValue: { SettingsManager.current.selectingBrush },
-                       didChangeValue: { SettingsManager.current.selectingBrush = $0 },
+                       options: Brush.Style.allCases,
+                       getValue: { SettingsManager.current.selectingBrushStyle },
+                       didChangeValue: { SettingsManager.current.selectingBrushStyle = $0 },
                        dataSourceDelegate: self.delegate),
             Row.choice(title: "Selected Brush",
-                       options: selectedBrushes,
-                       getValue: { SettingsManager.current.selectedBrush },
-                       didChangeValue: { SettingsManager.current.selectedBrush = $0 },
+                       options: Brush.Style.allCases,
+                       getValue: { SettingsManager.current.selectedBrushStyle },
+                       didChangeValue: { SettingsManager.current.selectedBrushStyle = $0 },
                        dataSourceDelegate: self.delegate)
         ])
     }()
 
     private static let backgroundColors = [
-        ColorWrapper(uicolor: .black),
+        ColorWrapper(uicolor: .black.withAlphaComponent(0.5)),
         ColorWrapper(uicolor: .clear),
         ColorWrapper(uicolor: .scanditBlue.withAlphaComponent(0.5))
     ]

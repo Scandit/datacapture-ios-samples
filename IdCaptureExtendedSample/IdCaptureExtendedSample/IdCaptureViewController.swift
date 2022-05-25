@@ -138,7 +138,7 @@ class IdCaptureViewController: UIViewController {
     }
 
     private func configureBarcodeMode(settings: IdCaptureSettings) {
-        settings.supportedDocuments = [.aamvaBarcode, .argentinaIdBarcode, .colombiaIdBarcode,
+        settings.supportedDocuments = [.aamvaBarcode, .argentinaIdBarcode, .colombiaIdBarcode, .colombiaDlBarcode,
                                        .southAfricaDLBarcode, .southAfricaIdBarcode, .ususIdBarcode]
     }
 

@@ -75,7 +75,8 @@ class IdCaptureViewController: UIViewController {
 
         // We are interested in the front side of national Id Cards and passports using MRZ.
         idCaptureSettings.supportedDocuments = [.idCardVIZ, .dlVIZ, .aamvaBarcode, .argentinaIdBarcode,
-                                       .colombiaIdBarcode, .southAfricaDLBarcode, .southAfricaIdBarcode, .ususIdBarcode]
+                                       .colombiaDlBarcode, .colombiaIdBarcode, .southAfricaDLBarcode,
+                                       .southAfricaIdBarcode, .ususIdBarcode]
 
         // Create new id capture mode with the chosen settings.
         idCapture = IdCapture(context: context, settings: idCaptureSettings)

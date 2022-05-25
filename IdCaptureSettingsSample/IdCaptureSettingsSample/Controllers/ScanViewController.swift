@@ -102,7 +102,7 @@ class ScanViewController: UIViewController {
     private func shouldSuggestBackSideCapture(for capturedId: CapturedId) -> Bool {
         guard let vizResult = capturedId.vizResult else { return false }
 
-        return vizResult.isBackSideCaptureSupported && vizResult.capturedSides == .frontOnly
+        return SettingsManager.current.supportedSides == .frontAndBack && vizResult.capturedSides == .frontOnly
     }
 
     private func suggestBackSideCapture(onConfirm: @escaping () -> Void, onReject: @escaping () -> Void) {

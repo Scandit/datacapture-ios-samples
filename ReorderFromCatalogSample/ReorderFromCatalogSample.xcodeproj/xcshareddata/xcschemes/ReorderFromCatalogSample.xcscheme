@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-               BuildableName = "ReorderFromCatalogueSample.app"
-               BlueprintName = "ReorderFromCatalogueSample"
-               ReferencedContainer = "container:ReorderFromCatalogueSample.xcodeproj">
+               BuildableName = "ReorderFromCatalogSample.app"
+               BlueprintName = "ReorderFromCatalogSample"
+               ReferencedContainer = "container:ReorderFromCatalogSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-            BuildableName = "ReorderFromCatalogueSample.app"
-            BlueprintName = "ReorderFromCatalogueSample"
-            ReferencedContainer = "container:ReorderFromCatalogueSample.xcodeproj">
+            BuildableName = "ReorderFromCatalogSample.app"
+            BlueprintName = "ReorderFromCatalogSample"
+            ReferencedContainer = "container:ReorderFromCatalogSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-            BuildableName = "ReorderFromCatalogueSample.app"
-            BlueprintName = "ReorderFromCatalogueSample"
-            ReferencedContainer = "container:ReorderFromCatalogueSample.xcodeproj">
+            BuildableName = "ReorderFromCatalogSample.app"
+            BlueprintName = "ReorderFromCatalogSample"
+            ReferencedContainer = "container:ReorderFromCatalogSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

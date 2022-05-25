@@ -35,6 +35,8 @@ extension IdDocumentType: CustomStringConvertible {
             return "Visa MRZ"
         case .argentinaIdBarcode:
             return "Argentina ID Barcode"
+        case .colombiaDlBarcode:
+            return "Colombia DL Barcode"
         case .colombiaIdBarcode:
             return "Colombia ID Barcode"
         case .southAfricaDLBarcode:

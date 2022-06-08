@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     private enum DocumentType: String, CaseIterable {
 
         case drivingLicense = "Driver's License"
-        case passport = "Passport / Visa"
+        case passport = "Passport"
 
         var documentType: IdDocumentType {
             switch self {

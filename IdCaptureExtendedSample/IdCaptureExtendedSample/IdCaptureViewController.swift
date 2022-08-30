@@ -138,8 +138,15 @@ class IdCaptureViewController: UIViewController {
     }
 
     private func configureBarcodeMode(settings: IdCaptureSettings) {
-        settings.supportedDocuments = [.aamvaBarcode, .argentinaIdBarcode, .colombiaIdBarcode, .colombiaDlBarcode,
-                                       .southAfricaDLBarcode, .southAfricaIdBarcode, .ususIdBarcode]
+        settings.supportedDocuments = [
+            .aamvaBarcode,
+            .argentinaIdBarcode,
+            .colombiaIdBarcode,
+            .colombiaDlBarcode,
+            .southAfricaDLBarcode,
+            .southAfricaIdBarcode,
+            .ususIdBarcode
+        ]
     }
 
     private func configureVIZMode(settings: IdCaptureSettings) {
@@ -151,7 +158,14 @@ class IdCaptureViewController: UIViewController {
     }
 
     private func configureMRZMode(settings: IdCaptureSettings) {
-        settings.supportedDocuments = [.visaMRZ, .passportMRZ, .idCardMRZ, .swissDLMRZ]
+        settings.supportedDocuments = [
+            .visaMRZ,
+            .passportMRZ,
+            .idCardMRZ,
+            .swissDLMRZ,
+            .chinaExitEntryPermitMRZ,
+            .chinaMainlandTravelPermitMRZ
+        ]
     }
 }
 

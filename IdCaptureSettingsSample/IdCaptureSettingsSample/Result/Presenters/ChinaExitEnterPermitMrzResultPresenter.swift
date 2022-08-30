@@ -13,21 +13,22 @@
  */
 
 import ScanditIdCapture
-import UIKit
 
-class ColombiaDlBarcodeResultPresenter: ResultPresenter {
+final class ChinaExitEnterPermitMrzResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultTypes.contains(.colombiaDlBarcodeResult))
-        guard let result = capturedId.colombiaDlBarcodeResult else {
-            fatalError("Unexpected null ColombiaDlBarcodeResult")
+        assert(capturedId.capturedResultTypes.contains(.chinaExitEntryPermitMrzResult))
+        guard let result = capturedId.chinaExitEntryPermitMrzResult else {
+            fatalError("Unexpected null ChinaExitEnterPermitMrzResult")
         }
+
         let commonRows = Self.getCommonRows(for: capturedId)
         let specificRows: [CellProvider] = [
-            SimpleTextCellProvider(value: result.categories.joined(separator: ", "), title: "Categories"),
-            SimpleTextCellProvider(value: result.identificationType, title: "Identification Type")
+            SimpleTextCellProvider(value: result.documentCode, title: "Document Code"),
+            SimpleTextCellProvider(value: result.capturedMrz, title: "Captured MRZ")
         ]
-        self.rows = commonRows + specificRows
+
+        rows = commonRows + specificRows
     }
 }

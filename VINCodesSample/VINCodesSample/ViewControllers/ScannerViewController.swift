@@ -216,8 +216,8 @@ class ScannerViewController: UIViewController {
             parsedFields.append(ParsedField(key: "Standard", value: standard))
 
             guard (standard == "northAmerica" && passedChecksum) || standard != "northAmerica" else {
-                showMessage("Invalid Checksum") {
-                    [weak self] in self?.resumeScanning()
+                showMessage("Invalid Checksum") { [weak self] in
+                    self?.resumeScanning()
                 }
                 return
             }

@@ -49,9 +49,16 @@ class ScanViewController: UIViewController {
         super.viewWillAppear(animated)
 
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
-        // completely turn on.
-        idCapture.isEnabled = true
+        // completely turn on. We want to display camera frames as soon as the view moves to the window. That's why
+        // this call is made in `viewWillAppear` call.
         camera?.switch(toDesiredState: .on)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Enable IdCapture to start capture process.
+        idCapture.isEnabled = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,6 +95,7 @@ class ScanViewController: UIViewController {
             dismissResultTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
                 self.resultLabel.isHidden = true
             })
+            idCapture.isEnabled = true
         } else {
             resultLabel.isHidden = true
             let detail = ResultViewController(capturedId: capturedId)
@@ -96,7 +104,6 @@ class ScanViewController: UIViewController {
 
         // Reset the state so that when we come back we can scan new IDs.
         isScanningBackSide = false
-        idCapture.reset()
     }
 
     private func shouldSuggestBackSideCapture(for capturedId: CapturedId) -> Bool {
@@ -128,11 +135,8 @@ extension ScanViewController: IdCaptureListener {
         if !isScanningBackSide && shouldSuggestBackSideCapture(for: capturedId) {
             DispatchQueue.main.async { [unowned self] in
                 suggestBackSideCapture(onConfirm: { [unowned self] in
-                    idCapture.isEnabled = true
                     isScanningBackSide = true
                 }, onReject: { [unowned self] in
-                    idCapture.isEnabled = true
-                    isScanningBackSide = false
                     display(capturedId: capturedId)
                 })
             }

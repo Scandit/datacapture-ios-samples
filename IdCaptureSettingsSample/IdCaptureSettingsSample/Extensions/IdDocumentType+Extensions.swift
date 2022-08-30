@@ -43,8 +43,12 @@ extension IdDocumentType: CustomStringConvertible {
             return "South Africa DL Barcode"
         case .southAfricaIdBarcode:
             return "South Africa ID Barcode"
+        case .chinaMainlandTravelPermitMRZ:
+            return "China Mainland Travel Permit MRZ"
+        case .chinaExitEntryPermitMRZ:
+            return "China Exit Entry Permit MRZ"
         default:
-            fatalError("Unknown case \(self)")
+            fatalError("Unknown case \(self.rawValue)")
         }
     }
 }

@@ -20,10 +20,19 @@ import ScanditIdCapture
 extension CapturedResultType: Hashable, CaseIterable {
 
     public static var allCases: [CapturedResultType] {
-        return [.aamvaBarcodeResult, .argentinaIdBarcodeResult,
-                .colombiaIdBarcodeResult, .colombiaDlBarcodeResult, .mrzResult,
-                .southAfricaDLBarcodeResult, .southAfricaIdBarcodeResult,
-                .usUniformedServicesBarcodeResult, .vizResult]
+        return [
+            .aamvaBarcodeResult,
+            .argentinaIdBarcodeResult,
+            .chinaMainlandTravelPermitMrzResult,
+            .chinaExitEntryPermitMrzResult,
+            .colombiaIdBarcodeResult,
+            .colombiaDlBarcodeResult,
+            .mrzResult,
+            .southAfricaDLBarcodeResult,
+            .southAfricaIdBarcodeResult,
+            .usUniformedServicesBarcodeResult,
+            .vizResult
+        ]
     }
 
     public func hash(into hasher: inout Hasher) {
@@ -82,6 +91,8 @@ struct ResultPresenterFactory {
     static var mappings: [CapturedResultType: ResultPresenter.Type] = {
         return [.aamvaBarcodeResult: AAMVABarcodeResultPresenter.self,
                 .argentinaIdBarcodeResult: ArgentinaIdResultPresenter.self,
+                .chinaMainlandTravelPermitMrzResult: ChinaMainlandTravelPermitMrzResultPresenter.self,
+                .chinaExitEntryPermitMrzResult: ChinaExitEnterPermitMrzResultPresenter.self,
                 .colombiaIdBarcodeResult: ColombiaIdBarcodeResultPresenter.self,
                 .colombiaDlBarcodeResult: ColombiaDlBarcodeResultPresenter.self,
                 .mrzResult: MRZResultPresenter.self,

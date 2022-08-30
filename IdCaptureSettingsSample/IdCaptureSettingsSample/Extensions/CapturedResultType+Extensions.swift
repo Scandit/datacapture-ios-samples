@@ -35,6 +35,8 @@ extension CapturedResultType: CustomStringConvertible {
             return "South Africa DL Barcode Result"
         case .southAfricaIdBarcodeResult:
             return "South Africa Id Barcode Result"
+        case .chinaMainlandTravelPermitMrzResult:
+            return "China Mainland Travel Permit MRZ Result"
         default:
             return "No result"
         }

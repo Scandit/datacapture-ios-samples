@@ -95,7 +95,7 @@ class CommonScannerViewController: UIViewController {
                             symbolCount: Int,
                             completion: @escaping () -> Void) {
         // Assemble the message part.
-        var message = "Symbology: \(symbology.readableName)"
+        var message = symbology.readableName
         if let result = result {
             message += ": \(result)"
         }
@@ -104,7 +104,7 @@ class CommonScannerViewController: UIViewController {
             message += "\nSymbol count: \(symbolCount)"
         }
 
-        let alert = UIAlertController(title: "Scanned", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Scan Results", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in completion() }))
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)

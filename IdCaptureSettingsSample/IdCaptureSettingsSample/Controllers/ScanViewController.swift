@@ -135,6 +135,7 @@ extension ScanViewController: IdCaptureListener {
         if !isScanningBackSide && shouldSuggestBackSideCapture(for: capturedId) {
             DispatchQueue.main.async { [unowned self] in
                 suggestBackSideCapture(onConfirm: { [unowned self] in
+                    idCapture.isEnabled = true
                     isScanningBackSide = true
                 }, onReject: { [unowned self] in
                     display(capturedId: capturedId)

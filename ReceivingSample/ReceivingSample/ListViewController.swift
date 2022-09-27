@@ -166,7 +166,11 @@ class ListViewController: UIViewController {
     }
 
     @objc private func didTapResumeScanning() {
-        isOrderCompleted ? delegate?.restartScanning() : delegate?.resumeScanning()
+        if isOrderCompleted {
+            delegate?.restartScanning()
+        } else {
+            delegate?.resumeScanning()
+        }
     }
 
     @objc private func didTapClearList() {

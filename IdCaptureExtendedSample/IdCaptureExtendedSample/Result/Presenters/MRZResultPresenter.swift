@@ -22,14 +22,12 @@ class MRZResultPresenter: ResultPresenter {
     required init(capturedId: CapturedId) {
         assert(capturedId.capturedResultTypes.contains(.mrzResult))
         guard let mrzResult = capturedId.mrzResult else { fatalError("Unexpected null MRZResult") }
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let mrzRows: [CellProvider] = [
+        rows = [
             SimpleTextCellProvider(value: mrzResult.documentCode, title: "Document Code"),
             SimpleTextCellProvider(value: mrzResult.namesAreTruncated ? "Yes" : "No", title: "Names are Truncated"),
             SimpleTextCellProvider(value: mrzResult.optional.valueOrNil, title: "Optional"),
             SimpleTextCellProvider(value: mrzResult.optional1.valueOrNil, title: "Optional 1"),
             SimpleTextCellProvider(value: mrzResult.capturedMrz, title: "Captured MRZ")
         ]
-        self.rows = commonRows + mrzRows
     }
 }

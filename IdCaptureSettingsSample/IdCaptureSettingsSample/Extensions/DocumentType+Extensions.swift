@@ -121,6 +121,10 @@ extension DocumentType: CustomStringConvertible {
             return "Citizenship Certificate"
         case .myNumberCard:
             return "My Number Card"
+        case .minorsPassport:
+            return "Minors Passport"
+        case .minorsPublicServicesCard:
+            return "Minors Public Services Card"
         }
     }
 }

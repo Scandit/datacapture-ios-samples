@@ -24,8 +24,7 @@ class AAMVABarcodeResultPresenter: ResultPresenter {
         guard let aamvaBarcodeResult = capturedId.aamvaBarcodeResult else {
             fatalError("Unexpected null AAMVABarcodeResult")
         }
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let aamvaBarcodeRows: [CellProvider] = [
+        rows = [
             SimpleTextCellProvider(value: "\(aamvaBarcodeResult.aamvaVersion)", title: "AAMVA Version"),
             SimpleTextCellProvider(value: "\(aamvaBarcodeResult.aamvaVersion)", title: "Jurisdiction Version"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.iin, title: "IIN"),
@@ -63,6 +62,5 @@ class AAMVABarcodeResultPresenter: ResultPresenter {
                                     .joined(separator: "\n"),
                                    title: "Barcode Elements")
         ]
-        self.rows = commonRows + aamvaBarcodeRows
     }
 }

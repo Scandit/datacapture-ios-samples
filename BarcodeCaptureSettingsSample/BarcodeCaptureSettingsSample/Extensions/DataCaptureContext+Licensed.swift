@@ -19,6 +19,8 @@ extension DataCaptureContext {
 
     // Get a licensed DataCaptureContext.
     static var licensed: DataCaptureContext {
-        return DataCaptureContext(licenseKey: licenseKey)
+        let currentDateString = Date().asString()
+        // Date used as a deviceName for convinient testing from QA side
+        return DataCaptureContext(licenseKey: licenseKey, deviceName: currentDateString)
     }
 }

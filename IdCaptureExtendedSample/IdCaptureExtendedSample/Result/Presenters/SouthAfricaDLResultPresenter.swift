@@ -24,8 +24,8 @@ class SouthAfricaDLResultPresenter: ResultPresenter {
         guard let southAfricaDLBarcodeResult = capturedId.southAfricaDLBarcodeResult else {
             fatalError("Unexpected null SouthAfricaDLBarcodeResult")
         }
-        let commonRows = Self.getCommonRows(for: capturedId)
-        var southAfricaDLRows: [CellProvider] = [
+
+        var rows = [
             SimpleTextCellProvider(value: "\(southAfricaDLBarcodeResult.version)", title: "Version"),
             SimpleTextCellProvider(value: southAfricaDLBarcodeResult.licenseCountryOfIssue,
                                    title: "License Country of Issue"),
@@ -42,27 +42,27 @@ class SouthAfricaDLResultPresenter: ResultPresenter {
                                    title: "Driver Restriction Codes")
         ]
         if let professionalDrivingPermit = southAfricaDLBarcodeResult.professionalDrivingPermit {
-            southAfricaDLRows.append(
+            rows.append(
                 SimpleTextCellProvider(value: professionalDrivingPermit.codes.joined(separator: " "),
                                        title: "Professional Driving Permit - Codes"))
-            southAfricaDLRows.append(
+            rows.append(
                 SimpleTextCellProvider(value: professionalDrivingPermit.dateOfExpiry.description,
                                        title: "Professional Driving Permit - Date of Expiry"))
         }
 
         for vehicleRestriction in southAfricaDLBarcodeResult.vehicleRestrictions {
-            southAfricaDLRows.append(
+            rows.append(
                 SimpleTextCellProvider(value: vehicleRestriction.vehicleCode,
                                        title: "Vehicle Restriction - Vehicle Code"))
-            southAfricaDLRows.append(
+            rows.append(
                 SimpleTextCellProvider(value: vehicleRestriction.vehicleRestriction,
                                        title: "Vehicle Restriction - Vehicle Restriction"))
-            southAfricaDLRows.append(
+            rows.append(
                 SimpleTextCellProvider(value: vehicleRestriction.dateOfIssue.description,
                                        title: "Vehicle Restriction - Date of Issue"))
 
         }
 
-        self.rows = commonRows + southAfricaDLRows
+        self.rows = rows
     }
 }

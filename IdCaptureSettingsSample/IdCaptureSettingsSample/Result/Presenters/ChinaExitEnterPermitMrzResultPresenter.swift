@@ -23,12 +23,9 @@ final class ChinaExitEnterPermitMrzResultPresenter: ResultPresenter {
             fatalError("Unexpected null ChinaExitEnterPermitMrzResult")
         }
 
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let specificRows: [CellProvider] = [
+        rows = [
             SimpleTextCellProvider(value: result.documentCode, title: "Document Code"),
             SimpleTextCellProvider(value: result.capturedMrz, title: "Captured MRZ")
         ]
-
-        rows = commonRows + specificRows
     }
 }

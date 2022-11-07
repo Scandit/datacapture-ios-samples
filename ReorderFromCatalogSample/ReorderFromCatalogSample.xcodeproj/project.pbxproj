@@ -402,6 +402,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				INFOPLIST_FILE = "$(SRCROOT)/ReorderFromCatalogSample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -429,6 +430,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				INFOPLIST_FILE = "$(SRCROOT)/ReorderFromCatalogSample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

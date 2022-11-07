@@ -25,14 +25,11 @@ class SouthAfricaIdResultPresenter: ResultPresenter {
             fatalError("Unexpected null SouthAfricaDLBarcodeResult")
         }
 
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let southAfricaIdRows: [CellProvider] = [
+        rows = [
             SimpleTextCellProvider(value: southAfricaIdBarcodeResult.countryOfBirthISO, title: "Country of Birth ISO"),
             SimpleTextCellProvider(value: southAfricaIdBarcodeResult.countryOfBirth, title: "Country of Birth"),
             SimpleTextCellProvider(value: southAfricaIdBarcodeResult.citizenshipStatus, title: "Citizenship Status"),
             SimpleTextCellProvider(value: southAfricaIdBarcodeResult.personalIdNumber, title: "Personal ID Number")
         ]
-
-        self.rows = commonRows + southAfricaIdRows
     }
 }

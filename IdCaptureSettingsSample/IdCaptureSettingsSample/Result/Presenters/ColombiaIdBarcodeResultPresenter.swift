@@ -24,10 +24,8 @@ class ColombiaIdBarcodeResultPresenter: ResultPresenter {
         guard let colombiaBarcodeResult = capturedId.colombiaIdBarcodeResult else {
             fatalError("Unexpected null ColombiaIdBarcodeResult")
         }
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let colombiaRows: [CellProvider] = [
+        rows = [
             SimpleTextCellProvider(value: colombiaBarcodeResult.bloodType, title: "Blood Type")
         ]
-        self.rows = commonRows + colombiaRows
     }
 }

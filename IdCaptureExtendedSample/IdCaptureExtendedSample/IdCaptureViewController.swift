@@ -243,7 +243,7 @@ extension IdCaptureViewController: IdCaptureListener {
     }
 
     func displayBackOfCardAlert(capturedId: CapturedId) {
-        let message = "This documents has additional data in the visual inspection zone on the back of the card"
+        let message = "This document has additional data on the back of the card"
         let alertController = UIAlertController(title: "Back of Card",
                                                 message: message,
                                                 preferredStyle: .alert)

@@ -28,20 +28,25 @@ class ViewController: UIViewController {
     private var context: DataCaptureContext!
     private var camera: Camera?
     private var barcodeCount: BarcodeCount!
-    private var captureView: DataCaptureView!
-    private var overlay: BarcodeCountBasicOverlay!
+    private var barcodeCountView: BarcodeCountView!
     private var shouldCameraStandby = true
 
-    private var allTrackedBarcodes: [TrackedBarcode] = []
+    private var allRecognizedBarcodes: [TrackedBarcode] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecognition()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didEnterBackground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        // Make sure that Barcode Count mode is enabled after going back from the list screen
+        barcodeCount.isEnabled = true
 
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
         // completely turn on. To be notified when the camera is completely on, pass non nil block as completion to
@@ -85,11 +90,8 @@ class ViewController: UIViewController {
         settings.set(symbology: .ean13UPCA, enabled: true)
         settings.set(symbology: .ean8, enabled: true)
         settings.set(symbology: .upce, enabled: true)
-        settings.set(symbology: .qr, enabled: true)
-        settings.set(symbology: .dataMatrix, enabled: true)
         settings.set(symbology: .code39, enabled: true)
         settings.set(symbology: .code128, enabled: true)
-        settings.set(symbology: .interleavedTwoOfFive, enabled: true)
 
         // Some linear/1d barcode symbologies allow you to encode variable-length data. By default, the Scandit
         // Data Capture SDK only scans barcodes in a certain length range. If your application requires scanning of one
@@ -105,17 +107,13 @@ class ViewController: UIViewController {
         // Register self as a listener to monitor the barcode count session.
         barcodeCount.add(self)
 
-        // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
-        // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(context: context, frame: view.bounds)
-        captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(captureView)
-
-        // Add a barcode count overlay to the data capture view to overlays of tracked barcodes on top of
-        // the video preview. This is will also show the UI controls needed to interact with the mode.
-        overlay = BarcodeCountBasicOverlay(barcodeCount: barcodeCount, view: captureView, style: .icon)
-        overlay.delegate = self
-        overlay.uiDelegate = self
+        // To visualize the Barcode Count UI you need to create a BarcodeCountView and add it to the view hierarchy.
+        // BarcodeCountView is designed to be displayed full screen.
+        barcodeCountView = BarcodeCountView(frame: view.bounds, context: context, barcodeCount: barcodeCount)
+        barcodeCountView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(barcodeCountView)
+        barcodeCountView.delegate = self
+        barcodeCountView.uiDelegate = self
     }
 
     /// Creates  an array of ScannedItem from TrackedBarcode so that it can be displayed by the ListViewController
@@ -143,10 +141,7 @@ class ViewController: UIViewController {
     private func showList(isOrderCompleted: Bool) {
         self.shouldCameraStandby = false
         // Get a list of ScannedItem to display
-        let scannedItems = prepareScannedItemsList(trackedBarcodes: allTrackedBarcodes)
-        guard scannedItems.count > 0 else {
-            return
-        }
+        let scannedItems = prepareScannedItemsList(trackedBarcodes: allRecognizedBarcodes)
         let listController = ListViewController(scannedItems: scannedItems, isOrderCompleted: isOrderCompleted)
         // Listen to the user actions
         listController.delegate = self
@@ -154,17 +149,27 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(listController, animated: true)
     }
 
+    @objc func didEnterBackground() {
+        resetMode()
+    }
+
+    private func resetMode() {
+        barcodeCount.reset()
+        allRecognizedBarcodes.removeAll()
+    }
 }
 
 extension ViewController: BarcodeCountListener {
-    func barcodeCount(_ barcodeCount: BarcodeCount, didUpdate session: BarcodeCountSession, frameData: FrameData) {
-        // Gather all the tracked barcodes
-        let allTrackedBarcodes = session.trackedBarcodes.map({ $0.value })
+    func barcodeCount(_ barcodeCount: BarcodeCount,
+                      didScanIn session: BarcodeCountSession,
+                      frameData: FrameData) {
+        // Gather all the recognized barcodes
+        let allRecognizedBarcodes = session.recognizedBarcodes.map({ $0.value })
         // This method is invoked from a recognition internal thread.
         // Dispatch to the main thread to update the internal barcode list.
         DispatchQueue.main.async {
             // Update the internal list
-            self.allTrackedBarcodes = allTrackedBarcodes
+            self.allRecognizedBarcodes = allRecognizedBarcodes
         }
     }
 }
@@ -176,43 +181,59 @@ extension ViewController: ListViewControllerDelegate {
     }
 
     func restartScanning() {
-        self.barcodeCount.reset()
+        resetMode()
         self.shouldCameraStandby = true
         self.navigationController?.popViewController(animated: true)
     }
 }
 
-extension ViewController: BarcodeCountBasicOverlayDelegate {
-    func barcodeCountBasicOverlay(_ overlay: BarcodeCountBasicOverlay,
-                                  brushFor trackedBarcode: TrackedBarcode) -> Brush? {
+extension ViewController: BarcodeCountViewDelegate {
+    func barcodeCountView(_ view: BarcodeCountView,
+                          brushForRecognizedBarcode trackedBarcode: TrackedBarcode) -> Brush? {
         // Return the default brush
-        return BarcodeCountBasicOverlay.defaultScannedBrush
+        return BarcodeCountView.defaultRecognizedBrush
     }
 
-    func barcodeCountBasicOverlay(_ overlay: BarcodeCountBasicOverlay,
-                                  brushForUntrackedBarcode untrackedBarcode: TrackedBarcode) -> Brush? {
+    func barcodeCountView(_ view: BarcodeCountView,
+                          brushForUnrecognizedBarcode trackedBarcode: TrackedBarcode) -> Brush? {
         // Return the default brush
-        return BarcodeCountBasicOverlay.defaultUnscannedBrush
+        return BarcodeCountView.defaultUnrecognizedBrush
     }
 
-    func barcodeCountBasicOverlay(_ overlay: BarcodeCountBasicOverlay,
-                                  didTap trackedBarcode: TrackedBarcode) {
+    func barcodeCountView(_ view: BarcodeCountView,
+                          brushForRecognizedBarcodeNotInList trackedBarcode: TrackedBarcode) -> Brush? {
+        // Return the default brush
+        return BarcodeCountView.defaultNotInListBrush
+    }
+
+    func barcodeCountView(_ view: BarcodeCountView,
+                          didTapRecognizedBarcode trackedBarcode: TrackedBarcode) {
         // Not used
     }
 
-    func barcodeCountBasicOverlay(_ overlay: BarcodeCountBasicOverlay,
-                                  didTapUntrackedBarcode untrackedBarcode: TrackedBarcode) {
+    func barcodeCountView(_ view: BarcodeCountView,
+                          didTapUnrecognizedBarcode trackedBarcode: TrackedBarcode) {
+        // Not used
+    }
+
+    func barcodeCountView(_ view: BarcodeCountView,
+                          didTapRecognizedBarcodeNotInList trackedBarcode: TrackedBarcode) {
+        // Not used
+    }
+
+    func barcodeCountView(_ view: BarcodeCountView,
+                          didTapFilteredBarcode trackedBarcode: TrackedBarcode) {
         // Not used
     }
 }
 
-extension ViewController: BarcodeCountBasicOverlayUIDelegate {
-    func listButtonTapped(for overlay: BarcodeCountBasicOverlay) {
+extension ViewController: BarcodeCountViewUIDelegate {
+    func listButtonTapped(for view: BarcodeCountView) {
         // Show the current progress but the order is not completed
         showList(isOrderCompleted: false)
     }
 
-    func exitButtonTapped(for overlay: BarcodeCountBasicOverlay) {
+    func exitButtonTapped(for view: BarcodeCountView) {
         // The order is completed
         showList(isOrderCompleted: true)
     }

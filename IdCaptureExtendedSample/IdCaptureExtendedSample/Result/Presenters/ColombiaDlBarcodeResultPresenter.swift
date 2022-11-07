@@ -23,11 +23,10 @@ class ColombiaDlBarcodeResultPresenter: ResultPresenter {
         guard let result = capturedId.colombiaDlBarcodeResult else {
             fatalError("Unexpected null ColombiaDlBarcodeResult")
         }
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let specificRows: [CellProvider] = [
+
+        rows = [
             SimpleTextCellProvider(value: result.categories.joined(separator: ", "), title: "Categories"),
             SimpleTextCellProvider(value: result.identificationType, title: "Identification Type")
         ]
-        self.rows = commonRows + specificRows
     }
 }

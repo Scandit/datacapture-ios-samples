@@ -25,11 +25,9 @@ class ArgentinaIdResultPresenter: ResultPresenter {
             fatalError("Unexpected null ArgentinaIdBarcodeResult")
         }
 
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let argentinaIdRows: [CellProvider] = [
+        rows = [
             SimpleTextCellProvider(value: argentinaIdBarcodeResult.documentCopy, title: "Document Copy"),
             SimpleTextCellProvider(value: argentinaIdBarcodeResult.personalIdNumber, title: "Personal ID Number")
         ]
-        self.rows = commonRows + argentinaIdRows
     }
 }

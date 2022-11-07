@@ -162,10 +162,14 @@ class ListViewController: UIViewController {
     }
 
     @objc private func didTapBack() {
-        delegate?.resumeScanning()
+        dismissList()
     }
 
     @objc private func didTapResumeScanning() {
+        dismissList()
+    }
+
+    private func dismissList() {
         if isOrderCompleted {
             delegate?.restartScanning()
         } else {

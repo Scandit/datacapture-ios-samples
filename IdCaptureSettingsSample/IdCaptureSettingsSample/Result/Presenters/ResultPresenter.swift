@@ -49,7 +49,7 @@ protocol ResultPresenter {
     init(capturedId: CapturedId)
 }
 
-extension ResultPresenter {
+fileprivate extension ResultPresenter {
     static func getCommonRows(for capturedId: CapturedId) -> [CellProvider] {
         return
             [SimpleTextCellProvider(value: capturedId.firstName.valueOrNil, title: "Name"),

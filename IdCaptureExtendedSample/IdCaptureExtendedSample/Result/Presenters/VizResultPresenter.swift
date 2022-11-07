@@ -22,8 +22,7 @@ class VizResultPresenter: ResultPresenter {
     required init(capturedId: CapturedId) {
         assert(capturedId.capturedResultTypes.contains(.vizResult))
         guard let vizResult = capturedId.vizResult else { fatalError("Unexpected null VizResult") }
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let vizRows: [CellProvider] = [
+        rows = [
             SimpleTextCellProvider(value: vizResult.additionalNameInformation.valueOrNil,
                                    title: "Additional Name Information"),
             SimpleTextCellProvider(value: vizResult.additionalAddressInformation.valueOrNil,
@@ -49,6 +48,5 @@ class VizResultPresenter: ResultPresenter {
             ImageCellProvider(image: capturedId.idImage(of: .idFront), title: "Front Image"),
             ImageCellProvider(image: capturedId.idImage(of: .idBack), title: "Back Image")
         ]
-        self.rows = commonRows + vizRows
     }
 }

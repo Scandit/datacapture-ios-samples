@@ -23,8 +23,7 @@ class USUniformedServicesResultPresenter: ResultPresenter {
         guard let usUniformedServicesResult = capturedId.usUniformedServicesBarcodeResult else {
             fatalError("Unexpected null USUniformedServicesResult")
         }
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let usUniformedServicesRows: [CellProvider] = [
+        rows  = [
             SimpleTextCellProvider(value: "\(usUniformedServicesResult.version)", title: "Version"),
             SimpleTextCellProvider(value: usUniformedServicesResult.sponsorFlag, title: "Sponsor Flag"),
             SimpleTextCellProvider(value: "\(usUniformedServicesResult.personDesignatorDocument)",
@@ -96,6 +95,5 @@ class USUniformedServicesResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: usUniformedServicesResult.bloodType.valueOrNil,
                                    title: "Blood Type")
         ]
-        self.rows = commonRows + usUniformedServicesRows
     }
 }

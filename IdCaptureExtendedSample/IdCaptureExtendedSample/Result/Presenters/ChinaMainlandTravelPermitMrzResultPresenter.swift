@@ -23,8 +23,7 @@ class ChinaMainlandTravelPermitMrzResultPresenter: ResultPresenter {
         guard let result = capturedId.chinaMainlandTravelPermitMrzResult else {
             fatalError("Unexpected null ChinaMainlandTravelPermitMrzResult")
         }
-        let commonRows = Self.getCommonRows(for: capturedId)
-        let specificRows: [CellProvider] = [
+        rows = [
             SimpleTextCellProvider(value: result.documentCode, title: "Document Code"),
             SimpleTextCellProvider(value: result.capturedMrz, title: "Captured MRZ"),
             SimpleTextCellProvider(value: result.personalIdNumber,
@@ -38,6 +37,5 @@ class ChinaMainlandTravelPermitMrzResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: result.issuingAuthorityCode.valueOrNil,
                                    title: "Issuing Authority Code")
         ]
-        self.rows = commonRows + specificRows
     }
 }

@@ -73,20 +73,11 @@ class IdCaptureViewController: UIViewController {
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
 
-        // We are interested in the front side of national Id Cards and passports using MRZ.
+        // We are interested in the Id Cards and Driver's Licenses visual inspection zone
         idCaptureSettings.supportedDocuments = [
             .idCardVIZ,
-            .dlVIZ,
-            .aamvaBarcode,
-            .argentinaIdBarcode,
-            .colombiaDlBarcode,
-            .colombiaIdBarcode,
-            .southAfricaDLBarcode,
-            .southAfricaIdBarcode,
-            .ususIdBarcode,
-            .chinaExitEntryPermitMRZ,
-            .chinaMainlandTravelPermitMRZ
-        ]
+            .dlVIZ
+         ]
 
         // Create new id capture mode with the chosen settings.
         idCapture = IdCapture(context: context, settings: idCaptureSettings)
@@ -113,22 +104,10 @@ extension IdCaptureViewController: IdCaptureListener {
 
         // The recognized fields of the captured Id can vary based on the type.
         let idDescription: String
-        if capturedId.mrzResult != nil {
-            // If the capturedResultType is `.mrzResult`
-            // then `capturedId` is guaranteed to have the mrzResult property not nil.
-            idDescription = descriptionForMrzResult(result: capturedId)
-        } else if capturedId.vizResult != nil {
+        if capturedId.vizResult != nil {
             // If the capturedResultType is `.vizResult`
             // then `capturedId` is guaranteed to have the vizResult property not nil.
             idDescription = descriptionForVizResult(result: capturedId)
-        } else if capturedId.aamvaBarcodeResult != nil {
-            // If the capturedResultType is `.aamvaBarcodeResult`
-            // then `capturedId` is guaranteed to have the aamvaBarcodeResult property not nil.
-            idDescription = descriptionForUsDriverLicenseBarcodeResult(result: capturedId)
-        } else if capturedId.usUniformedServicesBarcodeResult != nil {
-            // If the capturedResultType is `.usUniformedServicesBarcodeResult`
-            // then `capturedId` is guaranteed to have the usUniformedServicesBarcodeResult property not nil.
-            idDescription = descriptionForUsUniformedServicesBarcodeResult(result: capturedId)
         } else {
             idDescription = descriptionForCapturedId(result: capturedId)
         }
@@ -177,18 +156,6 @@ extension IdCaptureViewController: IdCaptureListener {
         }
     }
 
-    func descriptionForMrzResult(result: CapturedId) -> String {
-        let mrzResult = result.mrzResult!
-        return """
-        \(descriptionForCapturedId(result: result))
-
-        Document Code: \(mrzResult.documentCode)
-        Names Are Truncated: \(mrzResult.namesAreTruncated ? "Yes" : "No")
-        Optional: \(mrzResult.optional ?? "<nil>")
-        Optional 1: \(mrzResult.optional1 ?? "<nil>")
-        """
-    }
-
     func descriptionForVizResult(result: CapturedId) -> String {
         let vizResult = result.vizResult!
         return """
@@ -207,85 +174,6 @@ extension IdCaptureViewController: IdCaptureListener {
         Document Additional Number: \(vizResult.documentAdditionalNumber ?? "<nil>")
         Issuing Jurisdiction: \(vizResult.issuingJurisdiction ?? "<nil>")
         Issuing Authority: \(vizResult.issuingAuthority ?? "<nil>")
-        """
-    }
-
-    func descriptionForUsDriverLicenseBarcodeResult(result: CapturedId) -> String {
-        let aamvaBarcodeResult = result.aamvaBarcodeResult!
-        return """
-        \(descriptionForCapturedId(result: result))
-
-        AAMVA Version: \(aamvaBarcodeResult.aamvaVersion)
-        Jurisdiction Version: \(aamvaBarcodeResult.jurisdictionVersion)
-        IIN: \(aamvaBarcodeResult.iin)
-        Issuing Jurisdiction: \(aamvaBarcodeResult.issuingJurisdiction)
-        Issuing Jurisdiction ISO: \(aamvaBarcodeResult.issuingJurisdictionISO)
-        Eye Color: \(aamvaBarcodeResult.eyeColor ?? "<nil>")
-        Hair Color: \(aamvaBarcodeResult.hairColor ?? "<nil>")
-        Height Inch: \(String(aamvaBarcodeResult.heightInch?.floatValue ?? 0))
-        Height Cm: \(String(aamvaBarcodeResult.heightCm?.floatValue ?? 0))
-        Weight Lb: \(String(aamvaBarcodeResult.weightLbs?.floatValue ?? 0))
-        Weight Kg: \(String(aamvaBarcodeResult.weightKg?.floatValue ?? 0))
-        Place of Birth: \(aamvaBarcodeResult.placeOfBirth ?? "<nil>")
-        Race: \(aamvaBarcodeResult.race ?? "<nil>")
-        Document Discriminator Number: \(aamvaBarcodeResult.documentDiscriminatorNumber ?? "<nil>")
-        Vehicle Class: \(aamvaBarcodeResult.vehicleClass ?? "<nil>")
-        Restrictions Code: \(aamvaBarcodeResult.restrictionsCode ?? "<nil>")
-        Endorsements Code: \(aamvaBarcodeResult.endorsementsCode ?? "<nil>")
-        Card Revision Date: \(aamvaBarcodeResult.cardRevisionDate?.description ?? "<nil>")
-        Middle Name: \(aamvaBarcodeResult.middleName ?? "<nil>")
-        Driver Name Suffix: \(aamvaBarcodeResult.driverNameSuffix ?? "<nil>")
-        Driver Name Prefix: \(aamvaBarcodeResult.driverNamePrefix ?? "<nil>")
-        Last Name Truncation: \(aamvaBarcodeResult.lastNameTruncation ?? "<nil>")
-        First Name Truncation: \(aamvaBarcodeResult.firstNameTruncation ?? "<nil>")
-        Middle Name Truncation: \(aamvaBarcodeResult.middleNameTruncation ?? "<nil>")
-        Alias Family Name: \(aamvaBarcodeResult.aliasFamilyName ?? "<nil>")
-        Alias Given Name: \(aamvaBarcodeResult.aliasGivenName ?? "<nil>")
-        Alias Suffix Name: \(aamvaBarcodeResult.aliasSuffixName ?? "<nil>")
-        """
-    }
-
-    func descriptionForUsUniformedServicesBarcodeResult(result: CapturedId) -> String {
-        let ususBarcoderesult = result.usUniformedServicesBarcodeResult!
-        return """
-        \(descriptionForCapturedId(result: result))
-
-        Version: \(ususBarcoderesult.version)
-        Sponsor Flag: \(ususBarcoderesult.sponsorFlag)
-        Person Designator Document: \(ususBarcoderesult.personDesignatorDocument)
-        Family Sequence Number: \(ususBarcoderesult.familySequenceNumber)
-        Deers Dependent Suffix Code: \(ususBarcoderesult.deersDependentSuffixCode)
-        Deers Dependent Suffix Description: \(ususBarcoderesult.deersDependentSuffixDescription)
-        Height: \(ususBarcoderesult.height)
-        Weight: \(ususBarcoderesult.weight)
-        Hair Color: \(ususBarcoderesult.hairColor)
-        Eye Color: \(ususBarcoderesult.eyeColor)
-        Direct Care Flag Code: \(ususBarcoderesult.directCareFlagCode)
-        Direct Care Flag Description: \(ususBarcoderesult.directCareFlagDescription)
-        Civilian Health Care Flag Code: \(ususBarcoderesult.civilianHealthCareFlagCode)
-        Civilian Health Care Flag Description: \(ususBarcoderesult.civilianHealthCareFlagDescription)
-        Commissary Flag Code: \(ususBarcoderesult.commissaryFlagCode)
-        Commissary Flag Description: \(ususBarcoderesult.commissaryFlagDescription)
-        MWR Flag Code: \(ususBarcoderesult.mwrFlagCode)
-        MWR Flag Description: \(ususBarcoderesult.mwrFlagDescription)
-        Exchange Flag Code: \(ususBarcoderesult.exchangeFlagCode)
-        Exchange Flag Description: \(ususBarcoderesult.exchangeFlagDescription)
-        Champus Effective Date: \(ususBarcoderesult.champusEffectiveDate?.description ?? "<nil>")
-        Champus Expiry Date: \(ususBarcoderesult.champusExpiryDate?.description ?? "<nil>")
-        Form Number: \(ususBarcoderesult.formNumber)
-        Security Code: \(ususBarcoderesult.securityCode)
-        Service Code: \(ususBarcoderesult.serviceCode)
-        Status Code: \(ususBarcoderesult.statusCode)
-        Status Code Description: \(ususBarcoderesult.statusCodeDescription)
-        Branch Of Service: \(ususBarcoderesult.branchOfService)
-        Rank: \(ususBarcoderesult.rank)
-        Pay Grade: \(ususBarcoderesult.payGrade ?? "<nil>")
-        Sponsor Name: \(ususBarcoderesult.sponsorName ?? "<nil>")
-        Sponsor Person Designator Identifier: \(ususBarcoderesult.sponsorPersonDesignatorIdentifier?.intValue ?? 0)
-        Relationship Code: \(ususBarcoderesult.relationshipCode ?? "<nil>")
-        Relationship Description: \(ususBarcoderesult.relationshipDescription ?? "<nil>")
-        Geneva Convention Category: \(ususBarcoderesult.genevaConventionCategory ?? "<nil>")
-        Blood Type: \(ususBarcoderesult.bloodType ?? "<nil>")
         """
     }
 

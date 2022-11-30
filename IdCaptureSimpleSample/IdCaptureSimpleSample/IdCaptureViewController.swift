@@ -60,7 +60,7 @@ class IdCaptureViewController: UIViewController {
         // Use the world-facing (back) camera and set it as the frame source of the context. The camera is off by
         // default and must be turned on to start streaming frames to the data capture context for recognition.
         // See viewWillAppear and viewDidDisappear above.
-        camera = Camera.default
+        camera = Camera(position: .worldFacing, settings: IdCapture.recommendedCameraSettings)
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the IdCapture mode.

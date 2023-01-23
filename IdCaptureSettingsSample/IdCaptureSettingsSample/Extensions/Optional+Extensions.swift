@@ -50,4 +50,12 @@ extension Optional where Wrapped == NSNumber {
         }
         return "<nil>"
     }
+
+    var optionalBooleanRepresentation: String {
+        if let value = self?.boolValue {
+            return value ? "YES" : "NO"
+        } else {
+            return "<nil>"
+        }
+    }
 }

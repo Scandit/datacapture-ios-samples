@@ -14,6 +14,8 @@
 
 import ScanditBarcodeCapture
 
+// swiftlint:disable type_body_length
+
 class SettingsManager {
     static let current = SettingsManager()
 
@@ -363,3 +365,5 @@ class SettingsManager {
         overlay = newOverlay
     }
 }
+
+// swiftlint:enable type_body_length

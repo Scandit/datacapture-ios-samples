@@ -25,13 +25,16 @@ extension CapturedResultType: Hashable, CaseIterable {
             .argentinaIdBarcodeResult,
             .chinaMainlandTravelPermitMrzResult,
             .chinaExitEntryPermitMrzResult,
+            .chinaOneWayPermitBackMrzResult,
+            .chinaOneWayPermitFrontMrzResult,
             .colombiaIdBarcodeResult,
             .colombiaDlBarcodeResult,
             .mrzResult,
             .southAfricaDLBarcodeResult,
             .southAfricaIdBarcodeResult,
             .usUniformedServicesBarcodeResult,
-            .vizResult
+            .vizResult,
+            .apecBusinessTravelCardMrzResult
         ]
     }
 
@@ -56,6 +59,7 @@ extension ResultPresenter {
              SimpleTextCellProvider(value: capturedId.lastName.valueOrNil, title: "Lastname"),
              SimpleTextCellProvider(value: capturedId.fullName, title: "Full Name"),
              SimpleTextCellProvider(value: capturedId.sex.valueOrNil, title: "Sex"),
+             SimpleTextCellProvider(value: capturedId.age.valueOrNil, title: "Age"),
              SimpleTextCellProvider(value: capturedId.dateOfBirth.valueOrNil, title: "Date of Birth"),
              SimpleTextCellProvider(value: capturedId.nationality.valueOrNil, title: "Nationality"),
              SimpleTextCellProvider(value: capturedId.address.valueOrNil, title: "Address"),
@@ -70,6 +74,7 @@ extension ResultPresenter {
              SimpleTextCellProvider(value: capturedId.issuingCountry.valueOrNil, title: "Issuing Country"),
              SimpleTextCellProvider(value: capturedId.documentNumber.valueOrNil, title: "Document Number"),
              SimpleTextCellProvider(value: capturedId.dateOfExpiry.valueOrNil, title: "Date of Expiry"),
+             SimpleTextCellProvider(value: capturedId.isExpired.optionalBooleanRepresentation, title: "Is Expired"),
              SimpleTextCellProvider(value: capturedId.dateOfIssue.valueOrNil, title: "Date of Issue")]
     }
 }
@@ -93,13 +98,16 @@ struct ResultPresenterFactory {
                 .argentinaIdBarcodeResult: ArgentinaIdResultPresenter.self,
                 .chinaMainlandTravelPermitMrzResult: ChinaMainlandTravelPermitMrzResultPresenter.self,
                 .chinaExitEntryPermitMrzResult: ChinaExitEnterPermitMrzResultPresenter.self,
+                .chinaOneWayPermitBackMrzResult: ChinaOneWayPermitBackMrzResultPresenter.self,
+                .chinaOneWayPermitFrontMrzResult: ChinaOneWayPermitFrontMrzResultPresenter.self,
                 .colombiaIdBarcodeResult: ColombiaIdBarcodeResultPresenter.self,
                 .colombiaDlBarcodeResult: ColombiaDlBarcodeResultPresenter.self,
                 .mrzResult: MRZResultPresenter.self,
                 .southAfricaDLBarcodeResult: SouthAfricaDLResultPresenter.self,
                 .southAfricaIdBarcodeResult: SouthAfricaIdResultPresenter.self,
                 .usUniformedServicesBarcodeResult: USUniformedServicesResultPresenter.self,
-                .vizResult: VizResultPresenter.self]
+                .vizResult: VizResultPresenter.self,
+                .apecBusinessTravelCardMrzResult: ApecBusinessTravelCardMrzResultPresenter.self]
     }()
 
     static func presenter(for capturedId: CapturedId) -> ResultPresenter {

@@ -16,8 +16,8 @@ import ScanditCaptureCore
 import ScanditIdCapture
 
 private extension CapturedId {
-    var isExpired: Bool {
-        guard let expiryDate = dateOfExpiry?.date else { return false }
+    var isExpired: Bool? {
+        guard let expiryDate = dateOfExpiry?.date else { return nil }
         return expiryDate < Date()
     }
 }
@@ -47,8 +47,8 @@ final class DLScanningVerificationRunner {
             return
         }
 
-        // If the document is expired cloud verification will fail. We return easerly for this case as well.
-        guard !capturedId.isExpired else {
+        // If the document is expired cloud verification will fail. We return eagerly for this case as well.
+        guard capturedId.isExpired == nil || !capturedId.isExpired! else {
             completion(.success(.expired))
             return
         }

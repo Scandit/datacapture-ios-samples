@@ -55,8 +55,6 @@
 		6FFECF3B22367440005CE4CD /* Anchor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3A22367440005CE4CD /* Anchor+Extensions.swift */; };
 		6FFECF3D223676C9005CE4CD /* ControlsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3C223676C9005CE4CD /* ControlsTableViewController.swift */; };
 		6FFECF3F223676E2005CE4CD /* ControlsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3E223676E2005CE4CD /* ControlsDataSource.swift */; };
-		9CCB7A78291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB7A76291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */; };
-		9CCB7A79291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB7A77291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */; };
 		A2269B1D2527807700FC7451 /* NumberFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2269B1C2527807700FC7451 /* NumberFormatter+Extensions.swift */; };
 		A24906E2255EB19C0024A9F3 /* FocusGestureStrategy+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24906E1255EB19C0024A9F3 /* FocusGestureStrategy+Extensions.swift */; };
 		A24906E4255EB8360024A9F3 /* SettingsManager+IdCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24906E3255EB8360024A9F3 /* SettingsManager+IdCapture.swift */; };
@@ -170,8 +168,6 @@
 		6FFECF3A22367440005CE4CD /* Anchor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Anchor+Extensions.swift"; sourceTree = "<group>"; };
 		6FFECF3C223676C9005CE4CD /* ControlsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsTableViewController.swift; sourceTree = "<group>"; };
 		6FFECF3E223676E2005CE4CD /* ControlsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsDataSource.swift; sourceTree = "<group>"; };
-		9CCB7A76291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaOneWayPermitFrontMrzResultPresenter.swift; sourceTree = "<group>"; };
-		9CCB7A77291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaOneWayPermitBackMrzResultPresenter.swift; sourceTree = "<group>"; };
 		A2269B1C2527807700FC7451 /* NumberFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		A23B613626A17E0F00A5B619 /* ScanditIdCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditIdCapture.xcframework; sourceTree = "<group>"; };
 		A23B613826A17E5800A5B619 /* ScanditOCR.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ScanditOCR.xcframework; sourceTree = "<group>"; };
@@ -488,8 +484,6 @@
 		A2545C1D26A7044B00905C0A /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				9CCB7A77291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */,
-				9CCB7A76291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */,
 				B9CB1ED1284A121B0060CEFC /* ChinaMainlandTravelPermitMrzResultPresenter.swift */,
 				A2545C1E26A7044B00905C0A /* USUniformedServicesResultPresenter.swift */,
 				A2545C1F26A7044B00905C0A /* MRZResultPresenter.swift */,
@@ -612,7 +606,6 @@
 				A2545C3626A704C300905C0A /* DocumentType+Extensions.swift in Sources */,
 				6FA0B291219AE7B600FF780A /* AppDelegate.swift in Sources */,
 				6F144A18222E90A5002C5C3E /* UITableView+Utils.swift in Sources */,
-				9CCB7A79291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift in Sources */,
 				A2545C2926A7044B00905C0A /* USUniformedServicesResultPresenter.swift in Sources */,
 				657F19A322A90A5E002F73F4 /* RectangularSizeSpecification.swift in Sources */,
 				A24906E8255EB8440024A9F3 /* SettingsManager+View.swift in Sources */,
@@ -651,7 +644,6 @@
 				A24906E2255EB19C0024A9F3 /* FocusGestureStrategy+Extensions.swift in Sources */,
 				6F869D1122300A0C00E20833 /* SettingsManager.swift in Sources */,
 				6F361E6422393D0D009744EF /* IdImageType+Extensions.swift in Sources */,
-				9CCB7A78291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift in Sources */,
 				B9CB1ED2284A121B0060CEFC /* ChinaMainlandTravelPermitMrzResultPresenter.swift in Sources */,
 				6FFECF3B22367440005CE4CD /* Anchor+Extensions.swift in Sources */,
 				A2545C2D26A7044B00905C0A /* SouthAfricaIdResultPresenter.swift in Sources */,
@@ -820,7 +812,7 @@
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/IdCaptureSettingsSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -848,7 +840,7 @@
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/IdCaptureSettingsSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

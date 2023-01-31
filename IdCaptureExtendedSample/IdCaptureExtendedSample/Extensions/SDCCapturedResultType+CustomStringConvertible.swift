@@ -40,12 +40,6 @@ extension CapturedResultType: CustomStringConvertible {
             return "China Mainland Travel Permit MRZ Result"
         case .chinaExitEntryPermitMrzResult:
             return "China Exit-Entry Permit MRZ Result"
-        case .chinaOneWayPermitBackMrzResult:
-            return "China One-Way Permit MRZ Back Result"
-        case .chinaOneWayPermitFrontMrzResult:
-            return "China One-Way Permit MRZ Front Result"
-        case .apecBusinessTravelCardMrzResult:
-            return "APEC Business Travel Card"
         default:
             return "No Result"
         }

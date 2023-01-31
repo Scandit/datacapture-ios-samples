@@ -60,7 +60,7 @@ class SettingsManager {
     var internalVibration = FeedbackVibration.default
 
     init() {
-        // The barcode capturing process is configured through barcode capture settings
+        // The barcode capturing process is configured through barcode capture settings  
         // and are then applied to the barcode capture instance that manages barcode recognition.
         barcodeCaptureSettings = BarcodeCaptureSettings()
 
@@ -344,8 +344,6 @@ class SettingsManager {
         }
     }
 }
-
-// swiftlint:enable type_body_length
 
 class SettingsManagerProxyListener: NSObject {
 

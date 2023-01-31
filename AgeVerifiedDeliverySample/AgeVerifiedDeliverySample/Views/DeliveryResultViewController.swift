@@ -32,7 +32,10 @@ class DeliveryResultViewController: UIViewController {
     }
 
     func configure(capturedId: CapturedId) {
-        configureWith(DeliveryLogic.stateFor(capturedId))
+        let document = capturedId.documentType == .passport ? "Passport" : "Driver's License"
+        configureWith(expirationDate: capturedId.dateOfExpiry?.date,
+                      birthDate: capturedId.dateOfBirth?.date,
+                      document: document)
     }
 
     var titleAttributes: [NSAttributedString.Key: Any] {
@@ -40,23 +43,59 @@ class DeliveryResultViewController: UIViewController {
                 .font: UIFont.boldSystemFont(ofSize: 16)]
     }
 
-    func configureWith(_ state: DeliveryLogic.State) {
+    func configureUnderageDelivery() {
+        titleLabel.text = "Verification Failed!"
+        deliveryStatusLabel.text = "The recipient is underage."
+        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
+        mainButton.setAttributedTitle(NSAttributedString(string: "REFUSE DELIVERY",
+                                                         attributes: titleAttributes),
+                                      for: .normal)
+        secondaryButton.setTitle("RETRY", for: .normal)
+    }
+
+    func configureExpiredDocument(_ documentType: String) {
+        titleLabel.text = "Verification Failed!"
+        deliveryStatusLabel.text = "\(documentType) is expired."
+        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
+        mainButton.setAttributedTitle(NSAttributedString(string: "REFUSE DELIVERY",
+                                                         attributes: titleAttributes),
+                                      for: .normal)
+        secondaryButton.setTitle("RETRY", for: .normal)
+    }
+
+    func configureSuccessfullDelivery() {
+        titleLabel.text = "Verification Successful!"
+        deliveryStatusLabel.text = "Confirm delivery to proceed."
+        deliveryStatusImage.image = #imageLiteral(resourceName: "check")
+        mainButton.setAttributedTitle(NSAttributedString(string: "CONFIRM DELIVERY",
+                                                         attributes: titleAttributes),
+                                      for: .normal)
+        secondaryButton.isHidden = true
+        mainStackView.setNeedsLayout()
+    }
+
+    func configureWith(expirationDate: Date?, birthDate: Date?, document: String) {
         // Force the loading of the view
         _ = view
 
-        switch state {
-        case .expired(let documentType): configureExpiredDocument(documentType)
-        case .success: configureSuccessfullDelivery()
-        case .underage: configureUnderageDelivery()
+        // Expiration Check
+        guard let dateOfExpiry = expirationDate,
+              dateOfExpiry > Date.today.endOfDay else {
+            // Expired Document
+            configureExpiredDocument(document)
+            return
         }
-    }
 
-    func configureWith(expirationDate: Date, birthDate: Date, document: String) {
-        configureWith(
-            DeliveryLogic.stateFor(
-                expirationDate: expirationDate, birthDate: birthDate, documentType: document
-            )
-        )
+        // Underage check
+        guard let dateOfBirth = birthDate,
+              dateOfBirth.yearsSince(Date.today) >= 21 else {
+            // Underage
+            configureUnderageDelivery()
+            return
+        }
+
+        // All good!
+        configureSuccessfullDelivery()
     }
 
     func configureUnparsableBarcode() {
@@ -104,36 +143,5 @@ class DeliveryResultViewController: UIViewController {
         set {
             super.preferredContentSize = newValue
         }
-    }
-
-    private func configureUnderageDelivery() {
-        titleLabel.text = "Verification Failed!"
-        deliveryStatusLabel.text = "The recipient is underage."
-        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
-        mainButton.setAttributedTitle(NSAttributedString(string: "REFUSE DELIVERY",
-                                                         attributes: titleAttributes),
-                                      for: .normal)
-        secondaryButton.setTitle("RETRY", for: .normal)
-    }
-
-    private func configureExpiredDocument(_ documentType: String) {
-        titleLabel.text = "Verification Failed!"
-        deliveryStatusLabel.text = "\(documentType) is expired."
-        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
-        mainButton.setAttributedTitle(NSAttributedString(string: "REFUSE DELIVERY",
-                                                         attributes: titleAttributes),
-                                      for: .normal)
-        secondaryButton.setTitle("RETRY", for: .normal)
-    }
-
-    private func configureSuccessfullDelivery() {
-        titleLabel.text = "Verification Successful!"
-        deliveryStatusLabel.text = "Confirm delivery to proceed."
-        deliveryStatusImage.image = #imageLiteral(resourceName: "check")
-        mainButton.setAttributedTitle(NSAttributedString(string: "CONFIRM DELIVERY",
-                                                         attributes: titleAttributes),
-                                      for: .normal)
-        secondaryButton.isHidden = true
-        mainStackView.setNeedsLayout()
     }
 }

@@ -62,8 +62,8 @@ class ManualDocumentInputTableViewController: UITableViewController {
             let deliveryResultViewController = storyboard?
                 .instantiateViewController(identifier: "DeliveryResultViewController")
                 as? DeliveryResultViewController else { return }
-        deliveryResultViewController.configureWith(expirationDate: expirationDate!,
-                                                   birthDate: birthdayDate!,
+        deliveryResultViewController.configureWith(expirationDate: expirationDate,
+                                                   birthDate: birthdayDate,
                                                    document: "Document")
         deliveryResultViewController.mainButtonTapped = mainButtonTapped
         deliveryResultViewController.secondaryButtonTapped = secondaryButtonTapped

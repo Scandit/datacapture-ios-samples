@@ -28,7 +28,6 @@
 		B93CCB4128913E7500CE992F /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCB4028913E7500CE992F /* ResultCell.swift */; };
 		B93CCB4328913E9500CE992F /* IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCB4228913E9500CE992F /* IdentifiableCell.swift */; };
 		B93CCB4728915E1B00CE992F /* DLScanningVerificationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCB4628915E1B00CE992F /* DLScanningVerificationRunner.swift */; };
-		B95D4BCC293F774A003B020E /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D4BCB293F774A003B020E /* TitleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,7 +69,6 @@
 		B93CCB4028913E7500CE992F /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		B93CCB4228913E9500CE992F /* IdentifiableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableCell.swift; sourceTree = "<group>"; };
 		B93CCB4628915E1B00CE992F /* DLScanningVerificationRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLScanningVerificationRunner.swift; sourceTree = "<group>"; };
-		B95D4BCB293F774A003B020E /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +149,6 @@
 				B93CCB3E28913E5500CE992F /* AvatarTableViewCell.swift */,
 				B93CCB4028913E7500CE992F /* ResultCell.swift */,
 				B93CCB4228913E9500CE992F /* IdentifiableCell.swift */,
-				B95D4BCB293F774A003B020E /* TitleTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -233,7 +230,6 @@
 				B93CCB3D28913E3700CE992F /* FieldTableViewCell.swift in Sources */,
 				B93CCAC2288EC95700CE992F /* AppDelegate.swift in Sources */,
 				B93CCB4128913E7500CE992F /* ResultCell.swift in Sources */,
-				B95D4BCC293F774A003B020E /* TitleTableViewCell.swift in Sources */,
 				B93CCB4728915E1B00CE992F /* DLScanningVerificationRunner.swift in Sources */,
 				B93CCB3F28913E5500CE992F /* AvatarTableViewCell.swift in Sources */,
 				B93CCB3828900E1500CE992F /* DLScanningResultViewController.swift in Sources */,
@@ -398,7 +394,6 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFO_PLIST_KEY_NSCameraUsageDescription = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,7 +426,6 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFO_PLIST_KEY_NSCameraUsageDescription = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

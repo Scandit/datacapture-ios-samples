@@ -37,12 +37,6 @@ extension CapturedResultType: CustomStringConvertible {
             return "South Africa Id Barcode Result"
         case .chinaMainlandTravelPermitMrzResult:
             return "China Mainland Travel Permit MRZ Result"
-        case .chinaOneWayPermitBackMrzResult:
-            return "China One-Way Permit MRZ Back Result"
-        case .chinaOneWayPermitFrontMrzResult:
-            return "China One-Way Permit MRZ Front Result"
-        case .apecBusinessTravelCardMrzResult:
-            return "APEC Business Travel Card"
         default:
             return "No result"
         }

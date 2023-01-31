@@ -18,6 +18,21 @@ import ScanditIdCapture
 // swiftlint:disable:next type_body_length
 class MainViewController: UIViewController {
 
+    private enum DocumentType: String, CaseIterable {
+
+        case drivingLicense = "Driver's License"
+        case passport = "Passport"
+
+        var documentType: IdDocumentType {
+            switch self {
+            case .drivingLicense:
+                return .aamvaBarcode
+            case .passport:
+                return .passportMRZ
+            }
+        }
+    }
+
     private lazy var context = DataCaptureContext.licensed
     private lazy var camera = Camera.default
     private lazy var captureView = DataCaptureView(context: context, frame: view.bounds)
@@ -71,13 +86,12 @@ class MainViewController: UIViewController {
             }
         case .passport:
             return .passportMRZ
-        case .militaryId:
-            return .ususIdBarcode
         }
     }
 
     private var manualScanTimer: Timer?
     private var frontScanTimer: Timer?
+    private var cantRecognizeDocumentTimer: Timer?
     private var verificationDidCompleteToken: NSObjectProtocol?
 
     private func stopManualScanTimer() {
@@ -91,6 +105,11 @@ class MainViewController: UIViewController {
         frontSideTooltipWasShown = false
     }
 
+    private func stopCantRecognizeDocumentTimer() {
+        cantRecognizeDocumentTimer?.invalidate()
+        cantRecognizeDocumentTimer = nil
+    }
+
     private func startManualScanTimer() {
         guard manualScanTimer == nil else { return }
         manualScanTimer = Timer(timeInterval: 20, repeats: false, block: { [unowned self] _ in
@@ -98,6 +117,16 @@ class MainViewController: UIViewController {
             self.manualScanButton.isHidden = false
         })
         RunLoop.main.add(manualScanTimer!, forMode: .default)
+    }
+
+    private func startCantRecognizeDocumentTimer() {
+        guard cantRecognizeDocumentTimer == nil else { return }
+        cantRecognizeDocumentTimer = Timer(timeInterval: 5, repeats: false, block: { [unowned self] _ in
+            self.stopFrontScanTimer()
+            self.stopManualScanTimer()
+            self.showResultViewController()
+        })
+        RunLoop.main.add(cantRecognizeDocumentTimer!, forMode: .default)
     }
 
     private func startFrontScanTimer() {
@@ -136,11 +165,8 @@ class MainViewController: UIViewController {
             case .viz:
                 instructionLabel.text = "Align Front of License"
             }
-        case .militaryId:
-            stopFrontScanTimer()
-            instructionLabel.text = "Align Barcode"
         }
-        scanningModeToggle.isHidden = mode != .drivingLicense
+        scanningModeToggle.isHidden = mode == .passport
     }
 
     private func setupCaptureView() {
@@ -212,6 +238,7 @@ class MainViewController: UIViewController {
         // Reset the timers
         stopFrontScanTimer()
         stopManualScanTimer()
+        stopCantRecognizeDocumentTimer()
         // Start scanning
         configureIdCapture()
     }
@@ -224,6 +251,7 @@ class MainViewController: UIViewController {
     }
 
     @IBAction private func manualScanAction(_ sender: Any) {
+        stopCantRecognizeDocumentTimer()
         showManualInput()
     }
 
@@ -248,72 +276,54 @@ class MainViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
 
-    private func makeDeliveryResultViewController() -> DeliveryResultViewController {
-        let deliveryResultViewController = storyboard?
-            .instantiateViewController(identifier: "DeliveryResultViewController")
-        as! DeliveryResultViewController
+    private func showResultViewController(capturedId: CapturedId? = nil) {
+        guard
+            let deliveryResultViewController = storyboard?
+                .instantiateViewController(identifier: "DeliveryResultViewController")
+                as? DeliveryResultViewController else { return }
+        stopScanning()
         let transitionManager = TransitionManager()
         deliveryResultViewController.transitioningDelegate = transitionManager
         deliveryResultViewController.modalPresentationStyle = .custom
         deliveryResultViewController.transitionManager = transitionManager
-
-        return deliveryResultViewController
-    }
-
-    private func showEmptyResultViewController() {
-        stopScanning()
-        let deliveryResultViewController = makeDeliveryResultViewController()
-        switch mode {
-        case .drivingLicense:
-            switch dlScanningMode {
-            case .barcode:
-                deliveryResultViewController.configureUnparsableBarcode()
-                deliveryResultViewController.mainButtonTapped = {
-                    self.reset()
-                    self.dlScanningMode = .viz
-                    self.scanningModeToggle.setVizScanning()
+        if let capturedId = capturedId {
+            deliveryResultViewController.configure(capturedId: capturedId)
+            deliveryResultViewController.mainButtonTapped = {
+                self.reset()
+            }
+            deliveryResultViewController.secondaryButtonTapped = {
+                self.reset()
+            }
+        } else {
+            switch mode {
+            case .drivingLicense:
+                switch dlScanningMode {
+                case .barcode:
+                    deliveryResultViewController.configureUnparsableBarcode()
+                    deliveryResultViewController.mainButtonTapped = {
+                        self.reset()
+                        self.dlScanningMode = .viz
+                        self.scanningModeToggle.setVizScanning()
+                    }
+                case .viz:
+                    deliveryResultViewController.configureUnparsableOCR()
+                    deliveryResultViewController.mainButtonTapped = {
+                        self.showManualInput()
+                    }
                 }
-            case .viz:
+                deliveryResultViewController.secondaryButtonTapped = {
+                    self.reset()
+                }
+            case .passport:
                 deliveryResultViewController.configureUnparsableOCR()
                 deliveryResultViewController.mainButtonTapped = {
                     self.showManualInput()
                 }
-            }
-            deliveryResultViewController.secondaryButtonTapped = {
-                self.reset()
-            }
-        case .passport:
-            deliveryResultViewController.configureUnparsableOCR()
-            deliveryResultViewController.mainButtonTapped = {
-                self.showManualInput()
-            }
-            deliveryResultViewController.secondaryButtonTapped = {
-                self.reset()
-            }
-        case .militaryId:
-            deliveryResultViewController.configureUnparsableOCR()
-            deliveryResultViewController.mainButtonTapped = {
-                self.showManualInput()
-            }
-            deliveryResultViewController.secondaryButtonTapped = {
-                self.reset()
+                deliveryResultViewController.secondaryButtonTapped = {
+                    self.reset()
+                }
             }
         }
-
-        present(deliveryResultViewController, animated: true, completion: nil)
-    }
-
-    private func showResultViewController(capturedId: CapturedId) {
-        stopScanning()
-        let deliveryResultViewController = makeDeliveryResultViewController()
-        deliveryResultViewController.configure(capturedId: capturedId)
-        deliveryResultViewController.mainButtonTapped = {
-            self.reset()
-        }
-        deliveryResultViewController.secondaryButtonTapped = {
-            self.reset()
-        }
-
         present(deliveryResultViewController, animated: true, completion: nil)
     }
 
@@ -323,6 +333,7 @@ extension MainViewController: ModeCollectionViewControllerDelegate {
 
     func selectedItem(atIndex index: Int) {
         mode = DocumentType.allCases[index]
+        stopCantRecognizeDocumentTimer()
         stopManualScanTimer()
         startManualScanTimer()
 
@@ -341,6 +352,7 @@ extension MainViewController: DocumentTypeToggleListener {
     func toggleDidChange(newState: ScanningMode) {
         dlScanningMode = newState
         stopFrontScanTimer()
+        stopCantRecognizeDocumentTimer()
         switch dlScanningMode {
         case .barcode:
             startFrontScanTimer()
@@ -352,18 +364,12 @@ extension MainViewController: DocumentTypeToggleListener {
 }
 
 extension MainViewController: IdCaptureListener {
+
     func idCapture(_ idCapture: IdCapture,
                    didLocalizeIn session: IdCaptureSession,
-                   frameData: FrameData) { }
-
-    func idCapture(_ idCapture: IdCapture, didTimeoutIn session: IdCaptureSession, frameData: FrameData) {
-        idCapture.isEnabled = false
+                   frameData: FrameData) {
         DispatchQueue.main.async {
-            self.stopFrontScanTimer()
-            self.stopManualScanTimer()
-            self.showEmptyResultViewController()
-            self.mode = .drivingLicense
-            self.modeCollection.selectItem(atIndex: 0)
+            self.startCantRecognizeDocumentTimer()
         }
     }
 
@@ -376,8 +382,6 @@ extension MainViewController: IdCaptureListener {
             self.stopFrontScanTimer()
             self.stopManualScanTimer()
             self.showResultViewController(capturedId: capturedId)
-            self.mode = .drivingLicense
-            self.modeCollection.selectItem(atIndex: 0)
         }
     }
 
@@ -387,9 +391,7 @@ extension MainViewController: IdCaptureListener {
         DispatchQueue.main.async {
             self.stopFrontScanTimer()
             self.stopManualScanTimer()
-            self.showEmptyResultViewController()
-            self.mode = .drivingLicense
-            self.modeCollection.selectItem(atIndex: 0)
+            self.showResultViewController()
         }
     }
 

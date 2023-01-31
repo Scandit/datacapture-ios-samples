@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     private var shouldCameraStandby = true
 
     private var allRecognizedBarcodes: [TrackedBarcode] = []
-    private var previouslyScannedBarcodes: [Barcode] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +39,6 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didEnterBackground),
                                                name: UIApplication.didEnterBackgroundNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
     }
 
@@ -98,6 +93,14 @@ class ViewController: UIViewController {
         settings.set(symbology: .code39, enabled: true)
         settings.set(symbology: .code128, enabled: true)
 
+        // Some linear/1d barcode symbologies allow you to encode variable-length data. By default, the Scandit
+        // Data Capture SDK only scans barcodes in a certain length range. If your application requires scanning of one
+        // of these symbologies, and the length is falling outside the default range, you may need to adjust the "active
+        // symbol counts" for this symbology. This is shown in the following few lines of code for one of the
+        // variable-length symbologies.
+        let symbologySettings = settings.settings(for: .code39)
+        symbologySettings.activeSymbolCounts = Set(7...20) as Set<NSNumber>
+
         // Create new barcode count mode with the settings from above.
         barcodeCount = BarcodeCount(context: context, settings: settings)
 
@@ -114,20 +117,17 @@ class ViewController: UIViewController {
     }
 
     /// Creates  an array of ScannedItem from TrackedBarcode so that it can be displayed by the ListViewController
-    private func prepareScannedItemsList(trackedBarcodes: [TrackedBarcode],
-                                         previousBarcodes: [Barcode]) -> [ScannedItem] {
+    private func prepareScannedItemsList(trackedBarcodes: [TrackedBarcode]) -> [ScannedItem] {
         var tempMap: [String: ScannedItem] = [:]
-        var allBarcodes = trackedBarcodes.compactMap { $0.barcode }
-        allBarcodes.append(contentsOf: previousBarcodes)
-        for barcode in allBarcodes {
-            guard let barcodeData = barcode.data else {
+        for trackedBarcode in trackedBarcodes {
+            guard let barcodeData = trackedBarcode.barcode.data else {
                 continue
             }
             if var item = tempMap[barcodeData] {
                 item.quantity += 1
                 tempMap[barcodeData] = item
             } else {
-                let newItem = ScannedItem(symbology: barcode.symbology.description.uppercased(),
+                let newItem = ScannedItem(symbology: trackedBarcode.barcode.symbology.description.uppercased(),
                                           data: barcodeData,
                                           quantity: 1)
                 tempMap[barcodeData] = newItem
@@ -141,8 +141,7 @@ class ViewController: UIViewController {
     private func showList(isOrderCompleted: Bool) {
         self.shouldCameraStandby = false
         // Get a list of ScannedItem to display
-        let scannedItems = prepareScannedItemsList(trackedBarcodes: allRecognizedBarcodes,
-                                                   previousBarcodes: previouslyScannedBarcodes)
+        let scannedItems = prepareScannedItemsList(trackedBarcodes: allRecognizedBarcodes)
         let listController = ListViewController(scannedItems: scannedItems, isOrderCompleted: isOrderCompleted)
         // Listen to the user actions
         listController.delegate = self
@@ -151,23 +150,12 @@ class ViewController: UIViewController {
     }
 
     @objc func didEnterBackground() {
-        let currentlyTrackedBarcodes = allRecognizedBarcodes.compactMap({ trackedBarcode in
-            return trackedBarcode.barcode
-        })
-        previouslyScannedBarcodes.append(contentsOf: currentlyTrackedBarcodes)
-        allRecognizedBarcodes.removeAll()
-        barcodeCount.reset()
-    }
-
-    @objc func willEnterForeground() {
-        barcodeCount.setAdditionalBarcodes(previouslyScannedBarcodes)
+        resetMode()
     }
 
     private func resetMode() {
-        barcodeCount.setAdditionalBarcodes([])
         barcodeCount.reset()
         allRecognizedBarcodes.removeAll()
-        previouslyScannedBarcodes.removeAll()
     }
 }
 

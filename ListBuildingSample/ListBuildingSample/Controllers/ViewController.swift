@@ -28,11 +28,17 @@ class ViewController: UIViewController {
         }
         settings.settings(for: .code39).activeSymbolCounts = Set((7...20).map { NSNumber(value: $0) })
 
-        let mode = SparkScan(settings: settings)
+        let mode = SparkScan(context: context, settings: settings)
         return mode
     }()
 
+    private lazy var overlay: SparkScanOverlay = {
+        let overlay = SparkScanOverlay(sparkScan: sparkScan)
+        return overlay
+    }()
+
     private var sparkScanView: SparkScanView!
+    private var camera = Camera.default
 
     /// The model where all scanned barcode are saved.
     private var items = [Item]()
@@ -43,14 +49,9 @@ class ViewController: UIViewController {
         setupUI()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        sparkScanView.viewWillAppear()
-    }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        sparkScanView.viewWillDisappear()
+        sparkScanView.pauseScanning()
     }
 
     @IBAction private func didPressClearListButton(_ sender: UIButton) {
@@ -90,6 +91,8 @@ extension ViewController {
     }
 
     private func setupRecognition() {
+        camera?.apply(SparkScan.recommendedCameraSettings)
+        context.setFrameSource(camera)
         sparkScan.addListener(self)
     }
 
@@ -98,6 +101,7 @@ extension ViewController {
                                       context: context,
                                       sparkScan: sparkScan,
                                       settings: SparkScanViewSettings())
+        sparkScanView.add(overlay)
     }
 }
 
@@ -130,20 +134,20 @@ extension ViewController: UITableViewDataSource {
 // MARK: - SparkScanListener Protocol Implementation
 
 extension ViewController: SparkScanListener {
-    func sparkScan(_ sparkScan: SparkScan, didScanIn session: SparkScanSession, frameData: FrameData?) {
+    func sparkScan(_ sparkScan: SparkScan, didScanIn session: SparkScanSession, frameData: FrameData) {
         if session.newlyRecognizedBarcodes.isEmpty {
             return
         }
         let barcode = session.newlyRecognizedBarcodes.first!
-        let thumbnail = frameData?.imageBuffers.last?.image?.resize(for: imageSize)
+        let thumbnail = frameData.imageBuffers.last?.image?.resize(for: imageSize)
 
         DispatchQueue.main.async {
             if barcode.data == "123456789" {
                 let feedback = SparkScanViewErrorFeedback(message: "This code should not have been scanned",
                                                           resumeCapturingDelay: 60)
-                self.sparkScanView.emitFeedback(feedback)
+                self.sparkScanView.setFeedback(feedback)
             } else {
-                self.sparkScanView.emitFeedback(SparkScanViewSuccessFeedback())
+                self.sparkScanView.setFeedback(SparkScanViewSuccessFeedback())
                 self.addItem(.init(
                     barcode: barcode,
                     number: self.items.count + 1,

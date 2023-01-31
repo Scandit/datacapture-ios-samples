@@ -35,9 +35,6 @@
 		65E53736238545E2002CA693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65E53735238545E2002CA693 /* Assets.xcassets */; };
 		65E53739238545E2002CA693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65E53737238545E2002CA693 /* LaunchScreen.storyboard */; };
 		65E5375523855449002CA693 /* DataCaptureContext+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5375423855449002CA693 /* DataCaptureContext+License.swift */; };
-		9CCB7A7C291C3CE30065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB7A7A291C3CE30065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */; };
-		9CCB7A7D291C3CE30065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB7A7B291C3CE30065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */; };
-		B95D43F32941311200E4878A /* ApecBusinessTravelCardMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D43F22941311200E4878A /* ApecBusinessTravelCardMrzResultPresenter.swift */; };
 		B95DB67A2849FA2500BAF3FA /* ChinaMainlandTravelPermitMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95DB6792849FA2500BAF3FA /* ChinaMainlandTravelPermitMrzResultPresenter.swift */; };
 		B9BA0D2F286DE929001C5A8D /* ChinaExitEnterPermitMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA0D2E286DE929001C5A8D /* ChinaExitEnterPermitMrzResultPresenter.swift */; };
 		B9F8433D282D5811005E6A21 /* ColombiaDlBarcodeResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8433C282D5811005E6A21 /* ColombiaDlBarcodeResultPresenter.swift */; };
@@ -89,9 +86,6 @@
 		65E53738238545E2002CA693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65E5373A238545E2002CA693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E5375423855449002CA693 /* DataCaptureContext+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+License.swift"; sourceTree = "<group>"; };
-		9CCB7A7A291C3CE30065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaOneWayPermitBackMrzResultPresenter.swift; sourceTree = "<group>"; };
-		9CCB7A7B291C3CE30065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaOneWayPermitFrontMrzResultPresenter.swift; sourceTree = "<group>"; };
-		B95D43F22941311200E4878A /* ApecBusinessTravelCardMrzResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApecBusinessTravelCardMrzResultPresenter.swift; sourceTree = "<group>"; };
 		B95DB6792849FA2500BAF3FA /* ChinaMainlandTravelPermitMrzResultPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaMainlandTravelPermitMrzResultPresenter.swift; sourceTree = "<group>"; };
 		B9BA0D2E286DE929001C5A8D /* ChinaExitEnterPermitMrzResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinaExitEnterPermitMrzResultPresenter.swift; sourceTree = "<group>"; };
 		B9F8433C282D5811005E6A21 /* ColombiaDlBarcodeResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColombiaDlBarcodeResultPresenter.swift; sourceTree = "<group>"; };
@@ -126,8 +120,6 @@
 		6517FA28265FCCBB000513EF /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				9CCB7A7A291C3CE30065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */,
-				9CCB7A7B291C3CE30065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */,
 				B95DB6792849FA2500BAF3FA /* ChinaMainlandTravelPermitMrzResultPresenter.swift */,
 				6517FA2E265FCDD1000513EF /* VizResultPresenter.swift */,
 				6517FA29265FCD57000513EF /* ResultPresenter.swift */,
@@ -140,7 +132,6 @@
 				6517FA3C265FCFEE000513EF /* SouthAfricaIdResultPresenter.swift */,
 				B9F8433C282D5811005E6A21 /* ColombiaDlBarcodeResultPresenter.swift */,
 				B9BA0D2E286DE929001C5A8D /* ChinaExitEnterPermitMrzResultPresenter.swift */,
-				B95D43F22941311200E4878A /* ApecBusinessTravelCardMrzResultPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -300,7 +291,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CCB7A7C291C3CE30065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift in Sources */,
 				65E53731238545E0002CA693 /* IdCaptureViewController.swift in Sources */,
 				6517FA3B265FCFC1000513EF /* SouthAfricaDLResultPresenter.swift in Sources */,
 				6517FA35265FCF17000513EF /* USUniformedServicesResultPresenter.swift in Sources */,
@@ -310,7 +300,6 @@
 				65DC51242502686A001DA3EA /* SDCCapturedResultType+CustomStringConvertible.swift in Sources */,
 				B9F8433D282D5811005E6A21 /* ColombiaDlBarcodeResultPresenter.swift in Sources */,
 				6517FA2F265FCDD1000513EF /* VizResultPresenter.swift in Sources */,
-				9CCB7A7D291C3CE30065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift in Sources */,
 				6517FA37265FCF7B000513EF /* ColombiaIdBarcodeResultPresenter.swift in Sources */,
 				6517FA2D265FCD9D000513EF /* CellProvider.swift in Sources */,
 				E799B41726FC540B002C1548 /* ModeCell.swift in Sources */,
@@ -318,7 +307,6 @@
 				65DC512225026152001DA3EA /* SDCDocumentType+CustomStringConvertible.swift in Sources */,
 				6517FA39265FCF99000513EF /* ArgentinaIdResultPresenter.swift in Sources */,
 				6517FA42265FEC4D000513EF /* SDCSupportedSides+CustomStringConvertible.swift in Sources */,
-				B95D43F32941311200E4878A /* ApecBusinessTravelCardMrzResultPresenter.swift in Sources */,
 				65E5372F238545E0002CA693 /* AppDelegate.swift in Sources */,
 				65E5375523855449002CA693 /* DataCaptureContext+License.swift in Sources */,
 				6517FA24265E8222000513EF /* ResultViewController.swift in Sources */,
@@ -480,7 +468,7 @@
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/IdCaptureExtendedSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,7 +490,7 @@
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/IdCaptureExtendedSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

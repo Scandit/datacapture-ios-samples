@@ -344,12 +344,11 @@
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/BarcodeCaptureSimpleSampleObjC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_CFLAGS = "-fstack-protector-all";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.simplesampleobjc${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -367,12 +366,11 @@
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/BarcodeCaptureSimpleSampleObjC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_CFLAGS = "-fstack-protector-all";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.simplesampleobjc${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -47,12 +47,6 @@ extension IdDocumentType: CustomStringConvertible {
             return "China Mainland Travel Permit MRZ"
         case .chinaExitEntryPermitMRZ:
             return "China Exit Entry Permit MRZ"
-        case .chinaOneWayPermitBackMRZ:
-            return "China One-Way Permit MRZ Back"
-        case .chinaOneWayPermitFrontMRZ:
-            return "China One-Way Permit MRZ Front"
-        case .apecBusinessTravelCardMRZ:
-            return "Apec Business Travel Card MRZ"
         default:
             fatalError("Unknown case \(self.rawValue)")
         }

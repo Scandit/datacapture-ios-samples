@@ -35,10 +35,10 @@ final class ResultCell: UITableViewCell, IdentifiableCell {
             resultView.backgroundColor = UIColor.greenBackground
             resultIconView.image = UIImage(named: "ok")
         case .error:
-            resultView.backgroundColor = UIColor.redBackground
+            resultView.backgroundColor = UIColor.yellowBackground
             resultIconView.image = UIImage(named: "error")
         case .info:
-            resultView.backgroundColor = UIColor.yellowBackground
+            resultView.backgroundColor = UIColor.redBackground
             resultIconView.image = UIImage(named: "info")
         }
     }

@@ -18,21 +18,16 @@ import ScanditIdCapture
 private extension CapturedId {
     var dateOfBirthString: String {
         guard let date = dateOfBirth?.date else { return "" }
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter.string(from: date)
+        return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
     }
 
-    var isExpired: Bool? {
-        guard let expiryDate = dateOfExpiry?.date else { return nil }
+    var isExpired: Bool {
+        guard let expiryDate = dateOfExpiry?.date else { return false }
         return expiryDate < Date()
     }
 }
 
 enum Section: Int, CaseIterable {
-    case title
     case result
     case avatar
     case fields
@@ -105,17 +100,15 @@ final class DLScanningResultViewController: UITableViewController {
 
         results.append(Result(status: .success, message: "Information on front and back matches."))
 
-        if result == .expired {
-            results.append(Result(status: .error, message: "Document has expired."))
+        guard result != .expired else {
+            results.append(Result(status: .error, message: "This document is expired."))
             return results
-        } else {
-            results.append(Result(status: .success, message: "Document has not expired."))
         }
 
         if result == .cloudVerificationFailed {
-            results.append(Result(status: .error, message: "Verification checks failed."))
+            results.append(Result(status: .error, message: "Cloud verification failed."))
         } else {
-            results.append(Result(status: .success, message: "Verification checks passed."))
+            results.append(Result(status: .success, message: "Cloud verification successful."))
         }
 
         return results
@@ -131,7 +124,6 @@ extension DLScanningResultViewController /*: UITableViewDataSource */ {
         guard let section = Section(rawValue: section) else { return 0 }
         guard capturedId != nil else { return 0 }
         switch section {
-        case .title: return 1
         case .result: return results.count
         case .avatar: return capturedId!.idImage(of: .face) != nil ? 1 : 0
         case .fields: return Field.allCases.count
@@ -141,7 +133,6 @@ extension DLScanningResultViewController /*: UITableViewDataSource */ {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let section = Section(rawValue: indexPath.section) else { fatalError() }
         switch section {
-        case .title: return Self.makeTitleCell(tableView, indexPath: indexPath)
         case .result: return Self.makeResultCell(tableView, indexPath: indexPath, result: results[indexPath.row])
         case .avatar: return Self.makeAvatarCell(tableView, indexPath: indexPath, capturedId: capturedId!)
         case .fields: return Self.makeFieldCell(tableView, indexPath: indexPath, capturedId: capturedId!)
@@ -189,14 +180,6 @@ extension DLScanningResultViewController {
             for: indexPath) as? ResultCell else { fatalError() }
 
         cell.result = result
-        return cell
-    }
-
-    static func makeTitleCell(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: TitleTableViewCell.cellIdentifier,
-            for: indexPath) as? TitleTableViewCell else { fatalError() }
-
         return cell
     }
 }

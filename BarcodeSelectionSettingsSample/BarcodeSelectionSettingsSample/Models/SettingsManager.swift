@@ -365,5 +365,3 @@ class SettingsManager {
         overlay = newOverlay
     }
 }
-
-// swiftlint:enable type_body_length

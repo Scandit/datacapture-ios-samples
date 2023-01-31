@@ -60,7 +60,7 @@ class IdCaptureViewController: UIViewController {
         // Use the world-facing (back) camera and set it as the frame source of the context. The camera is off by
         // default and must be turned on to start streaming frames to the data capture context for recognition.
         // See viewWillAppear and viewDidDisappear above.
-        camera = Camera.default
+        camera = Camera(position: .worldFacing, settings: IdCapture.recommendedCameraSettings)
         context.setFrameSource(camera, completionHandler: nil)
 
         // Use the recommended camera settings for the IdCapture mode.
@@ -183,7 +183,6 @@ extension IdCaptureViewController: IdCaptureListener {
         Last Name: \(result.lastName ?? "<nil>")
         Full Name: \(result.fullName)
         Sex: \(result.sex ?? "<nil>")
-        Age: \(result.age?.description ?? "<nil>")
         Date of Birth: \(result.dateOfBirth?.description ?? "<nil>")
         Nationality: \(result.nationality ?? "<nil>")
         Address: \(result.address ?? "<nil>")
@@ -193,7 +192,6 @@ extension IdCaptureViewController: IdCaptureListener {
         Issuing Country ISO: \(result.issuingCountryISO ?? "<nil>")
         Document Number: \(result.documentNumber ?? "<nil>")
         Date of Expiry: \(result.dateOfExpiry?.description ?? "<nil>")
-        Is Expired: \(result.isExpired == nil ? "<nil>" : (result.isExpired!.boolValue ? "YES" : "NO"))
         Date of Issue: \(result.dateOfIssue?.description ?? "<nil>")
         """
     }

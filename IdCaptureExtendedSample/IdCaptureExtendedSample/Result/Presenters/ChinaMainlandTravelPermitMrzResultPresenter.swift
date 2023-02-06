@@ -29,7 +29,7 @@ class ChinaMainlandTravelPermitMrzResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: result.personalIdNumber,
                                    title: "Personal ID Number"),
             SimpleTextCellProvider(value: "\(result.renewalTimes)", title: "Renewal Times"),
-            SimpleTextCellProvider(value: result.gbkName, title: "GBK Name"),
+            SimpleTextCellProvider(value: result.fullNameSimplifiedChinese, title: "Full Name Simplified Chinese"),
             SimpleTextCellProvider(value: "\(result.omittedCharacterCountInGBKName)",
                                    title: "Omitted Character Count in GBK Name"),
             SimpleTextCellProvider(value: "\(result.omittedNameCount)",

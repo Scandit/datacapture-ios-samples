@@ -38,7 +38,7 @@ class SettingsManager {
 
     var overlay: IdCaptureOverlay!
 
-    var internalCamera: Camera? = Camera(position: .worldFacing, settings: IdCapture.recommendedCameraSettings)
+    var internalCamera: Camera? = Camera.default
     var internalTorchState: TorchState = .off
     // Use the recommended camera settings for the IdCapture mode.
     var cameraSettings: CameraSettings = IdCapture.recommendedCameraSettings

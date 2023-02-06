@@ -14,12 +14,9 @@
 
 import UIKit
 
-class ItemsTableViewHeader: UIView {
-    @IBOutlet private weak var label: UILabel!
+final class TitleTableViewCell: UITableViewCell, IdentifiableCell {
+    static var cellIdentifier: String { "Title" }
 
-    var itemsCount: Int? {
-        didSet {
-            label.text = "\(itemsCount ?? 0) items"
-        }
-    }
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var valueLabel: UILabel!
 }

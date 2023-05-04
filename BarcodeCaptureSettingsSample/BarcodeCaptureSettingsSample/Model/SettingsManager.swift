@@ -15,10 +15,12 @@
 import ScanditBarcodeCapture
 
 // swiftlint:disable type_body_length
+// swiftlint:disable file_length
 
 class SettingsManager {
 
     private lazy var settingsManagerProxyListener = SettingsManagerProxyListener(settingsManager: self)
+    private lazy var settingsManagerMacroModeListener = SettingsManagerMacroModeListener(settingsManager: self)
 
     private let defaultLegacyViewFinderSize = RectangularViewfinder(
         style: .legacy).sizeWithUnitAndAspect.widthAndHeight
@@ -56,6 +58,7 @@ class SettingsManager {
         return CameraSwitchControl(primaryCamera: worldFacingCamera, secondaryCamera: userFacingCamera)
     }()
     var internalZoomSwitch: ZoomSwitchControl = ZoomSwitchControl()
+    var internalMacroMode: MacroModeControl = MacroModeControl()
 
     var internalVibration = FeedbackVibration.default
 
@@ -74,6 +77,7 @@ class SettingsManager {
         // Make sure that references to some settings are actually the current settings
         internalCamera?.apply(cameraSettings, completionHandler: nil)
         internalCamera?.desiredTorchState =  .off
+        internalCamera?.addMacroModeListener(settingsManagerMacroModeListener)
 
         context.addListener(settingsManagerProxyListener)
     }
@@ -311,6 +315,11 @@ class SettingsManager {
                 captureView.addControl(internalCameraSwitch)
             } else {
                 captureView.removeControl(internalCameraSwitch)
+                if macroModeSwitchShown {
+                    // The macro mode and camera switch controls have the same default placement
+                    // anchors, so when both are added to the capture view they replace each other
+                    captureView.addControl(internalMacroMode)
+                }
             }
         }
     }
@@ -321,6 +330,21 @@ class SettingsManager {
                 captureView.addControl(internalZoomSwitch)
             } else {
                 captureView.removeControl(internalZoomSwitch)
+            }
+        }
+    }
+
+    var macroModeSwitchShown: Bool = false {
+        didSet {
+            if macroModeSwitchShown {
+                captureView.addControl(internalMacroMode)
+            } else {
+                captureView.removeControl(internalMacroMode)
+                if cameraSwitchShown, let internalCameraSwitch = internalCameraSwitch {
+                    // The macro mode and camera switch controls have the same default placement
+                    // anchors, so when both are added to the capture view they replace each other
+                    captureView.addControl(internalCameraSwitch)
+                }
             }
         }
     }
@@ -346,6 +370,22 @@ class SettingsManager {
 }
 
 // swiftlint:enable type_body_length
+
+class SettingsManagerMacroModeListener: NSObject {
+
+    weak var settingsManager: SettingsManager?
+
+    init(settingsManager: SettingsManager) {
+        super.init()
+        self.settingsManager = settingsManager
+    }
+}
+
+extension SettingsManagerMacroModeListener: MacroModeListener {
+    func didChange(_ macroMode: MacroMode) {
+        settingsManager?.cameraSettings.macroMode = macroMode
+    }
+}
 
 class SettingsManagerProxyListener: NSObject {
 

@@ -15,7 +15,6 @@
 import UIKit
 import ScanditIdCapture
 
-// swiftlint:disable:next type_body_length
 class MainViewController: UIViewController {
 
     private lazy var context = DataCaptureContext.licensed
@@ -121,25 +120,9 @@ class MainViewController: UIViewController {
         idCapture.addListener(self)
         idCaptureOverlay = IdCaptureOverlay(idCapture: idCapture,
                                             view: captureView)
-        idCaptureOverlay.setIdLayout(.auto)
     }
 
     private func configureUI() {
-        switch mode {
-        case .passport:
-            stopFrontScanTimer()
-            instructionLabel.text = "Align Character Strip"
-        case .drivingLicense:
-            switch dlScanningMode {
-            case .barcode:
-                instructionLabel.text = "Align Back of License"
-            case .viz:
-                instructionLabel.text = "Align Front of License"
-            }
-        case .militaryId:
-            stopFrontScanTimer()
-            instructionLabel.text = "Align Barcode"
-        }
         scanningModeToggle.isHidden = mode != .drivingLicense
     }
 
@@ -198,7 +181,6 @@ class MainViewController: UIViewController {
 
         configureUI()
         reset()
-        startFrontScanTimer()
     }
 
     private func reset() {
@@ -214,6 +196,7 @@ class MainViewController: UIViewController {
         stopManualScanTimer()
         // Start scanning
         configureIdCapture()
+        startTimer()
     }
 
     private func stopScanning() {
@@ -260,6 +243,20 @@ class MainViewController: UIViewController {
         return deliveryResultViewController
     }
 
+    private func startTimer() {
+        switch mode {
+        case .drivingLicense:
+            switch dlScanningMode {
+            case .barcode:
+                startFrontScanTimer()
+            case .viz:
+                startManualScanTimer()
+            }
+        case .passport, .militaryId:
+            startManualScanTimer()
+        }
+    }
+
     private func showEmptyResultViewController() {
         stopScanning()
         let deliveryResultViewController = makeDeliveryResultViewController()
@@ -279,25 +276,14 @@ class MainViewController: UIViewController {
                     self.showManualInput()
                 }
             }
-            deliveryResultViewController.secondaryButtonTapped = {
-                self.reset()
-            }
-        case .passport:
+        case .militaryId, .passport:
             deliveryResultViewController.configureUnparsableOCR()
             deliveryResultViewController.mainButtonTapped = {
                 self.showManualInput()
             }
-            deliveryResultViewController.secondaryButtonTapped = {
-                self.reset()
-            }
-        case .militaryId:
-            deliveryResultViewController.configureUnparsableOCR()
-            deliveryResultViewController.mainButtonTapped = {
-                self.showManualInput()
-            }
-            deliveryResultViewController.secondaryButtonTapped = {
-                self.reset()
-            }
+        }
+        deliveryResultViewController.secondaryButtonTapped = {
+            self.reset()
         }
 
         present(deliveryResultViewController, animated: true, completion: nil)
@@ -324,16 +310,12 @@ extension MainViewController: ModeCollectionViewControllerDelegate {
     func selectedItem(atIndex index: Int) {
         mode = DocumentType.allCases[index]
         stopManualScanTimer()
-        startManualScanTimer()
+        stopFrontScanTimer()
 
-        if mode == .drivingLicense, dlScanningMode == .barcode {
-            stopFrontScanTimer()
-            startFrontScanTimer()
-        }
+        startTimer()
 
         documentSelectionTooltip.isHidden = true
     }
-
 }
 
 extension MainViewController: DocumentTypeToggleListener {
@@ -341,12 +323,7 @@ extension MainViewController: DocumentTypeToggleListener {
     func toggleDidChange(newState: ScanningMode) {
         dlScanningMode = newState
         stopFrontScanTimer()
-        switch dlScanningMode {
-        case .barcode:
-            startFrontScanTimer()
-        case .viz:
-            startManualScanTimer()
-        }
+        startTimer()
     }
 
 }

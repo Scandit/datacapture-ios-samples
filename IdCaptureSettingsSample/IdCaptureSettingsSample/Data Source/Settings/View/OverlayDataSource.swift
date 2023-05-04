@@ -55,7 +55,15 @@ class OverlayDataSource: DataSource {
                        options: OverlayDataSource.brushes,
                        getValue: { SettingsManager.current.capturedBrush },
                        didChangeValue: { SettingsManager.current.capturedBrush = $0 },
-                       dataSourceDelegate: self.delegate)
+                       dataSourceDelegate: self.delegate),
+            Row.editableText(title: "Viewfinder Front Text",
+                             getValue: { SettingsManager.current.viewfinderFrontText },
+                             didChangeValue: { SettingsManager.current.viewfinderFrontText = $0 },
+                             dataSourceDelegate: self.delegate),
+            Row.editableText(title: "Viewfinder Back Text",
+                             getValue: { SettingsManager.current.viewfinderBackText },
+                             didChangeValue: { SettingsManager.current.viewfinderBackText = $0 },
+                             dataSourceDelegate: self.delegate)
         ])]
     }()
 }

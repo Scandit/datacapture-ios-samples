@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="90" id="dTm-LM-cqD" customClass="ItemTableViewCell" customModule="ExpiryManagementSample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="526" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dTm-LM-cqD" id="Kgf-Di-1wM">
+                <rect key="frame" x="0.0" y="0.0" width="526" height="90"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="product-image" translatesAutoresizingMaskIntoConstraints="NO" id="6yS-Lh-osL">
+                        <rect key="frame" x="20" y="8" width="74" height="74"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="6yS-Lh-osL" secondAttribute="height" multiplier="1:1" id="E3x-k2-q94"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIO-MZ-hZR">
+                        <rect key="frame" x="102" y="8" width="36.333333333333343" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3z-3l-Uea">
+                        <rect key="frame" x="101.99999999999997" y="37" width="323.33333333333326" height="15.666666666666664"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item is expired" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQY-tu-qYe">
+                        <rect key="frame" x="101.99999999999997" y="60.666666666666664" width="323.33333333333326" height="15.666666666666664"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" systemColor="systemRedColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFe-Bh-yUa">
+                        <rect key="frame" x="441.33333333333331" y="34.666666666666664" width="64.666666666666686" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="PFe-Bh-yUa" secondAttribute="trailing" constant="20" symbolic="YES" id="5Q5-ZX-1zr"/>
+                    <constraint firstItem="PFe-Bh-yUa" firstAttribute="leading" secondItem="FQY-tu-qYe" secondAttribute="trailing" constant="16" id="6wJ-jw-3mQ"/>
+                    <constraint firstItem="PFe-Bh-yUa" firstAttribute="centerY" secondItem="6yS-Lh-osL" secondAttribute="centerY" id="9DD-5q-cy6"/>
+                    <constraint firstItem="PFe-Bh-yUa" firstAttribute="leading" secondItem="o3z-3l-Uea" secondAttribute="trailing" constant="16" id="Bc4-zv-heM"/>
+                    <constraint firstItem="qIO-MZ-hZR" firstAttribute="top" secondItem="6yS-Lh-osL" secondAttribute="top" id="LLC-zr-1ws"/>
+                    <constraint firstItem="6yS-Lh-osL" firstAttribute="leading" secondItem="Kgf-Di-1wM" secondAttribute="leading" constant="20" symbolic="YES" id="LPW-HQ-zUt"/>
+                    <constraint firstItem="FQY-tu-qYe" firstAttribute="leading" secondItem="6yS-Lh-osL" secondAttribute="trailing" constant="8" symbolic="YES" id="M2s-U9-UhY"/>
+                    <constraint firstItem="PFe-Bh-yUa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qIO-MZ-hZR" secondAttribute="trailing" constant="16" id="Ncv-c8-3yE"/>
+                    <constraint firstItem="FQY-tu-qYe" firstAttribute="top" secondItem="o3z-3l-Uea" secondAttribute="bottom" constant="8" symbolic="YES" id="TxC-cc-B4X"/>
+                    <constraint firstItem="o3z-3l-Uea" firstAttribute="top" secondItem="qIO-MZ-hZR" secondAttribute="bottom" constant="8" symbolic="YES" id="Vhh-qX-jGJ"/>
+                    <constraint firstItem="qIO-MZ-hZR" firstAttribute="leading" secondItem="6yS-Lh-osL" secondAttribute="trailing" constant="8" symbolic="YES" id="gNx-Rv-Rvz"/>
+                    <constraint firstItem="6yS-Lh-osL" firstAttribute="top" secondItem="Kgf-Di-1wM" secondAttribute="top" constant="8" id="jTk-qS-WeF"/>
+                    <constraint firstAttribute="bottom" secondItem="6yS-Lh-osL" secondAttribute="bottom" constant="8" id="law-3r-XPl"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qIO-MZ-hZR" secondAttribute="trailing" constant="16" id="wFv-Ko-pdJ"/>
+                    <constraint firstItem="o3z-3l-Uea" firstAttribute="leading" secondItem="6yS-Lh-osL" secondAttribute="trailing" constant="8" symbolic="YES" id="xGb-ti-8W6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="expiredLabel" destination="FQY-tu-qYe" id="qKn-qu-3K2"/>
+                <outlet property="quantityLabel" destination="PFe-Bh-yUa" id="e4u-dk-lIZ"/>
+                <outlet property="subtitleLabel" destination="o3z-3l-Uea" id="3Qo-Up-dYn"/>
+                <outlet property="titleLabel" destination="qIO-MZ-hZR" id="3yT-lc-Vnv"/>
+            </connections>
+            <point key="canvasLocation" x="148.09160305343511" y="-110.91549295774648"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="product-image" width="168" height="168"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

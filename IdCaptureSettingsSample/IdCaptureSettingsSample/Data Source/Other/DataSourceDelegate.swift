@@ -24,4 +24,5 @@ protocol DataSourceDelegate: AnyObject {
                                                         options: [Choice],
                                                         chosen: Choice,
                                                         didChooseValue: @escaping (Choice) -> Void)
+    func presentTextEdit(title: String?, currentValue: String, completion: @escaping (String) -> Void)
 }

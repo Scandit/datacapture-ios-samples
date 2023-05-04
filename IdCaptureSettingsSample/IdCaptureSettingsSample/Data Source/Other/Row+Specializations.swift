@@ -32,6 +32,23 @@ extension Row {
         })
     }
 
+    static func editableText(title: String,
+                             getValue: @escaping (() -> String),
+                             didChangeValue: @escaping ((String) -> Void),
+                             dataSourceDelegate: DataSourceDelegate?) -> Row {
+        return Row(title: title,
+                   kind: .text,
+                   getValue: getValue,
+                   didChangeValue: { [weak dataSourceDelegate] value in
+                    didChangeValue(value)
+                    dataSourceDelegate?.didChangeData() },
+                   didSelect: { [weak dataSourceDelegate] row, _ in
+                    dataSourceDelegate?.presentTextEdit(title: title,
+                                                        currentValue: getValue(),
+                                                        completion: { row.didChangeValue!($0) })
+        })
+    }
+
     static func option(title: String,
                        getValue: @escaping (() -> Any?),
                        didSelect: @escaping ((Row, IndexPath) -> Void),

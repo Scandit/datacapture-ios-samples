@@ -24,7 +24,7 @@ class ControlsDataSource: DataSource {
     // MARK: - Sections
 
     lazy var sections: [Section] = {
-        return [
+        var sections = [
             Section(rows: [
                 Row.init(title: "Torch Button",
                          kind: .switch,
@@ -44,5 +44,16 @@ class ControlsDataSource: DataSource {
                          didChangeValue: { SettingsManager.current.zoomSwitchShown = $0 })
             ])
         ]
+        if Camera.isMacroModeAvailable {
+            sections.append(
+                Section(rows: [
+                    Row.init(title: "Macro Mode Button",
+                             kind: .switch,
+                             getValue: { SettingsManager.current.macroModeSwitchShown },
+                             didChangeValue: { SettingsManager.current.macroModeSwitchShown = $0 })
+                ])
+            )
+        }
+        return sections
     }()
 }

@@ -24,6 +24,7 @@ class Row {
         case choice
         case slider(minimum: Float, maximum: Float, decimalPlaces: Int)
         case action
+        case text
     }
 
     let title: String
@@ -62,6 +63,8 @@ extension Row {
             return FloatInputCell.self
         case .slider:
             return SliderCell.self
+        case .text:
+            return TextEditCell.self
         default:
             return BasicCell.self
         }

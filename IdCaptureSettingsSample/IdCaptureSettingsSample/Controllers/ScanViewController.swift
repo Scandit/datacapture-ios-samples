@@ -139,6 +139,11 @@ extension ScanViewController: IdCaptureListener {
                     isScanningBackSide = true
                 }, onReject: { [unowned self] in
                     display(capturedId: capturedId)
+                    /*
+                     * If we want to skip scanning the back of the document, we have to call
+                     * `IdCapture().reset()` to allow for another front IDs to be scanned.
+                     */
+                    self.idCapture.reset()
                 })
             }
         } else {

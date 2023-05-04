@@ -55,6 +55,10 @@
 		6FFECF3B22367440005CE4CD /* Anchor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3A22367440005CE4CD /* Anchor+Extensions.swift */; };
 		6FFECF3D223676C9005CE4CD /* ControlsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3C223676C9005CE4CD /* ControlsTableViewController.swift */; };
 		6FFECF3F223676E2005CE4CD /* ControlsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3E223676E2005CE4CD /* ControlsDataSource.swift */; };
+		8C3809DF29C9E3920088F466 /* TextEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3809DE29C9E3920088F466 /* TextEditCell.swift */; };
+		9C7F6F79299416A80034D48D /* IdAnonymizationMode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F78299416A80034D48D /* IdAnonymizationMode+Extensions.swift */; };
+		9C7F6F7B299417950034D48D /* IdAnonymizationModeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F7A299417950034D48D /* IdAnonymizationModeDataSource.swift */; };
+		9C7F6F7D299418110034D48D /* IdAnonymizationModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F7C299418110034D48D /* IdAnonymizationModeTableViewController.swift */; };
 		9CCB7A78291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB7A76291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */; };
 		9CCB7A79291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB7A77291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */; };
 		A2269B1D2527807700FC7451 /* NumberFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2269B1C2527807700FC7451 /* NumberFormatter+Extensions.swift */; };
@@ -170,6 +174,10 @@
 		6FFECF3A22367440005CE4CD /* Anchor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Anchor+Extensions.swift"; sourceTree = "<group>"; };
 		6FFECF3C223676C9005CE4CD /* ControlsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsTableViewController.swift; sourceTree = "<group>"; };
 		6FFECF3E223676E2005CE4CD /* ControlsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsDataSource.swift; sourceTree = "<group>"; };
+		8C3809DE29C9E3920088F466 /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
+		9C7F6F78299416A80034D48D /* IdAnonymizationMode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IdAnonymizationMode+Extensions.swift"; sourceTree = "<group>"; };
+		9C7F6F7A299417950034D48D /* IdAnonymizationModeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdAnonymizationModeDataSource.swift; sourceTree = "<group>"; };
+		9C7F6F7C299418110034D48D /* IdAnonymizationModeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdAnonymizationModeTableViewController.swift; sourceTree = "<group>"; };
 		9CCB7A76291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaOneWayPermitFrontMrzResultPresenter.swift; sourceTree = "<group>"; };
 		9CCB7A77291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaOneWayPermitBackMrzResultPresenter.swift; sourceTree = "<group>"; };
 		A2269B1C2527807700FC7451 /* NumberFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extensions.swift"; sourceTree = "<group>"; };
@@ -273,6 +281,7 @@
 		6F144A1B222E92EA002C5C3E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9C7F6F78299416A80034D48D /* IdAnonymizationMode+Extensions.swift */,
 				6F144A1C222E9EE7002C5C3E /* DataCaptureContext+Licensed.swift */,
 				6F144A29222FBEF2002C5C3E /* MeasureUnit+Extensions.swift */,
 				6F869D2D223161F900E20833 /* VideoResolution+Extensions.swift */,
@@ -317,6 +326,7 @@
 				6F869D0B222FC83A00E20833 /* FloatInputCell.swift */,
 				6F869D352232624A00E20833 /* SliderCell */,
 				6F144A17222E90A5002C5C3E /* UITableView+Utils.swift */,
+				8C3809DE29C9E3920088F466 /* TextEditCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +356,7 @@
 		6F869D162230218A00E20833 /* Id Capture */ = {
 			isa = PBXGroup;
 			children = (
+				9C7F6F7C299418110034D48D /* IdAnonymizationModeTableViewController.swift */,
 				A2545BCC26A6C13C00905C0A /* SupportedDocumentsTableViewController.swift */,
 				A2545BD026A6C3F500905C0A /* SupportedSidesTableViewController.swift */,
 				A2545BD426A6C71500905C0A /* ImageTypesTableViewController.swift */,
@@ -368,6 +379,7 @@
 		6F869D2022311CA100E20833 /* Id Capture */ = {
 			isa = PBXGroup;
 			children = (
+				9C7F6F7A299417950034D48D /* IdAnonymizationModeDataSource.swift */,
 				A2545BCA26A6B9AF00905C0A /* SupportedDocumentsDataSource.swift */,
 				A2545BCE26A6C36A00905C0A /* SupportedSidesDataSource.swift */,
 				A2545BD226A6C6FB00905C0A /* ImageTypesDataSource.swift */,
@@ -591,6 +603,8 @@
 				A2CC098E255E9DE700C2E3EA /* GesturesDataSource.swift in Sources */,
 				6F144A14222E8E1A002C5C3E /* Section.swift in Sources */,
 				6FA0B293219AE7B600FF780A /* ScanViewController.swift in Sources */,
+				9C7F6F7B299417950034D48D /* IdAnonymizationModeDataSource.swift in Sources */,
+				9C7F6F79299416A80034D48D /* IdAnonymizationMode+Extensions.swift in Sources */,
 				6F144A28222ED63E002C5C3E /* FloatWithUnitChooserViewController.swift in Sources */,
 				A2545BCD26A6C13C00905C0A /* SupportedDocumentsTableViewController.swift in Sources */,
 				6F361E76223FAF3F009744EF /* MainTableViewController.swift in Sources */,
@@ -599,6 +613,7 @@
 				A2545C2F26A7044B00905C0A /* ColombiaIdBarcodeResultPresenter.swift in Sources */,
 				A24906E4255EB8360024A9F3 /* SettingsManager+IdCapture.swift in Sources */,
 				6F869D2622311FFC00E20833 /* CameraDataSource.swift in Sources */,
+				9C7F6F7D299418110034D48D /* IdAnonymizationModeTableViewController.swift in Sources */,
 				6F869D0C222FC83A00E20833 /* FloatInputCell.swift in Sources */,
 				6FFECF352232CD38005CE4CD /* OverlayDataSource.swift in Sources */,
 				6F869D2422311F3000E20833 /* CameraTableViewController.swift in Sources */,
@@ -616,6 +631,7 @@
 				A2545C2926A7044B00905C0A /* USUniformedServicesResultPresenter.swift in Sources */,
 				657F19A322A90A5E002F73F4 /* RectangularSizeSpecification.swift in Sources */,
 				A24906E8255EB8440024A9F3 /* SettingsManager+View.swift in Sources */,
+				8C3809DF29C9E3920088F466 /* TextEditCell.swift in Sources */,
 				A2545C2C26A7044B00905C0A /* ResultPresenter.swift in Sources */,
 				6F869D1822310C2900E20833 /* UITableViewCell+Extensions.swift in Sources */,
 				A24906E6255EB83E0024A9F3 /* SettingsManager+Camera.swift in Sources */,

@@ -43,6 +43,15 @@ extension Optional where Wrapped == String {
     }
 }
 
+extension Optional where Wrapped == String {
+    var valueOrEmpty: String {
+        if let value = self, !value.isEmpty {
+            return value
+        }
+        return ""
+    }
+}
+
 extension Optional where Wrapped == NSNumber {
     var valueOrNil: String {
         if let value = self?.intValue {

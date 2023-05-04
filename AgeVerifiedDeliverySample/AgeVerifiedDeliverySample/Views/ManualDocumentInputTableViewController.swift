@@ -16,7 +16,9 @@ import UIKit
 
 var dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MM/dd/YYYY"
+    dateFormatter.dateStyle = .medium
+    dateFormatter.timeStyle = .none
+    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
     return dateFormatter
 }()
 
@@ -81,6 +83,8 @@ class ManualDocumentInputTableViewController: UITableViewController {
         guard let controller = storyboard?
                 .instantiateViewController(identifier: "DatePickerViewController")
                 as? DatePickerViewController else { return }
+
+        controller.maxDateIsToday = sender == birthdayTextField
 
         controller.didPickDateCompletion = { [weak self] date in
             guard let self = self else { return }

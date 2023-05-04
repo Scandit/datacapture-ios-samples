@@ -17,12 +17,6 @@ import ScanditCaptureCore
 import ScanditIdCapture
 
 final class DLScanningViewController: UIViewController {
-    enum Hint: String {
-        case front = "Align front of document"
-        case back = "Align back of document"
-        case verifying = "Verifying..."
-    }
-
     private var context: DataCaptureContext!
     private var camera: Camera!
     private var captureView: DataCaptureView!
@@ -36,13 +30,21 @@ final class DLScanningViewController: UIViewController {
         super.viewDidLoad()
 
         setupRecognition()
+
+        hintView.isHidden = true
+        view.addSubview(hintView)
+        hintView.text = "Running verification checks"
+        hintView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            hintView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            hintView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         camera.switch(toDesiredState: .on)
-        showHint(.front)
     }
 
     func setupRecognition() {
@@ -89,27 +91,6 @@ final class DLScanningViewController: UIViewController {
     }
 }
 
-private extension DLScanningViewController {
-    func showHint(_ hint: Hint) {
-        if hintView.superview == nil {
-            // Attach hint view
-            view.addSubview(hintView)
-            hintView.translatesAutoresizingMaskIntoConstraints = false
-
-            let hintGuide = UILayoutGuide()
-            view.addLayoutGuide(hintGuide)
-            NSLayoutConstraint.activate([
-                hintGuide.bottomAnchor.constraint(equalTo: view.centerYAnchor),
-                hintGuide.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-                hintView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                hintView.centerYAnchor.constraint(equalTo: hintGuide.topAnchor)
-            ])
-        }
-
-        hintView.text = hint.rawValue
-    }
-}
-
 extension DLScanningViewController: IdCaptureListener {
     func idCapture(_ idCapture: IdCapture, didCaptureIn session: IdCaptureSession, frameData: FrameData) {
         // This is the main delegate call we receive from IdCapture on a new capture event.
@@ -141,13 +122,11 @@ extension DLScanningViewController: IdCaptureListener {
     }
 
     func handleCapturedId(_ capturedId: CapturedId) {
-        // By checking captured sides on viz result, we are updating shown hint to the user
         if let vizResult = capturedId.vizResult, vizResult.capturedSides == .frontOnly {
-            // If the captured sides are front only, we are updating hint and waiting for another capture event
-            showHint(.back)
+            // when only front scanned do not display the result
+            // since we need to scan the back first
+            return
         } else if let vizResult = capturedId.vizResult, vizResult.capturedSides == .frontAndBack {
-            // If the captured sides are front and back, we are starting the verification process.
-            showHint(.verifying)
             handleCapturedIdResult(capturedId)
         } else {
             preconditionFailure("Unexpected captured id")
@@ -155,17 +134,17 @@ extension DLScanningViewController: IdCaptureListener {
     }
 
     func handleCapturedIdResult(_ capturedId: CapturedId) {
+        hintView.isHidden = false
         // When the front and back capture is completed, we are passing the captured id to VerificationRunner
         // VerificationRunner will call back the closure passed in to let us know about the verification result
         verificationRunner.verify(capturedId: capturedId) { [weak self] result in
             guard let self = self else { return }
-            switch result {
-            case .success(let success):
-                DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.async { [weak self] in
+                self?.hintView.isHidden = true
+                switch result {
+                case .success(let success):
                     self?.handleVerificationResult(capturedId, result: success)
-                }
-            case .failure(let failure): ()
-                DispatchQueue.main.async { [weak self] in
+                case .failure(let failure): ()
                     self?.handleVerificationError(failure)
                 }
             }
@@ -205,7 +184,6 @@ extension DLScanningViewController: UIViewControllerTransitioningDelegate {
             // process.
             idCapture.reset()
             idCapture.isEnabled = true
-            showHint(.front)
         }
 
         return nil

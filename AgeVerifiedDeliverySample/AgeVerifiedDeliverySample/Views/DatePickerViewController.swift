@@ -18,11 +18,19 @@ class DatePickerViewController: UIViewController {
 
     var didPickDateCompletion: ((Date) -> Void)?
 
+    public var maxDateIsToday: Bool = false {
+        didSet {
+            constrainDate()
+        }
+    }
+
     @IBOutlet
     private weak var datePicker: UIDatePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        constrainDate()
 
         // Do any additional setup after loading the view.
 
@@ -49,5 +57,9 @@ class DatePickerViewController: UIViewController {
         set {
             super.preferredContentSize = newValue
         }
+    }
+
+    private func constrainDate() {
+        datePicker?.maximumDate = maxDateIsToday ? Date() : nil
     }
 }

@@ -66,19 +66,30 @@ class SettingsManager {
         if let listener = idCaptureListener {
             idCapture.removeListener(listener)
         }
-        if overlay != nil {
-            captureView?.removeOverlay(overlay)
-        }
 
         idCapture = IdCapture(context: context, settings: idCaptureSettings)
         if let listener = idCaptureListener {
             idCapture.addListener(listener)
         }
 
+        updateOverlay()
+    }
+
+    func updateOverlay() {
+        if overlay != nil {
+            captureView?.removeOverlay(overlay)
+        }
+
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
         overlay.idLayoutStyle = idLayoutStyle
         overlay.idLayoutLineStyle = idLayoutLineStyle
         overlay.capturedBrush = capturedBrush
+        if !viewfinderFrontText.isEmpty {
+            overlay.setFrontSideTextHint(viewfinderFrontText)
+        }
+        if !viewfinderBackText.isEmpty {
+            overlay.setBackSideTextHint(viewfinderBackText)
+        }
     }
 
     // MARK: - View
@@ -100,6 +111,7 @@ class SettingsManager {
     var idLayoutStyle: IdLayoutStyle = .rounded {
         didSet {
             overlay.idLayoutStyle = idLayoutStyle
+            updateOverlay()
         }
     }
 
@@ -112,6 +124,18 @@ class SettingsManager {
     var capturedBrush: Brush = IdCaptureOverlay.defaultCapturedBrush {
         didSet {
             overlay.capturedBrush = capturedBrush
+        }
+    }
+
+    var viewfinderFrontText: String = "" {
+        didSet {
+            updateOverlay()
+        }
+    }
+
+    var viewfinderBackText: String = "" {
+        didSet {
+            updateOverlay()
         }
     }
 }

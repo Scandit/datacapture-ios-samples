@@ -36,6 +36,16 @@ extension SettingsManager {
         }
     }
 
+    var anonymizationMode: IdAnonymizationMode {
+        get {
+            idCaptureSettings.anonymizationMode
+        }
+        set {
+            idCaptureSettings.anonymizationMode = newValue
+            configure()
+        }
+    }
+
     var resultWithImageTypes: Set<IdImageType> {
         get {
             let imageTypes = IdImageType.allCases.filter { idCaptureSettings.resultShouldContainImage(for: $0)}

@@ -87,4 +87,14 @@ extension SettingsManager {
         }
     }
 
+    var macroMode: MacroMode {
+        get {
+            return cameraSettings.macroMode
+        }
+        set {
+            cameraSettings.macroMode = newValue
+            camera?.apply(cameraSettings, completionHandler: nil)
+        }
+    }
+
 }

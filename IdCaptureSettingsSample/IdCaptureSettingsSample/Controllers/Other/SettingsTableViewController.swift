@@ -31,6 +31,7 @@ class SettingsTableViewController: UITableViewController, DataSourceDelegate {
         tableView.register(SwitchCell.self)
         tableView.register(FloatInputCell.self)
         tableView.registerNib(SliderCell.self)
+        tableView.register(TextEditCell.self)
     }
 
     func setupDataSource() {
@@ -77,6 +78,11 @@ class SettingsTableViewController: UITableViewController, DataSourceDelegate {
             cell.value = row.getValue!() as! CGFloat
         }
 
+        if let cell = cell as? TextEditCell {
+            cell.delegate = self
+            cell.value = row.getValue!() as! String
+        }
+
         return cell
     }
 
@@ -116,6 +122,21 @@ extension SettingsTableViewController {
                                                                       didChooseValue: didChooseValue),
                                                  animated: true)
     }
+
+    func presentTextEdit(title: String?, currentValue: String, completion: @escaping (String) -> Void) {
+        let popup = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        popup.addTextField { (textField) in
+            textField.text = currentValue
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+            completion(popup.textFields![0].text.valueOrEmpty)
+        }
+        popup.addAction(cancelAction)
+        popup.addAction(saveAction)
+        navigationController?.present(popup, animated: true)
+    }
 }
 
 extension SettingsTableViewController: SwitchCellDelegate {
@@ -128,6 +149,14 @@ extension SettingsTableViewController: SwitchCellDelegate {
 
 extension SettingsTableViewController: FloatInputCellDelegate {
     func didChange(value: CGFloat, forCell cell: FloatInputCell) {
+        let indexPath = tableView.indexPath(for: cell)!
+        let row = dataSource.sections.row(forIndexPath: indexPath)
+        row.didChangeValue!(value)
+    }
+}
+
+extension SettingsTableViewController: TextEditCellDelegate {
+    func didChange(value: String, forCell cell: TextEditCell) {
         let indexPath = tableView.indexPath(for: cell)!
         let row = dataSource.sections.row(forIndexPath: indexPath)
         row.didChangeValue!(value)

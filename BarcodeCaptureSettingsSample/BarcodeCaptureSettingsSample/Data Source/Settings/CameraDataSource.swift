@@ -65,31 +65,40 @@ class CameraDataSource: DataSource {
     // MARK: Section: Camera Settings
 
     lazy var cameraSettings: Section = {
-        return Section(title: "Camera Settings",
-                       rows: [
-                        Row.choice(title: "Preferred Resolution",
-                                   options: VideoResolution.allCases,
-                                   getValue: { SettingsManager.current.preferredResolution },
-                                   didChangeValue: { SettingsManager.current.preferredResolution = $0 },
-                                   dataSourceDelegate: self.delegate),
-                        Row(title: "Zoom Factor",
-                            kind: .slider(minimum: 1, maximum: 20, decimalPlaces: 1),
-                            getValue: { SettingsManager.current.zoomFactor },
-                            didChangeValue: { SettingsManager.current.zoomFactor = $0 }),
-                        Row(title: "Zoom Gesture Zoom Factor",
-                            kind: .slider(minimum: 1, maximum: 20, decimalPlaces: 1),
-                            getValue: { SettingsManager.current.zoomGestureZoomFactor },
-                            didChangeValue: { SettingsManager.current.zoomGestureZoomFactor = $0 }),
-                        Row.choice(title: "Focus Gesture Strategy",
-                                   options: FocusGestureStrategy.allCases,
-                                   getValue: { SettingsManager.current.focusGestureStrategy },
-                                   didChangeValue: { SettingsManager.current.focusGestureStrategy = $0 },
-                                   dataSourceDelegate: self.delegate),
-                        Row.choice(title: "Focus Range",
-                                   options: FocusRange.allCases,
-                                   getValue: { SettingsManager.current.focusRange },
-                                   didChangeValue: { SettingsManager.current.focusRange = $0 },
-                                   dataSourceDelegate: self.delegate)
-            ])
+        var rows = [
+            Row.choice(title: "Preferred Resolution",
+                       options: VideoResolution.allCases,
+                       getValue: { SettingsManager.current.preferredResolution },
+                       didChangeValue: { SettingsManager.current.preferredResolution = $0 },
+                       dataSourceDelegate: self.delegate),
+            Row(title: "Zoom Factor",
+                kind: .slider(minimum: 1, maximum: 20, decimalPlaces: 1),
+                getValue: { SettingsManager.current.zoomFactor },
+                didChangeValue: { SettingsManager.current.zoomFactor = $0 }),
+            Row(title: "Zoom Gesture Zoom Factor",
+                kind: .slider(minimum: 1, maximum: 20, decimalPlaces: 1),
+                getValue: { SettingsManager.current.zoomGestureZoomFactor },
+                didChangeValue: { SettingsManager.current.zoomGestureZoomFactor = $0 }),
+            Row.choice(title: "Focus Gesture Strategy",
+                       options: FocusGestureStrategy.allCases,
+                       getValue: { SettingsManager.current.focusGestureStrategy },
+                       didChangeValue: { SettingsManager.current.focusGestureStrategy = $0 },
+                       dataSourceDelegate: self.delegate),
+            Row.choice(title: "Focus Range",
+                       options: FocusRange.allCases,
+                       getValue: { SettingsManager.current.focusRange },
+                       didChangeValue: { SettingsManager.current.focusRange = $0 },
+                       dataSourceDelegate: self.delegate)
+        ]
+        if Camera.isMacroModeAvailable {
+            rows.append(
+                Row.choice(title: "Macro Mode",
+                           options: MacroMode.allCases,
+                           getValue: { SettingsManager.current.macroMode },
+                           didChangeValue: { SettingsManager.current.macroMode = $0 },
+                           dataSourceDelegate: self.delegate)
+            )
+        }
+        return Section(title: "Camera Settings", rows: rows)
     }()
 }

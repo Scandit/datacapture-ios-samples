@@ -37,8 +37,6 @@ class IdCaptureViewController: UIViewController {
     private var captureView: DataCaptureView!
     private var overlay: IdCaptureOverlay!
 
-    private var isScanningBackSide: Bool = false
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecognition()
@@ -51,9 +49,14 @@ class IdCaptureViewController: UIViewController {
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
         // completely turn on.
         idCapture.reset()
-        isScanningBackSide = false
-        idCapture.isEnabled = true
         camera?.switch(toDesiredState: .on)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Enable IdCapture to start capture process.
+        idCapture.isEnabled = true
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -118,7 +121,6 @@ class IdCaptureViewController: UIViewController {
         if overlay != nil {
             captureView?.removeOverlay(overlay)
         }
-        isScanningBackSide = false
 
         let settings = IdCaptureSettings()
         switch mode {
@@ -187,29 +189,16 @@ extension IdCaptureViewController: IdCaptureListener {
             return
         }
 
-        // Pause the idCapture to not capture while showing the result.
-        idCapture.isEnabled = false
-
         // Viz documents support multiple sides scanning.
-        // In case the back side is supported and not yet captured we inform the user about the feature.
+        // In case the back side is supported and not yet captured we don't display the result
         if let vizResult = capturedId.vizResult,
            vizResult.isBackSideCaptureSupported,
            vizResult.capturedSides == .frontOnly {
-
-            // Until the back side is scanned, IdCapture will keep reporting the front side.
-            // Here if we are looking for the back side we just return.
-            guard !isScanningBackSide else {
-                idCapture.isEnabled = true
-                return
-            }
-            DispatchQueue.main.async {
-                self.displayBackOfCardAlert(capturedId: capturedId)
-            }
-
             return
         }
 
-        // We could be scanning for the
+        // Pause the idCapture to not capture while showing the result.
+        idCapture.isEnabled = false
 
         // Show the result
         DispatchQueue.main.async {
@@ -243,26 +232,6 @@ extension IdCaptureViewController: IdCaptureListener {
     func display(capturedId: CapturedId) {
         let detail = ResultViewController(capturedId: capturedId)
         self.navigationController?.pushViewController(detail, animated: true)
-    }
-
-    func displayBackOfCardAlert(capturedId: CapturedId) {
-        let message = "This document has additional data on the back of the card"
-        let alertController = UIAlertController(title: "Back of Card",
-                                                message: message,
-                                                preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Scan",
-                                                style: .default,
-                                                handler: { _ in
-                                                    self.isScanningBackSide = true
-                                                    self.idCapture.isEnabled = true
-                                                }))
-        alertController.addAction(UIAlertAction(title: "Skip",
-                                                style: .cancel,
-                                                handler: { _ in
-                                                    self.display(capturedId: capturedId)
-                                                }))
-
-        present(alertController, animated: true, completion: nil)
     }
 
     func showAlert(title: String? = nil, message: String? = nil, completion: @escaping () -> Void) {

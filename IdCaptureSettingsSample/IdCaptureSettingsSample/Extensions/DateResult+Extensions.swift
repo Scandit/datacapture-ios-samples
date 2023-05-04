@@ -18,7 +18,7 @@ var formatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
     formatter.timeStyle = .none
-    formatter.locale = Locale.current
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
     return formatter
 }()
 

@@ -54,28 +54,24 @@ protocol ResultPresenter {
 
 extension ResultPresenter {
     static func getCommonRows(for capturedId: CapturedId) -> [CellProvider] {
-        return
-            [SimpleTextCellProvider(value: capturedId.firstName.valueOrNil, title: "Name"),
-             SimpleTextCellProvider(value: capturedId.lastName.valueOrNil, title: "Lastname"),
-             SimpleTextCellProvider(value: capturedId.fullName, title: "Full Name"),
-             SimpleTextCellProvider(value: capturedId.sex.valueOrNil, title: "Sex"),
-             SimpleTextCellProvider(value: capturedId.age.valueOrNil, title: "Age"),
-             SimpleTextCellProvider(value: capturedId.dateOfBirth.valueOrNil, title: "Date of Birth"),
-             SimpleTextCellProvider(value: capturedId.nationality.valueOrNil, title: "Nationality"),
-             SimpleTextCellProvider(value: capturedId.address.valueOrNil, title: "Address"),
-             SimpleTextCellProvider(value: capturedId
-                                        .capturedResultTypes
-                                        .singleValues
-                                        .map(\.description)
-                                        .joined(separator: ","),
-                                    title: "Captured Result Type"),
-             SimpleTextCellProvider(value: capturedId.documentType.description, title: "Document Type"),
-             SimpleTextCellProvider(value: capturedId.issuingCountryISO.valueOrNil, title: "Issuing Country ISO"),
-             SimpleTextCellProvider(value: capturedId.issuingCountry.valueOrNil, title: "Issuing Country"),
-             SimpleTextCellProvider(value: capturedId.documentNumber.valueOrNil, title: "Document Number"),
-             SimpleTextCellProvider(value: capturedId.dateOfExpiry.valueOrNil, title: "Date of Expiry"),
-             SimpleTextCellProvider(value: capturedId.isExpired.optionalBooleanRepresentation, title: "Is Expired"),
-             SimpleTextCellProvider(value: capturedId.dateOfIssue.valueOrNil, title: "Date of Issue")]
+        var cells = [CellProvider]()
+
+        if !capturedId.fullName.isEmpty {
+            cells.append(SimpleTextCellProvider(value: capturedId.fullName, title: "Full Name"))
+        }
+        if let dateOfBirth = capturedId.dateOfBirth {
+            cells.append(SimpleTextCellProvider(value: dateOfBirth.description, title: "Date of Birth"))
+        }
+        if let dateOfExpiry = capturedId.dateOfExpiry {
+            cells.append(SimpleTextCellProvider(value: dateOfExpiry.description, title: "Date of Expiry"))
+        }
+        if let documentNumber = capturedId.documentNumber {
+            cells.append(SimpleTextCellProvider(value: documentNumber.description, title: "Document Number"))
+        }
+        if let nationality = capturedId.nationality {
+            cells.append(SimpleTextCellProvider(value: nationality, title: "Nationality"))
+        }
+        return cells
     }
 }
 
@@ -94,20 +90,7 @@ struct CombinedResultPresenter: ResultPresenter {
 struct ResultPresenterFactory {
 
     static var mappings: [CapturedResultType: ResultPresenter.Type] = {
-        return [.aamvaBarcodeResult: AAMVABarcodeResultPresenter.self,
-                .argentinaIdBarcodeResult: ArgentinaIdResultPresenter.self,
-                .chinaMainlandTravelPermitMrzResult: ChinaMainlandTravelPermitMrzResultPresenter.self,
-                .chinaExitEntryPermitMrzResult: ChinaExitEnterPermitMrzResultPresenter.self,
-                .chinaOneWayPermitBackMrzResult: ChinaOneWayPermitBackMrzResultPresenter.self,
-                .chinaOneWayPermitFrontMrzResult: ChinaOneWayPermitFrontMrzResultPresenter.self,
-                .colombiaIdBarcodeResult: ColombiaIdBarcodeResultPresenter.self,
-                .colombiaDlBarcodeResult: ColombiaDlBarcodeResultPresenter.self,
-                .mrzResult: MRZResultPresenter.self,
-                .southAfricaDLBarcodeResult: SouthAfricaDLResultPresenter.self,
-                .southAfricaIdBarcodeResult: SouthAfricaIdResultPresenter.self,
-                .usUniformedServicesBarcodeResult: USUniformedServicesResultPresenter.self,
-                .vizResult: VizResultPresenter.self,
-                .apecBusinessTravelCardMrzResult: ApecBusinessTravelCardMrzResultPresenter.self]
+        return [.vizResult: VizResultPresenter.self]
     }()
 
     static func presenter(for capturedId: CapturedId) -> ResultPresenter {

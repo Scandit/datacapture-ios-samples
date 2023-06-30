@@ -22,95 +22,65 @@ class FindViewController: UIViewController {
         static let unWindToSearchSegueIdentifier = "unWindToSearchSegueIdentifier"
     }
 
-    private var context: DataCaptureContext!
-    private var camera: Camera?
-    private var barcodeTracking: BarcodeTracking!
-    private var captureView: DataCaptureView!
-    private var overlay: BarcodeTrackingBasicOverlay!
-
-    @IBOutlet weak var scanningIndicatorView: BottomScanningIndicator!
-    @IBOutlet weak var closeButton: UIButton!
+    // Inject the context
+    var context: DataCaptureContext!
+    private var barcodeFind: BarcodeFind!
+    private var barcodeFindView: BarcodeFindView!
+    private var foundItems: [BarcodeFindItem]?
 
     var symbology: Symbology!
-    var selectedBarcodeData: Data!
+    var itemToFind: BarcodeFindItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "SEARCH & FIND"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         setupRecognition()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        // First, enable barcode tracking to resume processing frames.
-        barcodeTracking.isEnabled = true
-        // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
-        // completely turn on.
-        camera?.switch(toDesiredState: .on)
+        barcodeFindView.startSearching()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-        // First, disable barcode tracking to stop processing frames.
-        barcodeTracking.isEnabled = false
-        // Switch the camera off to stop streaming frames. The camera is stopped asynchronously.
-        camera?.switch(toDesiredState: .off)
+        barcodeFindView.stopSearching()
     }
 
     private func setupRecognition() {
-        // Create data capture context using your license key.
-        context = DataCaptureContext.licensed
-
-        // Use the default camera and set it as the frame source of the context. The camera is off by
-        // default and must be turned on to start streaming frames to the data capture context for recognition.
-        // See viewWillAppear and viewDidDisappear above.
-        camera = Camera.default
-        context.setFrameSource(camera, completionHandler: nil)
-
-        // Use the recommended camera settings for the BarcodeTracking mode as default settings.
-        // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
-        // Setting the preferred resolution to full HD helps to get a better decode range.
-        let cameraSettings = BarcodeTracking.recommendedCameraSettings
-        cameraSettings.preferredResolution = .fullHD
-        camera?.apply(cameraSettings, completionHandler: nil)
-
-        // The barcode tracking process is configured through barcode tracking settings
-        // and are then applied to the barcode tracking instance that manages barcode tracking.
-        let settings = BarcodeTrackingSettings()
+        // The barcode find process is configured through barcode find settings
+        // and are then applied to the barcode find instance that manages barcode find.
+        let settings = BarcodeFindSettings()
 
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
-        // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the
+        // sample we enable just the symbology of the barcode to find. In your own app ensure that you only enable the
         // symbologies that your app requires as every additional enabled symbology has an impact on processing times.
         settings.set(symbology: symbology, enabled: true)
 
-        // Create new barcode tracking mode with the settings from above.
-        barcodeTracking = BarcodeTracking(context: context, settings: settings)
+        // Create new Barcode Find mode with the settings from above.
+        barcodeFind = BarcodeFind(settings: settings)
 
-        // To visualize the on-going barcode tracking process on screen, setup a data capture view that renders the
-        // camera preview. The view must be connected to the data capture context.
-        captureView = DataCaptureView(context: context, frame: view.bounds)
-        captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(captureView)
+        // Set the list of items to find.
+        let itemList: Set<BarcodeFindItem> = [itemToFind]
+        barcodeFind.setItemList(itemList)
 
-        view.bringSubviewToFront(closeButton)
-        view.bringSubviewToFront(scanningIndicatorView)
-
-        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView, style: .frame)
-        overlay.delegate = self
+        // To visualize the on-going barcode find process on screen, setup a barcode find view that renders the
+        // camera preview and the barcode find UI. The view is automatically added to the parent view hierarchy.
+        let viewSettings = BarcodeFindViewSettings()
+        barcodeFindView = BarcodeFindView(parentView: self.view,
+                                          context: context,
+                                          barcodeFind: barcodeFind,
+                                          settings: viewSettings)
+        barcodeFindView.uiDelegate = self
+        barcodeFindView.prepareSearching()
     }
 }
 
-extension FindViewController: BarcodeTrackingBasicOverlayDelegate {
-    func barcodeTrackingBasicOverlay(_ overlay: BarcodeTrackingBasicOverlay,
-                                     brushFor trackedBarcode: TrackedBarcode) -> Brush? {
-        if trackedBarcode.barcode.rawData == selectedBarcodeData {
-            return Brush.matching
-        } else {
-            return Brush.nonMatching
-        }
+extension FindViewController: BarcodeFindViewUIDelegate {
+    // This method is called when the user presses the finish button.
+    // The foundItems parameter contains the list of items found in the entire session.
+    func barcodeFindView(_ view: BarcodeFindView, didTapFinishButton foundItems: Set<BarcodeFindItem>) {
+        performSegue(withIdentifier: Constants.unWindToSearchSegueIdentifier, sender: self)
     }
-
-    func barcodeTrackingBasicOverlay(_ overlay: BarcodeTrackingBasicOverlay,
-                                     didTap trackedBarcode: TrackedBarcode) {}
 }

@@ -20,33 +20,13 @@ class VizResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultTypes.contains(.vizResult))
-        guard let vizResult = capturedId.vizResult else { fatalError("Unexpected null VizResult") }
-        rows = [
-            SimpleTextCellProvider(value: vizResult.additionalNameInformation.valueOrNil,
-                                   title: "Additional Name Information"),
-            SimpleTextCellProvider(value: vizResult.additionalAddressInformation.valueOrNil,
-                                   title: "Additional Address Information"),
-            SimpleTextCellProvider(value: vizResult.placeOfBirth.valueOrNil, title: "Place of Birth"),
-            SimpleTextCellProvider(value: vizResult.race.valueOrNil, title: "Race"),
-            SimpleTextCellProvider(value: vizResult.religion.valueOrNil, title: "Religion"),
-            SimpleTextCellProvider(value: vizResult.profession.valueOrNil, title: "Profession"),
-            SimpleTextCellProvider(value: vizResult.maritalStatus.valueOrNil, title: "Marital Status"),
-            SimpleTextCellProvider(value: vizResult.residentialStatus.valueOrNil, title: "Residential Status"),
-            SimpleTextCellProvider(value: vizResult.employer.valueOrNil, title: "Employer"),
-            SimpleTextCellProvider(value: vizResult.personalIdNumber.valueOrNil, title: "Personal ID Number"),
-            SimpleTextCellProvider(value: vizResult.documentAdditionalNumber.valueOrNil,
-                                   title: "Document Additional Number"),
-            SimpleTextCellProvider(value: vizResult.issuingJurisdiction.valueOrNil, title: "Issuing Jurisdiction"),
-            SimpleTextCellProvider(value: vizResult.issuingJurisdictionISO.valueOrNil,
-                                   title: "Issuing Jurisdiction ISO"),
-            SimpleTextCellProvider(value: vizResult.issuingAuthority.valueOrNil, title: "Issuing Authority"),
-            SimpleTextCellProvider(value: vizResult.capturedSides.description, title: "Captured Sides"),
-            SimpleTextCellProvider(value: vizResult.isBackSideCaptureSupported ? "Yes" : "No",
-                                   title: "Backside Supported"),
-            ImageCellProvider(image: capturedId.idImage(of: .face), title: "Face Image"),
-            ImageCellProvider(image: capturedId.idImage(of: .idFront), title: "Front Image"),
-            ImageCellProvider(image: capturedId.idImage(of: .idBack), title: "Back Image")
-        ]
+        var cells = [CellProvider]()
+        if let image = capturedId.idImage(of: .idFront) {
+            cells.append(ImageCellProvider(image: image, title: "Front Image"))
+        }
+        if let image = capturedId.idImage(of: .idBack) {
+            cells.append(ImageCellProvider(image: image, title: "Back Image"))
+        }
+        rows = cells
     }
 }

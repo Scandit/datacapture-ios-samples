@@ -12,20 +12,19 @@
  * limitations under the License.
  */
 
+import Foundation
 import ScanditIdCapture
 
-final class ChinaExitEnterPermitMrzResultPresenter: ResultPresenter {
-    let rows: [CellProvider]
+var formatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .none
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
+    return formatter
+}()
 
-    required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultTypes.contains(.chinaExitEntryPermitMrzResult))
-        guard let result = capturedId.chinaExitEntryPermitMrzResult else {
-            fatalError("Unexpected null ChinaExitEnterPermitMrzResult")
-        }
-
-        rows = [
-            SimpleTextCellProvider(value: result.documentCode, title: "Document Code"),
-            SimpleTextCellProvider(value: result.capturedMrz, title: "Captured MRZ")
-        ]
+extension DateResult {
+    open override var description: String {
+        return formatter.string(from: date)
     }
 }

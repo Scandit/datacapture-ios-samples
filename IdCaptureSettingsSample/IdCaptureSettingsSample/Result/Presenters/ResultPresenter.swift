@@ -33,7 +33,8 @@ extension CapturedResultType: Hashable, CaseIterable {
             .southAfricaDLBarcodeResult,
             .southAfricaIdBarcodeResult,
             .usUniformedServicesBarcodeResult,
-            .vizResult
+            .vizResult,
+            .usVisaVizResult
         ]
     }
 
@@ -105,7 +106,8 @@ struct ResultPresenterFactory {
                 .southAfricaDLBarcodeResult: SouthAfricaDLResultPresenter.self,
                 .southAfricaIdBarcodeResult: SouthAfricaIdResultPresenter.self,
                 .usUniformedServicesBarcodeResult: USUniformedServicesResultPresenter.self,
-                .vizResult: VizResultPresenter.self]
+                .vizResult: VizResultPresenter.self,
+                .usVisaVizResult: UsVisaResultPresenter.self]
     }()
 
     static func presenter(for capturedId: CapturedId) -> ResultPresenter {

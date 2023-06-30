@@ -28,19 +28,31 @@ class SearchViewController: UIViewController {
     private var captureView: DataCaptureView!
     private var overlay: BarcodeCaptureOverlay!
 
-    private var displayedData: Data?
+    private var displayedData: String?
     private var selectedSymbology: Symbology?
 
     @IBOutlet weak var dismissOverlayButton: UIButton!
     @IBOutlet weak var scannedBarcodeOverlay: UIView!
     @IBOutlet weak var scannedBarcodeLabel: UILabel!
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "SEARCH & FIND"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+        scannedBarcodeOverlay.layer.cornerRadius = 16
+        scannedBarcodeOverlay.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
         setupRecognition()
+    }
 
-        // First, enable barcode capture to resume processing frames.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Make sure barcode capture is the only mode associated with the context.
+        context.removeAllModes()
+        context.addMode(barcodeCapture)
+        // Enable barcode capture to resume processing frames.
         barcodeCapture.isEnabled = true
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
         // completely turn on.
@@ -50,15 +62,21 @@ class SearchViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        // First, disable barcode capture to stop processing frames.
+        // Disable barcode capture to stop processing frames.
         barcodeCapture.isEnabled = false
-        // Switch the camera off to stop streaming frames. The camera is stopped asynchronously.
-        camera?.switch(toDesiredState: .off)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? FindViewController {
-            destination.selectedBarcodeData = displayedData
+            guard let displayedData else { return }
+            // Create the Barcode Find Item with the scanned barcode data.
+            // If you have more information about the product (such as name or image) that you want
+            // to display, you can pass a BarcodeFindItemContent object to the content parameter below.
+            let searchOptions = BarcodeFindItemSearchOptions(barcodeData: displayedData)
+            let itemToFind = BarcodeFindItem(searchOptions: searchOptions, content: nil)
+
+            destination.context = context
+            destination.itemToFind = itemToFind
             destination.symbology = selectedSymbology
         }
     }
@@ -68,14 +86,8 @@ class SearchViewController: UIViewController {
         scannedBarcodeLabel.text = nil
         scannedBarcodeOverlay.isHidden = true
         dismissOverlayButton.isHidden = true
-        barcodeCapture.isEnabled = false
-        camera?.switch(toDesiredState: .off, completionHandler: { result in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self, result else { return }
-                self.performSegue(withIdentifier: Constants.presentFindViewControllerSegue,
-                                  sender: self)
-            }
-        })
+        self.performSegue(withIdentifier: Constants.presentFindViewControllerSegue,
+                          sender: self)
     }
 
     @IBAction func dismissOverlayButtonDidTouchUpInside(_ sender: Any) {
@@ -138,13 +150,11 @@ class SearchViewController: UIViewController {
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
 
+        // Add a barcode capture overlay to the data capture view to render the location of captured barcodes on top of
+        // the video preview. This is optional, but recommended for better visual feedback.
         overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView, style: .frame)
-        // By setting the default brush to the overlay, no captured barcodes will be visualized.
-        overlay.brush = Brush()
-        let viewFinder = LaserlineViewfinder(style: .animated)
-        // The width of the laser will be 90 percent of the data capture view's width.
-        viewFinder.width = FloatWithUnit(value: 0.9, unit: .fraction)
-        overlay.viewfinder = viewFinder
+        overlay.brush = Brush.scanned
+        overlay.viewfinder = AimerViewfinder()
     }
 }
 
@@ -160,7 +170,7 @@ extension SearchViewController: BarcodeCaptureListener {
         DispatchQueue.main.async {
             let code = newlyRecognizedBarcodes.first!
             self.scannedBarcodeLabel.text = code.data
-            self.displayedData = code.rawData
+            self.displayedData = code.data
             self.selectedSymbology = code.symbology
             if self.scannedBarcodeOverlay.isHidden {
                 self.scannedBarcodeOverlay.isHidden = false

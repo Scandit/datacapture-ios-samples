@@ -7,18 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0010C6B622B823C3008103D1 /* BottomScanningIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010C6B422B823C3008103D1 /* BottomScanningIndicator.swift */; };
-		0010C6B722B823C3008103D1 /* BottomScanningIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0010C6B522B823C3008103D1 /* BottomScanningIndicator.xib */; };
 		0010C6BA22B823EF008103D1 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010C6B822B823EE008103D1 /* FindViewController.swift */; };
 		0010C6BB22B823EF008103D1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010C6B922B823EE008103D1 /* SearchViewController.swift */; };
 		0010C6BD22B823FD008103D1 /* DataCaptureContext+Licensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010C6BC22B823FD008103D1 /* DataCaptureContext+Licensed.swift */; };
 		0010C6BF22B82453008103D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0010C6BE22B82453008103D1 /* Main.storyboard */; };
-		0010C6C222B824FA008103D1 /* AutoReversingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010C6C122B824FA008103D1 /* AutoReversingAnimator.swift */; };
 		0083542222B8228200D08E75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083542122B8228200D08E75 /* AppDelegate.swift */; };
 		0083542922B8228300D08E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0083542822B8228300D08E75 /* Assets.xcassets */; };
 		0083542C22B8228300D08E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0083542A22B8228300D08E75 /* LaunchScreen.storyboard */; };
 		00BA164522B8515800686439 /* Brush+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BA164422B8515800686439 /* Brush+Extensions.swift */; };
-		65203CB82577FBD0006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203CB72577FBD0006246C6 /* SampleCode.xcconfig */; };
 		65FAF3E725C05083007EE784 /* ScanditBarcodeCapture.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3E525C05083007EE784 /* ScanditBarcodeCapture.xcframework */; };
 		65FAF3E825C05083007EE784 /* ScanditBarcodeCapture.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3E525C05083007EE784 /* ScanditBarcodeCapture.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65FAF3E925C05083007EE784 /* ScanditCaptureCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3E625C05083007EE784 /* ScanditCaptureCore.xcframework */; };
@@ -41,13 +37,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0010C6B422B823C3008103D1 /* BottomScanningIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomScanningIndicator.swift; sourceTree = "<group>"; };
-		0010C6B522B823C3008103D1 /* BottomScanningIndicator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomScanningIndicator.xib; sourceTree = "<group>"; };
 		0010C6B822B823EE008103D1 /* FindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
 		0010C6B922B823EE008103D1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0010C6BC22B823FD008103D1 /* DataCaptureContext+Licensed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+Licensed.swift"; sourceTree = "<group>"; };
 		0010C6BE22B82453008103D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0010C6C122B824FA008103D1 /* AutoReversingAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoReversingAnimator.swift; sourceTree = "<group>"; };
 		0083541E22B8228200D08E75 /* SearchAndFindSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchAndFindSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0083542122B8228200D08E75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0083542822B8228300D08E75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,23 +92,6 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		0010C6B322B82398008103D1 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0010C6B422B823C3008103D1 /* BottomScanningIndicator.swift */,
-				0010C6B522B823C3008103D1 /* BottomScanningIndicator.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		0010C6C022B824DE008103D1 /* Animators */ = {
-			isa = PBXGroup;
-			children = (
-				0010C6C122B824FA008103D1 /* AutoReversingAnimator.swift */,
-			);
-			path = Animators;
-			sourceTree = "<group>";
-		};
 		0010C6CB22B826C1008103D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,11 +122,9 @@
 		0083542022B8228200D08E75 /* SearchAndFindSample */ = {
 			isa = PBXGroup;
 			children = (
-				0010C6C022B824DE008103D1 /* Animators */,
 				0010C6B122B8232C008103D1 /* Extensions */,
 				0010C6B222B82342008103D1 /* Storyboards */,
 				0010C6B022B82323008103D1 /* ViewControllers */,
-				0010C6B322B82398008103D1 /* Views */,
 				0083542122B8228200D08E75 /* AppDelegate.swift */,
 				0083542822B8228300D08E75 /* Assets.xcassets */,
 				0083542D22B8228300D08E75 /* Info.plist */,
@@ -228,8 +202,6 @@
 			files = (
 				0083542C22B8228300D08E75 /* LaunchScreen.storyboard in Resources */,
 				0083542922B8228300D08E75 /* Assets.xcassets in Resources */,
-				0010C6B722B823C3008103D1 /* BottomScanningIndicator.xib in Resources */,
-				65203CB82577FBD0006246C6 /* SampleCode.xcconfig in Resources */,
 				0010C6BF22B82453008103D1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,9 +217,7 @@
 				0083542222B8228200D08E75 /* AppDelegate.swift in Sources */,
 				0010C6BD22B823FD008103D1 /* DataCaptureContext+Licensed.swift in Sources */,
 				00BA164522B8515800686439 /* Brush+Extensions.swift in Sources */,
-				0010C6B622B823C3008103D1 /* BottomScanningIndicator.swift in Sources */,
 				0010C6BA22B823EF008103D1 /* FindViewController.swift in Sources */,
-				0010C6C222B824FA008103D1 /* AutoReversingAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +290,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SearchAndFindSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -379,7 +349,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SearchAndFindSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

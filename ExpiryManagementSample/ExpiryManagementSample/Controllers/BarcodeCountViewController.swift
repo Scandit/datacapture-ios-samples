@@ -35,17 +35,17 @@ class BarcodeCountViewController: UIViewController {
                                                selector: #selector(didEnterBackground),
                                                name: UIApplication.didEnterBackgroundNotification,
                                                object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Make sure that Barcode Count mode is enabled after going back from the list screen
-        barcodeCount.isEnabled = true
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        // Make sure that Barcode Count mode is enabled
+        barcodeCountView.prepareScanning(with: context)
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
         // completely turn on. To be notified when the camera is completely on, pass non nil block as completion to
         // camera?.switch(toDesiredState:completionHandler:)
@@ -54,9 +54,9 @@ class BarcodeCountViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // We are navigating back to SparkScan
+        // We are navigating back to SparkScan, stop BarcodeCount
         if isMovingFromParent {
-            stopMode()
+            barcodeCountView.stopScanning()
         }
     }
 
@@ -74,10 +74,6 @@ class BarcodeCountViewController: UIViewController {
 
     @objc func didEnterBackground() {
         resetMode()
-    }
-
-    @objc func willEnterForeground() {
-        camera?.switch(toDesiredState: .on)
     }
 
     func setupRecognition() {
@@ -130,12 +126,6 @@ class BarcodeCountViewController: UIViewController {
     private func showList(isOrderCompleted: Bool) {
         shouldCameraStandby = false
         performSegue(withIdentifier: "ShowItemList", sender: NSNumber(value: isOrderCompleted))
-    }
-
-    private func stopMode() {
-        // Stop and remove BarcodeCount as SparkScan will be activated
-        barcodeCount.isEnabled = false
-        context.removeMode(barcodeCount)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

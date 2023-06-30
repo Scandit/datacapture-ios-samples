@@ -56,6 +56,7 @@
 		6FFECF3D223676C9005CE4CD /* ControlsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3C223676C9005CE4CD /* ControlsTableViewController.swift */; };
 		6FFECF3F223676E2005CE4CD /* ControlsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3E223676E2005CE4CD /* ControlsDataSource.swift */; };
 		8C3809DF29C9E3920088F466 /* TextEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3809DE29C9E3920088F466 /* TextEditCell.swift */; };
+		9C619DE42A1691570007032E /* UsVisaResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C619DE32A1691570007032E /* UsVisaResultPresenter.swift */; };
 		9C7F6F79299416A80034D48D /* IdAnonymizationMode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F78299416A80034D48D /* IdAnonymizationMode+Extensions.swift */; };
 		9C7F6F7B299417950034D48D /* IdAnonymizationModeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F7A299417950034D48D /* IdAnonymizationModeDataSource.swift */; };
 		9C7F6F7D299418110034D48D /* IdAnonymizationModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F7C299418110034D48D /* IdAnonymizationModeTableViewController.swift */; };
@@ -175,6 +176,7 @@
 		6FFECF3C223676C9005CE4CD /* ControlsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsTableViewController.swift; sourceTree = "<group>"; };
 		6FFECF3E223676E2005CE4CD /* ControlsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsDataSource.swift; sourceTree = "<group>"; };
 		8C3809DE29C9E3920088F466 /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
+		9C619DE32A1691570007032E /* UsVisaResultPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsVisaResultPresenter.swift; sourceTree = "<group>"; };
 		9C7F6F78299416A80034D48D /* IdAnonymizationMode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IdAnonymizationMode+Extensions.swift"; sourceTree = "<group>"; };
 		9C7F6F7A299417950034D48D /* IdAnonymizationModeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdAnonymizationModeDataSource.swift; sourceTree = "<group>"; };
 		9C7F6F7C299418110034D48D /* IdAnonymizationModeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdAnonymizationModeTableViewController.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 		A2545C1D26A7044B00905C0A /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				9C619DE32A1691570007032E /* UsVisaResultPresenter.swift */,
 				9CCB7A77291C3CBB0065CA27 /* ChinaOneWayPermitBackMrzResultPresenter.swift */,
 				9CCB7A76291C3CBB0065CA27 /* ChinaOneWayPermitFrontMrzResultPresenter.swift */,
 				B9CB1ED1284A121B0060CEFC /* ChinaMainlandTravelPermitMrzResultPresenter.swift */,
@@ -643,6 +646,7 @@
 				6F668AF02256524E00DCA33A /* ResultDataSource.swift in Sources */,
 				B9A66D4827FF02E60069E06A /* ColombiaDlBarcodeResultPresenter.swift in Sources */,
 				A2CC098C255E9D7600C2E3EA /* GesturesTableViewController.swift in Sources */,
+				9C619DE42A1691570007032E /* UsVisaResultPresenter.swift in Sources */,
 				6F869D2C22315D9B00E20833 /* ChoiceViewController.swift in Sources */,
 				6F869D1E2231191500E20833 /* DataSource.swift in Sources */,
 				6F144A2A222FBEF2002C5C3E /* MeasureUnit+Extensions.swift in Sources */,

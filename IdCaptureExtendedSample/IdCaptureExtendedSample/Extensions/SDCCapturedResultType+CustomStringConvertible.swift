@@ -46,6 +46,8 @@ extension CapturedResultType: CustomStringConvertible {
             return "China One-Way Permit MRZ Front Result"
         case .apecBusinessTravelCardMrzResult:
             return "APEC Business Travel Card"
+        case .usVisaVizResult:
+            return "US Visa VIZ"
         default:
             return "No Result"
         }

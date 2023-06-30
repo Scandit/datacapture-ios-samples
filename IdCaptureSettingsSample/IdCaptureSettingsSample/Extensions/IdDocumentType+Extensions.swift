@@ -53,6 +53,12 @@ extension IdDocumentType: CustomStringConvertible {
             return "China One-Way Permit MRZ Front"
         case .apecBusinessTravelCardMRZ:
             return "Apec Business Travel Card MRZ"
+        case .passportVIZ:
+            return "Passport VIZ"
+        case .commonAccessCardBarcode:
+            return "Common Access Card Barcode"
+        case .usVisaVIZ:
+            return "US Visa VIZ"
         default:
             fatalError("Unknown case \(self.rawValue)")
         }

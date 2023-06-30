@@ -102,19 +102,9 @@ extension IdCaptureViewController: IdCaptureListener {
         // Pause the idCapture to not capture while showing the result.
         idCapture.isEnabled = false
 
-        // The recognized fields of the captured Id can vary based on the type.
-        let idDescription: String
-        if capturedId.vizResult != nil {
-            // If the capturedResultType is `.vizResult`
-            // then `capturedId` is guaranteed to have the vizResult property not nil.
-            idDescription = descriptionForVizResult(result: capturedId)
-        } else {
-            idDescription = descriptionForCapturedId(result: capturedId)
-        }
-
         let title = capturedId.capturedResultTypes.combinedDescription
 
-        showAlert(title: title, message: idDescription, completion: {
+        showAlert(title: title, message: descriptionForCapturedId(result: capturedId), completion: {
             // Resume the idCapture.
             idCapture.isEnabled = true
         })
@@ -156,45 +146,23 @@ extension IdCaptureViewController: IdCaptureListener {
         }
     }
 
-    func descriptionForVizResult(result: CapturedId) -> String {
-        let vizResult = result.vizResult!
-        return """
-        \(descriptionForCapturedId(result: result))
-
-        Additional Name Information: \(vizResult.additionalNameInformation ?? "<nil>")
-        Additional Address Information: \(vizResult.additionalAddressInformation ?? "<nil>")
-        Place of Birth: \(vizResult.placeOfBirth ?? "<nil>")
-        Race: \(vizResult.race ?? "<nil>")
-        Religion: \(vizResult.religion ?? "<nil>")
-        Profession: \(vizResult.profession ?? "<nil>")
-        Marital Status: \(vizResult.maritalStatus ?? "<nil>")
-        Residential Status: \(vizResult.residentialStatus ?? "<nil>")
-        Employer: \(vizResult.employer ?? "<nil>")
-        Personal Id Number: \(vizResult.personalIdNumber ?? "<nil>")
-        Document Additional Number: \(vizResult.documentAdditionalNumber ?? "<nil>")
-        Issuing Jurisdiction: \(vizResult.issuingJurisdiction ?? "<nil>")
-        Issuing Authority: \(vizResult.issuingAuthority ?? "<nil>")
-        """
-    }
-
     func descriptionForCapturedId(result: CapturedId) -> String {
-        return """
-        Name: \(result.firstName ?? "<nil>")
-        Last Name: \(result.lastName ?? "<nil>")
-        Full Name: \(result.fullName)
-        Sex: \(result.sex ?? "<nil>")
-        Age: \(result.age?.description ?? "<nil>")
-        Date of Birth: \(result.dateOfBirth?.description ?? "<nil>")
-        Nationality: \(result.nationality ?? "<nil>")
-        Address: \(result.address ?? "<nil>")
-        Document Type: \(result.documentType)
-        Captured Result Type: \(result.capturedResultTypes.combinedDescription)
-        Issuing Country: \(result.issuingCountry ?? "<nil>")
-        Issuing Country ISO: \(result.issuingCountryISO ?? "<nil>")
-        Document Number: \(result.documentNumber ?? "<nil>")
-        Date of Expiry: \(result.dateOfExpiry?.description ?? "<nil>")
-        Is Expired: \(result.isExpired == nil ? "<nil>" : (result.isExpired!.boolValue ? "YES" : "NO"))
-        Date of Issue: \(result.dateOfIssue?.description ?? "<nil>")
-        """
+        var results = [String]()
+        if !result.fullName.isEmpty {
+            results.append("Full Name: \(result.fullName)")
+        }
+        if let dateOfBirth = result.dateOfBirth {
+            results.append("Date of Birth: \(dateOfBirth)")
+        }
+        if let dateOfExpiry = result.dateOfExpiry {
+            results.append("Date of Expiry: \(dateOfExpiry)")
+        }
+        if let documentNumber = result.documentNumber {
+            results.append("Document Number: \(documentNumber)")
+        }
+        if let nationality = result.nationality {
+            results.append("Nationality: \(nationality)")
+        }
+        return results.joined(separator: "\n")
     }
 }

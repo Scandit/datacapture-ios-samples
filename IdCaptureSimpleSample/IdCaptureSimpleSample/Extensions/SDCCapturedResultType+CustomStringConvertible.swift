@@ -63,6 +63,8 @@ extension CapturedResultType: CustomStringConvertible {
             return "South Africa Id Barcode Result"
         case .chinaMainlandTravelPermitMrzResult:
             return "China Mainland Travel Permit MRZ Result"
+        case .usVisaVizResult:
+            return "US Visa VIZ"
         default:
             return "No result"
         }

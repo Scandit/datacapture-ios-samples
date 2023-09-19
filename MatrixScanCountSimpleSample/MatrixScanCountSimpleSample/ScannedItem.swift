@@ -15,14 +15,7 @@
 import Foundation
 
 struct ScannedItem {
-
     let symbology: String
     let data: String
     var quantity: Int
-
-    internal init(symbology: String, data: String, quantity: Int) {
-        self.symbology = symbology
-        self.data = data
-        self.quantity = quantity
-    }
 }

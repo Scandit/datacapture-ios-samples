@@ -13,7 +13,6 @@
  */
 
 import UIKit
-import ScanditIdCapture
 
 class DeliveryResultViewController: UIViewController {
 
@@ -31,10 +30,6 @@ class DeliveryResultViewController: UIViewController {
         super.init(coder: coder)
     }
 
-    func configure(capturedId: CapturedId) {
-        configureWith(DeliveryLogic.stateFor(capturedId))
-    }
-
     var titleAttributes: [NSAttributedString.Key: Any] {
         return [.foregroundColor: UIColor.white,
                 .font: UIFont.boldSystemFont(ofSize: 16)]
@@ -45,40 +40,20 @@ class DeliveryResultViewController: UIViewController {
         _ = view
 
         switch state {
-        case .expired(let documentType): configureExpiredDocument(documentType)
+        case .idRequired: configureIdRequired()
+        case .expired: configureExpiredDocument()
         case .success: configureSuccessfullDelivery()
         case .underage: configureUnderageDelivery()
+        case let .timeout(final): configureTimeOut(final: final)
+        case .idRejected: configureIdRejected()
         }
     }
 
     func configureWith(expirationDate: Date, birthDate: Date, document: String) {
         configureWith(
             DeliveryLogic.stateFor(
-                expirationDate: expirationDate, birthDate: birthDate, documentType: document
-            )
+                expirationDate: expirationDate, birthDate: birthDate)
         )
-    }
-
-    func configureUnparsableBarcode() {
-        _ = view
-        titleLabel.text = "Verification Failed!"
-        deliveryStatusLabel.text = "This barcode cannot be read."
-        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
-        mainButton.setAttributedTitle(NSAttributedString(string: "SCAN FRONT OF LICENSE",
-                                                         attributes: titleAttributes),
-                                      for: .normal)
-        secondaryButton.setTitle("RETRY", for: .normal)
-    }
-
-    func configureUnparsableOCR() {
-        _ = view
-        titleLabel.text = "Verification Failed!"
-        deliveryStatusLabel.text = "This document cannot be read."
-        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
-        mainButton.setAttributedTitle(NSAttributedString(string: "ENTER MANUALLY",
-                                                         attributes: titleAttributes),
-                                      for: .normal)
-        secondaryButton.setTitle("RETRY", for: .normal)
     }
 
     @IBAction func mainButtonAction(_ sender: Any) {
@@ -106,22 +81,30 @@ class DeliveryResultViewController: UIViewController {
         }
     }
 
+    private func configureIdRequired() {
+        titleLabel.text = "Age Verification Required"
+        deliveryStatusLabel.text = "This delivery requires an age verification of the recipient."
+        deliveryStatusImage.isHidden = true
+        mainButton.setAttributedTitle(NSAttributedString(string: "SCAN ID DOCUMENT", attributes: titleAttributes),
+                                      for: .normal)
+        secondaryButton.isHidden = true
+        mainStackView.setNeedsLayout()
+    }
+
     private func configureUnderageDelivery() {
         titleLabel.text = "Verification Failed!"
         deliveryStatusLabel.text = "The recipient is underage."
-        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
-        mainButton.setAttributedTitle(NSAttributedString(string: "REFUSE DELIVERY",
-                                                         attributes: titleAttributes),
+        deliveryStatusImage.image = #imageLiteral(resourceName: "error")
+        mainButton.setAttributedTitle(NSAttributedString(string: "REFUSE DELIVERY", attributes: titleAttributes),
                                       for: .normal)
         secondaryButton.setTitle("RETRY", for: .normal)
     }
 
-    private func configureExpiredDocument(_ documentType: String) {
+    private func configureExpiredDocument() {
         titleLabel.text = "Verification Failed!"
-        deliveryStatusLabel.text = "\(documentType) is expired."
-        deliveryStatusImage.image = #imageLiteral(resourceName: "warning")
-        mainButton.setAttributedTitle(NSAttributedString(string: "REFUSE DELIVERY",
-                                                         attributes: titleAttributes),
+        deliveryStatusLabel.text = "Document is expired."
+        deliveryStatusImage.image = #imageLiteral(resourceName: "error")
+        mainButton.setAttributedTitle(NSAttributedString(string: "REFUSE DELIVERY", attributes: titleAttributes),
                                       for: .normal)
         secondaryButton.setTitle("RETRY", for: .normal)
     }
@@ -129,9 +112,36 @@ class DeliveryResultViewController: UIViewController {
     private func configureSuccessfullDelivery() {
         titleLabel.text = "Verification Successful!"
         deliveryStatusLabel.text = "Confirm delivery to proceed."
-        deliveryStatusImage.image = #imageLiteral(resourceName: "check")
-        mainButton.setAttributedTitle(NSAttributedString(string: "CONFIRM DELIVERY",
-                                                         attributes: titleAttributes),
+        deliveryStatusImage.image = #imageLiteral(resourceName: "ok")
+        mainButton.setAttributedTitle(NSAttributedString(string: "CONFIRM DELIVERY", attributes: titleAttributes),
+                                      for: .normal)
+        secondaryButton.isHidden = true
+        mainStackView.setNeedsLayout()
+    }
+
+    private func configureTimeOut(final: Bool) {
+        titleLabel.text = "Can’t scan?"
+        deliveryStatusImage.image = #imageLiteral(resourceName: "error")
+
+        if final {
+            deliveryStatusLabel.text = "Enter data manually or try a different document."
+            mainButton.setAttributedTitle(NSAttributedString(string: "RETRY", attributes: titleAttributes),
+                                          for: .normal)
+            secondaryButton.setTitle("MANUAL ENTRY", for: .normal)
+        } else {
+            deliveryStatusLabel.text = "Try scanning the other side of the document or a different document."
+            mainButton.setAttributedTitle(NSAttributedString(string: "OK", attributes: titleAttributes),
+                                          for: .normal)
+            secondaryButton.isHidden = true
+            mainStackView.setNeedsLayout()
+        }
+    }
+
+    private func configureIdRejected() {
+        titleLabel.text = "Document not supported"
+        deliveryStatusLabel.text = "Try scanning the other side of the document or a different document."
+        deliveryStatusImage.image = #imageLiteral(resourceName: "error")
+        mainButton.setAttributedTitle(NSAttributedString(string: "OK", attributes: titleAttributes),
                                       for: .normal)
         secondaryButton.isHidden = true
         mainStackView.setNeedsLayout()

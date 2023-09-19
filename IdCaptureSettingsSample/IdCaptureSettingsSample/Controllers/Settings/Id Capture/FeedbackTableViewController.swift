@@ -12,18 +12,8 @@
  * limitations under the License.
  */
 
-import Foundation
-import ScanditIdCapture
-
-var formatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    formatter.timeStyle = .none
-    return formatter
-}()
-
-extension DateResult {
-    open override var description: String {
-        return formatter.string(from: localDate)
+class FeedbackTableViewController: SettingsTableViewController {
+    override func setupDataSource() {
+        dataSource = FeedbackDataSource(delegate: self)
     }
 }

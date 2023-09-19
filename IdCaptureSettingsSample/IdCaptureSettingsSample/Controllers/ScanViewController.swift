@@ -68,6 +68,9 @@ class ScanViewController: UIViewController {
         // completely turn off. Until it is completely stopped, it is still possible to receive further results, hence
         // it's a good idea to first disable ID capture as well.
         idCapture.isEnabled = false
+        // Reset IdCapture to discard front side captures when using Front & Back mode
+        idCapture.reset()
+        isScanningBackSide = false
         camera?.switch(toDesiredState: .off)
     }
 
@@ -106,10 +109,16 @@ class ScanViewController: UIViewController {
         isScanningBackSide = false
     }
 
+    private func isSingleSided(documentType: DocumentType) -> Bool {
+        documentType == .passport
+    }
+
     private func shouldSuggestBackSideCapture(for capturedId: CapturedId) -> Bool {
         guard let vizResult = capturedId.vizResult else { return false }
 
-        return SettingsManager.current.supportedSides == .frontAndBack && vizResult.capturedSides == .frontOnly
+        return SettingsManager.current.supportedSides == .frontAndBack &&
+            !isSingleSided(documentType: capturedId.documentType) &&
+            vizResult.capturedSides == .frontOnly
     }
 
     private func suggestBackSideCapture(onConfirm: @escaping () -> Void, onReject: @escaping () -> Void) {

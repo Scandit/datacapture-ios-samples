@@ -30,12 +30,10 @@ extension SettingsManager {
 
     var torchState: TorchState {
         get {
-            return internalTorchState
+            return camera?.desiredTorchState ?? .off
         }
         set {
-            internalTorchState = newValue
-
-            camera?.desiredTorchState = internalTorchState
+            camera?.desiredTorchState = newValue
         }
     }
 

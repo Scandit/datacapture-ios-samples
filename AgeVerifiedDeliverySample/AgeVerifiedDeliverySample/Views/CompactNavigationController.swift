@@ -69,13 +69,12 @@ class CompactNavigationController: UINavigationController {
                          queue: .main) { notification in
 
                 guard self.currentOffest > 0 else { return }
+                let currentOffest = self.currentOffest
                 self.currentOffest = 0
 
                 guard
                     let duration =
                         notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
-                    let keyboardFrame =
-                        notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
                     let rawAnimationCurve =
                         notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int,
                     let animationCurve = UIView.AnimationCurve(rawValue: rawAnimationCurve)  else { return }
@@ -83,7 +82,7 @@ class CompactNavigationController: UINavigationController {
                 let animator = UIViewPropertyAnimator(duration: duration,
                                                       curve: animationCurve) {
                     self.view.center = CGPoint(x: self.view.center.x,
-                                               y: self.view.center.y + keyboardFrame.height)
+                                               y: self.view.center.y + currentOffest)
                 }
 
                 animator.startAnimation()

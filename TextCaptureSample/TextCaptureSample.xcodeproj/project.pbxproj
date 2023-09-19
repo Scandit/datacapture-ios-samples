@@ -18,10 +18,10 @@
 		653160D92360721300634186 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653160D62360721200634186 /* SettingsViewController.swift */; };
 		65FAF3F425C050D8007EE784 /* ScanditCaptureCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3F125C050D8007EE784 /* ScanditCaptureCore.xcframework */; };
 		65FAF3F525C050D8007EE784 /* ScanditCaptureCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3F125C050D8007EE784 /* ScanditCaptureCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65FAF3F625C050D8007EE784 /* ScanditOCR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3F225C050D8007EE784 /* ScanditOCR.xcframework */; };
-		65FAF3F725C050D8007EE784 /* ScanditOCR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3F225C050D8007EE784 /* ScanditOCR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65FAF3F825C050D8007EE784 /* ScanditTextCapture.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3F325C050D8007EE784 /* ScanditTextCapture.xcframework */; };
 		65FAF3F925C050D8007EE784 /* ScanditTextCapture.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65FAF3F325C050D8007EE784 /* ScanditTextCapture.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C67E9702A20DF7E00D85A4D /* ScanditTXT.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C67E96F2A20DF7E00D85A4D /* ScanditTXT.xcframework */; };
+		9C67E9712A20DF8600D85A4D /* ScanditTXT.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C67E96F2A20DF7E00D85A4D /* ScanditTXT.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,7 +33,7 @@
 			files = (
 				65FAF3F525C050D8007EE784 /* ScanditCaptureCore.xcframework in Embed Frameworks */,
 				65FAF3F925C050D8007EE784 /* ScanditTextCapture.xcframework in Embed Frameworks */,
-				65FAF3F725C050D8007EE784 /* ScanditOCR.xcframework in Embed Frameworks */,
+				9C67E9712A20DF8600D85A4D /* ScanditTXT.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,8 +53,8 @@
 		653160D52360721200634186 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		653160D62360721200634186 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		65FAF3F125C050D8007EE784 /* ScanditCaptureCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditCaptureCore.xcframework; path = ../../frameworks/ScanditCaptureCore.xcframework; sourceTree = "<group>"; };
-		65FAF3F225C050D8007EE784 /* ScanditOCR.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditOCR.xcframework; path = ../../frameworks/ScanditOCR.xcframework; sourceTree = "<group>"; };
 		65FAF3F325C050D8007EE784 /* ScanditTextCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditTextCapture.xcframework; path = ../../frameworks/ScanditTextCapture.xcframework; sourceTree = "<group>"; };
+		9C67E96F2A20DF7E00D85A4D /* ScanditTXT.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditTXT.xcframework; path = ../../frameworks/ScanditTXT.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +63,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FAF3F425C050D8007EE784 /* ScanditCaptureCore.xcframework in Frameworks */,
+				9C67E9702A20DF7E00D85A4D /* ScanditTXT.xcframework in Frameworks */,
 				65FAF3F825C050D8007EE784 /* ScanditTextCapture.xcframework in Frameworks */,
-				65FAF3F625C050D8007EE784 /* ScanditOCR.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +117,8 @@
 		653160CF23606B7B00634186 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C67E96F2A20DF7E00D85A4D /* ScanditTXT.xcframework */,
 				65FAF3F125C050D8007EE784 /* ScanditCaptureCore.xcframework */,
-				65FAF3F225C050D8007EE784 /* ScanditOCR.xcframework */,
 				65FAF3F325C050D8007EE784 /* ScanditTextCapture.xcframework */,
 			);
 			name = Frameworks;

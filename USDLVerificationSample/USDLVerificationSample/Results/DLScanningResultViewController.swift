@@ -17,16 +17,15 @@ import ScanditIdCapture
 
 private extension CapturedId {
     var dateOfBirthString: String {
-        guard let date = dateOfBirth?.date else { return "" }
+        guard let date = dateOfBirth?.localDate else { return "" }
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter.string(from: date)
     }
 
     var isExpired: Bool? {
-        guard let expiryDate = dateOfExpiry?.date else { return nil }
+        guard let expiryDate = dateOfExpiry?.localDate else { return nil }
         return expiryDate < Date()
     }
 }
@@ -112,7 +111,7 @@ final class DLScanningResultViewController: UITableViewController {
             results.append(Result(status: .success, message: "Document has not expired."))
         }
 
-        if result == .cloudVerificationFailed {
+        if result == .barcodeVerificationFailed {
             results.append(Result(status: .error, message: "Verification checks failed."))
         } else {
             results.append(Result(status: .success, message: "Verification checks passed."))

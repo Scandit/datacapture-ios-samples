@@ -19,22 +19,22 @@ class ItemTableViewCell: UITableViewCell {
     /// This identifier is also in Main storyboard.
     static let identifier = "ItemTableViewCell"
 
-    @IBOutlet private weak var frameImageView: UIImageView!
+    @IBOutlet private weak var stackedImageView: StackedImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var quantityLabel: UILabel!
 
     func configure(with item: Item) {
-        titleLabel.text = "Item \(item.number)"
-        subtitleLabel.text = "\(item.symbologyReadableName): \(item.data)"
-        guard let image = item.image,
-              let cgImage = image.cgImage else {
-            frameImageView.image = nil
-            return
+        titleLabel.text = item.data
+        subtitleLabel.text = item.symbologyReadableName
+        quantityLabel.text = "Qty: \(item.quantity)"
+        quantityLabel.isHidden = item.quantity < 2
+        stackedImageView.images = item.images?.suffix(3).compactMap {
+            guard let cgImage = $0.cgImage else { return nil }
+            return UIImage(
+                cgImage: cgImage,
+                scale: $0.scale,
+                orientation: .right)
         }
-
-        frameImageView.image = UIImage(
-            cgImage: cgImage,
-            scale: image.scale,
-            orientation: .right)
     }
 }

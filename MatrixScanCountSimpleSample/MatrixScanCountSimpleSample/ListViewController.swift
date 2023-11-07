@@ -15,16 +15,16 @@
 import Foundation
 import UIKit
 
-public protocol ListViewControllerDelegate: AnyObject {
-    func resumeScanning()
-    func restartScanning()
+protocol ListViewControllerDelegate: AnyObject {
+    func listViewController(_ listViewController: ListViewController,
+                            didFinishWithIntent intent: ListViewController.Intent)
 }
 
 class ListViewController: UIViewController {
-    // Top "navigation" bar
-    private let topBar = UIView()
-    private let backButton = UIButton(type: .custom)
-    private let titleLabel = UILabel()
+    enum Intent {
+        case restartScanning
+        case resumeScanning
+    }
 
     private let countLabel = UILabel()
     private let tableView = UITableView()
@@ -60,45 +60,16 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
-        topBar.translatesAutoresizingMaskIntoConstraints = false
-        topBar.backgroundColor = UIColor(red: 0.071, green: 0.086, blue: 0.098, alpha: 1.0)
-        view.addSubview(topBar)
-        NSLayoutConstraint.activate([
-            topBar.topAnchor.constraint(equalTo: view.topAnchor),
-            topBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            topBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 44)
-        ])
-
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(named: "BackArrow"), for: .normal)
-        backButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
-        topBar.addSubview(backButton)
-        NSLayoutConstraint.activate([
-            backButton.leadingAnchor.constraint(equalTo: topBar.leadingAnchor, constant: 8),
-            backButton.bottomAnchor.constraint(equalTo: topBar.bottomAnchor),
-            backButton.heightAnchor.constraint(equalToConstant: 44),
-            backButton.widthAnchor.constraint(equalToConstant: 44)
-        ])
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Scanned Items"
-        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        titleLabel.textColor = .white
-        topBar.addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: topBar.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: topBar.bottomAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 44)
-        ])
+        title = "Scanned Items"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = .white
 
         countLabel.translatesAutoresizingMaskIntoConstraints = false
         countLabel.font = .systemFont(ofSize: 12, weight: .regular)
         countLabel.textColor = UIColor(red: 0.239, green: 0.282, blue: 0.322, alpha: 1.0)
         view.addSubview(countLabel)
         NSLayoutConstraint.activate([
-            countLabel.topAnchor.constraint(equalTo: topBar.bottomAnchor, constant: 16),
+            countLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             countLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16)
         ])
 
@@ -171,14 +142,14 @@ class ListViewController: UIViewController {
 
     private func dismissList() {
         if isOrderCompleted {
-            delegate?.restartScanning()
+            delegate?.listViewController(self, didFinishWithIntent: .restartScanning)
         } else {
-            delegate?.resumeScanning()
+            delegate?.listViewController(self, didFinishWithIntent: .resumeScanning)
         }
     }
 
     @objc private func didTapClearList() {
-        delegate?.restartScanning()
+        delegate?.listViewController(self, didFinishWithIntent: .restartScanning)
     }
 
     private func itemListForSection(_ section: Int) -> [ScannedItem] {

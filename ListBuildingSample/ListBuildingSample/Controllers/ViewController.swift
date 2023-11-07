@@ -39,6 +39,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "List Building"
         setupRecognition()
         setupUI()
     }
@@ -52,40 +53,55 @@ class ViewController: UIViewController {
         super.viewWillDisappear(animated)
         sparkScanView.viewWillDisappear()
     }
-
-    @IBAction private func didPressClearListButton(_ sender: UIButton) {
-        clearItems()
-    }
 }
 
 // MARK: - Update Model and View Methods
 
 extension ViewController {
     private func clearItems() {
-        tableView.performBatchUpdates {
-            // Retrieve all the indexPaths, since we've to clear the whole list.
-            let indexPaths = items.indexPaths
-            // Update the model.
-            items = []
-            // Update the view.
-            itemsTableViewHeader.itemsCount = items.count
-            tableView.deleteRows(
-                at: indexPaths,
-                with: .automatic)
-        }
+        // Retrieve all the indexPaths, since we've to clear the whole list.
+        let indexPaths = items.indexPaths
+        // Update the model.
+        items = []
+        // Update the view.
+        itemsTableViewHeader.itemsCount = items.totalCount
+        tableView.deleteRows(
+            at: indexPaths,
+            with: .automatic)
     }
 
     private func addItem(_ item: Item) {
-        tableView.performBatchUpdates {
-            // Retrieve the indexPath for the item to be added.
-            let indexPath = items.addItemIndexPath
-            // Update the model.
-            items.append(item)
-            // Update the view.
-            itemsTableViewHeader.itemsCount = items.count
-            tableView.insertRows(
-                at: [indexPath],
-                with: .right)
+        // Retrieve the indexPath for the item to be added.
+        let indexPath = items.addItemIndexPath
+        // Update the model.
+        items.insert(item, at: indexPath.row)
+        // Update the view.
+        itemsTableViewHeader.itemsCount = items.totalCount
+        tableView.insertRows(
+            at: [indexPath],
+            with: .right)
+    }
+
+    private func increaseQuantity(for item: Item, with thumbnail: UIImage?) {
+        if let row = items.firstIndex(of: item) {
+            // Move item to the top
+            let oldIndexPath = IndexPath(row: row, section: 0)
+            let newIndexPath = IndexPath(row: 0, section: 0)
+            var updatedItem = self.items.remove(at: row)
+            updatedItem.increaseQuantity(with: thumbnail)
+            self.items.insert(updatedItem, at: newIndexPath.row)
+            itemsTableViewHeader.itemsCount = items.totalCount
+            tableView.performBatchUpdates {
+                tableView.moveRow(at: oldIndexPath, to: newIndexPath)
+            }
+            // We need to explicitly reload the row to update the cell contents
+            tableView.reloadRows(at: [newIndexPath], with: .none)
+        }
+    }
+
+    private func item(for barcode: Barcode) -> Item? {
+        items.first {
+            $0.symbology == barcode.symbology && $0.data == barcode.data
         }
     }
 
@@ -94,6 +110,7 @@ extension ViewController {
     }
 
     private func setupUI() {
+        itemsTableViewHeader.delegate = self
         sparkScanView = SparkScanView(parentView: view,
                                       context: context,
                                       sparkScan: sparkScan,
@@ -144,11 +161,25 @@ extension ViewController: SparkScanListener {
                 self.sparkScanView.emitFeedback(feedback)
             } else {
                 self.sparkScanView.emitFeedback(SparkScanViewSuccessFeedback())
-                self.addItem(.init(
-                    barcode: barcode,
-                    number: self.items.count + 1,
-                    image: thumbnail))
+                if let item = self.item(for: barcode) {
+                    // Item was scanned before
+                    self.increaseQuantity(for: item, with: thumbnail)
+                } else {
+                    // Item is new
+                    self.addItem(.init(
+                        barcode: barcode,
+                        number: self.items.count + 1,
+                        image: thumbnail))
+                }
             }
         }
+    }
+}
+
+// MARK: - ItemsTableViewHeaderDelegate Protocol Implementation
+
+extension ViewController: ItemsTableViewHeaderDelegate {
+    func itemsTableViewHeaderDidPressClearListButton(_ view: ItemsTableViewHeader) {
+        clearItems()
     }
 }

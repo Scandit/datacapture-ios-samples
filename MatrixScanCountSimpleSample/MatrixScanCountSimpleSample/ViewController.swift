@@ -40,6 +40,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "MatrixScan Count"
         setupRecognition()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didEnterBackground),
@@ -53,7 +54,6 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
         // Make sure that Barcode Count mode is enabled after going back from the list screen
         barcodeCountView.prepareScanning(with: context)
 
@@ -196,15 +196,17 @@ extension ViewController: BarcodeCountListener {
 }
 
 extension ViewController: ListViewControllerDelegate {
-    func resumeScanning() {
-        self.shouldCameraStandby = true
-        self.navigationController?.popViewController(animated: true)
-    }
-
-    func restartScanning() {
-        resetMode()
-        self.shouldCameraStandby = true
-        self.navigationController?.popViewController(animated: true)
+    func listViewController(_ listViewController: ListViewController,
+                            didFinishWithIntent intent: ListViewController.Intent) {
+        switch intent {
+        case .restartScanning:
+            resetMode()
+            self.shouldCameraStandby = true
+            self.navigationController?.popViewController(animated: true)
+        case .resumeScanning:
+            self.shouldCameraStandby = true
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 

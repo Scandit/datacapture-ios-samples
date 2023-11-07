@@ -31,12 +31,26 @@ class IdCaptureViewController: UIViewController {
     private lazy var idCapture = {
         let idCapture = IdCapture(context: context,
                                   settings: idCaptureSettings)
+        let idCaptureFeedback = IdCaptureFeedback()
+        idCaptureFeedback.idCaptured = Feedback(vibration: nil, sound: nil)
+        idCaptureFeedback.idRejected = Feedback(vibration: nil, sound: nil)
+        idCapture.feedback = idCaptureFeedback
         idCapture.addListener(self)
         return idCapture
     }()
 
     private lazy var idCaptureOverlay = IdCaptureOverlay(idCapture: idCapture,
                                                          view: captureView)
+
+    private lazy var successFeedback = Feedback(
+        vibration: Vibration.successHapticFeedback,
+        sound: IdCaptureFeedback.defaultSuccessSound
+    )
+
+    private lazy var failureFeedback = Feedback(
+        vibration: Vibration.failureHapticFeedback,
+        sound: IdCaptureFeedback.defaultFailureSound
+    )
 
     @IBOutlet private weak var dimmingOverlay: UIView!
 
@@ -112,12 +126,14 @@ class IdCaptureViewController: UIViewController {
         switch state {
         case .idRejected:
             showRejectedResultViewController()
+            failureFeedback.emit()
         default:
             showResultViewController(state: state) {
                 self.navigationController?.popViewController(animated: true)
             } secondaryTapped: {
                 self.reset()
             }
+            successFeedback.emit()
         }
     }
 
@@ -179,6 +195,7 @@ extension IdCaptureViewController: IdCaptureListener {
                    frameData: FrameData) {
         DispatchQueue.main.async {
             self.showRejectedResultViewController()
+            self.failureFeedback.emit()
         }
     }
 }

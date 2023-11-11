@@ -26,7 +26,6 @@ class ScannerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "MatrixScan Simple"
         setupRecognition()
     }
 

@@ -16,16 +16,11 @@ import UIKit
 import ScanditBarcodeCapture
 
 protocol ItemsTableViewControllerDelegate: AnyObject {
-    func itemsTableViewController(_ itemsTableViewController: ItemsTableViewController,
-                                  didFinishWithIntent intent: ItemsTableViewController.Intent)
+    func userWantsToResumeScanning()
+    func userWantsToRestartScanning()
 }
 
 class ItemsTableViewController: UIViewController {
-    enum Intent {
-        case restartScanning
-        case resumeScanning
-    }
-
     @IBOutlet private var tableView: ItemsTableView!
     @IBOutlet private var clearListButton: UIButton!
     @IBOutlet private var scanButton: UIButton!
@@ -37,7 +32,6 @@ class ItemsTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Scanned Items"
         clearListButton.styleAsSecondaryButton()
         scanButton.styleAsPrimaryButton()
         tableView.viewModel = viewModel
@@ -53,9 +47,9 @@ class ItemsTableViewController: UIViewController {
         super.viewWillDisappear(animated)
         if isMovingFromParent {
             if scanningCompleted || userWantsToClearList {
-                delegate?.itemsTableViewController(self, didFinishWithIntent: .restartScanning)
+                delegate?.userWantsToRestartScanning()
             } else {
-                delegate?.itemsTableViewController(self, didFinishWithIntent: .resumeScanning)
+                delegate?.userWantsToResumeScanning()
             }
         }
     }

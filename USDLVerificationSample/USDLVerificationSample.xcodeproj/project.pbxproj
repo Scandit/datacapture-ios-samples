@@ -29,8 +29,6 @@
 		B93CCB4328913E9500CE992F /* IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCB4228913E9500CE992F /* IdentifiableCell.swift */; };
 		B93CCB4728915E1B00CE992F /* DLScanningVerificationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCB4628915E1B00CE992F /* DLScanningVerificationRunner.swift */; };
 		B95D4BCC293F774A003B020E /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D4BCB293F774A003B020E /* TitleTableViewCell.swift */; };
-		B95E37FB2AD01E7400E1E833 /* ScanditIdAamvaBarcodeVerification.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95E37FA2AD01E7400E1E833 /* ScanditIdAamvaBarcodeVerification.xcframework */; };
-		B95E37FC2AD01E7400E1E833 /* ScanditIdAamvaBarcodeVerification.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B95E37FA2AD01E7400E1E833 /* ScanditIdAamvaBarcodeVerification.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +38,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B95E37FC2AD01E7400E1E833 /* ScanditIdAamvaBarcodeVerification.xcframework in Embed Frameworks */,
 				B93CCAE1288ECC3200CE992F /* ScanditIdCapture.xcframework in Embed Frameworks */,
 				B93CCADF288ECC3200CE992F /* ScanditCaptureCore.xcframework in Embed Frameworks */,
 				9C67E9952A2101C000D85A4D /* ScanditIDC.xcframework in Embed Frameworks */,
@@ -73,7 +70,6 @@
 		B93CCB4228913E9500CE992F /* IdentifiableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableCell.swift; sourceTree = "<group>"; };
 		B93CCB4628915E1B00CE992F /* DLScanningVerificationRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLScanningVerificationRunner.swift; sourceTree = "<group>"; };
 		B95D4BCB293F774A003B020E /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
-		B95E37FA2AD01E7400E1E833 /* ScanditIdAamvaBarcodeVerification.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:79D4J6BB7A:Scandit AG"; lastKnownFileType = wrapper.xcframework; name = ScanditIdAamvaBarcodeVerification.xcframework; path = ../../frameworks/ScanditIdAamvaBarcodeVerification.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B95E37FB2AD01E7400E1E833 /* ScanditIdAamvaBarcodeVerification.xcframework in Frameworks */,
 				9C67E9942A2101B600D85A4D /* ScanditIDC.xcframework in Frameworks */,
 				B93CCAE0288ECC3200CE992F /* ScanditIdCapture.xcframework in Frameworks */,
 				B93CCADE288ECC3200CE992F /* ScanditCaptureCore.xcframework in Frameworks */,
@@ -128,7 +123,6 @@
 		B93CCAD5288ECBCA00CE992F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B95E37FA2AD01E7400E1E833 /* ScanditIdAamvaBarcodeVerification.xcframework */,
 				9C67E9932A2101B600D85A4D /* ScanditIDC.xcframework */,
 				B93CCADC288ECC3200CE992F /* ScanditCaptureCore.xcframework */,
 				B93CCADD288ECC3200CE992F /* ScanditIdCapture.xcframework */,

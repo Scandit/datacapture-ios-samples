@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -222,9 +222,8 @@
 		00C552BA22E891300068499C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = Scandit;
 				TargetAttributes = {
 					00C552C122E891300068499C = {
@@ -435,6 +434,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../frameworks";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -461,6 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../frameworks";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;

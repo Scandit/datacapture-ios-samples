@@ -48,8 +48,15 @@ class IdCaptureViewController: UIViewController {
 
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
         // completely turn on.
-        idCapture.isEnabled = true
+        idCapture.reset()
         camera?.switch(toDesiredState: .on)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Enable IdCapture to start capture process.
+        idCapture.isEnabled = true
     }
 
     override func viewDidDisappear(_ animated: Bool) {

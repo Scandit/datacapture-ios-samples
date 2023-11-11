@@ -38,15 +38,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Receiving"
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.navigationBar.tintColor = .white
         setupRecognition()
         setupUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         // Make sure to call the corresponding SparkScan method
         sparkScanView.viewWillAppear()
         tableView.viewModel = itemsTableViewModel

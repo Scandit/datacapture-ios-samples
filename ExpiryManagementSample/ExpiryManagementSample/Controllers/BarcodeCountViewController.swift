@@ -29,7 +29,7 @@ class BarcodeCountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Expiry Management"
+        navigationController?.setNavigationBarHidden(false, animated: true)
         setupRecognition()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didEnterBackground),
@@ -39,6 +39,7 @@ class BarcodeCountViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         // Make sure that Barcode Count mode is enabled
         barcodeCountView.prepareScanning(with: context)
     }
@@ -221,14 +222,12 @@ extension BarcodeCountViewController: BarcodeCountStatusProvider {
 // MARK: - ItemsTableViewControllerDelegate
 
 extension BarcodeCountViewController: ItemsTableViewControllerDelegate {
-    func itemsTableViewController(_ itemsTableViewController: ItemsTableViewController,
-                                  didFinishWithIntent intent: ItemsTableViewController.Intent) {
-        switch intent {
-        case .restartScanning:
-            shouldCameraStandby = true
-            restartMode()
-        case .resumeScanning:
-            shouldCameraStandby = true
-        }
+    func userWantsToResumeScanning() {
+        shouldCameraStandby = true
+    }
+
+    func userWantsToRestartScanning() {
+        shouldCameraStandby = true
+        restartMode()
     }
 }

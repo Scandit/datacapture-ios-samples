@@ -24,11 +24,7 @@ extension Array where Element == Item {
 
     /// Returns the indexPath to be used for appending an element.
     var addItemIndexPath: IndexPath {
-        // Add new items at the beginning of the array
-        return .init(row: 0, section: 0)
-    }
-
-    var totalCount: Int {
-        reduce(0) { $0 + $1.quantity }
+        let row = isEmpty ? 0 : count
+        return .init(row: row, section: 0)
     }
 }

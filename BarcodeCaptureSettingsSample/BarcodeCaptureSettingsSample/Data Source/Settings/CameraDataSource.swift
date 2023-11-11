@@ -37,14 +37,14 @@ class CameraDataSource: DataSource {
 
         if let worldFacingCamera = Camera(position: .worldFacing) {
             rows.append(Row.option(title: "World Facing",
-                                   getValue: { SettingsManager.current.camera?.position == .worldFacing },
+                                   getValue: { SettingsManager.current.camera == worldFacingCamera },
                                    didSelect: { _, _ in SettingsManager.current.camera = worldFacingCamera },
                                    dataSourceDelegate: self.delegate))
         }
 
         if let userFacingCamera = Camera(position: .userFacing) {
             rows.append(Row.option(title: "User Facing",
-                                   getValue: { SettingsManager.current.camera?.position == .userFacing },
+                                   getValue: { SettingsManager.current.camera == userFacingCamera },
                                    didSelect: { _, _ in SettingsManager.current.camera = userFacingCamera },
                                    dataSourceDelegate: self.delegate))
         }

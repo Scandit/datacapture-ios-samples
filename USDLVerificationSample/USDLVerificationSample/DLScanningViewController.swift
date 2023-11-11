@@ -153,8 +153,9 @@ extension DLScanningViewController: IdCaptureListener {
 
     func handleVerificationError(_ error: Error) {
         let message = """
-An error was encountered. Please make sure that your Scandit license key permits barcode \
-verification.
+An error was encountered when trying to connect to the verification \
+service. Please make sure that the device has internet access and that \
+your Scandit license key permits barcode verification.
 """
         let controller = UIAlertController(
             title: "Error",

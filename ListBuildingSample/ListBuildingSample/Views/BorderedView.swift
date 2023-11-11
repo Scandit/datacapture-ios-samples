@@ -14,12 +14,31 @@
 
 import UIKit
 
-class ItemsTableViewHeader: UIView {
-    @IBOutlet private weak var label: UILabel!
-
-    var itemsCount: Int? {
+class BorderedView: UIView {
+    @IBInspectable var borderColor: UIColor = .clear {
         didSet {
-            label.text = "\(itemsCount ?? 0) items"
+            layer.borderColor = borderColor.cgColor
         }
+    }
+
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        layer.borderColor = borderColor.cgColor
+        layer.borderWidth = borderWidth
     }
 }

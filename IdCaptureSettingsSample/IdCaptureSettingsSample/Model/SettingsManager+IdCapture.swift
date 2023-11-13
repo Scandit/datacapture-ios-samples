@@ -58,41 +58,4 @@ extension SettingsManager {
             }
         }
     }
-
-    var idCapturedFeedback: Feedback {
-        get {
-            idCaptureFeedback.idCaptured
-        }
-
-        set {
-            idCaptureFeedback.idCaptured = newValue
-            updateFeedback()
-        }
-    }
-
-    var idRejectedFeedback: Feedback {
-        get {
-            idCaptureFeedback.idRejected
-        }
-
-        set {
-            idCaptureFeedback.idRejected = newValue
-            updateFeedback()
-        }
-    }
-
-    var idCaptureTimeoutFeedback: Feedback {
-        get {
-            idCaptureFeedback.idCaptureTimeout
-        }
-
-        set {
-            idCaptureFeedback.idCaptureTimeout = newValue
-            updateFeedback()
-        }
-    }
-
-    func updateFeedback() {
-        idCapture.feedback = idCaptureFeedback
-    }
 }

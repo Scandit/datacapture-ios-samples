@@ -13,7 +13,6 @@
  */
 
 import ScanditIdCapture
-import ScanditCaptureCore
 
 class SettingsManager {
     static let current = SettingsManager()
@@ -23,7 +22,6 @@ class SettingsManager {
     var context: DataCaptureContext
     var idCaptureSettings: IdCaptureSettings
     var idCapture: IdCapture
-    var idCaptureFeedback = IdCaptureFeedback.default
     weak var idCaptureListener: IdCaptureListener?
 
     var captureView: DataCaptureView! {
@@ -41,6 +39,7 @@ class SettingsManager {
     var overlay: IdCaptureOverlay!
 
     var internalCamera: Camera? = Camera.default
+    var internalTorchState: TorchState = .off
     // Use the recommended camera settings for the IdCapture mode.
     var cameraSettings: CameraSettings = IdCapture.recommendedCameraSettings
     var internalTorchSwitch: TorchSwitchControl = TorchSwitchControl()
@@ -59,8 +58,7 @@ class SettingsManager {
 
         // Make sure that references to some settings are actually the current settings
         internalCamera?.apply(cameraSettings, completionHandler: nil)
-        internalCamera?.desiredTorchState = .off
-
+        internalCamera?.desiredTorchState = internalTorchState
     }
 
     func configure() {
@@ -75,7 +73,6 @@ class SettingsManager {
         }
 
         updateOverlay()
-        updateFeedback()
     }
 
     func updateOverlay() {

@@ -17,7 +17,7 @@ import ScanditIdCapture
 
 private extension CapturedId {
     var isExpired: Bool? {
-        guard let expiryDate = dateOfExpiry?.localDate else { return nil }
+        guard let expiryDate = dateOfExpiry?.date else { return nil }
         return expiryDate < Date()
     }
 }
@@ -25,7 +25,7 @@ private extension CapturedId {
 enum DLScanningVerificationResult {
     case frontBackDoesNotMatch
     case expired
-    case barcodeVerificationFailed
+    case cloudVerificationFailed
     case success
 }
 
@@ -42,36 +42,36 @@ final class DLScanningVerificationRunner {
         // This function is main entry point for this class.
         // We first check if the front and back scanning results match
         guard doesFrontAndBackMatch(capturedId) else {
-            // If the front and back does not match verification will fail. We return eagerly for this case.
+            // If the front and back does not match cloud verification will fail. We return eagerly for this case.
             completion(.success(.frontBackDoesNotMatch))
             return
         }
 
-        // If the document is expired verification will fail. We return eagerly for this case as well.
+        // If the document is expired cloud verification will fail. We return eagerly for this case as well.
         guard capturedId.isExpired == nil || !capturedId.isExpired! else {
             completion(.success(.expired))
             return
         }
 
-        // Document looks valid on local validations. Now we can start a verification process.
-        runAAMVABarcodeVerification(capturedId, completion)
+        // Document looks valid on local validations. Now we can start a cloud verification process.
+        runAAMVACloudVerification(capturedId, completion)
     }
 
     private func doesFrontAndBackMatch(_ capturedId: CapturedId) -> Bool {
         return AAMVAVizBarcodeComparisonVerifier().verify(capturedId).checksPassed
     }
 
-    private func runAAMVABarcodeVerification(
+    private func runAAMVACloudVerification(
         _ capturedId: CapturedId,
         _ completion: @escaping (Result) -> Void
     ) {
-        AamvaBarcodeVerifier(context: context)
+        AamvaCloudVerifier(context: context)
             .verify(capturedId) { result, error in
             if let result = result {
                 if result.allChecksPassed {
                     completion(.success(.success))
                 } else {
-                    completion(.success(.barcodeVerificationFailed))
+                    completion(.success(.cloudVerificationFailed))
                 }
             } else if let error = error {
                 completion(.failure(error))

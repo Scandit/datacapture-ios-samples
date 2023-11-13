@@ -19,11 +19,12 @@ var formatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
     formatter.timeStyle = .none
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
     return formatter
 }()
 
 extension DateResult {
     open override var description: String {
-        return formatter.string(from: localDate)
+        return formatter.string(from: date)
     }
 }

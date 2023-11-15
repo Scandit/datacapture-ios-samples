@@ -127,6 +127,8 @@ extension DocumentType: CustomStringConvertible {
             return "Minors Public Services Card"
         case .apecBusinessTravelCard:
             return "Apec Business Travel Card"
+        case .drivingPrivilegeCard:
+            return "Driving Privilege Card"
         }
     }
 }

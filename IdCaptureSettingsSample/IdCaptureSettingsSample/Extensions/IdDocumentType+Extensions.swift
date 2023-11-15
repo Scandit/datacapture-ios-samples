@@ -57,8 +57,6 @@ extension IdDocumentType: CustomStringConvertible {
             return "Passport VIZ"
         case .commonAccessCardBarcode:
             return "Common Access Card Barcode"
-        case .usVisaVIZ:
-            return "US Visa VIZ"
         default:
             fatalError("Unknown case \(self.rawValue)")
         }

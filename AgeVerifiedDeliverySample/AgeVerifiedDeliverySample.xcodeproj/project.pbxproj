@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		651872BF2688B1700043ABC7 /* ScanningModeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651872BE2688B1700043ABC7 /* ScanningModeToggle.swift */; };
-		651872C12688B17B0043ABC7 /* ScanningModeToggle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 651872C02688B17B0043ABC7 /* ScanningModeToggle.xib */; };
 		651872C32688B7FA0043ABC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651872C22688B7FA0043ABC7 /* MainViewController.swift */; };
 		651872C5268901470043ABC7 /* ScanditTextCapture.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651872C4268901470043ABC7 /* ScanditTextCapture.xcframework */; };
 		651872C6268901470043ABC7 /* ScanditTextCapture.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 651872C4268901470043ABC7 /* ScanditTextCapture.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -18,12 +16,9 @@
 		65A4555B268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4555A268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift */; };
 		65A4555D268CB0BD00A61D6F /* CompactNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4555C268CB0BD00A61D6F /* CompactNavigationController.swift */; };
 		65A4555F268CB49A00A61D6F /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4555E268CB49A00A61D6F /* DatePickerViewController.swift */; };
-		65A45563268DCE5700A61D6F /* PopOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A45562268DCE5700A61D6F /* PopOver.swift */; };
 		65A45567268DEDFD00A61D6F /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A45566268DEDFD00A61D6F /* TransitionManager.swift */; };
 		65A7989325C04EEA0032289B /* ScanditCaptureCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7989025C04EE90032289B /* ScanditCaptureCore.xcframework */; };
 		65A7989425C04EEA0032289B /* ScanditCaptureCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7989025C04EE90032289B /* ScanditCaptureCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65A7989525C04EEA0032289B /* ScanditOCR.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7989125C04EE90032289B /* ScanditOCR.xcframework */; };
-		65A7989625C04EEA0032289B /* ScanditOCR.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7989125C04EE90032289B /* ScanditOCR.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65A7989725C04EEA0032289B /* ScanditIdCapture.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7989225C04EEA0032289B /* ScanditIdCapture.xcframework */; };
 		65A7989825C04EEA0032289B /* ScanditIdCapture.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A7989225C04EEA0032289B /* ScanditIdCapture.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65B6CB07268B1F6800093D8C /* DeliveryResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6CB06268B1F6700093D8C /* DeliveryResultViewController.swift */; };
@@ -32,9 +27,13 @@
 		65E53736238545E2002CA693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65E53735238545E2002CA693 /* Assets.xcassets */; };
 		65E53739238545E2002CA693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65E53737238545E2002CA693 /* LaunchScreen.storyboard */; };
 		65E5375523855449002CA693 /* DataCaptureContext+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5375423855449002CA693 /* DataCaptureContext+License.swift */; };
+		9C1AFBC52A372A4A003AD9B8 /* IdCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AFBC42A372A4A003AD9B8 /* IdCaptureViewController.swift */; };
+		9C1AFBC72A37440A003AD9B8 /* ScanditBarcodeCapture.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1AFBC62A37440A003AD9B8 /* ScanditBarcodeCapture.xcframework */; };
+		9C1AFBC82A374422003AD9B8 /* ScanditBarcodeCapture.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1AFBC62A37440A003AD9B8 /* ScanditBarcodeCapture.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C1AFBD32A38D6AD003AD9B8 /* DocumentType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1AFBD22A38D6AD003AD9B8 /* DocumentType+Extensions.swift */; };
+		9CA26E7A2A545D4600EEC29A /* ScanditIDC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA26E792A545D4600EEC29A /* ScanditIDC.xcframework */; };
+		9CA26E7B2A545D5A00EEC29A /* ScanditIDC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA26E792A545D4600EEC29A /* ScanditIDC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B94597D4296D960E00FE1A8A /* DeliveryLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94597D3296D960E00FE1A8A /* DeliveryLogic.swift */; };
-		E799B41A26FCFC6C002C1548 /* ModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799B41826FCFC6C002C1548 /* ModeCell.swift */; };
-		E799B41B26FCFC6C002C1548 /* ModeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799B41926FCFC6C002C1548 /* ModeCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,7 +46,8 @@
 				651872C6268901470043ABC7 /* ScanditTextCapture.xcframework in Embed Frameworks */,
 				65A7989825C04EEA0032289B /* ScanditIdCapture.xcframework in Embed Frameworks */,
 				65A7989425C04EEA0032289B /* ScanditCaptureCore.xcframework in Embed Frameworks */,
-				65A7989625C04EEA0032289B /* ScanditOCR.xcframework in Embed Frameworks */,
+				9C1AFBC82A374422003AD9B8 /* ScanditBarcodeCapture.xcframework in Embed Frameworks */,
+				9CA26E7B2A545D5A00EEC29A /* ScanditIDC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,8 +55,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		651872BE2688B1700043ABC7 /* ScanningModeToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningModeToggle.swift; sourceTree = "<group>"; };
-		651872C02688B17B0043ABC7 /* ScanningModeToggle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanningModeToggle.xib; sourceTree = "<group>"; };
 		651872C22688B7FA0043ABC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		651872C4268901470043ABC7 /* ScanditTextCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditTextCapture.xcframework; path = ../../frameworks/ScanditTextCapture.xcframework; sourceTree = "<group>"; };
 		65203C9F2577F956006246C6 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
@@ -65,10 +63,8 @@
 		65A4555A268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualDocumentInputTableViewController.swift; sourceTree = "<group>"; };
 		65A4555C268CB0BD00A61D6F /* CompactNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactNavigationController.swift; sourceTree = "<group>"; };
 		65A4555E268CB49A00A61D6F /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
-		65A45562268DCE5700A61D6F /* PopOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOver.swift; sourceTree = "<group>"; };
 		65A45566268DEDFD00A61D6F /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		65A7989025C04EE90032289B /* ScanditCaptureCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditCaptureCore.xcframework; path = ../../frameworks/ScanditCaptureCore.xcframework; sourceTree = "<group>"; };
-		65A7989125C04EE90032289B /* ScanditOCR.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditOCR.xcframework; path = ../../frameworks/ScanditOCR.xcframework; sourceTree = "<group>"; };
 		65A7989225C04EEA0032289B /* ScanditIdCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditIdCapture.xcframework; path = ../../frameworks/ScanditIdCapture.xcframework; sourceTree = "<group>"; };
 		65B6CB06268B1F6700093D8C /* DeliveryResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryResultViewController.swift; sourceTree = "<group>"; };
 		65E5372B238545E0002CA693 /* AgeVerifiedDeliverySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgeVerifiedDeliverySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,9 +74,11 @@
 		65E53738238545E2002CA693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65E5373A238545E2002CA693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E5375423855449002CA693 /* DataCaptureContext+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+License.swift"; sourceTree = "<group>"; };
+		9C1AFBC42A372A4A003AD9B8 /* IdCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdCaptureViewController.swift; sourceTree = "<group>"; };
+		9C1AFBC62A37440A003AD9B8 /* ScanditBarcodeCapture.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditBarcodeCapture.xcframework; path = ../../frameworks/ScanditBarcodeCapture.xcframework; sourceTree = "<group>"; };
+		9C1AFBD22A38D6AD003AD9B8 /* DocumentType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocumentType+Extensions.swift"; sourceTree = "<group>"; };
+		9CA26E792A545D4600EEC29A /* ScanditIDC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ScanditIDC.xcframework; path = ../../frameworks/ScanditIDC.xcframework; sourceTree = "<group>"; };
 		B94597D3296D960E00FE1A8A /* DeliveryLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryLogic.swift; sourceTree = "<group>"; };
-		E799B41826FCFC6C002C1548 /* ModeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeCell.swift; sourceTree = "<group>"; };
-		E799B41926FCFC6C002C1548 /* ModeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,25 +86,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C1AFBC72A37440A003AD9B8 /* ScanditBarcodeCapture.xcframework in Frameworks */,
 				651872C5268901470043ABC7 /* ScanditTextCapture.xcframework in Frameworks */,
+				9CA26E7A2A545D4600EEC29A /* ScanditIDC.xcframework in Frameworks */,
 				65A7989725C04EEA0032289B /* ScanditIdCapture.xcframework in Frameworks */,
 				65A7989325C04EEA0032289B /* ScanditCaptureCore.xcframework in Frameworks */,
-				65A7989525C04EEA0032289B /* ScanditOCR.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		651872BD2688B1630043ABC7 /* Toggle */ = {
-			isa = PBXGroup;
-			children = (
-				651872BE2688B1700043ABC7 /* ScanningModeToggle.swift */,
-				651872C02688B17B0043ABC7 /* ScanningModeToggle.xib */,
-			);
-			path = Toggle;
-			sourceTree = "<group>";
-		};
 		65203C9E2577F956006246C6 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +109,6 @@
 		65A45564268DEDD300A61D6F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				65A45562268DCE5700A61D6F /* PopOver.swift */,
 				65A45566268DEDFD00A61D6F /* TransitionManager.swift */,
 			);
 			path = Utils;
@@ -128,12 +117,12 @@
 		65A45565268DEDE400A61D6F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9C1AFBC42A372A4A003AD9B8 /* IdCaptureViewController.swift */,
 				65A4555C268CB0BD00A61D6F /* CompactNavigationController.swift */,
 				65A4555E268CB49A00A61D6F /* DatePickerViewController.swift */,
 				65B6CB06268B1F6700093D8C /* DeliveryResultViewController.swift */,
 				651872C22688B7FA0043ABC7 /* MainViewController.swift */,
 				65A4555A268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift */,
-				E799B41D26FCFCBD002C1548 /* ModeCollection */,
 				B94597D3296D960E00FE1A8A /* DeliveryLogic.swift */,
 			);
 			path = Views;
@@ -165,7 +154,6 @@
 				65E5373A238545E2002CA693 /* Info.plist */,
 				65E53737238545E2002CA693 /* LaunchScreen.storyboard */,
 				65E53732238545E0002CA693 /* Main.storyboard */,
-				651872BD2688B1630043ABC7 /* Toggle */,
 				65A45564268DEDD300A61D6F /* Utils */,
 				65A45565268DEDE400A61D6F /* Views */,
 				65E5375323855430002CA693 /* Extensions */,
@@ -176,9 +164,10 @@
 		65E5374023855297002CA693 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CA26E792A545D4600EEC29A /* ScanditIDC.xcframework */,
+				9C1AFBC62A37440A003AD9B8 /* ScanditBarcodeCapture.xcframework */,
 				65A7989025C04EE90032289B /* ScanditCaptureCore.xcframework */,
 				65A7989225C04EEA0032289B /* ScanditIdCapture.xcframework */,
-				65A7989125C04EE90032289B /* ScanditOCR.xcframework */,
 				651872C4268901470043ABC7 /* ScanditTextCapture.xcframework */,
 			);
 			name = Frameworks;
@@ -187,20 +176,12 @@
 		65E5375323855430002CA693 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9C1AFBD22A38D6AD003AD9B8 /* DocumentType+Extensions.swift */,
 				65E5375423855449002CA693 /* DataCaptureContext+License.swift */,
 				65A45556268C634400A61D6F /* Date+Extensions.swift */,
 				65A45558268C929E00A61D6F /* UIKit+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E799B41D26FCFCBD002C1548 /* ModeCollection */ = {
-			isa = PBXGroup;
-			children = (
-				E799B41826FCFC6C002C1548 /* ModeCell.swift */,
-				E799B41926FCFC6C002C1548 /* ModeCollectionViewController.swift */,
-			);
-			path = ModeCollection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +245,6 @@
 			files = (
 				65E53739238545E2002CA693 /* LaunchScreen.storyboard in Resources */,
 				65E53736238545E2002CA693 /* Assets.xcassets in Resources */,
-				651872C12688B17B0043ABC7 /* ScanningModeToggle.xib in Resources */,
 				65E53734238545E0002CA693 /* Main.storyboard in Resources */,
 				65203CA02577F956006246C6 /* SampleCode.xcconfig in Resources */,
 			);
@@ -278,14 +258,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				65A4555B268C93EB00A61D6F /* ManualDocumentInputTableViewController.swift in Sources */,
-				E799B41B26FCFC6C002C1548 /* ModeCollectionViewController.swift in Sources */,
 				651872C32688B7FA0043ABC7 /* MainViewController.swift in Sources */,
-				E799B41A26FCFC6C002C1548 /* ModeCell.swift in Sources */,
 				65A45567268DEDFD00A61D6F /* TransitionManager.swift in Sources */,
+				9C1AFBD32A38D6AD003AD9B8 /* DocumentType+Extensions.swift in Sources */,
 				65A45557268C634500A61D6F /* Date+Extensions.swift in Sources */,
-				65A45563268DCE5700A61D6F /* PopOver.swift in Sources */,
 				B94597D4296D960E00FE1A8A /* DeliveryLogic.swift in Sources */,
-				651872BF2688B1700043ABC7 /* ScanningModeToggle.swift in Sources */,
+				9C1AFBC52A372A4A003AD9B8 /* IdCaptureViewController.swift in Sources */,
 				65A45559268C929E00A61D6F /* UIKit+Extensions.swift in Sources */,
 				65E5372F238545E0002CA693 /* AppDelegate.swift in Sources */,
 				65A4555F268CB49A00A61D6F /* DatePickerViewController.swift in Sources */,
@@ -442,6 +420,7 @@
 			baseConfigurationReference = 65203C9F2577F956006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -464,6 +443,7 @@
 			baseConfigurationReference = 65203C9F2577F956006246C6 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = ../../frameworks;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;

@@ -73,6 +73,8 @@ fileprivate extension ResultPresenter {
              SimpleTextCellProvider(value: capturedId.issuingCountryISO.valueOrNil, title: "Issuing Country ISO"),
              SimpleTextCellProvider(value: capturedId.issuingCountry.valueOrNil, title: "Issuing Country"),
              SimpleTextCellProvider(value: capturedId.documentNumber.valueOrNil, title: "Document Number"),
+             SimpleTextCellProvider(value: capturedId.documentAdditionalNumber.valueOrNil,
+                                    title: "Document Additional Number"),
              SimpleTextCellProvider(value: capturedId.dateOfExpiry.valueOrNil, title: "Date of Expiry"),
              SimpleTextCellProvider(value: capturedId.isExpired.optionalBooleanRepresentation, title: "Is Expired"),
              SimpleTextCellProvider(value: capturedId.dateOfIssue.valueOrNil, title: "Date of Issue")]

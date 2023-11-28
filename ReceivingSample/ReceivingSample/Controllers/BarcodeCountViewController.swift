@@ -29,6 +29,7 @@ class BarcodeCountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Receiving"
         setupRecognition()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didEnterBackground),
@@ -110,6 +111,7 @@ class BarcodeCountViewController: UIViewController {
         // To visualize the Barcode Count UI you need to create a BarcodeCountView and add it to the view hierarchy.
         // BarcodeCountView is designed to be displayed full screen.
         barcodeCountView = BarcodeCountView(frame: view.bounds, context: context, barcodeCount: barcodeCount)
+        barcodeCountView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         barcodeCountView.shouldShowClearHighlightsButton = true
         view.addSubview(barcodeCountView)
 
@@ -192,12 +194,14 @@ extension BarcodeCountViewController: BarcodeCountViewUIDelegate {
 // MARK: - ItemsTableViewControllerDelegate
 
 extension BarcodeCountViewController: ItemsTableViewControllerDelegate {
-    func userWantsToResumeScanning() {
-        shouldCameraStandby = true
-    }
-
-    func userWantsToRestartScanning() {
-        shouldCameraStandby = true
-        restartMode()
+    func itemsTableViewController(_ itemsTableViewController: ItemsTableViewController,
+                                  didFinishWithIntent intent: ItemsTableViewController.Intent) {
+        switch intent {
+        case .restartScanning:
+            shouldCameraStandby = true
+            restartMode()
+        case .resumeScanning:
+            shouldCameraStandby = true
+        }
     }
 }

@@ -46,7 +46,6 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
         // Make sure to call the corresponding SparkScan method
         sparkScanView.viewWillAppear()
         tableView.viewModel = itemsTableViewModel
@@ -73,6 +72,9 @@ extension ViewController {
     }
 
     private func setupUI() {
+        self.title = "Expiry Management"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = .white
         // Create the SparkScanView passing the context and the mode.
         sparkScanView = SparkScanView(parentView: view,
                                       context: context,

@@ -14,12 +14,24 @@
 
 import UIKit
 
+protocol ItemsTableViewHeaderDelegate: AnyObject {
+    func itemsTableViewHeaderDidPressClearListButton(_ view: ItemsTableViewHeader)
+}
+
 class ItemsTableViewHeader: UIView {
     @IBOutlet private weak var label: UILabel!
+    @IBOutlet private weak var clearListButton: UIButton!
+
+    weak var delegate: ItemsTableViewHeaderDelegate?
 
     var itemsCount: Int? {
         didSet {
-            label.text = "\(itemsCount ?? 0) items"
+            label.text = "\(itemsCount ?? 0) item(s) scanned"
+            clearListButton.isEnabled = (itemsCount ?? 0) > 0
         }
+    }
+
+    @IBAction func clearListPressed(_ sender: Any) {
+        delegate?.itemsTableViewHeaderDidPressClearListButton(self)
     }
 }

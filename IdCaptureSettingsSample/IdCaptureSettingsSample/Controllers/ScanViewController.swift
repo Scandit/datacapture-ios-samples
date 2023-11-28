@@ -52,12 +52,6 @@ class ScanViewController: UIViewController {
         // completely turn on. We want to display camera frames as soon as the view moves to the window. That's why
         // this call is made in `viewWillAppear` call.
         camera?.switch(toDesiredState: .on)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        // Enable IdCapture to start capture process.
         idCapture.isEnabled = true
     }
 

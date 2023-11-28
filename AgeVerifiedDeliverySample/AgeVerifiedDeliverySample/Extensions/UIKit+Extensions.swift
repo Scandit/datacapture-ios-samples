@@ -22,10 +22,10 @@ extension UIViewController {
 
     var transitionManager: TransitionManager? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.transitionManager) as? TransitionManager
+            return objc_getAssociatedObject(self, AssociatedKeys.transitionManager) as? TransitionManager
         }
         set {
-            objc_setAssociatedObject(self, &AssociatedKeys.transitionManager, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, AssociatedKeys.transitionManager, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
 }

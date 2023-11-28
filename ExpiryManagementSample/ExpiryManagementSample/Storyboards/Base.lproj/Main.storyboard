@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qtq-7Z-nCp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qtq-7Z-nCp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,12 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xob-17-gRe" userLabel="Status Bar">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
-                                <color key="backgroundColor" red="0.070588235294117646" green="0.086274509803921567" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yum-Qh-XlL" customClass="ItemsTableView" customModule="ExpiryManagementSample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="48" width="414" height="732"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="688"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="XO7-mg-r8E" userLabel="Table View Header" customClass="ItemsTableViewHeader" customModule="ExpiryManagementSample" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
@@ -52,7 +48,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BX7-sU-F3I" userLabel="Button Container">
-                                <rect key="frame" x="0.0" y="780" width="414" height="82"/>
+                                <rect key="frame" x="0.0" y="780" width="414" height="116"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEp-aI-ehi">
                                         <rect key="frame" x="32" y="16" width="350" height="50"/>
@@ -72,31 +68,25 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="rEp-aI-ehi" secondAttribute="trailing" constant="32" id="1XQ-Eh-wI8"/>
+                                    <constraint firstItem="rEp-aI-ehi" firstAttribute="centerX" secondItem="BX7-sU-F3I" secondAttribute="centerX" id="L12-RG-niH"/>
                                     <constraint firstItem="rEp-aI-ehi" firstAttribute="leading" secondItem="BX7-sU-F3I" secondAttribute="leading" constant="32" id="TYJ-z7-Bel"/>
                                     <constraint firstItem="rEp-aI-ehi" firstAttribute="top" secondItem="BX7-sU-F3I" secondAttribute="top" constant="16" id="bfa-5t-chm"/>
-                                    <constraint firstAttribute="bottom" secondItem="rEp-aI-ehi" secondAttribute="bottom" constant="16" id="iNe-mK-pb7"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BX7-sU-F3I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7T4-Gx-bOv"/>
-                            <constraint firstItem="xob-17-gRe" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BAh-0h-5dV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BX7-sU-F3I" secondAttribute="trailing" id="FUz-vx-87D"/>
                             <constraint firstItem="BX7-sU-F3I" firstAttribute="top" secondItem="yum-Qh-XlL" secondAttribute="bottom" id="KCy-vW-SJQ"/>
-                            <constraint firstItem="BX7-sU-F3I" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="NzV-mX-SMD"/>
-                            <constraint firstAttribute="trailing" secondItem="xob-17-gRe" secondAttribute="trailing" id="OlS-CL-n5f"/>
-                            <constraint firstItem="xob-17-gRe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RWr-yb-BSV"/>
-                            <constraint firstItem="xob-17-gRe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gSH-Lw-9ms"/>
+                            <constraint firstItem="BX7-sU-F3I" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="NzV-mX-SMD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yum-Qh-XlL" secondAttribute="trailing" id="jtW-BT-AQg"/>
                             <constraint firstItem="yum-Qh-XlL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nGc-GS-kWl"/>
                             <constraint firstItem="yum-Qh-XlL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wvn-v6-sxB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rEp-aI-ehi" secondAttribute="bottom" constant="16" id="y3Q-Ll-0vm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WtD-aE-tqT"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="clearListButton" destination="rEp-aI-ehi" id="X6W-hN-s4u"/>
                         <outlet property="tableView" destination="yum-Qh-XlL" id="Hh5-W3-89o"/>
@@ -115,7 +105,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Mvq-nh-ZRs"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="aNe-pV-qZn"/>
                     <connections>
@@ -135,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ur6-cv-WBv" customClass="ItemsTableView" customModule="ExpiryManagementSample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="48" width="414" height="666"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="622"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="gRK-k2-Jje" userLabel="Table View Header" customClass="ItemsTableViewHeader" customModule="ExpiryManagementSample" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
@@ -197,17 +186,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="q8u-8t-CfI" firstAttribute="centerX" secondItem="wCX-iy-Q52" secondAttribute="centerX" id="3tc-EJ-gE1"/>
                                     <constraint firstItem="cdw-jM-Xdt" firstAttribute="leading" secondItem="wCX-iy-Q52" secondAttribute="leading" constant="32" id="6PY-Yw-Yz7"/>
                                     <constraint firstItem="q8u-8t-CfI" firstAttribute="top" secondItem="cdw-jM-Xdt" secondAttribute="bottom" constant="16" id="6qI-Mk-goG"/>
                                     <constraint firstItem="cdw-jM-Xdt" firstAttribute="top" secondItem="wCX-iy-Q52" secondAttribute="top" constant="16" id="9Gg-YC-EjK"/>
-                                    <constraint firstAttribute="trailing" secondItem="q8u-8t-CfI" secondAttribute="trailing" constant="32" id="OsC-sa-8pE"/>
-                                    <constraint firstAttribute="trailing" secondItem="cdw-jM-Xdt" secondAttribute="trailing" constant="32" id="Y6V-f4-pNL"/>
+                                    <constraint firstItem="cdw-jM-Xdt" firstAttribute="centerX" secondItem="wCX-iy-Q52" secondAttribute="centerX" id="Dxt-18-2af"/>
                                     <constraint firstItem="q8u-8t-CfI" firstAttribute="leading" secondItem="wCX-iy-Q52" secondAttribute="leading" constant="32" id="x96-Mz-ewU"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CyW-KB-gq3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="wCX-iy-Q52" secondAttribute="bottom" id="COc-zF-9Qt"/>
                             <constraint firstItem="wCX-iy-Q52" firstAttribute="leading" secondItem="CyW-KB-gq3" secondAttribute="leading" id="Hyz-PJ-ya7"/>
@@ -235,7 +223,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qtq-7Z-nCp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gGW-Nf-FKi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="gGW-Nf-FKi">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

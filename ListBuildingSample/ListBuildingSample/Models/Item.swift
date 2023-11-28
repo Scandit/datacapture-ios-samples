@@ -18,8 +18,8 @@ import ScanditBarcodeCapture
 
 /// The Item struct for represent each scanned Barcode, with all information needed by TableViewCell.
 struct Item: Equatable {
-    /// The image of the scanned barcode.
-    let image: UIImage?
+    /// The images of the scanned barcodes.
+    private(set) var images: [UIImage]?
 
     /// Sequence number for scanned barcode.
     let number: Int
@@ -30,11 +30,21 @@ struct Item: Equatable {
     /// Data contained in scanned barcode.
     let data: String
 
+    /// The number of times the barcode was scanned.
+    private(set) var quantity: Int = 1
+
     /// Computed var to get from symbology an human-readable name.
     var symbologyReadableName: String {
         SymbologyDescription
             .init(symbology: symbology)
             .readableName
+    }
+
+    mutating func increaseQuantity(with thumbnail: UIImage?) {
+        quantity += 1
+        if let thumbnail {
+            images?.append(thumbnail)
+        }
     }
 }
 
@@ -43,7 +53,7 @@ extension Item {
          number: Int,
          image: UIImage?) {
         self.init(
-            image: image,
+            images: image != nil ? [image!] : nil,
             number: number,
             symbology: barcode.symbology,
             data: barcode.data ?? "")

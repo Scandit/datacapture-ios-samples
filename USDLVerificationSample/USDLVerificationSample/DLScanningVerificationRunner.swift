@@ -32,10 +32,10 @@ enum DLScanningVerificationResult {
 final class DLScanningVerificationRunner {
     typealias Result = Swift.Result<DLScanningVerificationResult, Error>
 
-    let context: DataCaptureContext
+    let verifier: AamvaBarcodeVerifier
 
     init(_ context: DataCaptureContext) {
-        self.context = context
+        self.verifier = AamvaBarcodeVerifier(context: context)
     }
 
     func verify(capturedId: CapturedId, _ completion: @escaping (Result) -> Void) {
@@ -65,8 +65,7 @@ final class DLScanningVerificationRunner {
         _ capturedId: CapturedId,
         _ completion: @escaping (Result) -> Void
     ) {
-        AamvaBarcodeVerifier(context: context)
-            .verify(capturedId) { result, error in
+            verifier.verify(capturedId) { result, error in
             if let result = result {
                 if result.allChecksPassed {
                     completion(.success(.success))

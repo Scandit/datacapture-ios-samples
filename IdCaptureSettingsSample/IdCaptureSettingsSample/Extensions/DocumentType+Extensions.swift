@@ -129,18 +129,6 @@ extension DocumentType: CustomStringConvertible {
             return "Apec Business Travel Card"
         case .drivingPrivilegeCard:
             return "Driving Privilege Card"
-        case .asylumRequest:
-            return "Asylum Request"
-        case .driverQualificationCard:
-            return "Driver Qualification Card"
-        case .provisionalDl:
-            return "Provisional DL"
-        case .refugeePassport:
-            return "Refugee Passport"
-        case .specialId:
-            return "Special ID"
-        case .uniformedServicesId:
-            return "Uniformed Services ID"
         }
     }
 }

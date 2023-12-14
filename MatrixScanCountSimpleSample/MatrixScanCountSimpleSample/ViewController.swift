@@ -111,7 +111,7 @@ class ViewController: UIViewController {
         barcodeCount = BarcodeCount(context: context, settings: settings)
 
         // Register self as a listener to monitor the barcode count session.
-        barcodeCount.addListener(self)
+        barcodeCount.add(self)
 
         // To visualize the Barcode Count UI you need to create a BarcodeCountView and add it to the view hierarchy.
         // BarcodeCountView is designed to be displayed full screen.

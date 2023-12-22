@@ -132,8 +132,10 @@ class ListViewController: UIViewController {
         bottomContainer.layer.shadowOpacity = 0.15
     }
 
-    @objc private func didTapBack() {
-        dismissList()
+    override func viewWillDisappear(_ animated: Bool) {
+        if isMovingFromParent {
+            dismissList()
+        }
     }
 
     @objc private func didTapResumeScanning() {

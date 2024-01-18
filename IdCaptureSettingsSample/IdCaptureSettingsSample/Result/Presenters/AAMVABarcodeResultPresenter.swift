@@ -45,8 +45,6 @@ class AAMVABarcodeResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: aamvaBarcodeResult.restrictionsCode.valueOrNil, title: "Restrictions Code"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.endorsementsCode.valueOrNil, title: "Endorsements Code"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.cardRevisionDate.valueOrNil, title: "Card Revision Date"),
-            SimpleTextCellProvider(value: aamvaBarcodeResult.firstNameWithoutMiddleName.valueOrNil,
-                                    title: "First Name Without Middle Name"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.middleName.valueOrNil, title: "Middle Name"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.driverNameSuffix.valueOrNil, title: "Driver Name Suffix"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.driverNamePrefix.valueOrNil, title: "Driver Name Prefix"),

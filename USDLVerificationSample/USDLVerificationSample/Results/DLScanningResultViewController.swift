@@ -68,6 +68,15 @@ enum Field: Int, CaseIterable {
     }
 }
 
+extension DLScanningResultViewController.Result {
+    init(status: Status, message: String) {
+        self.status = status
+        self.message = message
+        self.image = nil
+        self.altText = nil
+    }
+}
+
 final class DLScanningResultViewController: UITableViewController {
     struct Result {
         enum Status {
@@ -78,6 +87,8 @@ final class DLScanningResultViewController: UITableViewController {
 
         let status: Status
         let message: String
+        let image: UIImage?
+        let altText: String?
     }
 
     private var capturedId: CapturedId?
@@ -91,27 +102,31 @@ final class DLScanningResultViewController: UITableViewController {
 
     func prepare(_ capturedId: CapturedId, _ result: DLScanningVerificationResult) {
         self.capturedId = capturedId
-        results = makeverificationResults(result)
+        results = makeVerificationResults(result)
         if isViewLoaded { tableView.reloadData() }
     }
 
-    private func makeverificationResults(_ result: DLScanningVerificationResult) -> [Result] {
+    private func makeVerificationResults(_ result: DLScanningVerificationResult) -> [Result] {
         var results = [Result]()
-        guard result != .frontBackDoesNotMatch else {
-            results.append(Result(status: .error, message: "Information on front and back does not match."))
+        let status = result.status
+        guard status != .frontBackDoesNotMatch else {
+            results.append(Result(status: .error,
+                                  message: "Information on front and back does not match.",
+                                  image: result.image,
+                                  altText: result.altText))
             return results
         }
 
         results.append(Result(status: .success, message: "Information on front and back matches."))
 
-        if result == .expired {
+        if status == .expired {
             results.append(Result(status: .error, message: "Document has expired."))
             return results
         } else {
             results.append(Result(status: .success, message: "Document has not expired."))
         }
 
-        if result == .barcodeVerificationFailed {
+        if status == .barcodeVerificationFailed {
             results.append(Result(status: .error, message: "Verification checks failed."))
         } else {
             results.append(Result(status: .success, message: "Verification checks passed."))

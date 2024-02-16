@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1300"
+   LastUpgradeVersion = "1430"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6FA0B28C219AE7B600FF780A"
-               BuildableName = "IdCaptureSettingsSample.app"
-               BlueprintName = "IdCaptureSettingsSample"
-               ReferencedContainer = "container:IdCaptureSettingsSample.xcodeproj">
+               BlueprintIdentifier = "B93CCABD288EC95700CE992F"
+               BuildableName = "USDLVerificationSample.app"
+               BlueprintName = "USDLVerificationSample"
+               ReferencedContainer = "container:USDLVerificationSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,25 +29,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       systemAttachmentLifetime = "keepAlways"
       userAttachmentLifetime = "keepAlways">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FA0B28C219AE7B600FF780A"
-            BuildableName = "IdCaptureSettingsSample.app"
-            BlueprintName = "IdCaptureSettingsSample"
-            ReferencedContainer = "container:IdCaptureSettingsSample.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CD4367F2B03BF01006AB86B"
-               BuildableName = "IdCaptureSettingsSampleUITests.xctest"
-               BlueprintName = "IdCaptureSettingsSampleUITests"
-               ReferencedContainer = "container:IdCaptureSettingsSample.xcodeproj">
+               BlueprintIdentifier = "9CD4360D2B0247DC006AB86B"
+               BuildableName = "USDLVerificationSampleUITests.xctest"
+               BlueprintName = "USDLVerificationSampleUITests"
+               ReferencedContainer = "container:USDLVerificationSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -66,10 +57,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FA0B28C219AE7B600FF780A"
-            BuildableName = "IdCaptureSettingsSample.app"
-            BlueprintName = "IdCaptureSettingsSample"
-            ReferencedContainer = "container:IdCaptureSettingsSample.xcodeproj">
+            BlueprintIdentifier = "B93CCABD288EC95700CE992F"
+            BuildableName = "USDLVerificationSample.app"
+            BlueprintName = "USDLVerificationSample"
+            ReferencedContainer = "container:USDLVerificationSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -83,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FA0B28C219AE7B600FF780A"
-            BuildableName = "IdCaptureSettingsSample.app"
-            BlueprintName = "IdCaptureSettingsSample"
-            ReferencedContainer = "container:IdCaptureSettingsSample.xcodeproj">
+            BlueprintIdentifier = "B93CCABD288EC95700CE992F"
+            BuildableName = "USDLVerificationSample.app"
+            BlueprintName = "USDLVerificationSample"
+            ReferencedContainer = "container:USDLVerificationSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -29,6 +29,8 @@ extension CapturedResultType: CustomStringConvertible {
             return "Colombia DL Barcode Result"
         case .colombiaIdBarcodeResult:
             return "Colombia ID Barcode Result"
+        case .commonAccessCardBarcodeResult:
+            return "Common Access Card Barcode Result"
         case .argentinaIdBarcodeResult:
             return "Argentina ID Barcode Result"
         case .southAfricaDLBarcodeResult:
@@ -45,6 +47,8 @@ extension CapturedResultType: CustomStringConvertible {
             return "APEC Business Travel Card"
         case .usVisaVizResult:
             return "US Visa VIZ"
+        case .chinaExitEntryPermitMrzResult:
+            return "China Exit Entry Permit MRZ Result"
         default:
             return "No result"
         }

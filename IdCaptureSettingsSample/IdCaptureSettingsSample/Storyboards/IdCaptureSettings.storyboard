@@ -127,7 +127,7 @@
                             <outlet property="delegate" destination="LOD-ha-Ohy" id="GW7-9w-HiY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Qtt-xf-Njy"/>
+                    <navigationItem key="navigationItem" title="Id Capture" id="Qtt-xf-Njy"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIL-XM-rNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,7 +244,7 @@
                             <outlet property="delegate" destination="m7K-iX-eLD" id="buc-bW-57t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Supported Sides" id="BTO-1W-dR9"/>
+                    <navigationItem key="navigationItem" title="Anonymization Mode" id="BTO-1W-dR9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPw-vN-e8m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="MM0-ml-XEg" style="IBUITableViewCellStyleDefault" id="7gP-PX-S6m">

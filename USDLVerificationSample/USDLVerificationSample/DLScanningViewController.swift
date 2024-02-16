@@ -18,7 +18,7 @@ import ScanditIdCapture
 
 final class DLScanningViewController: UIViewController {
     private var context: DataCaptureContext!
-    private var camera: Camera!
+    private var camera: Camera?
     private var captureView: DataCaptureView!
     private var idCapture: IdCapture!
     private var idCaptureSettings: IdCaptureSettings = IdCaptureSettings()
@@ -44,7 +44,7 @@ final class DLScanningViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        camera.switch(toDesiredState: .on)
+        camera?.switch(toDesiredState: .on)
     }
 
     func setupRecognition() {
@@ -59,7 +59,7 @@ final class DLScanningViewController: UIViewController {
 
         // Use the recommended camera settings for the IdCapture mode.
         let recommendedCameraSettings = IdCapture.recommendedCameraSettings
-        camera.apply(recommendedCameraSettings)
+        camera?.apply(recommendedCameraSettings)
 
         // To visualize the on-going id capturing process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
@@ -188,3 +188,4 @@ extension DLScanningViewController: UIViewControllerTransitioningDelegate {
         return nil
     }
 }
+

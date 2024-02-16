@@ -22,34 +22,57 @@ private extension CapturedId {
     }
 }
 
-enum DLScanningVerificationResult {
-    case frontBackDoesNotMatch
-    case expired
-    case barcodeVerificationFailed
-    case success
+struct DLScanningVerificationResult {
+    enum Status {
+        case frontBackDoesNotMatch
+        case expired
+        case barcodeVerificationFailed
+        case success
+    }
+
+    let status: Status
+    let image: UIImage?
+    let altText: String?
+}
+
+extension DLScanningVerificationResult {
+    init(status: Status) {
+        self.status = status
+        self.image = nil
+        self.altText = nil
+    }
 }
 
 final class DLScanningVerificationRunner {
     typealias Result = Swift.Result<DLScanningVerificationResult, Error>
 
-    let verifier: AamvaBarcodeVerifier
+    let barcodeVerifier: AamvaBarcodeVerifier
+    let vizBarcodeComparisonVerifier: AAMVAVizBarcodeComparisonVerifier
 
     init(_ context: DataCaptureContext) {
-        self.verifier = AamvaBarcodeVerifier(context: context)
+        self.barcodeVerifier = AamvaBarcodeVerifier(context: context)
+        self.vizBarcodeComparisonVerifier = AAMVAVizBarcodeComparisonVerifier(context: context)
     }
 
     func verify(capturedId: CapturedId, _ completion: @escaping (Result) -> Void) {
         // This function is main entry point for this class.
+
         // We first check if the front and back scanning results match
-        guard doesFrontAndBackMatch(capturedId) else {
-            // If the front and back does not match verification will fail. We return eagerly for this case.
-            completion(.success(.frontBackDoesNotMatch))
+        let vizBarcodeComparisonResult = vizBarcodeComparisonVerifier.verify(capturedId)
+        guard vizBarcodeComparisonResult.checksPassed else {
+            let mismatchImage = vizBarcodeComparisonResult.frontMismatchImage
+            let showWarning = mismatchImage == nil &&
+                capturedId.aamvaBarcodeResult != nil
+            let warningText = showWarning ? "Your license does not support highlighting discrepancies" : nil
+            completion(.success(DLScanningVerificationResult(status: .frontBackDoesNotMatch,
+                                                             image: mismatchImage,
+                                                             altText: warningText)))
             return
         }
 
         // If the document is expired verification will fail. We return eagerly for this case as well.
         guard capturedId.isExpired == nil || !capturedId.isExpired! else {
-            completion(.success(.expired))
+            completion(.success(DLScanningVerificationResult(status: .expired)))
             return
         }
 
@@ -57,20 +80,16 @@ final class DLScanningVerificationRunner {
         runAAMVABarcodeVerification(capturedId, completion)
     }
 
-    private func doesFrontAndBackMatch(_ capturedId: CapturedId) -> Bool {
-        return AAMVAVizBarcodeComparisonVerifier().verify(capturedId).checksPassed
-    }
-
     private func runAAMVABarcodeVerification(
         _ capturedId: CapturedId,
         _ completion: @escaping (Result) -> Void
     ) {
-            verifier.verify(capturedId) { result, error in
+            barcodeVerifier.verify(capturedId) { result, error in
             if let result = result {
                 if result.allChecksPassed {
-                    completion(.success(.success))
+                    completion(.success(DLScanningVerificationResult(status: .success)))
                 } else {
-                    completion(.success(.barcodeVerificationFailed))
+                    completion(.success(DLScanningVerificationResult(status: .barcodeVerificationFailed)))
                 }
             } else if let error = error {
                 completion(.failure(error))
@@ -78,3 +97,4 @@ final class DLScanningVerificationRunner {
         }
     }
 }
+

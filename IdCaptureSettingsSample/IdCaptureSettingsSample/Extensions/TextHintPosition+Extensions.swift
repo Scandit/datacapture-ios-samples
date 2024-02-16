@@ -12,20 +12,19 @@
  * limitations under the License.
  */
 
-import Foundation
-import UIKit
+import ScanditIdCapture
 
-extension UIViewController {
-    private struct AssociatedKeys {
-        static var transitionManager: Void?
+extension TextHintPosition: CaseIterable, CustomStringConvertible {
+    public static var allCases: [TextHintPosition] {
+        return [.aboveViewfinder, .belowViewfinder]
     }
 
-    var transitionManager: TransitionManager? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.transitionManager) as? TransitionManager
-        }
-        set {
-            objc_setAssociatedObject(self, &AssociatedKeys.transitionManager, newValue, .OBJC_ASSOCIATION_RETAIN)
+    public var description: String {
+        switch self {
+        case .aboveViewfinder:
+            return "Above Viewfinder"
+        case .belowViewfinder:
+            return "Below Viewfinder"
         }
     }
 }

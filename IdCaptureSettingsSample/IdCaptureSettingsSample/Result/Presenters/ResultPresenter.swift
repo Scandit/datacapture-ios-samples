@@ -22,6 +22,7 @@ extension CapturedResultType: Hashable, CaseIterable {
     public static var allCases: [CapturedResultType] {
         return [
             .aamvaBarcodeResult,
+            .apecBusinessTravelCardMrzResult,
             .argentinaIdBarcodeResult,
             .chinaMainlandTravelPermitMrzResult,
             .chinaExitEntryPermitMrzResult,
@@ -29,6 +30,7 @@ extension CapturedResultType: Hashable, CaseIterable {
             .chinaOneWayPermitFrontMrzResult,
             .colombiaIdBarcodeResult,
             .colombiaDlBarcodeResult,
+            .commonAccessCardBarcodeResult,
             .mrzResult,
             .southAfricaDLBarcodeResult,
             .southAfricaIdBarcodeResult,
@@ -68,7 +70,7 @@ fileprivate extension ResultPresenter {
                                         .singleValues
                                         .map(\.description)
                                         .joined(separator: ","),
-                                    title: "Captured Result Type"),
+                                    title: "Captured Result Types"),
              SimpleTextCellProvider(value: capturedId.documentType.description, title: "Document Type"),
              SimpleTextCellProvider(value: capturedId.issuingCountryISO.valueOrNil, title: "Issuing Country ISO"),
              SimpleTextCellProvider(value: capturedId.issuingCountry.valueOrNil, title: "Issuing Country"),

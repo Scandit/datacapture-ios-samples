@@ -141,6 +141,12 @@ extension DocumentType: CustomStringConvertible {
             return "Special ID"
         case .uniformedServicesId:
             return "Uniformed Services ID"
+        case .immigrantVisa:
+            return "Immigrant Visa"
+        case .consularVoterId:
+            return "Consular Voter ID"
+        case .twicCard:
+            return "TWIC Card"
         }
     }
 }

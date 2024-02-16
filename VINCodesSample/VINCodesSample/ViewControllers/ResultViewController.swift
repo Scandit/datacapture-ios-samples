@@ -20,10 +20,6 @@ class ResultViewController: UIViewController {
         static let cellIdentifier = "CellIdentifier"
     }
     var results: [ParsedField]!
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
 }
 
 // MARK: - UITableViewDataSource

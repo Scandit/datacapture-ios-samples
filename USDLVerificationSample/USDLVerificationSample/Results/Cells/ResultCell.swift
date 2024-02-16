@@ -25,11 +25,18 @@ final class ResultCell: UITableViewCell, IdentifiableCell {
     @IBOutlet private var resultView: UIView!
     @IBOutlet private var resultIconView: UIImageView!
     @IBOutlet private var resultLabel: UILabel!
+    @IBOutlet private var idImageView: UIImageView!
+    @IBOutlet private var altTextLabel: UILabel!
 
     private func render(_ result: Result?) {
         guard let result = result else { return }
 
         resultLabel.text = result.message
+        idImageView.image = result.image
+        idImageView.isHidden = result.image == nil
+        altTextLabel.text = result.altText
+        altTextLabel.isHidden = result.altText == nil
+
         switch result.status {
         case .success:
             resultView.backgroundColor = UIColor.greenBackground

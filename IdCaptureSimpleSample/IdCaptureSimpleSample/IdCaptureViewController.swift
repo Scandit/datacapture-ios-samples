@@ -166,3 +166,4 @@ extension IdCaptureViewController: IdCaptureListener {
         return results.joined(separator: "\n")
     }
 }
+

@@ -86,6 +86,8 @@ class SettingsManager {
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
         overlay.idLayoutStyle = idLayoutStyle
         overlay.idLayoutLineStyle = idLayoutLineStyle
+        overlay.textHintPosition = textHintPosition
+        overlay.showTextHints = showTextHints
         overlay.capturedBrush = capturedBrush
         if !viewfinderFrontText.isEmpty {
             overlay.setFrontSideTextHint(viewfinderFrontText)
@@ -121,6 +123,22 @@ class SettingsManager {
     var idLayoutLineStyle: IdLayoutLineStyle = .bold {
         didSet {
             overlay.idLayoutLineStyle = idLayoutLineStyle
+        }
+    }
+
+    var textHintPosition: TextHintPosition = .aboveViewfinder {
+        didSet {
+            overlay.textHintPosition = textHintPosition
+            updateOverlay()
+        }
+    }
+
+    var showTextHints: Bool {
+        get {
+            return overlay.showTextHints
+        }
+        set {
+            overlay.showTextHints = newValue
         }
     }
 

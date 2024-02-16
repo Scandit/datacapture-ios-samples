@@ -41,8 +41,8 @@ struct DeliveryLogic {
     }
 
     static func stateFor(_ capturedId: CapturedId) -> State {
-        guard !isDocumentExpired(capturedId) else { return .expired }
         guard let dateOfBirth = capturedId.dateOfBirth?.localDate else { return .idRejected }
+        guard !isDocumentExpired(capturedId) else { return .expired }
         guard !isDateUnderage(dateOfBirth) else { return .underage }
         return .success
     }

@@ -20,4 +20,9 @@ class MainTableViewController: UITableViewController {
             versionLabel.text = "ID Capture Settings Sample\n SDK \(Constants.sdkVersion)"
         }
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.accessibilityIdentifier = "setting-list"
+    }
 }

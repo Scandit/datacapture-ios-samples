@@ -169,7 +169,7 @@ extension ScanViewController: BarcodeTrackingListener {
                 return
             }
             for identifier in removedTrackedBarcodes {
-                self.overlays.removeValue(forKey: identifier.intValue)
+                self.overlays.removeValue(forKey: identifier)
             }
             for trackedCode in trackedBarcodes {
                 guard let code = trackedCode.barcode.data, !code.isEmpty else {

@@ -98,7 +98,7 @@ class ViewController: UIViewController {
         // symbol counts" for this symbology. This is shown in the following few lines of code for one of the
         // variable-length symbologies.
         let symbologySettings = settings.settings(for: .code39)
-        symbologySettings.activeSymbolCounts = Set(7...20) as Set<NSNumber>
+        symbologySettings.activeSymbolCounts = Set(7...20)
 
         // Create new barcode capture mode with the settings from above.
         barcodeCapture = BarcodeCapture(context: context, settings: settings)

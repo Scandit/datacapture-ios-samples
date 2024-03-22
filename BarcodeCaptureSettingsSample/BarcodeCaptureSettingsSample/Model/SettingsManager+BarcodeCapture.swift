@@ -19,24 +19,22 @@ extension SettingsManager {
     // MARK: Symbologies
 
     var anySymbologyEnabled: Bool {
-        return !barcodeCaptureSettings.enabledSymbologyValues.isEmpty
+        return !barcodeCaptureSettings.enabledSymbologies.isEmpty
     }
 
     func setAllSymbologies(enabled: Bool) {
         if enabled {
-            let allSymbologies = Set(Symbology.allCases.map { NSNumber(value: $0.rawValue) })
-            barcodeCaptureSettings.enableSymbologies(allSymbologies)
+            barcodeCaptureSettings.enableSymbologies(Set(Symbology.allCases))
         } else {
-            barcodeCaptureSettings.enabledSymbologyValues.forEach { symbologyValue in
-                let symbology = Symbology(rawValue: symbologyValue.uintValue)!
-                barcodeCaptureSettings.set(symbology: symbology, enabled: false)
+            barcodeCaptureSettings.enabledSymbologies.forEach {
+                barcodeCaptureSettings.set(symbology: $0, enabled: false)
             }
         }
         barcodeCapture.apply(barcodeCaptureSettings, completionHandler: nil)
     }
 
     func isSymbologyEnabled(_ symbology: Symbology) -> Bool {
-        return barcodeCaptureSettings.enabledSymbologyValues.contains(NSNumber(value: symbology.rawValue))
+        return barcodeCaptureSettings.enabledSymbologies.contains(symbology)
     }
 
     func getSymbologySettings(for symbology: Symbology) -> SymbologySettings {

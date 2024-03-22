@@ -108,7 +108,6 @@ extension ViewController: SparkScanListener {
 
         DispatchQueue.main.async {
             guard barcode.data != nil else { return }
-            self.sparkScanView.emitFeedback(SparkScanViewSuccessFeedback())
             self.tableView.viewModel?.addBarcode(barcode)
         }
     }

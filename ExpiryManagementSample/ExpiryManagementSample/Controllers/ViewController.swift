@@ -82,6 +82,7 @@ extension ViewController {
                                       settings: SparkScanViewSettings())
         // Show the button used to switch to BarcodeCount
         sparkScanView.isBarcodeCountButtonVisible = true
+        sparkScanView.feedbackDelegate  = self
         sparkScanView.uiDelegate = self
         itemsTableViewModel = ItemsTableViewModel(parser: parser)
         tableView.allowEditing = true
@@ -110,18 +111,27 @@ extension ViewController: SparkScanListener {
         let barcode = session.newlyRecognizedBarcodes.first!
 
         DispatchQueue.main.async {
-            guard let data = barcode.data else {
+            guard barcode.data != nil else {
                 return
             }
-            // Use sparkscan feedback feature to notify the user if the item is expired
-            if let parser = self.parser, parser.isItemExpired(barcodeData: data) {
-                let feedback = SparkScanViewErrorFeedback(message: "Item is expired",
-                                                          resumeCapturingDelay: 60)
-                self.sparkScanView.emitFeedback(feedback)
-            } else {
-                self.sparkScanView.emitFeedback(SparkScanViewSuccessFeedback())
-            }
             self.tableView.viewModel?.addBarcode(barcode)
+        }
+    }
+}
+
+// MARK: - SparkScanFeedbackDelegate Protocol Implementation
+
+extension ViewController: SparkScanFeedbackDelegate {
+    func feedback(for barcode: Barcode) -> SparkScanBarcodeFeedback? {
+        guard let data = barcode.data else {
+            return nil
+        }
+        // Use sparkscan feedback feature to notify the user if the item is expired
+        if let parser = self.parser, parser.isItemExpired(barcodeData: data) {
+            return SparkScanBarcodeErrorFeedback(message: "Item is expired",
+                                    resumeCapturingDelay: 60)
+        } else {
+            return SparkScanBarcodeSuccessFeedback()
         }
     }
 }

@@ -160,7 +160,7 @@ class ScannerViewController: UIViewController {
         settingsBarcode.codeDuplicateFilter = 3000
         settingsBarcode.locationSelection = locationSelection
         let symbologySettings = settingsBarcode.settings(for: .code39)
-        symbologySettings.activeSymbolCounts = Set(18...22) as Set<NSNumber>
+        symbologySettings.activeSymbolCounts = Set(18...22)
         symbologySettings.isColorInvertedEnabled = true
         modeBarcodeCapture = BarcodeCapture(context: context, settings: settingsBarcode)
         modeBarcodeCapture.addListener(self)

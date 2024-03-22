@@ -14,12 +14,7 @@
 
 import ScanditBarcodeCapture
 
-extension Symbology: CaseIterable {
-    public typealias AllCases = [Symbology]
-    public static var allCases: AllCases {
-        return SDCAllSymbologies().map { Symbology(rawValue: $0.uintValue)! }
-    }
-
+extension Symbology {
     var readableName: String {
         return SymbologyDescription(symbology: self).readableName
     }

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         Set<Symbology>([.ean8, .ean13UPCA, .upce, .code39, .code128, .interleavedTwoOfFive]).forEach {
             settings.set(symbology: $0, enabled: true)
         }
-        settings.settings(for: .code39).activeSymbolCounts = Set((7...20).map { NSNumber(value: $0) })
+        settings.settings(for: .code39).activeSymbolCounts = Set(7...20)
 
         let mode = SparkScan(settings: settings)
         return mode
@@ -115,6 +115,7 @@ extension ViewController {
                                       context: context,
                                       sparkScan: sparkScan,
                                       settings: SparkScanViewSettings())
+        sparkScanView.feedbackDelegate  = self
     }
 }
 
@@ -155,12 +156,7 @@ extension ViewController: SparkScanListener {
         let thumbnail = frameData?.imageBuffers.last?.image?.resize(for: imageSize)
 
         DispatchQueue.main.async {
-            if barcode.data == "123456789" {
-                let feedback = SparkScanViewErrorFeedback(message: "This code should not have been scanned",
-                                                          resumeCapturingDelay: 60)
-                self.sparkScanView.emitFeedback(feedback)
-            } else {
-                self.sparkScanView.emitFeedback(SparkScanViewSuccessFeedback())
+            if !barcode.isRejected {
                 if let item = self.item(for: barcode) {
                     // Item was scanned before
                     self.increaseQuantity(for: item, with: thumbnail)
@@ -176,10 +172,30 @@ extension ViewController: SparkScanListener {
     }
 }
 
+// MARK: - SparkScanFeedbackDelegate Protocol Implementation
+
+extension ViewController: SparkScanFeedbackDelegate {
+    func feedback(for barcode: Barcode) -> SparkScanBarcodeFeedback? {
+        guard !barcode.isRejected else {
+            return SparkScanBarcodeErrorFeedback(message: "This code should not have been scanned",
+                                    resumeCapturingDelay: 60)
+        }
+        return SparkScanBarcodeSuccessFeedback()
+    }
+}
+
 // MARK: - ItemsTableViewHeaderDelegate Protocol Implementation
 
 extension ViewController: ItemsTableViewHeaderDelegate {
     func itemsTableViewHeaderDidPressClearListButton(_ view: ItemsTableViewHeader) {
         clearItems()
+    }
+}
+
+// MARK: - Barcode extension
+
+fileprivate extension Barcode {
+    var isRejected: Bool {
+        return data == "123456789"
     }
 }

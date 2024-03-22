@@ -60,24 +60,22 @@ class SettingsManager {
     // MARK: Symbologies
 
     var anySymbologyEnabled: Bool {
-        !barcodeSelectionSettings.enabledSymbologyValues.isEmpty
+        !barcodeSelectionSettings.enabledSymbologies.isEmpty
     }
 
     func setAllSymbologies(enabled: Bool) {
         if enabled {
-            let allSymbologies = Set(Symbology.allCases.map { NSNumber(value: $0.rawValue) })
-            barcodeSelectionSettings.enableSymbologies(allSymbologies)
+            barcodeSelectionSettings.enableSymbologies(Set(Symbology.allCases))
         } else {
-            barcodeSelectionSettings.enabledSymbologyValues.forEach { symbologyValue in
-                let symbology = Symbology(rawValue: symbologyValue.uintValue)!
-                barcodeSelectionSettings.set(symbology: symbology, enabled: false)
+            barcodeSelectionSettings.enabledSymbologies.forEach {
+                barcodeSelectionSettings.set(symbology: $0, enabled: false)
             }
         }
         barcodeSelection.apply(barcodeSelectionSettings, completionHandler: nil)
     }
 
     func isSymbologyEnabled(_ symbology: Symbology) -> Bool {
-        barcodeSelectionSettings.enabledSymbologyValues.contains(NSNumber(value: symbology.rawValue))
+        barcodeSelectionSettings.enabledSymbologies.contains(symbology)
     }
 
     func getSymbologySettings(for symbology: Symbology) -> SymbologySettings {

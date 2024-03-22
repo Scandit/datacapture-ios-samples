@@ -15,27 +15,22 @@
 import Foundation
 
 /*
- * Helpers to easily set active symbol counts (SymbologySettings.activeSymbolCounts: Set<NSNumber>)
+ * Helpers to easily set active symbol counts (SymbologySettings.activeSymbolCounts: Set<Int>)
  *
- * This extension assumes that Set<NSNumber> contains all integers between the minimum and the maximum,
+ * This extension assumes that Set<Int> contains all integers between the minimum and the maximum,
  * e.g. [2, 3, 4, 5], but not [2, 3, 5]
  */
 
-extension Set where Element == NSNumber {
+extension Set where Element == Int {
     var minimum: Int? {
-        get {
-            guard let min = self.min(by: { Float(truncating: $0) < Float(truncating: $1) }) else {
-                return nil
-            }
-            return Int(truncating: min)
-        }
+        get { self.min() }
         set {
             guard let newValue = newValue else {
                 return
             }
 
             guard let minimum = minimum else {
-                insert(newValue as NSNumber)
+                insert(newValue)
                 return
             }
 
@@ -44,27 +39,22 @@ extension Set where Element == NSNumber {
             }
 
             if newValue < minimum {
-                formUnion(Array(newValue..<minimum) as [NSNumber])
+                formUnion(newValue..<minimum)
             } else {
-                subtract(Array(minimum..<newValue) as [NSNumber])
+                subtract(minimum..<newValue)
             }
         }
     }
 
     var maximum: Int? {
-        get {
-            guard let max = self.max(by: { Float(truncating: $0) < Float(truncating: $1) }) else {
-                return nil
-            }
-            return Int(truncating: max)
-        }
+        get { self.max() }
         set {
             guard let newValue = newValue else {
                 return
             }
 
             guard let maximum = maximum else {
-                insert(newValue as NSNumber)
+                insert(newValue)
                 return
             }
 
@@ -73,9 +63,9 @@ extension Set where Element == NSNumber {
             }
 
             if maximum < newValue {
-                formUnion(Array(maximum...newValue) as [NSNumber])
+                formUnion(maximum...newValue)
             } else {
-                subtract(Array((newValue + 1)...maximum) as [NSNumber])
+                subtract((newValue + 1)...maximum)
             }
         }
     }

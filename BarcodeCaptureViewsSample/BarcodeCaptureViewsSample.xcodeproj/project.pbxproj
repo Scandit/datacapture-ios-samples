@@ -22,9 +22,9 @@
 		00D5A63F225CBBD700A9283D /* Push.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D5A63E225CBBD700A9283D /* Push.storyboard */; };
 		00D5A644225CBEA000A9283D /* SplitViewScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D5A643225CBEA000A9283D /* SplitViewScannerViewController.swift */; };
 		00D5A646225CC96400A9283D /* SplitView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D5A645225CC96400A9283D /* SplitView.storyboard */; };
+		5ECF425BB20C6B7CB1419669 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9544B391A6BDA301AB37B2 /* ScanditBarcodeCapture */; };
 		65203C942577F850006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C932577F850006246C6 /* SampleCode.xcconfig */; };
-		920346258EA1463C9DBDA364 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = BD5F44D690CFE0BD0C9FEE3B /* ScanditCaptureCore */; };
-		A5F74DDEB5645EC79D69821E /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = D86B4855816FEA8B40D4960F /* ScanditBarcodeCapture */; };
+		B71B4616976C43A849544012 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 304A40508C041531F543A6B2 /* ScanditCaptureCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,8 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				920346258EA1463C9DBDA364 /* ScanditCaptureCore in Frameworks */,
-				A5F74DDEB5645EC79D69821E /* ScanditBarcodeCapture in Frameworks */,
+				B71B4616976C43A849544012 /* ScanditCaptureCore in Frameworks */,
+				5ECF425BB20C6B7CB1419669 /* ScanditBarcodeCapture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +197,8 @@
 			);
 			name = BarcodeCaptureViewsSample;
 			packageProductDependencies = (
-				BD5F44D690CFE0BD0C9FEE3B /* ScanditCaptureCore */,
-				D86B4855816FEA8B40D4960F /* ScanditBarcodeCapture */,
+				304A40508C041531F543A6B2 /* ScanditCaptureCore */,
+				0B9544B391A6BDA301AB37B2 /* ScanditBarcodeCapture */,
 			);
 			productName = BarcodeCaptureViewsSample;
 			productReference = 0036C7CE2254F24400AC8CDC /* BarcodeCaptureViewsSample.app */;
@@ -230,7 +230,7 @@
 			);
 			mainGroup = 0036C7C52254F24400AC8CDC;
 			packageReferences = (
-				684A416185D9F2A0F0645AA2 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				A2464AB0A4322BC9C079951E /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = 0036C7CF2254F24400AC8CDC /* Products */;
 			projectDirPath = "";
@@ -487,7 +487,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		684A416185D9F2A0F0645AA2 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		A2464AB0A4322BC9C079951E /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
 			requirement = {
@@ -498,15 +498,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BD5F44D690CFE0BD0C9FEE3B /* ScanditCaptureCore */ = {
+		0B9544B391A6BDA301AB37B2 /* ScanditBarcodeCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 684A416185D9F2A0F0645AA2 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditCaptureCore;
-		};
-		D86B4855816FEA8B40D4960F /* ScanditBarcodeCapture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 684A416185D9F2A0F0645AA2 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = A2464AB0A4322BC9C079951E /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditBarcodeCapture;
+		};
+		304A40508C041531F543A6B2 /* ScanditCaptureCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2464AB0A4322BC9C079951E /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditCaptureCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

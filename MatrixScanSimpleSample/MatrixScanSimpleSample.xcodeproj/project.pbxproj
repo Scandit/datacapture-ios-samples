@@ -14,9 +14,9 @@
 		00C552D022E891320068499C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C552CE22E891320068499C /* LaunchScreen.storyboard */; };
 		00C552D822E8917F0068499C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C552D722E8917F0068499C /* ResultViewController.swift */; };
 		00C552DD22E898A50068499C /* DataCaptureContext+Licensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C552DC22E898A50068499C /* DataCaptureContext+Licensed.swift */; };
-		46F147BAA5BF932B911F1D15 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = AF554CD5AD26A2D215793004 /* ScanditBarcodeCapture */; };
 		65203CB22577FB79006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203CB12577FB79006246C6 /* SampleCode.xcconfig */; };
-		6843485488F188163F8E011A /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 24F84BBAAE685BCBC77025A8 /* ScanditCaptureCore */; };
+		67F643BD9AF392BD67633B49 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 2C2847FC8F2530ED1582C32B /* ScanditBarcodeCapture */; };
+		C81C41A0845589D6BE4B4F27 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 501241ACB80582FDC2208097 /* ScanditCaptureCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,8 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6843485488F188163F8E011A /* ScanditCaptureCore in Frameworks */,
-				46F147BAA5BF932B911F1D15 /* ScanditBarcodeCapture in Frameworks */,
+				C81C41A0845589D6BE4B4F27 /* ScanditCaptureCore in Frameworks */,
+				67F643BD9AF392BD67633B49 /* ScanditBarcodeCapture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,8 +157,8 @@
 			);
 			name = MatrixScanSimpleSample;
 			packageProductDependencies = (
-				24F84BBAAE685BCBC77025A8 /* ScanditCaptureCore */,
-				AF554CD5AD26A2D215793004 /* ScanditBarcodeCapture */,
+				501241ACB80582FDC2208097 /* ScanditCaptureCore */,
+				2C2847FC8F2530ED1582C32B /* ScanditBarcodeCapture */,
 			);
 			productName = MatrixScanSimpleSample;
 			productReference = 00C552C222E891300068499C /* MatrixScanSimpleSample.app */;
@@ -189,7 +189,7 @@
 			);
 			mainGroup = 00C552B922E891300068499C;
 			packageReferences = (
-				C67849D89BDE213D55BC3DFE /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				A1494278AF695B16E47C2B18 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = 00C552C322E891300068499C /* Products */;
 			projectDirPath = "";
@@ -436,7 +436,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C67849D89BDE213D55BC3DFE /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		A1494278AF695B16E47C2B18 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
 			requirement = {
@@ -447,15 +447,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		24F84BBAAE685BCBC77025A8 /* ScanditCaptureCore */ = {
+		2C2847FC8F2530ED1582C32B /* ScanditBarcodeCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C67849D89BDE213D55BC3DFE /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditCaptureCore;
-		};
-		AF554CD5AD26A2D215793004 /* ScanditBarcodeCapture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C67849D89BDE213D55BC3DFE /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = A1494278AF695B16E47C2B18 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditBarcodeCapture;
+		};
+		501241ACB80582FDC2208097 /* ScanditCaptureCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1494278AF695B16E47C2B18 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditCaptureCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

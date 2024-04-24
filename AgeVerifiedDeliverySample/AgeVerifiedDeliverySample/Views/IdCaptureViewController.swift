@@ -31,6 +31,8 @@ class IdCaptureViewController: UIViewController {
     private lazy var idCapture = {
         let idCapture = IdCapture(context: context,
                                   settings: idCaptureSettings)
+        // Set an empty Feedback because we want to override the default feedback implemented by
+        // the SDK to reject documents without a date of birth.
         let idCaptureFeedback = IdCaptureFeedback()
         idCaptureFeedback.idCaptured = Feedback(vibration: nil, sound: nil)
         idCaptureFeedback.idRejected = Feedback(vibration: nil, sound: nil)
@@ -133,6 +135,8 @@ class IdCaptureViewController: UIViewController {
             } secondaryTapped: {
                 self.reset()
             }
+            // We are emitting success feedback to indicate a captured document
+            // even though our state might be .underage, .expired or .timeout
             successFeedback.emit()
         }
     }

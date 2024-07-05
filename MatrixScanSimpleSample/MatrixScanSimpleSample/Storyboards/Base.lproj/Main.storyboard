@@ -43,7 +43,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Yea-33-vxc" kind="presentation" id="DZh-gk-NAe"/>
+                                    <segue destination="Yea-33-vxc" kind="presentation" modalPresentationStyle="fullScreen" id="DZh-gk-NAe"/>
                                 </connections>
                             </button>
                         </subviews>

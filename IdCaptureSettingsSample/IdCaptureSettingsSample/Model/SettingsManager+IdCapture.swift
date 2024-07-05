@@ -69,6 +69,16 @@ extension SettingsManager {
         }
     }
 
+    var decodeBackOfEuropeanDrivingLicense: Bool {
+        get {
+            return idCaptureSettings.decodeBackOfEuropeanDrivingLicense
+        }
+        set {
+            idCaptureSettings.decodeBackOfEuropeanDrivingLicense = newValue
+            configure()
+        }
+    }
+
     var idCapturedFeedback: Feedback {
         get {
             idCaptureFeedback.idCaptured

@@ -67,10 +67,14 @@ final class ParsedDataPrettyPrinter {
     private func string(fromValue value: Any?, indentLevel: Int) -> String {
         if let string = value as? String {
             return string
-        } else if let bool = value as? Bool {
-            return bool.description
         } else if let number = value as? NSNumber {
-            return number.stringValue
+            if number === kCFBooleanTrue {
+                return "true"
+            } else if number === kCFBooleanFalse {
+                return "false"
+            } else {
+                return number.stringValue
+            }
         } else if let array = value as? [Any] {
             return string(fromArray: array, indentLevel: indentLevel)
         } else if let dictionary = value as? [String: Any] {

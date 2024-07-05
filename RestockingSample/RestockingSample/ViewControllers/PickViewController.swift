@@ -114,7 +114,7 @@ class PickViewController: UIViewController {
         view.addSubview(barcodePickView)
         view.sendSubviewToBack(barcodePickView)
         NSLayoutConstraint.activate([
-            barcodePickView.topAnchor.constraint(equalTo: view.topAnchor),
+            barcodePickView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             barcodePickView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             barcodePickView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             barcodePickView.trailingAnchor.constraint(equalTo: view.trailingAnchor)

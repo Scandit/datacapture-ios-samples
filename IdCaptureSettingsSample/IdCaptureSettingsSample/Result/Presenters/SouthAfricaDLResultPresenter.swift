@@ -40,6 +40,7 @@ class SouthAfricaDLResultPresenter: ResultPresenter {
                                     .joined(separator: " "),
                                    title: "Driver Restriction Codes")
         ]
+
         if let professionalDrivingPermit = southAfricaDLBarcodeResult.professionalDrivingPermit {
             rows.append(
                 SimpleTextCellProvider(value: professionalDrivingPermit.codes.joined(separator: " "),
@@ -49,17 +50,14 @@ class SouthAfricaDLResultPresenter: ResultPresenter {
                                        title: "Professional Driving Permit - Date of Expiry"))
         }
 
-        for vehicleRestriction in southAfricaDLBarcodeResult.vehicleRestrictions {
-            rows.append(
-                SimpleTextCellProvider(value: vehicleRestriction.vehicleCode,
-                                       title: "Vehicle Restriction - Vehicle Code"))
-            rows.append(
-                SimpleTextCellProvider(value: vehicleRestriction.vehicleRestriction,
-                                       title: "Vehicle Restriction - Vehicle Restriction"))
-            rows.append(
-                SimpleTextCellProvider(value: vehicleRestriction.dateOfIssue.description,
-                                       title: "Vehicle Restriction - Date of Issue"))
-
+        if southAfricaDLBarcodeResult.vehicleRestrictions.count != 0 {
+            let vehicleRestrictions = southAfricaDLBarcodeResult.vehicleRestrictions.map {
+                "Vehicle Code: \($0.vehicleCode)\n" +
+                "Vehicle Restriction: \($0.vehicleRestriction)\n" +
+                "Date of Issue: \($0.dateOfIssue.description)\n"
+            }.joined(separator: "\n")
+            rows.append(SimpleTextCellProvider(value: vehicleRestrictions,
+                                               title: "Vehicle Restrictions"))
         }
 
         self.rows = rows

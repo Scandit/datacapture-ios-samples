@@ -22,7 +22,7 @@ class VizResultPresenter: ResultPresenter {
     required init(capturedId: CapturedId) {
         assert(capturedId.capturedResultTypes.contains(.vizResult))
         guard let vizResult = capturedId.vizResult else { fatalError("Unexpected null VizResult") }
-        rows = [
+        var rows: [CellProvider] = [
             SimpleTextCellProvider(value: vizResult.additionalNameInformation.valueOrNil,
                                    title: "Additional Name Information"),
             SimpleTextCellProvider(value: vizResult.additionalAddressInformation.valueOrNil,
@@ -41,12 +41,34 @@ class VizResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: vizResult.issuingJurisdictionISO.valueOrNil,
                                    title: "Issuing Jurisdiction ISO"),
             SimpleTextCellProvider(value: vizResult.issuingAuthority.valueOrNil, title: "Issuing Authority"),
+            SimpleTextCellProvider(value: vizResult.bloodType.valueOrNil, title: "Blood Type"),
+            SimpleTextCellProvider(value: vizResult.sponsor.valueOrNil, title: "Sponsor"),
+            SimpleTextCellProvider(value: vizResult.mothersName.valueOrNil, title: "Mother's name"),
+            SimpleTextCellProvider(value: vizResult.fathersName.valueOrNil, title: "Father's name"),
             SimpleTextCellProvider(value: vizResult.capturedSides.description, title: "Captured Sides"),
             SimpleTextCellProvider(value: vizResult.isBackSideCaptureSupported ? "Yes" : "No",
-                                   title: "Backside Supported"),
+                                   title: "Backside Supported")
+        ]
+
+        if let drivingLicenseCategories = vizResult.drivingLicenseDetails?.drivingLicenseCategories,
+           drivingLicenseCategories.count != 0 {
+            let categoryString = drivingLicenseCategories.map {
+                "Code: \($0.code)\n" +
+                "Date Of Issue: \($0.dateOfIssue.valueOrNil)\n" +
+                "Date Of Expiry: \($0.dateOfExpiry.valueOrNil)\n"
+            }.joined(separator: "\n")
+            rows.append(SimpleTextCellProvider(value: categoryString,
+                                               title: "Driver's License Details"))
+        }
+
+        let image_rows = [
             ImageCellProvider(image: capturedId.idImage(of: .face), title: "Face Image"),
             ImageCellProvider(image: capturedId.idImage(of: .idFront), title: "Front Image"),
             ImageCellProvider(image: capturedId.idImage(of: .idBack), title: "Back Image")
         ]
+
+        rows += image_rows
+
+        self.rows = rows
     }
 }

@@ -12,15 +12,8 @@
 // limitations under the License.
 //
 
-import ScanditBarcodeCapture
-
-extension DataCaptureContext {
-    // Enter your Scandit License key here.
-    // Your Scandit License key is available via your Scandit SDK web account.
-    private static let licenseKey = "-- ENTER YOUR SCANDIT LICENSE KEY HERE --"
-
-    // Get a licensed DataCaptureContext.
-    static var licensed: DataCaptureContext {
-        return DataCaptureContext(licenseKey: licenseKey)
+class BackOfEuropeanDrivingLicenseTableViewController: SettingsTableViewController {
+    override func setupDataSource() {
+        dataSource = BackOfEuropeanDrivingLicenseDataSource(delegate: self)
     }
 }

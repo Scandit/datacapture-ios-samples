@@ -28,28 +28,7 @@ class ScannerViewController: UIViewController {
         super.viewDidLoad()
         self.title = "MatrixScan Simple"
         setupRecognition()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // Remove the scanned barcodes everytime the barcode tracking starts.
-        results.removeAll()
-
-        // First, enable barcode tracking to resume processing frames.
-        barcodeTracking.isEnabled = true
-        // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
-        // completely turn on.
-        camera?.switch(toDesiredState: .on)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // First, disable barcode tracking to stop processing frames.
-        barcodeTracking.isEnabled = false
-        // Switch the camera off to stop streaming frames. The camera is stopped asynchronously.
-        camera?.switch(toDesiredState: .off)
+        startTracking()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,9 +36,29 @@ class ScannerViewController: UIViewController {
             return
         }
         resultsViewController.codes = Array(results.values)
+        stopTracking()
     }
 
-    @IBAction func unwindToScanner(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToScanner(segue: UIStoryboardSegue) {
+        startTracking()
+    }
+
+    private func startTracking() {
+        // Remove the scanned barcodes everytime the barcode tracking starts.
+        results.removeAll()
+        // Enable barcode tracking to resume processing frames.
+        barcodeTracking.isEnabled = true
+        // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
+        // completely turn on.
+        camera?.switch(toDesiredState: .on)
+    }
+
+    private func stopTracking() {
+        // First, disable barcode tracking to stop processing frames.
+        barcodeTracking.isEnabled = false
+        // Switch the camera off to stop streaming frames. The camera is stopped asynchronously.
+        camera?.switch(toDesiredState: .off)
+    }
 
     private func setupRecognition() {
         // Create data capture context using your license key.

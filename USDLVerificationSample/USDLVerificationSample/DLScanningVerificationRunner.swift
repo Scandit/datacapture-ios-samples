@@ -61,8 +61,7 @@ final class DLScanningVerificationRunner {
         let vizBarcodeComparisonResult = vizBarcodeComparisonVerifier.verify(capturedId)
         guard vizBarcodeComparisonResult.checksPassed else {
             let mismatchImage = vizBarcodeComparisonResult.frontMismatchImage
-            let showWarning = mismatchImage == nil &&
-                capturedId.aamvaBarcodeResult != nil
+            let showWarning = !vizBarcodeComparisonResult.mismatchHighlightingEnabled
             let warningText = showWarning ? "Your license does not support highlighting discrepancies" : nil
             completion(.success(DLScanningVerificationResult(status: .frontBackDoesNotMatch,
                                                              image: mismatchImage,

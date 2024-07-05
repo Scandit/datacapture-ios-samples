@@ -136,7 +136,7 @@ class IdCaptureViewController: UIViewController {
                 self.reset()
             }
             // We are emitting success feedback to indicate a captured document
-            // even though our state might be .underage, .expired or .timeout
+            // even though our state might be .underage, .expired or .idRejected
             successFeedback.emit()
         }
     }

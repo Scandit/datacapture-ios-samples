@@ -67,7 +67,7 @@ class ScanViewController: UIViewController {
 
         // The barcode tracking process is configured through barcode tracking settings
         // and are then applied to the barcode tracking instance that manages barcode tracking.
-        let settings = BarcodeTrackingSettings(scenario: .a)
+        let settings = BarcodeTrackingSettings()
 
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
         // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the

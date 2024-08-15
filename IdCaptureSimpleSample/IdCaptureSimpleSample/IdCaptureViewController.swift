@@ -88,7 +88,6 @@ class IdCaptureViewController: UIViewController {
         // Add an id capture overlay to the data capture view to render the location of captured ids on top of
         // the video preview. This is optional, but recommended for better visual feedback.
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
-        overlay.idLayoutStyle = .rounded
     }
 }
 

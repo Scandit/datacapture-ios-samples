@@ -95,16 +95,16 @@ class ScanViewController: UIViewController {
         return resultView
     }
 
-    private func showResult(_ result: [Barcode], completion: @escaping () -> Void) {
+    private func showResult(_ barcode: Barcode, completion: @escaping () -> Void) {
         DispatchQueue.main.async { [unowned self] in
-            let result = Result(barcodes: result)
+            let result = barcode.longDescription
             if SettingsManager.current.isContinuousModeEnabled {
                 let resultView = self.setupResultViewIfNeeded()
-                resultView.resultLabel.text = result.text
+                resultView.resultLabel.text = result
                 resultView.isHidden = false
                 self.lastScan = NSDate()
             } else {
-                let alert = UIAlertController(title: "Scan Results", message: result.text, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Scan Results", message: result, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
                     self.dismiss(animated: true, completion: nil)
                     completion()
@@ -120,6 +120,8 @@ extension ScanViewController: BarcodeCaptureListener {
     func barcodeCapture(_ barcodeCapture: BarcodeCapture,
                         didScanIn session: BarcodeCaptureSession,
                         frameData: FrameData) {
+        guard let barcode = session.newlyRecognizedBarcode else { return }
+
         if !SettingsManager.current.isContinuousModeEnabled {
             // Stop recognizing barcodes for as long as we are displaying the result.
             // There won't be any new results until the capture mode is enabled again.
@@ -128,7 +130,7 @@ extension ScanViewController: BarcodeCaptureListener {
             barcodeCapture.isEnabled = false
         }
 
-        showResult(session.newlyRecognizedBarcodes) {
+        showResult(barcode) {
             if !SettingsManager.current.isContinuousModeEnabled {
                 // Enable recognizing barcodes when the result is not shown anymore.
                 barcodeCapture.isEnabled = true
@@ -147,39 +149,39 @@ extension ScanViewController: BarcodeCaptureListener {
     }
 }
 
-private struct Result {
-    let barcodes: [Barcode]
+extension Barcode {
 
-    var text: String {
-        return barcodes.reduce(into: "") { result, barcode in
+    var longDescription: String {
+        var result = ""
 
-            result += "\(barcode.symbology.readableName): "
+        result += "\(self.symbology.readableName): "
 
-            if let data = barcode.data {
-                result += " \(data)"
-            }
-
-            if let addOnData = barcode.addOnData {
-                result += " \(addOnData)"
-            }
-
-            if let compositeData = barcode.compositeData {
-                switch barcode.compositeFlag {
-                case .gs1TypeA:
-                    result = "CC Type A\n" + result
-                case .gs1TypeB:
-                    result = "CC Type B\n" + result
-                case .gs1TypeC:
-                    result = "CC Type C\n" + result
-                default:
-                    break
-                }
-                result += "\n\(compositeData)"
-            }
-
-            if barcode.symbolCount != -1 {
-                result += "\nSymbol Count: \(barcode.symbolCount)\n\n"
-            }
+        if let data = self.data {
+            result += " \(data)"
         }
+
+        if let addOnData = self.addOnData {
+            result += " \(addOnData)"
+        }
+
+        if let compositeData = self.compositeData {
+            switch self.compositeFlag {
+            case .gs1TypeA:
+                result = "CC Type A\n" + result
+            case .gs1TypeB:
+                result = "CC Type B\n" + result
+            case .gs1TypeC:
+                result = "CC Type C\n" + result
+            default:
+                break
+            }
+            result += "\n\(compositeData)"
+        }
+
+        if self.symbolCount != -1 {
+            result += "\nSymbol Count: \(self.symbolCount)\n\n"
+        }
+
+        return result
     }
 }

@@ -165,13 +165,11 @@ extension SearchViewController: BarcodeCaptureListener {
     func barcodeCapture(_ barcodeCapture: BarcodeCapture,
                         didScanIn session: BarcodeCaptureSession,
                         frameData: FrameData) {
-        let newlyRecognizedBarcodes = session.newlyRecognizedBarcodes
-        guard newlyRecognizedBarcodes.count > 0 else { return }
+        guard let barcode = session.newlyRecognizedBarcode else { return }
         DispatchQueue.main.async {
-            let code = newlyRecognizedBarcodes.first!
-            self.scannedBarcodeLabel.text = code.data
-            self.displayedData = code.data
-            self.selectedSymbology = code.symbology
+            self.scannedBarcodeLabel.text = barcode.data
+            self.displayedData = barcode.data
+            self.selectedSymbology = barcode.symbology
             if self.scannedBarcodeOverlay.isHidden {
                 self.scannedBarcodeOverlay.isHidden = false
                 self.view.bringSubviewToFront(self.scannedBarcodeOverlay)

@@ -26,7 +26,8 @@ struct DLScanningVerificationResult {
     enum Status {
         case frontBackDoesNotMatch
         case expired
-        case barcodeVerificationFailed
+        case forged
+        case likelyForged
         case success
     }
 
@@ -85,10 +86,13 @@ final class DLScanningVerificationRunner {
     ) {
             barcodeVerifier.verify(capturedId) { result, error in
             if let result = result {
-                if result.allChecksPassed {
+                switch result.status {
+                case AamvaBarcodeVerificationStatus.authentic:
                     completion(.success(DLScanningVerificationResult(status: .success)))
-                } else {
-                    completion(.success(DLScanningVerificationResult(status: .barcodeVerificationFailed)))
+                case AamvaBarcodeVerificationStatus.likelyForged:
+                    completion(.success(DLScanningVerificationResult(status: .likelyForged)))
+                case AamvaBarcodeVerificationStatus.forged:
+                    completion(.success(DLScanningVerificationResult(status: .forged)))
                 }
             } else if let error = error {
                 completion(.failure(error))

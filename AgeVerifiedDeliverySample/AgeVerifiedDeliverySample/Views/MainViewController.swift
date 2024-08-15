@@ -126,7 +126,7 @@ extension MainViewController: BarcodeCaptureListener {
     public func barcodeCapture(_ barcodeCapture: BarcodeCapture,
                                didScanIn session: BarcodeCaptureSession,
                                frameData: FrameData) {
-        guard session.newlyRecognizedBarcodes.first?.data != nil else {
+        guard session.newlyRecognizedBarcode?.data != nil else {
             return
         }
         stopScanning()

@@ -44,16 +44,6 @@ class IdCaptureViewController: UIViewController {
     private lazy var idCaptureOverlay = IdCaptureOverlay(idCapture: idCapture,
                                                          view: captureView)
 
-    private lazy var successFeedback = Feedback(
-        vibration: Vibration.successHapticFeedback,
-        sound: IdCaptureFeedback.defaultSuccessSound
-    )
-
-    private lazy var failureFeedback = Feedback(
-        vibration: Vibration.failureHapticFeedback,
-        sound: IdCaptureFeedback.defaultFailureSound
-    )
-
     @IBOutlet private weak var dimmingOverlay: UIView!
 
     override func viewDidLoad() {
@@ -128,16 +118,12 @@ class IdCaptureViewController: UIViewController {
         switch state {
         case .idRejected:
             showRejectedResultViewController()
-            failureFeedback.emit()
         default:
             showResultViewController(state: state) {
                 self.navigationController?.popViewController(animated: true)
             } secondaryTapped: {
                 self.reset()
             }
-            // We are emitting success feedback to indicate a captured document
-            // even though our state might be .underage, .expired or .idRejected
-            successFeedback.emit()
         }
     }
 
@@ -199,7 +185,6 @@ extension IdCaptureViewController: IdCaptureListener {
                    frameData: FrameData) {
         DispatchQueue.main.async {
             self.showRejectedResultViewController()
-            self.failureFeedback.emit()
         }
     }
 }

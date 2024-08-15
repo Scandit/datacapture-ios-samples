@@ -133,7 +133,7 @@ extension ViewController: BarcodeCaptureListener {
     func barcodeCapture(_ barcodeCapture: BarcodeCapture,
                         didScanIn session: BarcodeCaptureSession,
                         frameData: FrameData) {
-        guard let barcode = session.newlyRecognizedBarcodes.first else {
+        guard let barcode = session.newlyRecognizedBarcode else {
             return
         }
 

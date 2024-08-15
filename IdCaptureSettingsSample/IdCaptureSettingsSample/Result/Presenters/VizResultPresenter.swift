@@ -15,6 +15,18 @@
 import Foundation
 import ScanditIdCapture
 
+private extension DrivingLicenseDetails {
+    func isEmpty() -> Bool {
+       if restrictions?.isEmpty == false {
+          return false
+       }
+       if endorsements?.isEmpty == false {
+          return false
+       }
+       return drivingLicenseCategories.isEmpty
+    }
+}
+
 class VizResultPresenter: ResultPresenter {
 
     let rows: [CellProvider]
@@ -23,6 +35,14 @@ class VizResultPresenter: ResultPresenter {
         assert(capturedId.capturedResultTypes.contains(.vizResult))
         guard let vizResult = capturedId.vizResult else { fatalError("Unexpected null VizResult") }
         var rows: [CellProvider] = [
+            SimpleTextCellProvider(value: vizResult.firstName.valueOrNil,
+                                   title: "VIZ First Name"),
+            SimpleTextCellProvider(value: vizResult.lastName.valueOrNil,
+                                   title: "VIZ Last Name"),
+            SimpleTextCellProvider(value: vizResult.secondaryLastName.valueOrNil,
+                                   title: "VIZ Secondary Last Name"),
+            SimpleTextCellProvider(value: vizResult.fullName,
+                                   title: "VIZ Full Name"),
             SimpleTextCellProvider(value: vizResult.additionalNameInformation.valueOrNil,
                                    title: "Additional Name Information"),
             SimpleTextCellProvider(value: vizResult.additionalAddressInformation.valueOrNil,
@@ -50,14 +70,25 @@ class VizResultPresenter: ResultPresenter {
                                    title: "Backside Supported")
         ]
 
-        if let drivingLicenseCategories = vizResult.drivingLicenseDetails?.drivingLicenseCategories,
-           drivingLicenseCategories.count != 0 {
-            let categoryString = drivingLicenseCategories.map {
-                "Code: \($0.code)\n" +
-                "Date Of Issue: \($0.dateOfIssue.valueOrNil)\n" +
-                "Date Of Expiry: \($0.dateOfExpiry.valueOrNil)\n"
-            }.joined(separator: "\n")
-            rows.append(SimpleTextCellProvider(value: categoryString,
+        if let drivingLicenseDetails = vizResult.drivingLicenseDetails,
+           !drivingLicenseDetails.isEmpty() {
+            var dlDetailsString = "Categories:\n"
+
+            if drivingLicenseDetails.drivingLicenseCategories.isEmpty {
+                dlDetailsString.append("<nil>\n")
+            } else {
+                let dlCategories = drivingLicenseDetails.drivingLicenseCategories.enumerated().map {
+                    "Code: \($1.code)\n" +
+                    "Date Of Issue: \($1.dateOfIssue.valueOrNil)\n" +
+                    "Date Of Expiry: \($1.dateOfExpiry.valueOrNil)"
+                }.joined(separator: "\n\n")
+                dlDetailsString.append(dlCategories)
+            }
+
+            dlDetailsString.append("\n\nRestrictions: \(drivingLicenseDetails.restrictions.valueOrNil)")
+            dlDetailsString.append("\n\nEndorsements: \(drivingLicenseDetails.endorsements.valueOrNil)")
+
+            rows.append(SimpleTextCellProvider(value: dlDetailsString,
                                                title: "Driver's License Details"))
         }
 

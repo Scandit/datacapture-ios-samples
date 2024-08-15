@@ -46,12 +46,12 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sparkScanView.viewWillAppear()
+        sparkScanView.prepareScanning()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        sparkScanView.viewWillDisappear()
+        sparkScanView.stopScanning()
     }
 }
 
@@ -149,10 +149,9 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: SparkScanListener {
     func sparkScan(_ sparkScan: SparkScan, didScanIn session: SparkScanSession, frameData: FrameData?) {
-        if session.newlyRecognizedBarcodes.isEmpty {
+        guard let barcode = session.newlyRecognizedBarcode else {
             return
         }
-        let barcode = session.newlyRecognizedBarcodes.first!
         let thumbnail = frameData?.imageBuffers.last?.image?.resize(for: imageSize)
 
         DispatchQueue.main.async {

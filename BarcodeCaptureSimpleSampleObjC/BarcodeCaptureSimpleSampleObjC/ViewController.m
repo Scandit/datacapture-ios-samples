@@ -160,7 +160,7 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
 - (void)barcodeCapture:(SDCBarcodeCapture *)barcodeCapture
       didScanInSession:(SDCBarcodeCaptureSession *)session
              frameData:(id<SDCFrameData>)frameData {
-    SDCBarcode *barcode = [session.newlyRecognizedBarcodes firstObject];
+    SDCBarcode *barcode = session.newlyRecognizedBarcode;
     if (barcode == nil || barcode.data == nil) {
         return;
     }

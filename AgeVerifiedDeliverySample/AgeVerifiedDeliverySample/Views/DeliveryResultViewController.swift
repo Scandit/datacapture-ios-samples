@@ -13,6 +13,7 @@
 //
 
 import UIKit
+import ScanditIdCapture
 
 class DeliveryResultViewController: UIViewController {
 
@@ -35,6 +36,16 @@ class DeliveryResultViewController: UIViewController {
                 .font: UIFont.boldSystemFont(ofSize: 16)]
     }
 
+    private lazy var successFeedback = Feedback(
+        vibration: Vibration.successHapticFeedback,
+        sound: IdCaptureFeedback.defaultSuccessSound
+    )
+
+    private lazy var failureFeedback = Feedback(
+        vibration: Vibration.failureHapticFeedback,
+        sound: IdCaptureFeedback.defaultFailureSound
+    )
+
     func configureWith(_ state: DeliveryLogic.State) {
         // Force the loading of the view
         _ = view
@@ -47,9 +58,10 @@ class DeliveryResultViewController: UIViewController {
         case let .timeout(final): configureTimeOut(final: final)
         case .idRejected: configureIdRejected()
         }
+        emitFeedback(state: state)
     }
 
-    func configureWith(expirationDate: Date, birthDate: Date, document: String) {
+    func configureWith(expirationDate: Date, birthDate: Date) {
         configureWith(
             DeliveryLogic.stateFor(
                 expirationDate: expirationDate, birthDate: birthDate)
@@ -78,6 +90,18 @@ class DeliveryResultViewController: UIViewController {
 
         set {
             super.preferredContentSize = newValue
+        }
+    }
+
+    private func emitFeedback(state: DeliveryLogic.State) {
+        switch state {
+        case .idRejected, .expired, .underage:
+            failureFeedback.emit()
+        case .success:
+            successFeedback.emit()
+        case .idRequired, .timeout:
+            // no feedback
+            break
         }
     }
 

@@ -15,16 +15,15 @@
 import ScanditBarcodeCapture
 
 // swiftlint:disable type_body_length
-// swiftlint:disable file_length
 
 class SettingsManager {
 
     private lazy var settingsManagerProxyListener = SettingsManagerProxyListener(settingsManager: self)
     private lazy var settingsManagerMacroModeListener = SettingsManagerMacroModeListener(settingsManager: self)
 
-    private let defaultLegacyViewFinderSize = RectangularViewfinder(
-        style: .legacy).sizeWithUnitAndAspect.widthAndHeight
-    private let defaultNonLegacyViewFinderSize = RectangularViewfinder(
+    private let defaultViewFinderSizeWithUnit = RectangularViewfinder(
+        style: .square).sizeWithUnitAndAspect.widthAndHeight
+    private let defaultViewFinderSizeWithAspect = RectangularViewfinder(
         style: .square).sizeWithUnitAndAspect.shorterDimensionAndAspectRatio
 
     static let current = SettingsManager()
@@ -92,15 +91,6 @@ class SettingsManager {
         }
         set {
             overlay.viewfinder = newValue
-        }
-    }
-
-    var laserlineStyle: LaserlineViewfinderStyle {
-        get {
-            (viewfinder as! LaserlineViewfinder).style
-        }
-        set {
-            viewfinder = LaserlineViewfinder(style: newValue)
         }
     }
 
@@ -174,35 +164,9 @@ class SettingsManager {
         }
     }
 
-    lazy var defaultLaserlineViewfinderEnabledColor = LaserlineViewfinder().enabledColor
-
-    /// Note: LaserlineViewfinderEnabledColor is not part of the SDK, see LaserlineViewfinderEnabledColor.swift
-    var laserlineViewfinderEnabledColor: LaserlineViewfinderEnabledColor {
-        get {
-            let color = (viewfinder as! LaserlineViewfinder).enabledColor
-            return LaserlineViewfinderEnabledColor(color: color)
-        }
-        set {
-            (viewfinder as! LaserlineViewfinder).enabledColor = newValue.uiColor
-        }
-    }
-
-    lazy var defaultLaserlineViewfinderDisabledColor = LaserlineViewfinder().disabledColor
-
-    /// Note: LaserlineViewfinderDisabledColor is not part of the SDK, see LaserlineViewfinderDisabledColor.swift
-    var laserlineViewfinderDisabledColor: LaserlineViewfinderDisabledColor {
-        get {
-            let color = (viewfinder as! LaserlineViewfinder).disabledColor
-            return LaserlineViewfinderDisabledColor(color: color)
-        }
-        set {
-            (viewfinder as! LaserlineViewfinder).disabledColor = newValue.uiColor
-        }
-    }
-
     lazy var defaultAimerViewfinderFrameColor = AimerViewfinder().frameColor
 
-    /// Note: AimerViewfinderFrameColor is not part of the SDK, see LaserlineViewfinderDisabledColor.swift
+    /// Note: AimerViewfinderFrameColor is not part of the SDK, see AimerViewfinderFrameColor.swift
     var aimerViewfinderFrameColor: AimerViewfinderFrameColor {
         get {
             let color = (viewfinder as! AimerViewfinder).frameColor
@@ -215,7 +179,7 @@ class SettingsManager {
 
     lazy var defaultAimerViewfinderDotColor = AimerViewfinder().dotColor
 
-    /// Note: AimerViewfinderDotColor is not part of the SDK, see LaserlineViewfinderDisabledColor.swift
+    /// Note: AimerViewfinderDotColor is not part of the SDK, see AimerViewfinderFrameColor.swift
     var aimerViewfinderDotColor: AimerViewfinderDotColor {
         get {
             let color = (viewfinder as! AimerViewfinder).dotColor
@@ -231,18 +195,18 @@ class SettingsManager {
             /// Update the viewfinder when we update the size specification.
             switch viewfinderSizeSpecification {
             case .widthAndHeight:
-                rectangularWidthAndHeight = defaultLegacyViewFinderSize
+                rectangularWidthAndHeight = defaultViewFinderSizeWithUnit
             case .widthAndHeightAspect:
                 rectangularWidthAndAspectRatio = SizeWithAspect(
-                    size: .init(value: defaultLegacyViewFinderSize.width.value, unit: .fraction),
+                    size: .init(value: defaultViewFinderSizeWithUnit.width.value, unit: .fraction),
                     aspect: 0.0)
             case .heightAndWidthAspect:
                 rectangularHeightAndAspectRatio = SizeWithAspect(
-                    size: .init(value: defaultLegacyViewFinderSize.height.value, unit: .fraction),
+                    size: .init(value: defaultViewFinderSizeWithUnit.height.value, unit: .fraction),
                     aspect: 0.0)
             case .shorterDimensionAndAspect:
-                rectangularShorterDimensionAndAspectRatio = (defaultNonLegacyViewFinderSize.size.value,
-                                                             defaultNonLegacyViewFinderSize.aspect)
+                rectangularShorterDimensionAndAspectRatio = (defaultViewFinderSizeWithAspect.size.value,
+                                                             defaultViewFinderSizeWithAspect.aspect)
             }
         }
     }

@@ -98,8 +98,7 @@ extension GS1ParserSample: BarcodeCaptureListener {
     func barcodeCapture(_ barcodeCapture: BarcodeCapture,
                         didScanIn session: BarcodeCaptureSession,
                         frameData: FrameData) {
-        guard let capturedBarcode = session.newlyRecognizedBarcodes.first,
-              let barcodeValue = capturedBarcode.data else { return }
+        guard let barcodeValue = session.newlyRecognizedBarcode?.data else { return }
 
         do {
             let parsedData = try parser.parseString(barcodeValue)

@@ -48,14 +48,14 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Make sure to call the corresponding SparkScan method
-        sparkScanView.viewWillAppear()
+        sparkScanView.prepareScanning()
         tableView.viewModel = itemsTableViewModel
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Make sure to call the corresponding SparkScan method
-        sparkScanView.viewWillDisappear()
+        sparkScanView.stopScanning()
     }
 
     @IBAction private func didPressClearListButton(_ sender: UIButton) {
@@ -101,13 +101,11 @@ extension ViewController {
 extension ViewController: SparkScanListener {
 
     func sparkScan(_ sparkScan: SparkScan, didScanIn session: SparkScanSession, frameData: FrameData?) {
-        if session.newlyRecognizedBarcodes.isEmpty {
+        guard let barcode = session.newlyRecognizedBarcode, barcode.data != nil else {
             return
         }
-        let barcode = session.newlyRecognizedBarcodes.first!
 
         DispatchQueue.main.async {
-            guard barcode.data != nil else { return }
             self.tableView.viewModel?.addBarcode(barcode)
         }
     }

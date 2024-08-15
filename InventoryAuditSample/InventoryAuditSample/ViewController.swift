@@ -63,7 +63,7 @@ class ViewController: UIViewController {
 
         // The barcode capturing process is configured through barcode capture settings
         // and are then applied to the barcode capture instance that manages barcode recognition.
-        let settings = BarcodeTrackingSettings(scenario: .a)
+        let settings = BarcodeTrackingSettings()
 
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
         // sample we enable the QR symbology. In your own app ensure that you only enable the symbologies that your app

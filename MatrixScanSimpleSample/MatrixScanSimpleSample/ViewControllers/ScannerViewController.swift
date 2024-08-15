@@ -77,17 +77,9 @@ class ScannerViewController: UIViewController {
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 
-        // swiftlint:disable line_length
-        // Scenario A is used as an example to show how the scenario has to be set to configure barcode tracking
-        // properly. Please choose the right scenario depending on your exact use case; you can find more information
-        // at https://docs.scandit.com/data-capture-sdk/ios/barcode-capture/api/barcode-tracking-settings.html#method-scandit.datacapture.barcode.tracking.BarcodeTrackingSettings.ForScenario .
-        // Feel free to contact support@scandit.com if you have any questions about it.
-        // swiftlint:enable line_length
-        let scenario: BarcodeTrackingScenario = .a
-
         // The barcode tracking process is configured through barcode tracking settings
         // and are then applied to the barcode tracking instance that manages barcode tracking.
-        let settings = BarcodeTrackingSettings(scenario: scenario)
+        let settings = BarcodeTrackingSettings()
 
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
         // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the

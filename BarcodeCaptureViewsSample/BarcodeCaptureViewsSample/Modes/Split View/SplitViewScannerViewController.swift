@@ -118,9 +118,8 @@ class SplitViewScannerViewController: UIViewController {
                                                           view: captureView,
                                                           style: .frame)
 
-        // We have to add the laser line viewfinder to the overlay.
-        let viewFinder = LaserlineViewfinder(style: .animated)
-        viewFinder.width = FloatWithUnit(value: 0.9, unit: .fraction)
+        // We have to add the aimer viewfinder to the overlay.
+        let viewFinder = AimerViewfinder()
         barcodeCaptureOverlay.viewfinder = viewFinder
 
         // We are resizing the capture view to not to take the whole screen,
@@ -161,7 +160,7 @@ extension SplitViewScannerViewController: BarcodeCaptureListener {
     func barcodeCapture(_ barcodeCapture: BarcodeCapture,
                         didScanIn session: BarcodeCaptureSession,
                         frameData: FrameData) {
-        guard let barcode = session.newlyRecognizedBarcodes.first else {
+        guard let barcode = session.newlyRecognizedBarcode else {
             return
         }
 

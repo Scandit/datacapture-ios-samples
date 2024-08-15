@@ -50,13 +50,6 @@ class OverlayDataSource: DataSource {
                        getValue: { SettingsManager.current.brush },
                        didChangeValue: { SettingsManager.current.brush = $0 },
                        dataSourceDelegate: self.delegate)
-        ]),
-        Section(rows: [
-            Row.choice(title: "Style",
-                       options: BarcodeCaptureOverlayStyle.allCases,
-                       getValue: { SettingsManager.current.overlayStyle },
-                       didChangeValue: { SettingsManager.current.overlayStyle = $0 },
-                       dataSourceDelegate: self.delegate)
         ])]
     }()
 }

@@ -67,7 +67,9 @@ class VizResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: vizResult.fathersName.valueOrNil, title: "Father's name"),
             SimpleTextCellProvider(value: vizResult.capturedSides.description, title: "Captured Sides"),
             SimpleTextCellProvider(value: vizResult.isBackSideCaptureSupported ? "Yes" : "No",
-                                   title: "Backside Supported")
+                                   title: "Backside Supported"),
+            SimpleTextCellProvider(value: capturedId.usRealIdStatus.description,
+                                   title: "US REAL ID Status")
         ]
 
         if let drivingLicenseDetails = vizResult.drivingLicenseDetails,

@@ -119,12 +119,12 @@ final class DLScanningResultViewController: UITableViewController {
 
         results.append(Result(status: .success, message: "Information on front and back matches."))
 
-        if status == .expired {
+        guard status != .expired else {
             results.append(Result(status: .error, message: "Document has expired."))
             return results
-        } else {
-            results.append(Result(status: .success, message: "Document has not expired."))
         }
+
+        results.append(Result(status: .success, message: "Document has not expired."))
 
         if status == .forged {
             results.append(Result(status: .error, message: "Document barcode is forged."))

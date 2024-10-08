@@ -95,7 +95,7 @@
         <!--Find View Controller-->
         <scene sceneID="S3f-uI-NN6">
             <objects>
-                <viewController storyboardIdentifier="searchViewController" id="eNg-eG-aRn" customClass="FindViewController" customModule="SearchAndFindSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchViewController" extendedLayoutIncludesOpaqueBars="YES" id="eNg-eG-aRn" customClass="FindViewController" customModule="SearchAndFindSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EDy-bN-hvW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -28,7 +28,7 @@ class AAMVABarcodeResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: "\(aamvaBarcodeResult.aamvaVersion)", title: "AAMVA Version"),
             SimpleTextCellProvider(value: "\(aamvaBarcodeResult.aamvaVersion)", title: "Jurisdiction Version"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.iin, title: "IIN"),
-            SimpleTextCellProvider(value: aamvaBarcodeResult.isRealId ? "YES" : "NO", title: "Is Real ID"),
+            SimpleTextCellProvider(value: capturedId.usRealIdStatus.description, title: "US REAL ID Status"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.issuingJurisdiction, title: "Issuing Jurisdiction"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.issuingJurisdictionISO, title: "Issuing Jurisdiction ISO"),
             SimpleTextCellProvider(value: aamvaBarcodeResult.eyeColor.valueOrNil, title: "Eye Color"),

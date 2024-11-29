@@ -17,7 +17,6 @@ import ScanditCaptureCore
 
 class SettingsManager {
     static let current = SettingsManager()
-
     var isContinuousModeEnabled = false
 
     var context: DataCaptureContext

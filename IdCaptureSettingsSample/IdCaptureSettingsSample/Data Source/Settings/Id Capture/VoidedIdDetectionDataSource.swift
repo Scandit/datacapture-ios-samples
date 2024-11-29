@@ -28,6 +28,8 @@ class VoidedIdDetectionDataSource: DataSource {
             Row(title: "Reject Voided IDs",
                 kind: .switch,
                 getValue: { SettingsManager.current.rejectVoidedIds },
-                didChangeValue: { SettingsManager.current.rejectVoidedIds = $0 })])]
+                didChangeValue: { value, _, _ in
+                    SettingsManager.current.rejectVoidedIds = value
+                })])]
     }()
 }

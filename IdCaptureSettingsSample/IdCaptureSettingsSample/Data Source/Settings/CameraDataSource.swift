@@ -59,7 +59,9 @@ class CameraDataSource: DataSource {
             Row(title: "Desired Torch State",
                 kind: .switch,
                 getValue: { SettingsManager.current.torchState == .on },
-                didChangeValue: { SettingsManager.current.torchState = $0 ? .on : .off })])
+                didChangeValue: { value, _, _ in
+                    SettingsManager.current.torchState = value ? .on : .off
+                })])
     }()
 
     // MARK: Section: Camera Settings

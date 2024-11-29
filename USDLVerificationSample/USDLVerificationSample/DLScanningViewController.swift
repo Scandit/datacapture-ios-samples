@@ -17,6 +17,16 @@ import ScanditCaptureCore
 import ScanditIdCapture
 
 final class DLScanningViewController: UIViewController {
+
+    private enum Constants {
+        enum Message {
+            static let timeout = "Document capture failed. Make sure the document is well lit and free of glare. "
+                               + "Alternatively, try scanning another document"
+            static let notSupported = "Document not supported. Try scanning another document"
+            static let nonUsId = "Document is not a US driver’s license"
+        }
+    }
+
     private var context: DataCaptureContext!
     private var camera: Camera?
     private var captureView: DataCaptureView!
@@ -67,9 +77,11 @@ final class DLScanningViewController: UIViewController {
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
 
-        // We are interested in the front and back sides of the driver's licenses or id cards.
-        idCaptureSettings.supportedDocuments = [ .dlVIZ, .idCardVIZ ]
-        idCaptureSettings.supportedSides = .frontAndBack
+        // We are interested in Driver's Licenses from USA
+        idCaptureSettings.acceptedDocuments = [DriverLicense(region: .us)]
+
+        // We want to scan all zones and both sides
+        idCaptureSettings.scannerType = FullDocumentScanner()
 
         // We are requesting the capture result should contain face image.
         idCaptureSettings.resultShouldContainImage(true, for: .face)
@@ -92,33 +104,29 @@ final class DLScanningViewController: UIViewController {
 }
 
 extension DLScanningViewController: IdCaptureListener {
-    func idCapture(_ idCapture: IdCapture, didCaptureIn session: IdCaptureSession, frameData: FrameData) {
-        // This is the main delegate call we receive from IdCapture on a new capture event.
-        // We check if we have a new captured id, otherwise we return eagerly.
-        guard let capturedId = session.newlyCapturedId else { return }
 
-        // We are only interested in Driving Licenses from USA for this sample
-        if capturedId.documentType == .drivingLicense, capturedId.issuingCountryISO == "USA" {
-            DispatchQueue.main.async { [weak self] in self?.handleCapturedId(capturedId) }
-        } else {
-            // If the captured id is not a US Driving License we show an alert to the user.
-            DispatchQueue.main.async { [weak self] in self?.handleUnexpectedId(capturedId) }
-        }
+    func idCapture(_ idCapture: IdCapture, didCapture capturedId: CapturedId) {
+        DispatchQueue.main.async { [weak self] in self?.handleCapturedId(capturedId) }
     }
 
-    func handleUnexpectedId(_ capturedId: CapturedId) {
+    func idCapture(_ idCapture: IdCapture, didReject capturedId: CapturedId?, reason: RejectionReason) {
+        // Pause the idCapture to not capture while showing the result.
         idCapture.isEnabled = false
-        idCapture.reset()
 
-        let controller = UIAlertController(
-            title: "Error",
-            message: "Document is not a US driver’s license",
-            preferredStyle: .alert
-        )
-        controller.addAction(.init(title: "OK", style: .default, handler: { [unowned self] _ in
-            self.idCapture.isEnabled = true
-        }))
-        present(controller, animated: true)
+        let message: String
+        switch reason {
+        case .timeout:
+            message = Constants.Message.timeout
+        case .notAcceptedDocumentType:
+            message = capturedId?.issuingCountry == .us ? Constants.Message.notSupported : Constants.Message.nonUsId
+        default:
+            message = Constants.Message.notSupported
+        }
+
+        showAlert(title: "Error", message: message, completion: {
+            // Resume the idCapture.
+            idCapture.isEnabled = true
+        })
     }
 
     func handleCapturedId(_ capturedId: CapturedId) {
@@ -173,6 +181,19 @@ verification.
         present(viewController, animated: true)
         // We disable IdCapture while presenting the results to prevent capturing while user is inpecting results.
         idCapture.isEnabled = false
+    }
+
+    func showAlert(title: String? = nil, message: String? = nil, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title,
+                                          message: message,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                completion()
+            }))
+
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 

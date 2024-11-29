@@ -22,13 +22,13 @@ extension Row {
         return Row(title: title,
                    kind: .valueWithUnit,
                    getValue: getValue,
-                   didChangeValue: { [weak dataSourceDelegate] value in
+                   didChangeValue: { [weak dataSourceDelegate] value, _, _ in
                     didChangeValue(value)
                     dataSourceDelegate?.didChangeData() },
-                   didSelect: { [weak dataSourceDelegate] row, _ in
+                   didSelect: { [weak dataSourceDelegate] row, indexPath in
                     dataSourceDelegate?.getFloatWithUnit(title: row.title,
                                                          currentValue: getValue(),
-                                                         completion: { row.didChangeValue!($0) })
+                                                         completion: { row.didChangeValue!($0, row, indexPath) })
         })
     }
 
@@ -39,13 +39,13 @@ extension Row {
         return Row(title: title,
                    kind: .text,
                    getValue: getValue,
-                   didChangeValue: { [weak dataSourceDelegate] value in
+                   didChangeValue: { [weak dataSourceDelegate] value, _, _ in
                     didChangeValue(value)
                     dataSourceDelegate?.didChangeData() },
-                   didSelect: { [weak dataSourceDelegate] row, _ in
+                   didSelect: { [weak dataSourceDelegate] row, indexPath in
                     dataSourceDelegate?.presentTextEdit(title: title,
                                                         currentValue: getValue(),
-                                                        completion: { row.didChangeValue!($0) })
+                                                        completion: { row.didChangeValue!($0, row, indexPath) })
         })
     }
 
@@ -69,10 +69,12 @@ extension Row {
         return Row(title: title,
                    kind: .option,
                    getValue: getValue,
-                   didChangeValue: { [weak dataSourceDelegate] in
-                    didChangeValue($0)
+                   didChangeValue: { [weak dataSourceDelegate] value, _, _ in
+                    didChangeValue(value)
                     dataSourceDelegate?.didChangeData() },
-                   didSelect: { row, _ in row.didChangeValue!(!(row.getValue!() as! Bool)) })
+                   didSelect: { row, indexPath in
+                    row.didChangeValue!(!(row.getValue!() as! Bool), row, indexPath)
+                })
     }
 
     static func action(title: String,
@@ -90,14 +92,14 @@ extension Row {
         return Row(title: title,
                    kind: .choice,
                    getValue: getValue,
-                   didChangeValue: { [weak dataSourceDelegate] value in
+                   didChangeValue: { [weak dataSourceDelegate] value, _, _ in
                     didChangeValue(value)
                     dataSourceDelegate?.didChangeData() },
-                   didSelect: { [weak dataSourceDelegate] row, _ in
+                   didSelect: { [weak dataSourceDelegate] row, indexPath in
                     dataSourceDelegate?.presentChoice(title: row.title,
                                                       options: options,
                                                       chosen: getValue(),
-                                                      didChooseValue: { row.didChangeValue!($0) })
+                                                      didChooseValue: { row.didChangeValue!($0, row, indexPath) })
         })
     }
 }

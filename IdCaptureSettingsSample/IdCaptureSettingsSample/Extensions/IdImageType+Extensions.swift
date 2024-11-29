@@ -19,14 +19,14 @@ extension IdImageType: CustomStringConvertible, CaseIterable {
         switch self {
         case .face:
             return "Face"
-        case .idBack:
-            return "ID Back"
-        case .idFront:
-            return "ID Front"
+        case .croppedDocument:
+            return "Cropped Document"
+        case .frame:
+            return "Frame"
         }
     }
 
     public static var allCases: [IdImageType] {
-        return [.face, .idBack, .idFront]
+        return [.face, .croppedDocument, .frame]
     }
 }

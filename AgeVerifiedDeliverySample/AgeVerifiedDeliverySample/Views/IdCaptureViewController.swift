@@ -24,7 +24,16 @@ class IdCaptureViewController: UIViewController {
 
     private lazy var idCaptureSettings = {
         let settings = IdCaptureSettings()
-        settings.supportedDocuments = [.aamvaBarcode, .dlVIZ, .idCardVIZ, .passportMRZ, .ususIdBarcode, .idCardMRZ]
+
+        // We are interested in Id Cards, Driver's Licenses and Passports from any region
+        settings.acceptedDocuments = [IdCard(region: .any),
+                                      DriverLicense(region: .any),
+                                      Passport(region: .any)]
+
+        // Single sided scanner with all zones
+        settings.scannerType = SingleSideScanner(enablingBarcode: true,
+                                                 machineReadableZone: true,
+                                                 visualInspectionZone: true)
         return settings
     }()
 
@@ -162,29 +171,20 @@ class IdCaptureViewController: UIViewController {
 
 extension IdCaptureViewController: IdCaptureListener {
     func idCapture(_ idCapture: IdCapture,
-                   didLocalizeIn session: IdCaptureSession,
-                   frameData: FrameData) { }
-
-    func idCapture(_ idCapture: IdCapture, didTimeoutIn session: IdCaptureSession, frameData: FrameData) {
-        DispatchQueue.main.async {
-            self.showTimeoutResultViewController()
-        }
-    }
-
-    func idCapture(_ idCapture: IdCapture,
-                   didCaptureIn session: IdCaptureSession,
-                   frameData: FrameData) {
-        guard let capturedId = session.newlyCapturedId else { return }
+                   didCapture capturedId: CapturedId) {
         DispatchQueue.main.async {
             self.showResultViewController(capturedId: capturedId)
         }
     }
 
-    func idCapture(_ idCapture: IdCapture,
-                   didRejectIn session: IdCaptureSession,
-                   frameData: FrameData) {
+    func idCapture(_ idCapture: IdCapture, didReject capturedId: CapturedId?, reason rejectionReason: RejectionReason) {
         DispatchQueue.main.async {
-            self.showRejectedResultViewController()
+            switch rejectionReason {
+            case .timeout:
+                self.showTimeoutResultViewController()
+            default:
+                self.showRejectedResultViewController()
+            }
         }
     }
 }

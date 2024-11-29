@@ -59,7 +59,7 @@ class OverlayDataSource: DataSource {
             Row(title: "Show Text Hints",
                 kind: .switch,
                 getValue: { SettingsManager.current.showTextHints },
-                didChangeValue: { SettingsManager.current.showTextHints = $0 }),
+                didChangeValue: { value, _, _ in SettingsManager.current.showTextHints = value }),
             Row.choice(title: "Captured Brush",
                        options: OverlayDataSource.brushes,
                        getValue: { SettingsManager.current.capturedBrush },

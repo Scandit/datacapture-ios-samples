@@ -1,6 +1,6 @@
 # MatrixScan Simple Sample
 
-MatrixScan is a multi-code scanning capability available via the fully-customizable Barcode Tracking API of the Scandit Data Capture SDK.
+MatrixScan is a multi-code scanning capability available via the fully-customizable Barcode Batch API of the Scandit Data Capture SDK.
 
 Consider also using our **pre-built components** that contain user-tested and optimized UI for
 

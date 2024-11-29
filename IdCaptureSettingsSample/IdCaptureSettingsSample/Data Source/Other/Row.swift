@@ -19,6 +19,7 @@ class Row {
     enum Kind {
         case option
         case `switch`
+        case subtitledSwitch
         case valueWithUnit
         case float
         case choice
@@ -30,18 +31,21 @@ class Row {
     let title: String
     let kind: Kind
     var getValue: (() -> Any?)?
-    var didChangeValue: ((Any) -> Void)?
+    var didChangeValue: ((Any, Row, IndexPath) -> Void)?
     var didSelect: ((Row, IndexPath) -> Void)?
+    var supportingText: String?
 
     init<Value>(title: String,
                 kind: Kind,
                 getValue: (() -> Value?)?,
-                didChangeValue: ((Value) -> Void)? = nil,
+                didChangeValue: ((Value, Row, IndexPath) -> Void)? = nil,
                 didSelect: ((Row, IndexPath) -> Void)? = nil) {
         self.title = title
         self.kind = kind
         self.getValue = getValue
-        self.didChangeValue = { didChangeValue?($0 as! Value)}
+        self.didChangeValue = { value, row, indexPath in
+            didChangeValue?(value as! Value, row, indexPath)
+        }
         self.didSelect = didSelect
     }
 
@@ -59,6 +63,8 @@ extension Row {
         switch self.kind {
         case .switch:
             return SwitchCell.self
+        case .subtitledSwitch:
+            return SubtitledSwitchCell.self
         case .float:
             return FloatInputCell.self
         case .slider:
@@ -100,7 +106,7 @@ extension Row {
         case .slider(_, _, let decimalPlaces):
             return getValue?().valueString(roundedTo: decimalPlaces)
         default:
-            return nil
+            return supportingText
         }
     }
 }

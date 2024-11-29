@@ -32,7 +32,6 @@ class VizResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultTypes.contains(.vizResult))
         guard let vizResult = capturedId.vizResult else { fatalError("Unexpected null VizResult") }
         var rows: [CellProvider] = [
             SimpleTextCellProvider(value: vizResult.firstName.valueOrNil,
@@ -55,8 +54,6 @@ class VizResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: vizResult.residentialStatus.valueOrNil, title: "Residential Status"),
             SimpleTextCellProvider(value: vizResult.employer.valueOrNil, title: "Employer"),
             SimpleTextCellProvider(value: vizResult.personalIdNumber.valueOrNil, title: "Personal ID Number"),
-            SimpleTextCellProvider(value: vizResult.documentAdditionalNumber.valueOrNil,
-                                   title: "Document Additional Number"),
             SimpleTextCellProvider(value: vizResult.issuingJurisdiction.valueOrNil, title: "Issuing Jurisdiction"),
             SimpleTextCellProvider(value: vizResult.issuingJurisdictionISO.valueOrNil,
                                    title: "Issuing Jurisdiction ISO"),
@@ -68,8 +65,8 @@ class VizResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: vizResult.capturedSides.description, title: "Captured Sides"),
             SimpleTextCellProvider(value: vizResult.isBackSideCaptureSupported ? "Yes" : "No",
                                    title: "Backside Supported"),
-            SimpleTextCellProvider(value: capturedId.usRealIdStatus.description,
-                                   title: "US REAL ID Status")
+            SimpleTextCellProvider(value: vizResult.visaNumber.valueOrNil, title: "Visa Number"),
+            SimpleTextCellProvider(value: vizResult.passportNumber.valueOrNil, title: "Passport Number")
         ]
 
         if let drivingLicenseDetails = vizResult.drivingLicenseDetails,
@@ -95,9 +92,11 @@ class VizResultPresenter: ResultPresenter {
         }
 
         let image_rows = [
-            ImageCellProvider(image: capturedId.idImage(of: .face), title: "Face Image"),
-            ImageCellProvider(image: capturedId.idImage(of: .idFront), title: "Front Image"),
-            ImageCellProvider(image: capturedId.idImage(of: .idBack), title: "Back Image")
+            ImageCellProvider(image: capturedId.images.face, title: "Face Image"),
+            ImageCellProvider(image: capturedId.images.croppedDocument(for: .front), title: "Front Image"),
+            ImageCellProvider(image: capturedId.images.croppedDocument(for: .back), title: "Back Image"),
+            ImageCellProvider(image: capturedId.images.frame(for: .front), title: "Front Frame"),
+            ImageCellProvider(image: capturedId.images.frame(for: .back), title: "Back Frame")
         ]
 
         rows += image_rows

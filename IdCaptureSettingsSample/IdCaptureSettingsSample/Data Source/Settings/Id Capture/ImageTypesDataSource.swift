@@ -24,20 +24,18 @@ class ImageTypesDataSource: DataSource {
     // MARK: - Sections
 
     lazy var sections: [Section] = {
-        let imageType = IdImageType.face
-        return [
-            Section(rows: [
-                Row(title: imageType.description,
-                    kind: .switch,
-                    getValue: { SettingsManager.current.resultWithImageTypes.contains(imageType) },
-                    didChangeValue: { newValue in
-                        if newValue {
-                            SettingsManager.current.resultWithImageTypes.insert(imageType)
-                        } else {
-                            SettingsManager.current.resultWithImageTypes.remove(imageType)
-                        }
-                    })
-            ])
-        ]
+        let rows: [Row] =   IdImageType.allCases.map { imageType in
+            Row(title: imageType.description,
+                kind: .switch,
+                getValue: { SettingsManager.current.resultWithImageTypes.contains(imageType) },
+                didChangeValue: {  value, _, _ in
+                    if value {
+                        SettingsManager.current.resultWithImageTypes.insert(imageType)
+                    } else {
+                        SettingsManager.current.resultWithImageTypes.remove(imageType)
+                    }
+                })
+        }
+        return [Section(rows: rows)]
     }()
 }

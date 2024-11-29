@@ -35,7 +35,6 @@ class ScanViewController: UIViewController {
         return SettingsManager.current.idCapture
     }
 
-    private var isScanningBackSide: Bool = false
     private var dismissResultTimer: Timer?
 
     private lazy var resultLabel: UILabel = makeResultLabel()
@@ -64,7 +63,6 @@ class ScanViewController: UIViewController {
         idCapture.isEnabled = false
         // Reset IdCapture to discard front side captures when using Front & Back mode
         idCapture.reset()
-        isScanningBackSide = false
         camera?.switch(toDesiredState: .off)
     }
 
@@ -98,61 +96,19 @@ class ScanViewController: UIViewController {
             let detail = ResultViewController(capturedId: capturedId)
             self.navigationController?.pushViewController(detail, animated: true)
         }
-
-        // Reset the state so that when we come back we can scan new IDs.
-        isScanningBackSide = false
-    }
-
-    private func isSingleSided(documentType: DocumentType) -> Bool {
-        documentType == .passport
-    }
-
-    private func shouldSuggestBackSideCapture(for capturedId: CapturedId) -> Bool {
-        guard let vizResult = capturedId.vizResult else { return false }
-
-        return SettingsManager.current.supportedSides == .frontAndBack &&
-            !isSingleSided(documentType: capturedId.documentType) &&
-            vizResult.capturedSides == .frontOnly
-    }
-
-    private func suggestBackSideCapture(onConfirm: @escaping () -> Void, onReject: @escaping () -> Void) {
-        let message = "This document has additional data on the back of the card"
-        let alertController = UIAlertController(title: "Back of Card",
-                                                message: message,
-                                                preferredStyle: .alert)
-        [ UIAlertAction(title: "Scan", style: .default, handler: { _ in onConfirm() }),
-          UIAlertAction(title: "Skip", style: .cancel, handler: { _ in onReject() }) ]
-            .forEach(alertController.addAction)
-
-        present(alertController, animated: true, completion: nil)
     }
 }
 
 extension ScanViewController: IdCaptureListener {
-    func idCapture(_ idCapture: IdCapture, didCaptureIn session: IdCaptureSession, frameData: FrameData) {
-        guard let capturedId = session.newlyCapturedId else { return }
+    func idCapture(_ idCapture: IdCapture, didReject capturedId: CapturedId?, reason rejectionReason: RejectionReason) {
+        // rejected callback
+    }
 
+    func idCapture(_ idCapture: IdCapture, didCapture capturedId: CapturedId) {
         // Pause the idCapture to not capture while showing the result.
         idCapture.isEnabled = false
-
-        if !isScanningBackSide && shouldSuggestBackSideCapture(for: capturedId) {
-            DispatchQueue.main.async { [unowned self] in
-                suggestBackSideCapture(onConfirm: { [unowned self] in
-                    idCapture.isEnabled = true
-                    isScanningBackSide = true
-                }, onReject: { [unowned self] in
-                    display(capturedId: capturedId)
-                    /*
-                     * If we want to skip scanning the back of the document, we have to call
-                     * `IdCapture().reset()` to allow for another front IDs to be scanned.
-                     */
-                    self.idCapture.reset()
-                })
-            }
-        } else {
-            DispatchQueue.main.async { [unowned self] in
-                display(capturedId: capturedId)
-            }
+        DispatchQueue.main.async { [unowned self] in
+            display(capturedId: capturedId)
         }
     }
 }

@@ -84,8 +84,6 @@ ID Scanning Samples demonstrate the features of the ID Capture API and demonstra
 
 **Barcode Capture Settings Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/BarcodeCaptureSettingsSample))
 
-**Barcode Capture Views Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/BarcodeCaptureViewsSample))
-
 ### MatrixScan AR Sam**ples**
 
 **MatrixScan Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanSimpleSample))

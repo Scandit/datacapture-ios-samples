@@ -21,10 +21,10 @@ class VizResultPresenter: ResultPresenter {
 
     required init(capturedId: CapturedId) {
         var cells = [CellProvider]()
-        if let image = capturedId.idImage(of: .idFront) {
+        if let image = capturedId.images.croppedDocument(for: .front) {
             cells.append(ImageCellProvider(image: image, title: "Front Image"))
         }
-        if let image = capturedId.idImage(of: .idBack) {
+        if let image = capturedId.images.croppedDocument(for: .back) {
             cells.append(ImageCellProvider(image: image, title: "Back Image"))
         }
         rows = cells

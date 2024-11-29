@@ -24,7 +24,7 @@ class BarcodeCountViewController: UIViewController {
     private var camera: Camera?
     private var barcodeCount: BarcodeCount!
     private var barcodeCountView: BarcodeCountView!
-    private var currentlyRecognizedBarcodeIds = Set<Int>()
+    private var currentlyRecognizedBarcodes = Set<Barcode>()
     private var shouldCameraStandby = true
 
     override func viewDidLoad() {
@@ -136,7 +136,7 @@ class BarcodeCountViewController: UIViewController {
 
     func resetMode() {
         // Reset the mode but don't clear the scanned items
-        currentlyRecognizedBarcodeIds.removeAll()
+        currentlyRecognizedBarcodes.removeAll()
         barcodeCount.reset()
         if let itemsTableViewModel {
             barcodeCount.setAdditionalBarcodes(itemsTableViewModel.allBarcodes())
@@ -158,15 +158,15 @@ extension BarcodeCountViewController: BarcodeCountListener {
                       didScanIn session: BarcodeCountSession,
                       frameData: FrameData) {
         // Gather all the recognized barcodes
-        let recognizedBarcodes = session.recognizedBarcodes.values
+        let recognizedBarcodes = session.recognizedBarcodes
         // This method is invoked from a recognition internal thread.
         // Dispatch to the main thread to update the internal barcode list.
         DispatchQueue.main.async {
             // Update the internal list
-            for trackedBarcode in recognizedBarcodes
-            where !self.currentlyRecognizedBarcodeIds.contains(trackedBarcode.identifier) {
-                self.currentlyRecognizedBarcodeIds.insert(trackedBarcode.identifier)
-                self.itemsTableViewModel?.addBarcode(trackedBarcode.barcode)
+            for barcode in recognizedBarcodes
+            where !self.currentlyRecognizedBarcodes.contains(barcode) {
+                self.currentlyRecognizedBarcodes.insert(barcode)
+                self.itemsTableViewModel?.addBarcode(barcode)
             }
         }
     }

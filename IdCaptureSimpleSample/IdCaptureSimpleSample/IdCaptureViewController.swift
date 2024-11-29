@@ -19,6 +19,14 @@ import ScanditIdCapture
 
 class IdCaptureViewController: UIViewController {
 
+    private enum Constants {
+        enum Message {
+            static let timeout = "Document capture failed. Make sure the document is well lit and free of glare. "
+                               + "Alternatively, try scanning another document"
+            static let rejected = "Document not supported. Try scanning another document"
+        }
+    }
+
     // The id capturing process is configured through id capture settings
     // and are then applied to the id capture instance that manages id recognition.
     private lazy var idCaptureSettings = IdCaptureSettings()
@@ -73,11 +81,13 @@ class IdCaptureViewController: UIViewController {
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(captureView)
 
-        // We are interested in the Id Cards and Driver's Licenses visual inspection zone
-        idCaptureSettings.supportedDocuments = [
-            .idCardVIZ,
-            .dlVIZ
-         ]
+        // We are interested in Id Cards, Driver's Licenses and Passports from any region
+        idCaptureSettings.acceptedDocuments = [IdCard(region: .any),
+                                               DriverLicense(region: .any),
+                                               Passport(region: .any)]
+
+        // We want to scan all zones and both sides
+        idCaptureSettings.scannerType = FullDocumentScanner()
 
         // Create new id capture mode with the chosen settings.
         idCapture = IdCapture(context: context, settings: idCaptureSettings)
@@ -93,23 +103,17 @@ class IdCaptureViewController: UIViewController {
 
 extension IdCaptureViewController: IdCaptureListener {
 
-    func idCapture(_ idCapture: IdCapture, didCaptureIn session: IdCaptureSession, frameData: FrameData) {
-        guard let capturedId = session.newlyCapturedId else {
-            return
-        }
-
+    func idCapture(_ idCapture: IdCapture, didCapture capturedId: CapturedId) {
         // Pause the idCapture to not capture while showing the result.
         idCapture.isEnabled = false
 
-        let title = capturedId.capturedResultTypes.combinedDescription
-
-        showAlert(title: title, message: descriptionForCapturedId(result: capturedId), completion: {
+        showAlert(title: "Recognized Document", message: descriptionForCapturedId(result: capturedId), completion: {
             // Resume the idCapture.
             idCapture.isEnabled = true
         })
     }
 
-    func idCapture(_ idCapture: IdCapture, didRejectIn session: IdCaptureSession, frameData: FrameData) {
+    func idCapture(_ idCapture: IdCapture, didReject capturedId: CapturedId?, reason: RejectionReason) {
         // Implement to handle documents recognized in a frame, but rejected.
         // A document or its part is considered rejected when (a) it's valid, but not enabled in the settings,
         // (b) it's a barcode of a correct symbology or a Machine Readable Zone (MRZ),
@@ -117,19 +121,11 @@ extension IdCaptureViewController: IdCaptureListener {
 
         // Pause the idCapture to not capture while showing the result.
         idCapture.isEnabled = false
-        showAlert(message: "Document not supported", completion: {
+        let message = reason == .timeout ? Constants.Message.timeout : Constants.Message.rejected
+        showAlert(message: message, completion: {
             // Resume the idCapture.
             idCapture.isEnabled = true
         })
-    }
-
-    func idCapture(_ idCapture: IdCapture,
-                   didFailWithError error: Error,
-                   session: IdCaptureSession,
-                   frameData: FrameData) {
-
-        // Implement to handle an error encountered during the capture process.
-        // The error message can be retrieved from the Error localizedDescription.
     }
 
     func showAlert(title: String? = nil, message: String? = nil, completion: @escaping () -> Void) {
@@ -162,6 +158,10 @@ extension IdCaptureViewController: IdCaptureListener {
         if let nationality = result.nationality {
             results.append("Nationality: \(nationality)")
         }
+        if let documentType = result.document?.documentType {
+            results.append("Document Type: \(documentType.description)")
+        }
+
         return results.joined(separator: "\n")
     }
 }

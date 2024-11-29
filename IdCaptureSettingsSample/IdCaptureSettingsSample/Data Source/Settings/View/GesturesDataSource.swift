@@ -29,7 +29,9 @@ class GesturesDataSource: DataSource {
                 Row(title: "Tap to Focus",
                     kind: .switch,
                     getValue: { SettingsManager.current.tapToFocus },
-                    didChangeValue: { SettingsManager.current.tapToFocus = $0 })
+                    didChangeValue: { value, _, _ in
+                        SettingsManager.current.tapToFocus = value
+                    })
             ])]
     }()
 }

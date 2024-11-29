@@ -26,6 +26,8 @@ class ResultDataSource: DataSource {
             Row(title: "Continuous Scanning",
                 kind: .switch,
                 getValue: { SettingsManager.current.isContinuousModeEnabled },
-                didChangeValue: { SettingsManager.current.isContinuousModeEnabled = $0 })])]
+                didChangeValue: { value, _, _ in
+                    SettingsManager.current.isContinuousModeEnabled = value
+                })])]
     }()
 }

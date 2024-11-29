@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="euH-Bf-XfV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="euH-Bf-XfV">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,7 +77,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kC-YH-1aq">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kC-YH-1aq">
                                             <rect key="frame" x="20" y="11" width="35.5" height="73"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="73" id="Bk5-dF-dKS"/>
@@ -86,11 +86,8 @@
                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxW-Hb-PwI">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxW-Hb-PwI">
                                             <rect key="frame" x="351.5" y="11" width="42.5" height="73"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="73" id="JyZ-Vb-0Tt"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -110,7 +107,7 @@
                                         <constraint firstItem="Rec-ox-th0" firstAttribute="leading" secondItem="2jN-40-JmB" secondAttribute="leadingMargin" id="beR-JV-M9T"/>
                                         <constraint firstItem="1kC-YH-1aq" firstAttribute="leading" secondItem="2jN-40-JmB" secondAttribute="leadingMargin" id="c55-fY-KrD"/>
                                         <constraint firstItem="dxW-Hb-PwI" firstAttribute="top" secondItem="2jN-40-JmB" secondAttribute="topMargin" id="gAi-cS-XnI"/>
-                                        <constraint firstItem="dxW-Hb-PwI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1kC-YH-1aq" secondAttribute="trailing" id="ore-Kn-fYS"/>
+                                        <constraint firstItem="dxW-Hb-PwI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1kC-YH-1aq" secondAttribute="trailing" constant="4" id="ore-Kn-fYS"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="1kC-YH-1aq" secondAttribute="bottom" id="vEb-v5-dvk"/>
                                         <constraint firstItem="1kC-YH-1aq" firstAttribute="top" secondItem="2jN-40-JmB" secondAttribute="topMargin" id="xys-13-5Xt"/>
                                     </constraints>
@@ -213,10 +210,10 @@
     </scenes>
     <resources>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

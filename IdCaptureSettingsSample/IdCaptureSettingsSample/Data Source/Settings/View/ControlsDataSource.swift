@@ -29,7 +29,9 @@ class ControlsDataSource: DataSource {
                 Row.init(title: "Torch Button",
                          kind: .switch,
                          getValue: { SettingsManager.current.torchSwitchShown },
-                         didChangeValue: { SettingsManager.current.torchSwitchShown = $0 })
+                         didChangeValue: { value, _, _ in
+                             SettingsManager.current.torchSwitchShown = value
+                         })
                 ])
         ]
     }()

@@ -17,36 +17,6 @@ import Foundation
 import UIKit
 import ScanditIdCapture
 
-extension CapturedResultType: Hashable, CaseIterable {
-
-    public static var allCases: [CapturedResultType] {
-        return [
-            .aamvaBarcodeResult,
-            .argentinaIdBarcodeResult,
-            .chinaMainlandTravelPermitMrzResult,
-            .chinaExitEntryPermitMrzResult,
-            .chinaOneWayPermitBackMrzResult,
-            .chinaOneWayPermitFrontMrzResult,
-            .colombiaIdBarcodeResult,
-            .colombiaDlBarcodeResult,
-            .mrzResult,
-            .southAfricaDLBarcodeResult,
-            .southAfricaIdBarcodeResult,
-            .usUniformedServicesBarcodeResult,
-            .vizResult,
-            .apecBusinessTravelCardMrzResult
-        ]
-    }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.description)
-    }
-
-    public var singleValues: [CapturedResultType] {
-        return Self.allCases.filter({self.contains($0)})
-    }
-}
-
 protocol ResultPresenter {
     var rows: [CellProvider] { get }
     init(capturedId: CapturedId)
@@ -89,16 +59,13 @@ struct CombinedResultPresenter: ResultPresenter {
 
 struct ResultPresenterFactory {
 
-    static var mappings: [CapturedResultType: ResultPresenter.Type] = {
-        return [.vizResult: VizResultPresenter.self]
-    }()
-
     static func presenter(for capturedId: CapturedId) -> ResultPresenter {
-        let presenters = capturedId
-            .capturedResultTypes
-            .singleValues
-            .compactMap({ mappings[$0] })
-            .map { $0.init(capturedId: capturedId) }
+        var presenters: [ResultPresenter] = []
+
+        if capturedId.vizResult != nil {
+            presenters.append(VizResultPresenter.self.init(capturedId: capturedId))
+        }
+
         return CombinedResultPresenter(capturedId: capturedId, presenters: presenters)
     }
 }

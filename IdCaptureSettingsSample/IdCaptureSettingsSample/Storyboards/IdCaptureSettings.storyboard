@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LOD-ha-Ohy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LOD-ha-Ohy">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Id Capture-->
         <scene sceneID="7da-qT-q0N">
             <objects>
-                <tableViewController title="Id Capture" id="LOD-ha-Ohy" sceneMemberID="viewController">
+                <tableViewController title="Id Capture" id="LOD-ha-Ohy" customClass="IdCaptureSettingsTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zyI-Er-yyQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,17 +39,24 @@
                                             <segue destination="m7K-iX-eLD" kind="show" id="rXL-iI-EtP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ib0-Ng-10f" style="IBUITableViewCellStyleDefault" id="sPF-fp-hB2">
-                                        <rect key="frame" x="0.0" y="61.5" width="375" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="top" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ib0-Ng-10f" detailTextLabel="1kM-SJ-zDe" style="IBUITableViewCellStyleSubtitle" id="sPF-fp-hB2">
+                                        <rect key="frame" x="0.0" y="61.5" width="375" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sPF-fp-hB2" id="esz-Nd-ZQR">
-                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Supported Documents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ib0-Ng-10f">
-                                                    <rect key="frame" x="16" y="0.0" width="324.5" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Accepted Documents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ib0-Ng-10f">
+                                                    <rect key="frame" x="16" y="10" width="164.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1kM-SJ-zDe">
+                                                    <rect key="frame" x="16" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -59,14 +66,41 @@
                                             <segue destination="KUh-iA-iSW" kind="show" id="zbC-cS-p3z"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="top" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Zd-gu-ILj" detailTextLabel="qgo-k4-F3y" style="IBUITableViewCellStyleSubtitle" id="eHN-OA-ISy">
+                                        <rect key="frame" x="0.0" y="117" width="375" height="55.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eHN-OA-ISy" id="zlH-jX-q0L">
+                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="55.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Rejected Documents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Zd-gu-ILj">
+                                                    <rect key="frame" x="16" y="10" width="159" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qgo-k4-F3y">
+                                                    <rect key="frame" x="16" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="mXe-9V-Ggr" kind="show" id="C0k-pL-cS2"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="RpR-rn-rbM" style="IBUITableViewCellStyleDefault" id="Lze-ig-I6b">
-                                        <rect key="frame" x="0.0" y="105" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="172.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lze-ig-I6b" id="r0t-Y2-N3w">
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Supported Sides" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RpR-rn-rbM">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Scanner Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RpR-rn-rbM">
                                                     <rect key="frame" x="16" y="0.0" width="324.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -80,7 +114,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DbV-tX-7xh" style="IBUITableViewCellStyleDefault" id="4sP-8p-MLl">
-                                        <rect key="frame" x="0.0" y="148.5" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="216" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4sP-8p-MLl" id="DNH-GS-8Ue">
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="43.5"/>
@@ -100,7 +134,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4wL-vt-9cO" style="IBUITableViewCellStyleDefault" id="iwj-7X-2un">
-                                        <rect key="frame" x="0.0" y="192" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="259.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iwj-7X-2un" id="Cdo-lp-OYV">
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="43.5"/>
@@ -120,7 +154,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Hhb-cP-v41" style="IBUITableViewCellStyleDefault" id="QIR-P7-Zx6">
-                                        <rect key="frame" x="0.0" y="235.5" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="303" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QIR-P7-Zx6" id="2Vm-PZ-8Pr">
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="43.5"/>
@@ -140,7 +174,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="11L-Up-TwP" style="IBUITableViewCellStyleDefault" id="bO4-nK-0uO">
-                                        <rect key="frame" x="0.0" y="279" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="346.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bO4-nK-0uO" id="4J8-Ih-wxQ">
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="43.5"/>
@@ -169,6 +203,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Id Capture" id="Qtt-xf-Njy"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="acceptedDocumentsCell" destination="sPF-fp-hB2" id="QRY-yO-GRU"/>
+                        <outlet property="rejectedDocumentsCell" destination="eHN-OA-ISy" id="qlq-NM-T0L"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIL-XM-rNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -201,12 +239,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3E-P2-mwJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3090" y="322"/>
+            <point key="canvasLocation" x="1959" y="322"/>
         </scene>
-        <!--Supported Documents-->
+        <!--Accepted Documents-->
         <scene sceneID="Ocn-rb-csQ">
             <objects>
-                <tableViewController title="Supported Documents" id="KUh-iA-iSW" customClass="SupportedDocumentsTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Accepted Documents" id="KUh-iA-iSW" customClass="AcceptedDocumentsTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="c8d-SP-tjh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,16 +264,45 @@
                             <outlet property="delegate" destination="KUh-iA-iSW" id="fYz-7H-8nA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Supported Documents" id="FRF-en-QLs"/>
+                    <navigationItem key="navigationItem" title="Accepted Documents" id="FRF-en-QLs"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rb7-Rc-sih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4906" y="-582"/>
+            <point key="canvasLocation" x="4870" y="-758"/>
         </scene>
-        <!--Supported Sides-->
+        <!--Rejected Documents-->
+        <scene sceneID="YZA-Jq-hy7">
+            <objects>
+                <tableViewController title="Rejected Documents" id="mXe-9V-Ggr" customClass="RejectedDocumentsTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="NHq-dp-jCt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="dSo-uG-zbS">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dSo-uG-zbS" id="j3r-r4-7fj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mXe-9V-Ggr" id="Svi-Yk-VTk"/>
+                            <outlet property="delegate" destination="mXe-9V-Ggr" id="SdN-7p-3Fq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Rejected Documents" id="hKx-JF-3ta"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nHD-hN-J5Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4871" y="-53"/>
+        </scene>
+        <!--Scanner Type-->
         <scene sceneID="nOI-fP-3ps">
             <objects>
-                <tableViewController title="Supported Sides" id="Fvt-nq-J6V" customClass="SupportedSidesTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Scanner Type" id="Fvt-nq-J6V" customClass="ScannerTypeTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="yzq-Ta-Rfp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,11 +322,11 @@
                             <outlet property="delegate" destination="Fvt-nq-J6V" id="vpu-nc-t3n"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Supported Sides" id="oAl-Xe-xYU"/>
+                    <navigationItem key="navigationItem" title="Scanner Type" id="oAl-Xe-xYU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axA-P5-vLz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2455" y="322"/>
+            <point key="canvasLocation" x="1322" y="322"/>
         </scene>
         <!--Anonymization Mode-->
         <scene sceneID="tP0-bR-f7l">
@@ -322,7 +389,7 @@
                     </tableViewCellContentView>
                 </tableViewCell>
             </objects>
-            <point key="canvasLocation" x="4225" y="-1035"/>
+            <point key="canvasLocation" x="4006" y="-1377"/>
         </scene>
         <!--Feedback-->
         <scene sceneID="kxG-UK-GDC">
@@ -351,7 +418,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n28-5g-Mjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3729" y="322"/>
+            <point key="canvasLocation" x="2582" y="322"/>
         </scene>
         <!--Voided ID Detection-->
         <scene sceneID="xCK-mn-mIB">
@@ -380,7 +447,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sg1-fe-cip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4369" y="322"/>
+            <point key="canvasLocation" x="3207" y="322"/>
         </scene>
         <!--Back of European Drivers License-->
         <scene sceneID="SwG-ag-dvf">
@@ -409,7 +476,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAe-lo-Jt3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5079" y="322"/>
+            <point key="canvasLocation" x="3834" y="322"/>
         </scene>
     </scenes>
     <resources>

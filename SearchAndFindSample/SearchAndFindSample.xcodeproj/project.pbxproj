@@ -15,8 +15,8 @@
 		0083542922B8228300D08E75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0083542822B8228300D08E75 /* Assets.xcassets */; };
 		0083542C22B8228300D08E75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0083542A22B8228300D08E75 /* LaunchScreen.storyboard */; };
 		00BA164522B8515800686439 /* Brush+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BA164422B8515800686439 /* Brush+Extensions.swift */; };
-		290548CAB56E1D2E52E3D1E1 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 85A54E988C718421CF5DF6FE /* ScanditBarcodeCapture */; };
-		856B474B92885C24D3A7E5FA /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 14BE438083C7909AD087C289 /* ScanditCaptureCore */; };
+		73024E2B873A0C0A1ACAB2F8 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = A69541109BE51B9930E917E4 /* ScanditBarcodeCapture */; };
+		C5464451A8D2B714130AE6A1 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02294BA6B2D87317C3CF422C /* ScanditCaptureCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,8 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				290548CAB56E1D2E52E3D1E1 /* ScanditBarcodeCapture in Frameworks */,
-				856B474B92885C24D3A7E5FA /* ScanditCaptureCore in Frameworks */,
+				73024E2B873A0C0A1ACAB2F8 /* ScanditBarcodeCapture in Frameworks */,
+				C5464451A8D2B714130AE6A1 /* ScanditCaptureCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +151,8 @@
 			);
 			name = SearchAndFindSample;
 			packageProductDependencies = (
-				85A54E988C718421CF5DF6FE /* ScanditBarcodeCapture */,
-				14BE438083C7909AD087C289 /* ScanditCaptureCore */,
+				A69541109BE51B9930E917E4 /* ScanditBarcodeCapture */,
+				02294BA6B2D87317C3CF422C /* ScanditCaptureCore */,
 			);
 			productName = SearchAndFindSample;
 			productReference = 0083541E22B8228200D08E75 /* SearchAndFindSample.app */;
@@ -183,7 +183,7 @@
 			);
 			mainGroup = 0083541522B8228200D08E75;
 			packageReferences = (
-				AD65467F9FE9A3546B2230E5 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				BFA542F3A4AD837E715BFD7C /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = 0083541F22B8228200D08E75 /* Products */;
 			projectDirPath = "";
@@ -288,7 +288,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SearchAndFindSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,7 +346,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SearchAndFindSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -366,7 +366,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SearchAndFindSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,7 +389,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SearchAndFindSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -426,25 +426,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AD65467F9FE9A3546B2230E5 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		BFA542F3A4AD837E715BFD7C /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 6.28.1;
+				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		14BE438083C7909AD087C289 /* ScanditCaptureCore */ = {
+		02294BA6B2D87317C3CF422C /* ScanditCaptureCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AD65467F9FE9A3546B2230E5 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = BFA542F3A4AD837E715BFD7C /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditCaptureCore;
 		};
-		85A54E988C718421CF5DF6FE /* ScanditBarcodeCapture */ = {
+		A69541109BE51B9930E917E4 /* ScanditBarcodeCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AD65467F9FE9A3546B2230E5 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = BFA542F3A4AD837E715BFD7C /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditBarcodeCapture;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -31,18 +31,18 @@ class FeedbackDataSource: DataSource {
                     Row(title: "Sound",
                         kind: .switch,
                         getValue: { SettingsManager.current.idCapturedFeedback.sound != nil },
-                        didChangeValue: {
+                        didChangeValue: { value, _, _ in
                             SettingsManager.current.idCapturedFeedback =
                                 Feedback(vibration: SettingsManager.current.idCapturedFeedback.vibration,
-                                         sound: $0 ? IdCaptureFeedback.default.idCaptured.sound : nil)
+                                         sound: value ? IdCaptureFeedback.default.idCaptured.sound : nil)
                         }),
 
                     Row(title: "Vibration",
                                kind: .switch,
                                getValue: { SettingsManager.current.idCapturedFeedback.vibration != nil },
-                               didChangeValue: {
+                               didChangeValue: { value, _, _ in
                                    SettingsManager.current.idCapturedFeedback =
-                                   Feedback(vibration: $0 ? IdCaptureFeedback.default.idCaptured.vibration : nil,
+                                   Feedback(vibration: value ? IdCaptureFeedback.default.idCaptured.vibration : nil,
                                             sound: SettingsManager.current.idCapturedFeedback.sound)
 
                                })
@@ -53,41 +53,20 @@ class FeedbackDataSource: DataSource {
                     Row(title: "Sound",
                         kind: .switch,
                         getValue: { SettingsManager.current.idRejectedFeedback.sound != nil },
-                        didChangeValue: {
+                        didChangeValue: { value, _, _ in
                             SettingsManager.current.idRejectedFeedback =
                                 Feedback(vibration: SettingsManager.current.idRejectedFeedback.vibration,
-                                         sound: $0 ? IdCaptureFeedback.defaultFailureSound : nil)
+                                         sound: value ? IdCaptureFeedback.defaultFailureSound : nil)
                         }),
 
                     Row(title: "Vibration",
                                kind: .switch,
                                getValue: { SettingsManager.current.idRejectedFeedback.vibration != nil },
-                               didChangeValue: {
+                               didChangeValue: { value, _, _ in
                                    SettingsManager.current.idRejectedFeedback =
-                                   Feedback(vibration: $0 ? Vibration.failureHapticFeedback : nil,
+                                   Feedback(vibration: value ? Vibration.failureHapticFeedback : nil,
                                             sound: SettingsManager.current.idRejectedFeedback.sound)
 
-                               })
-                        ]),
-            Section(
-                title: "ID Capture Timeout Feedback",
-                rows: [
-                    Row(title: "Sound",
-                        kind: .switch,
-                        getValue: { SettingsManager.current.idCaptureTimeoutFeedback.sound != nil },
-                        didChangeValue: {
-                            SettingsManager.current.idCaptureTimeoutFeedback =
-                                Feedback(vibration: SettingsManager.current.idCaptureTimeoutFeedback.vibration,
-                                         sound: $0 ? IdCaptureFeedback.defaultFailureSound : nil)
-                        }),
-
-                    Row(title: "Vibration",
-                               kind: .switch,
-                               getValue: { SettingsManager.current.idCaptureTimeoutFeedback.vibration != nil },
-                               didChangeValue: {
-                                   SettingsManager.current.idCaptureTimeoutFeedback =
-                                   Feedback(vibration: $0 ? Vibration.failureHapticFeedback : nil,
-                                            sound: SettingsManager.current.idCaptureTimeoutFeedback.sound)
                                })
                         ])
         ]

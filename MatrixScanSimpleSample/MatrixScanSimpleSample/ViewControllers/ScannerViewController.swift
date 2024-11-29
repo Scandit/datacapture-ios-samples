@@ -18,9 +18,9 @@ class ScannerViewController: UIViewController {
 
     private var context: DataCaptureContext!
     private var camera: Camera?
-    private var barcodeTracking: BarcodeTracking!
+    private var barcodeBatch: BarcodeBatch!
     private var captureView: DataCaptureView!
-    private var overlay: BarcodeTrackingBasicOverlay!
+    private var overlay: BarcodeBatchBasicOverlay!
 
     private var results: [String: Barcode] = [:]
 
@@ -46,16 +46,16 @@ class ScannerViewController: UIViewController {
     private func startTracking() {
         // Remove the scanned barcodes everytime the barcode tracking starts.
         results.removeAll()
-        // Enable barcode tracking to resume processing frames.
-        barcodeTracking.isEnabled = true
+        // Enable Barcode Batch to resume processing frames.
+        barcodeBatch.isEnabled = true
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to
         // completely turn on.
         camera?.switch(toDesiredState: .on)
     }
 
     private func stopTracking() {
-        // First, disable barcode tracking to stop processing frames.
-        barcodeTracking.isEnabled = false
+        // First, disable Barcode Batch to stop processing frames.
+        barcodeBatch.isEnabled = false
         // Switch the camera off to stop streaming frames. The camera is stopped asynchronously.
         camera?.switch(toDesiredState: .off)
     }
@@ -70,16 +70,16 @@ class ScannerViewController: UIViewController {
         camera = Camera.default
         context.setFrameSource(camera, completionHandler: nil)
 
-        // Use the recommended camera settings for the BarcodeTracking mode as default settings.
+        // Use the recommended camera settings for the BarcodeBatch mode as default settings.
         // The preferred resolution is automatically chosen, which currently defaults to HD on all devices.
         // Setting the preferred resolution to full HD helps to get a better decode range.
-        let cameraSettings = BarcodeTracking.recommendedCameraSettings
+        let cameraSettings = BarcodeBatch.recommendedCameraSettings
         cameraSettings.preferredResolution = .fullHD
         camera?.apply(cameraSettings, completionHandler: nil)
 
-        // The barcode tracking process is configured through barcode tracking settings
-        // and are then applied to the barcode tracking instance that manages barcode tracking.
-        let settings = BarcodeTrackingSettings()
+        // The barcode tracking process is configured through Barcode Batch settings
+        // and are then applied to the Barcode Batch instance that manages barcode tracking.
+        let settings = BarcodeBatchSettings()
 
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
         // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the
@@ -90,11 +90,11 @@ class ScannerViewController: UIViewController {
         settings.set(symbology: .code39, enabled: true)
         settings.set(symbology: .code128, enabled: true)
 
-        // Create new barcode tracking mode with the settings from above.
-        barcodeTracking = BarcodeTracking(context: context, settings: settings)
+        // Create new Barcode Batch mode with the settings from above.
+        barcodeBatch = BarcodeBatch(context: context, settings: settings)
 
         // Register self as a listener to get informed of tracked barcodes.
-        barcodeTracking.addListener(self)
+        barcodeBatch.addListener(self)
 
         // To visualize the on-going barcode tracking process on screen, setup a data capture view that renders the
         // camera preview. The view must be connected to the data capture context.
@@ -104,18 +104,18 @@ class ScannerViewController: UIViewController {
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)
 
-        // Add a barcode tracking overlay to the data capture view to render the tracked barcodes on top of the video
+        // Add a Barcode Batch overlay to the data capture view to render the tracked barcodes on top of the video
         // preview. This is optional, but recommended for better visual feedback.
-        overlay = BarcodeTrackingBasicOverlay(barcodeTracking: barcodeTracking, view: captureView, style: .frame)
+        overlay = BarcodeBatchBasicOverlay(barcodeBatch: barcodeBatch, view: captureView, style: .frame)
     }
 }
 
-// MARK: - BarcodeTrackingListener
-extension ScannerViewController: BarcodeTrackingListener {
+// MARK: - BarcodeBatchListener
+extension ScannerViewController: BarcodeBatchListener {
      // This function is called whenever objects are updated and it's the right place to react to the tracking results.
-    func barcodeTracking(_ barcodeTracking: BarcodeTracking,
-                         didUpdate session: BarcodeTrackingSession,
-                         frameData: FrameData) {
+    func barcodeBatch(_ barcodeBatch: BarcodeBatch,
+                      didUpdate session: BarcodeBatchSession,
+                      frameData: FrameData) {
         let barcodes = session.trackedBarcodes.values.compactMap { $0.barcode }
         DispatchQueue.main.async { [weak self] in
             barcodes.forEach {

@@ -16,22 +16,32 @@ import ScanditIdCapture
 
 extension SettingsManager {
 
-    var supportedDocuments: IdDocumentType {
+    var acceptedDocuments: [IdCaptureDocument] {
         get {
-            idCaptureSettings.supportedDocuments
+            idCaptureSettings.acceptedDocuments
         }
         set {
-            idCaptureSettings.supportedDocuments = newValue
+            idCaptureSettings.acceptedDocuments = newValue
             configure()
         }
     }
 
-    var supportedSides: SupportedSides {
+    var rejectedDocuments: [IdCaptureDocument] {
         get {
-            idCaptureSettings.supportedSides
+            idCaptureSettings.rejectedDocuments
         }
         set {
-            idCaptureSettings.supportedSides = newValue
+            idCaptureSettings.rejectedDocuments = newValue
+            configure()
+        }
+    }
+
+    var scannerType: IdCaptureScanner {
+        get {
+            idCaptureSettings.scannerType
+        }
+        set {
+            idCaptureSettings.scannerType = newValue
             configure()
         }
     }
@@ -97,17 +107,6 @@ extension SettingsManager {
 
         set {
             idCaptureFeedback.idRejected = newValue
-            updateFeedback()
-        }
-    }
-
-    var idCaptureTimeoutFeedback: Feedback {
-        get {
-            idCaptureFeedback.idCaptureTimeout
-        }
-
-        set {
-            idCaptureFeedback.idCaptureTimeout = newValue
             updateFeedback()
         }
     }

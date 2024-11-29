@@ -19,16 +19,20 @@ import ScanditIdCapture
 
 class IdCaptureViewController: UIViewController {
 
-    enum Mode: String, CaseIterable {
-
+    private enum Mode: String, CaseIterable {
         case barcode = "Barcode"
         case mrz = "MRZ"
         case viz = "VIZ"
-
     }
 
     private enum Constants {
         static let modeCollectionHeight: CGFloat = 80
+
+        enum Message {
+            static let timeout = "Document capture failed. Make sure the document is well lit and free of glare. "
+                               + "Alternatively, try scanning another document"
+            static let rejected = "Document not supported. Try scanning another document"
+        }
     }
 
     private var context: DataCaptureContext!
@@ -116,13 +120,20 @@ class IdCaptureViewController: UIViewController {
         }
 
         let settings = IdCaptureSettings()
-        switch mode {
-        case .barcode:
-            configureBarcodeMode(settings: settings)
-        case .mrz:
-            configureMRZMode(settings: settings)
-        case .viz:
-            configureVIZMode(settings: settings)
+
+        // We are interested in Id Cards, Driver's Licenses and Passports from any region
+        settings.acceptedDocuments = [IdCard(region: .any),
+                                      DriverLicense(region: .any),
+                                      Passport(region: .any)]
+
+        // Single sided scanner with selected zone
+        settings.scannerType = SingleSideScanner(enablingBarcode: mode == .barcode,
+                                                 machineReadableZone: mode == .mrz,
+                                                 visualInspectionZone: mode == .viz)
+
+        // Visual Inspection Zone optionally returns a cropped portrait
+        if mode == .viz {
+            settings.resultShouldContainImage(true, for: .face)
         }
 
         idCapture = IdCapture(context: context, settings: settings)
@@ -130,40 +141,6 @@ class IdCaptureViewController: UIViewController {
 
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
         overlay.idLayoutStyle = .rounded
-    }
-
-    private func configureBarcodeMode(settings: IdCaptureSettings) {
-        settings.supportedDocuments = [
-            .aamvaBarcode,
-            .argentinaIdBarcode,
-            .colombiaIdBarcode,
-            .colombiaDlBarcode,
-            .southAfricaDLBarcode,
-            .southAfricaIdBarcode,
-            .ususIdBarcode
-        ]
-    }
-
-    private func configureVIZMode(settings: IdCaptureSettings) {
-        settings.supportedDocuments = [.dlVIZ, .idCardVIZ]
-        settings.resultShouldContainImage(true, for: .face)
-        settings.resultShouldContainImage(true, for: .idBack)
-        settings.resultShouldContainImage(true, for: .idFront)
-        settings.supportedSides = .frontAndBack
-    }
-
-    private func configureMRZMode(settings: IdCaptureSettings) {
-        settings.supportedDocuments = [
-            .visaMRZ,
-            .passportMRZ,
-            .idCardMRZ,
-            .swissDLMRZ,
-            .chinaExitEntryPermitMRZ,
-            .chinaMainlandTravelPermitMRZ,
-            .chinaOneWayPermitBackMRZ,
-            .chinaOneWayPermitFrontMRZ,
-            .apecBusinessTravelCardMRZ
-        ]
     }
 }
 
@@ -177,20 +154,8 @@ extension IdCaptureViewController: ModeCollectionViewControllerDelegate {
 
 extension IdCaptureViewController: IdCaptureListener {
 
-    func idCapture(_ idCapture: IdCapture, didCaptureIn session: IdCaptureSession, frameData: FrameData) {
-        guard let capturedId = session.newlyCapturedId else {
-            return
-        }
-
-        // Viz documents support multiple sides scanning.
-        // In case the back side is supported and not yet captured we don't display the result
-        if let vizResult = capturedId.vizResult,
-           vizResult.isBackSideCaptureSupported,
-           vizResult.capturedSides == .frontOnly {
-            return
-        }
-
-        // Pause the idCapture to not capture while showing the result.
+    func idCapture(_ idCapture: IdCapture, didCapture capturedId: CapturedId) {
+        // Pause IdCapture to disable capture whilst showing the result.
         idCapture.isEnabled = false
 
         // Show the result
@@ -199,27 +164,19 @@ extension IdCaptureViewController: IdCaptureListener {
         }
     }
 
-    func idCapture(_ idCapture: IdCapture, didRejectIn session: IdCaptureSession, frameData: FrameData) {
+    func idCapture(_ idCapture: IdCapture, didReject capturedId: CapturedId?, reason: RejectionReason) {
         // Implement to handle documents recognized in a frame, but rejected.
         // A document or its part is considered rejected when (a) it's valid, but not enabled in the settings,
         // (b) it's a barcode of a correct symbology or a Machine Readable Zone (MRZ),
         // but the data is encoded in an unexpected/incorrect format.
 
-        // Pause the idCapture to not capture while showing the result.
+        // Pause idCapture to disable capture whilst showing the result.
         idCapture.isEnabled = false
-        showAlert(message: "Document not supported", completion: {
-            // Resume the idCapture.
+        let message = reason == .timeout ? Constants.Message.timeout : Constants.Message.rejected
+        showAlert(message: message, completion: {
+            // Resume IdCapture.
             idCapture.isEnabled = true
         })
-    }
-
-    func idCapture(_ idCapture: IdCapture,
-                   didFailWithError error: Error,
-                   session: IdCaptureSession,
-                   frameData: FrameData) {
-
-        // Implement to handle an error encountered during the capture process.
-        // The error message can be retrieved from the Error localizedDescription.
     }
 
     func display(capturedId: CapturedId) {

@@ -15,21 +15,6 @@
 import UIKit
 import ScanditIdCapture
 
-private extension CapturedId {
-    var dateOfBirthString: String {
-        guard let date = dateOfBirth?.localDate else { return "" }
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter.string(from: date)
-    }
-
-    var isExpired: Bool? {
-        guard let expiryDate = dateOfExpiry?.localDate else { return nil }
-        return expiryDate < Date()
-    }
-}
-
 enum Section: Int, CaseIterable {
     case title
     case result
@@ -39,31 +24,43 @@ enum Section: Int, CaseIterable {
 
 enum Field: Int, CaseIterable {
     case fullName
-    case gender
-    case dateOfBirth
+    case sex
     case nationality
-    case issuingCountry
+    case dateOfBirth
+    case address
     case documentNumber
+    case documentAdditionalNumber
+    case dateOfExpiry
+    case issuingCountry
+    case dateOfIssue
 
     var title: String {
         switch self {
         case .fullName: return "FULL NAME"
-        case .gender: return "SEX / GENDER"
-        case .dateOfBirth: return "DATE OF BIRTH"
+        case .sex: return "SEX"
         case .nationality: return "NATIONALITY"
-        case .issuingCountry: return "ISSUING COUNTRY"
+        case .dateOfBirth: return "DATE OF BIRTH"
+        case .address: return "ADDRESS"
         case .documentNumber: return "DOCUMENT NUMBER"
+        case .documentAdditionalNumber: return "DOCUMENT ADDITIONAL NUMBER"
+        case .dateOfExpiry: return "DATE OF EXPIRY"
+        case .issuingCountry: return "ISSUING COUNTRY"
+        case .dateOfIssue: return "DATE OF ISSUE"
         }
     }
 
     func value(in capturedId: CapturedId) -> String {
         switch self {
         case .fullName: return capturedId.fullName
-        case .gender: return capturedId.sex ?? ""
-        case .dateOfBirth: return capturedId.dateOfBirthString
-        case .nationality: return capturedId.nationality ?? ""
-        case .issuingCountry: return capturedId.issuingCountry ?? ""
-        case .documentNumber: return capturedId.documentNumber ?? ""
+        case .sex: return capturedId.sex.valueOrNil
+        case .nationality: return capturedId.nationality.valueOrNil
+        case .dateOfBirth: return capturedId.dateOfBirth.valueOrNil
+        case .address: return capturedId.address.valueOrNil
+        case .documentNumber: return capturedId.documentNumber.valueOrNil
+        case .documentAdditionalNumber: return capturedId.documentAdditionalNumber.valueOrNil
+        case .dateOfExpiry: return capturedId.dateOfExpiry.valueOrNil
+        case .issuingCountry: return capturedId.issuingCountry.description
+        case .dateOfIssue: return capturedId.dateOfIssue.valueOrNil
         }
     }
 }
@@ -109,15 +106,6 @@ final class DLScanningResultViewController: UITableViewController {
     private func makeVerificationResults(_ result: DLScanningVerificationResult) -> [Result] {
         var results = [Result]()
         let status = result.status
-        guard status != .frontBackDoesNotMatch else {
-            results.append(Result(status: .error,
-                                  message: "Information on front and back does not match.",
-                                  image: result.image,
-                                  altText: result.altText))
-            return results
-        }
-
-        results.append(Result(status: .success, message: "Information on front and back matches."))
 
         guard status != .expired else {
             results.append(Result(status: .error, message: "Document has expired."))
@@ -149,7 +137,7 @@ extension DLScanningResultViewController /*: UITableViewDataSource */ {
         switch section {
         case .title: return 1
         case .result: return results.count
-        case .avatar: return capturedId!.idImage(of: .face) != nil ? 1 : 0
+        case .avatar: return capturedId?.images.face != nil ? 1 : 0
         case .fields: return Field.allCases.count
         }
     }
@@ -186,7 +174,7 @@ extension DLScanningResultViewController {
         indexPath: IndexPath,
         capturedId: CapturedId
     ) -> UITableViewCell {
-        guard let image = capturedId.idImage(of: .face) else { fatalError() }
+        guard let image = capturedId.images.face else { fatalError() }
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: AvatarTableViewCell.cellIdentifier,
             for: indexPath) as? AvatarTableViewCell else { fatalError() }

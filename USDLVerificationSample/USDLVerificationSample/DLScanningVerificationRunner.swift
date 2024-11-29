@@ -24,7 +24,6 @@ private extension CapturedId {
 
 struct DLScanningVerificationResult {
     enum Status {
-        case frontBackDoesNotMatch
         case expired
         case forged
         case likelyForged
@@ -48,29 +47,14 @@ final class DLScanningVerificationRunner {
     typealias Result = Swift.Result<DLScanningVerificationResult, Error>
 
     let barcodeVerifier: AamvaBarcodeVerifier
-    let vizBarcodeComparisonVerifier: AAMVAVizBarcodeComparisonVerifier
 
     init(_ context: DataCaptureContext) {
         self.barcodeVerifier = AamvaBarcodeVerifier(context: context)
-        self.vizBarcodeComparisonVerifier = AAMVAVizBarcodeComparisonVerifier(context: context)
     }
 
+    // This function is main entry point for this class.
     func verify(capturedId: CapturedId, _ completion: @escaping (Result) -> Void) {
-        // This function is main entry point for this class.
-
-        // We first check if the front and back scanning results match
-        let vizBarcodeComparisonResult = vizBarcodeComparisonVerifier.verify(capturedId)
-        guard vizBarcodeComparisonResult.checksPassed else {
-            let mismatchImage = vizBarcodeComparisonResult.frontMismatchImage
-            let showWarning = !vizBarcodeComparisonResult.mismatchHighlightingEnabled
-            let warningText = showWarning ? "Your license does not support highlighting discrepancies" : nil
-            completion(.success(DLScanningVerificationResult(status: .frontBackDoesNotMatch,
-                                                             image: mismatchImage,
-                                                             altText: warningText)))
-            return
-        }
-
-        // If the document is expired verification will fail. We return eagerly for this case as well.
+        // If the document is expired verification will fail, so we return early
         guard capturedId.isExpired == nil || !capturedId.isExpired! else {
             completion(.success(DLScanningVerificationResult(status: .expired)))
             return

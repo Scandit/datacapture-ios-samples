@@ -18,6 +18,8 @@ import ScanditCaptureCore
 protocol DataSourceDelegate: AnyObject {
     func didChangeData()
 
+    func didChangeData(at: [IndexPath])
+
     func getFloatWithUnit(title: String?, currentValue: FloatWithUnit, completion: @escaping (FloatWithUnit) -> Void)
 
     func presentChoice<Choice: CustomStringConvertible>(title: String?,
@@ -25,4 +27,6 @@ protocol DataSourceDelegate: AnyObject {
                                                         chosen: Choice,
                                                         didChooseValue: @escaping (Choice) -> Void)
     func presentTextEdit(title: String?, currentValue: String, completion: @escaping (String) -> Void)
+
+    func present(viewController: () -> UIViewController)
 }

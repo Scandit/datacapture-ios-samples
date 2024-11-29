@@ -29,6 +29,7 @@ class SettingsTableViewController: UITableViewController, DataSourceDelegate {
     func registerCells() {
         tableView.register(BasicCell.self)
         tableView.register(SwitchCell.self)
+        tableView.register(SubtitledSwitchCell.self)
         tableView.register(FloatInputCell.self)
         tableView.registerNib(SliderCell.self)
         tableView.register(TextEditCell.self)
@@ -65,6 +66,10 @@ class SettingsTableViewController: UITableViewController, DataSourceDelegate {
             cell.isOn = row.getValue!() as! Bool
         }
 
+        if let cell = cell as? SubtitledSwitchCell {
+            cell.detailTextLabel?.numberOfLines = 0
+        }
+
         if let cell = cell as? FloatInputCell {
             cell.delegate = self
             cell.value = row.getValue!() as! CGFloat
@@ -98,11 +103,15 @@ class SettingsTableViewController: UITableViewController, DataSourceDelegate {
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
-}
 
-extension SettingsTableViewController {
+    // MARK: - Data source delegate
+
     func didChangeData() {
         tableView.reloadData()
+    }
+
+    func didChangeData(at indexPaths: [IndexPath]) {
+        tableView.reloadRows(at: indexPaths, with: .automatic)
     }
 
     func getFloatWithUnit(title: String?, currentValue: FloatWithUnit, completion: @escaping (FloatWithUnit) -> Void) {
@@ -137,13 +146,18 @@ extension SettingsTableViewController {
         popup.addAction(saveAction)
         navigationController?.present(popup, animated: true)
     }
+
+    func present(viewController: () -> UIViewController) {
+        navigationController?.pushViewController(viewController(),
+                                                 animated: true)
+    }
 }
 
 extension SettingsTableViewController: SwitchCellDelegate {
     func didChange(value: Bool, forSwitchCell switchCell: SwitchCell) {
         let indexPath = tableView.indexPath(for: switchCell)!
         let row = dataSource.sections.row(forIndexPath: indexPath)
-        row.didChangeValue!(value)
+        row.didChangeValue!(value, row, indexPath)
     }
 }
 
@@ -151,7 +165,7 @@ extension SettingsTableViewController: FloatInputCellDelegate {
     func didChange(value: CGFloat, forCell cell: FloatInputCell) {
         let indexPath = tableView.indexPath(for: cell)!
         let row = dataSource.sections.row(forIndexPath: indexPath)
-        row.didChangeValue!(value)
+        row.didChangeValue!(value, row, indexPath)
     }
 }
 
@@ -159,7 +173,7 @@ extension SettingsTableViewController: TextEditCellDelegate {
     func didChange(value: String, forCell cell: TextEditCell) {
         let indexPath = tableView.indexPath(for: cell)!
         let row = dataSource.sections.row(forIndexPath: indexPath)
-        row.didChangeValue!(value)
+        row.didChangeValue!(value, row, indexPath)
     }
 }
 
@@ -167,6 +181,6 @@ extension SettingsTableViewController: SliderCellDelegate {
     func didChange(value: CGFloat, forCell cell: SliderCell) {
         let indexPath = tableView.indexPath(for: cell)!
         let row = dataSource.sections.row(forIndexPath: indexPath)
-        row.didChangeValue!(value)
+        row.didChangeValue!(value, row, indexPath)
     }
 }

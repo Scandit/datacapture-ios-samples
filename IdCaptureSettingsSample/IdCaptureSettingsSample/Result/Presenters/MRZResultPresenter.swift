@@ -20,14 +20,24 @@ class MRZResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     required init(capturedId: CapturedId) {
-        assert(capturedId.capturedResultTypes.contains(.mrzResult))
         guard let mrzResult = capturedId.mrzResult else { fatalError("Unexpected null MRZResult") }
         rows = [
             SimpleTextCellProvider(value: mrzResult.documentCode, title: "Document Code"),
             SimpleTextCellProvider(value: mrzResult.namesAreTruncated ? "Yes" : "No", title: "Names are Truncated"),
             SimpleTextCellProvider(value: mrzResult.optional.valueOrNil, title: "Optional"),
             SimpleTextCellProvider(value: mrzResult.optional1.valueOrNil, title: "Optional 1"),
-            SimpleTextCellProvider(value: mrzResult.capturedMrz, title: "Captured MRZ")
+            SimpleTextCellProvider(value: mrzResult.capturedMrz, title: "Captured MRZ"),
+            SimpleTextCellProvider(value: mrzResult.personalIdNumber.valueOrNil, title: "Personal ID Number"),
+            SimpleTextCellProvider(value: mrzResult.passportNumber.valueOrNil, title: "Passport Number"),
+            SimpleTextCellProvider(value: mrzResult.passportIssuerIso.valueOrNil, title: "Passport Issuer ISO"),
+            SimpleTextCellProvider(value: mrzResult.passportDateOfExpiry.valueOrNil, title: "Passport Date of Expiry"),
+            SimpleTextCellProvider(value: mrzResult.renewalTimes.valueOrNil, title: "Renewal Times"),
+            SimpleTextCellProvider(value: mrzResult.fullNameSimplifiedChinese.valueOrNil,
+                                   title: "Full Name Simplified Chinese"),
+            SimpleTextCellProvider(value: mrzResult.omittedCharacterCountInGbkName.valueOrNil,
+                                   title: "Omitted Character Count in GBK Name"),
+            SimpleTextCellProvider(value: mrzResult.omittedNameCount.valueOrNil, title: "Omitted Name Count"),
+            SimpleTextCellProvider(value: mrzResult.issuingAuthorityCode.valueOrNil, title: "Issuing Authority Code")
         ]
     }
 }

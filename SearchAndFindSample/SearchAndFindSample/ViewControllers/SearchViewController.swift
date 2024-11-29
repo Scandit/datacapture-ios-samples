@@ -158,7 +158,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-// MARK: - BarcodeTrackingListener
+// MARK: - BarcodeBatchListener
 
 extension SearchViewController: BarcodeCaptureListener {
     // This function is called whenever objects are updated and it's the right place to react to the tracking results.

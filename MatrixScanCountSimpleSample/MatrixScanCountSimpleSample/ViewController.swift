@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     private var barcodeCountView: BarcodeCountView!
     private var shouldCameraStandby = true
 
-    private var allRecognizedBarcodes: [TrackedBarcode] = []
+    private var allRecognizedBarcodes: [Barcode] = []
     private var previouslyScannedBarcodes: [Barcode] = []
 
     override func viewDidLoad() {
@@ -120,10 +120,10 @@ class ViewController: UIViewController {
     }
 
     /// Creates  an array of ScannedItem from TrackedBarcode so that it can be displayed by the ListViewController
-    private func prepareScannedItemsList(trackedBarcodes: [TrackedBarcode],
+    private func prepareScannedItemsList(trackedBarcodes: [Barcode],
                                          previousBarcodes: [Barcode]) -> [ScannedItem] {
         var tempMap: [String: ScannedItem] = [:]
-        var allBarcodes = trackedBarcodes.compactMap { $0.barcode }
+        var allBarcodes = trackedBarcodes
         allBarcodes.append(contentsOf: previousBarcodes)
         for barcode in allBarcodes {
             guard let barcodeData = barcode.data else {
@@ -157,10 +157,7 @@ class ViewController: UIViewController {
     }
 
     @objc func didEnterBackground() {
-        let currentlyTrackedBarcodes = allRecognizedBarcodes.compactMap({ trackedBarcode in
-            return trackedBarcode.barcode
-        })
-        previouslyScannedBarcodes.append(contentsOf: currentlyTrackedBarcodes)
+        previouslyScannedBarcodes.append(contentsOf: allRecognizedBarcodes)
         allRecognizedBarcodes.removeAll()
         barcodeCount.reset()
     }
@@ -182,7 +179,7 @@ extension ViewController: BarcodeCountListener {
                       didScanIn session: BarcodeCountSession,
                       frameData: FrameData) {
         // Gather all the recognized barcodes
-        let allRecognizedBarcodes = session.recognizedBarcodes.map({ $0.value })
+        let allRecognizedBarcodes = session.recognizedBarcodes
         // This method is invoked from a recognition internal thread.
         // Dispatch to the main thread to update the internal barcode list.
         DispatchQueue.main.async {

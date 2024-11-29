@@ -28,6 +28,8 @@ class BackOfEuropeanDrivingLicenseDataSource: DataSource {
             Row(title: "Back Of European Driving License",
                 kind: .switch,
                 getValue: { SettingsManager.current.decodeBackOfEuropeanDrivingLicense },
-                didChangeValue: { SettingsManager.current.decodeBackOfEuropeanDrivingLicense = $0 })])]
+                didChangeValue: { value, _, _ in
+                    SettingsManager.current.decodeBackOfEuropeanDrivingLicense = value
+                })])]
     }()
 }

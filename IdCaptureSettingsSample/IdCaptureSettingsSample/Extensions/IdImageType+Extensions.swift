@@ -14,7 +14,7 @@
 
 import ScanditIdCapture
 
-extension IdImageType: CustomStringConvertible, CaseIterable {
+extension ScanditIdCapture.IdImageType: Swift.CustomStringConvertible, Swift.CaseIterable {
     public var description: String {
         switch self {
         case .face:

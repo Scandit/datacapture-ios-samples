@@ -17,7 +17,6 @@ import ScanditIdCapture
 
 class IdCaptureViewController: UIViewController {
 
-    private var timedOut = false
     private lazy var context = DataCaptureContext.licensed
     private lazy var camera = Camera.default
     private lazy var captureView = DataCaptureView(context: context, frame: view.bounds)
@@ -34,6 +33,9 @@ class IdCaptureViewController: UIViewController {
         settings.scannerType = SingleSideScanner(enablingBarcode: true,
                                                  machineReadableZone: true,
                                                  visualInspectionZone: true)
+        settings.rejectExpiredIds = true
+        settings.rejectHolderBelowAge = 21
+
         return settings
     }()
 
@@ -100,33 +102,11 @@ class IdCaptureViewController: UIViewController {
         idCapture.isEnabled = false
     }
 
-    private func showManualInput() {
-        let identifier = "ManualDocumentInputTableTableViewController"
-        guard
-            let manualDocumentInputVC = storyboard?
-                .instantiateViewController(identifier: identifier)
-                as? ManualDocumentInputTableViewController else { return }
-        stopScanning()
-        manualDocumentInputVC.mainButtonTapped = {
-            self.navigationController?.popViewController(animated: true)
-        }
-        manualDocumentInputVC.secondaryButtonTapped = {
-            self.reset()
-        }
-
-        let navigationController = CompactNavigationController(rootViewController: manualDocumentInputVC)
-        let transitionManager = TransitionManager()
-        navigationController.transitioningDelegate = transitionManager
-        navigationController.transitionManager = transitionManager
-        navigationController.modalPresentationStyle = .overCurrentContext
-        present(navigationController, animated: true, completion: nil)
-    }
-
     private func showResultViewController(capturedId: CapturedId) {
         let state = DeliveryLogic.stateFor(capturedId)
         switch state {
         case .idRejected:
-            showRejectedResultViewController()
+            showRejectedResultViewController(state: .idRejected)
         default:
             showResultViewController(state: state) {
                 self.navigationController?.popViewController(animated: true)
@@ -136,25 +116,18 @@ class IdCaptureViewController: UIViewController {
         }
     }
 
-    private func showRejectedResultViewController() {
-        showResultViewController(state: .idRejected) {
+    private func showNonCompliantResultViewController(state: DeliveryLogic.State) {
+        showResultViewController(state: state) {
+            self.navigationController?.popViewController(animated: true)
+        } secondaryTapped: {
             self.reset()
         }
     }
 
-    private func showTimeoutResultViewController() {
+    private func showRejectedResultViewController(state: DeliveryLogic.State) {
         assert(Thread.isMainThread)
-        if !timedOut {
-            timedOut = true
-            showResultViewController(state: .timeout(final: false)) {
-                self.reset()
-            }
-        } else {
-            showResultViewController(state: .timeout(final: true)) {
-                self.reset()
-            } secondaryTapped: {
-                self.showManualInput()
-            }
+        showResultViewController(state: state) {
+            self.reset()
         }
     }
 
@@ -180,10 +153,14 @@ extension IdCaptureViewController: IdCaptureListener {
     func idCapture(_ idCapture: IdCapture, didReject capturedId: CapturedId?, reason rejectionReason: RejectionReason) {
         DispatchQueue.main.async {
             switch rejectionReason {
+            case .documentExpired:
+                self.showNonCompliantResultViewController(state: .expired)
+            case .holderUnderage:
+                self.showNonCompliantResultViewController(state: .underage)
             case .timeout:
-                self.showTimeoutResultViewController()
+                self.showRejectedResultViewController(state: .timeout)
             default:
-                self.showRejectedResultViewController()
+                self.showRejectedResultViewController(state: .idRejected)
             }
         }
     }

@@ -23,6 +23,16 @@ protocol ResultPresenter {
 }
 
 fileprivate extension ResultPresenter {
+    static func getImageRows(for capturedId: CapturedId) -> [CellProvider] {
+        return [
+            ImageCellProvider(image: capturedId.images.face, title: "Face Image"),
+            ImageCellProvider(image: capturedId.images.croppedDocument(for: .front), title: "Front Image"),
+            ImageCellProvider(image: capturedId.images.croppedDocument(for: .back), title: "Back Image"),
+            ImageCellProvider(image: capturedId.images.frame(for: .front), title: "Front Frame"),
+            ImageCellProvider(image: capturedId.images.frame(for: .back), title: "Back Frame")
+        ].filter { $0.image != nil }
+    }
+
     static func getCommonRows(for capturedId: CapturedId) -> [CellProvider] {
         return
             [SimpleTextCellProvider(value: capturedId.document?.documentType.description ?? "<nil>",
@@ -33,7 +43,7 @@ fileprivate extension ResultPresenter {
              SimpleTextCellProvider(value: capturedId.lastName.valueOrNil, title: "Last Name"),
              SimpleTextCellProvider(value: capturedId.secondaryLastName.valueOrNil, title: "Secondary Last Name"),
              SimpleTextCellProvider(value: capturedId.fullName, title: "Full Name"),
-             SimpleTextCellProvider(value: capturedId.sex.valueOrNil, title: "Sex"),
+             SimpleTextCellProvider(value: capturedId.sexType.description, title: "Sex"),
              SimpleTextCellProvider(value: capturedId.dateOfBirth.valueOrNil, title: "Date of Birth"),
              SimpleTextCellProvider(value: capturedId.age.valueOrNil, title: "Age"),
              SimpleTextCellProvider(value: capturedId.nationality.valueOrNil, title: "Nationality"),
@@ -55,11 +65,11 @@ struct CombinedResultPresenter: ResultPresenter {
     let rows: [CellProvider]
 
     init(capturedId: CapturedId) {
-        rows = Self.getCommonRows(for: capturedId)
+        rows = Self.getCommonRows(for: capturedId) + Self.getImageRows(for: capturedId)
     }
 
     init(capturedId: CapturedId, presenters: [ResultPresenter]) {
-        rows = Self.getCommonRows(for: capturedId) + presenters.flatMap({$0.rows})
+        rows = Self.getCommonRows(for: capturedId) + presenters.flatMap({$0.rows}) + Self.getImageRows(for: capturedId)
     }
 }
 

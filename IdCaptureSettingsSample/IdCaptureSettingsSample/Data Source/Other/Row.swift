@@ -82,7 +82,7 @@ extension Row {
 
     var accessory: UITableViewCell.AccessoryType {
         switch kind {
-        case .valueWithUnit, .choice:
+        case .valueWithUnit, .choice, .action:
             return .disclosureIndicator
         case .option:
             guard let value = getValue?() as? Bool else {
@@ -102,6 +102,8 @@ extension Row {
             }
             return "\(Row.defaultNumberFormatter.string(from: value.value)!) (\(value.unit))"
         case .choice:
+            return getValue?().valueString(roundedTo: 2)
+        case .action:
             return getValue?().valueString(roundedTo: 2)
         case .slider(_, _, let decimalPlaces):
             return getValue?().valueString(roundedTo: decimalPlaces)

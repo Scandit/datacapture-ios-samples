@@ -14,7 +14,7 @@
 
 import ScanditIdCapture
 
-extension IdLayoutStyle: CaseIterable, CustomStringConvertible {
+extension ScanditIdCapture.IdLayoutStyle: Swift.CaseIterable, Swift.CustomStringConvertible {
     public static var allCases: [IdLayoutStyle] {
         return [.rounded, .square]
     }

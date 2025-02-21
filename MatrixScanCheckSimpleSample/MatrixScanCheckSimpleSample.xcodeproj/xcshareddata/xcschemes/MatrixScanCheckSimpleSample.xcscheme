@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1620"
-   version = "1.3">
+   LastUpgradeVersion = "1600"
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -14,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-               BuildableName = "BarcodeSelectionSettingsSample.app"
-               BlueprintName = "BarcodeSelectionSettingsSample"
-               ReferencedContainer = "container:BarcodeSelectionSettingsSample.xcodeproj">
+               BlueprintIdentifier = "6FA0B28C219AE7B600FF780A"
+               BuildableName = "MatrixScanCheckSimpleSample.app"
+               BlueprintName = "MatrixScanCheckSimpleSample"
+               ReferencedContainer = "container:MatrixScanCheckSimpleSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,9 +27,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -44,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-            BuildableName = "BarcodeSelectionSettingsSample.app"
-            BlueprintName = "BarcodeSelectionSettingsSample"
-            ReferencedContainer = "container:BarcodeSelectionSettingsSample.xcodeproj">
+            BlueprintIdentifier = "6FA0B28C219AE7B600FF780A"
+            BuildableName = "MatrixScanCheckSimpleSample.app"
+            BlueprintName = "MatrixScanCheckSimpleSample"
+            ReferencedContainer = "container:MatrixScanCheckSimpleSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A2C45794253DD3450032DD4D"
-            BuildableName = "BarcodeSelectionSettingsSample.app"
-            BlueprintName = "BarcodeSelectionSettingsSample"
-            ReferencedContainer = "container:BarcodeSelectionSettingsSample.xcodeproj">
+            BlueprintIdentifier = "6FA0B28C219AE7B600FF780A"
+            BuildableName = "MatrixScanCheckSimpleSample.app"
+            BlueprintName = "MatrixScanCheckSimpleSample"
+            ReferencedContainer = "container:MatrixScanCheckSimpleSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

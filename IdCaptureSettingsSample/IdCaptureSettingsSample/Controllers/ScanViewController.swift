@@ -97,11 +97,29 @@ class ScanViewController: UIViewController {
             self.navigationController?.pushViewController(detail, animated: true)
         }
     }
+
+    private func showAlert(title: String? = nil, message: String? = nil, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title,
+                                          message: message,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                completion()
+            }))
+
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 extension ScanViewController: IdCaptureListener {
     func idCapture(_ idCapture: IdCapture, didReject capturedId: CapturedId?, reason rejectionReason: RejectionReason) {
-        // rejected callback
+        // Pause the idCapture to not capture while showing the result.
+        idCapture.isEnabled = false
+        showAlert(title: "Document rejected", message: rejectionReason.description, completion: {
+            // Resume the idCapture.
+            idCapture.isEnabled = true
+        })
     }
 
     func idCapture(_ idCapture: IdCapture, didCapture capturedId: CapturedId) {

@@ -17,14 +17,10 @@ import UIKit
 class StockOverlay: UIView {
 
     private enum Constants {
-        static let contentWidth: CGFloat = 234
-        static let contentHeight: CGFloat = 60
-        static let taskLogoWidth: CGFloat = 60
-        static let taskLogoHeight: CGFloat = 60
-        static let taskLabelToTaskLogoSpace: CGFloat = 7
-        static let taskLabelToContentEndSpace: CGFloat = 24
-        static let taskLabelToContentTopSpace: CGFloat = 13
-        static let taskLabelToContentBottomSpace: CGFloat = 12
+        static let contentWidth: CGFloat = 171
+        static let contentHeight: CGFloat = 56
+        static let taskLabelToContentHorizontalSpace: CGFloat = 16
+        static let taskLabelToContentVerticalSpace: CGFloat = 10
         static let taskLabelTextColor: UIColor = UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0)
         static let taskLogoBackgroundColor: UIColor = UIColor(red: 0.35, green: 0.84, blue: 0.78, alpha: 1.0)
     }
@@ -42,18 +38,12 @@ class StockOverlay: UIView {
         return view
     }()
 
-    private lazy var taskLogo: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.alpha = 1
-        imageView.layer.cornerRadius = Constants.taskLogoHeight / 2
-        return imageView
-    }()
-
     private lazy var taskLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = Constants.taskLabelTextColor
         label.backgroundColor = .clear
         label.numberOfLines = 2
+        label.textAlignment = .center
         label.attributedText = self.taskAttributedText
         return label
     }()
@@ -64,6 +54,7 @@ class StockOverlay: UIView {
         label.textColor = Constants.taskLabelTextColor
         label.backgroundColor = .clear
         label.numberOfLines = 1
+        label.textAlignment = .center
         label.isHidden = true
         label.text = self.model.barcodeData
         return label
@@ -89,7 +80,6 @@ class StockOverlay: UIView {
     private func setup() {
         addSubview(contentView)
         contentView.addSubview(effectView)
-        contentView.addSubview(taskLogo)
         contentView.addSubview(taskLabel)
         contentView.addSubview(barcodeLabel)
         update()
@@ -100,7 +90,6 @@ class StockOverlay: UIView {
         if shouldUpdateConstraints {
             contentView.translatesAutoresizingMaskIntoConstraints = false
             effectView.translatesAutoresizingMaskIntoConstraints = false
-            taskLogo.translatesAutoresizingMaskIntoConstraints = false
             taskLabel.translatesAutoresizingMaskIntoConstraints = false
             barcodeLabel.translatesAutoresizingMaskIntoConstraints = false
             addConstraints([
@@ -112,19 +101,14 @@ class StockOverlay: UIView {
                 contentView.topAnchor.constraint(equalTo: topAnchor),
                 contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-                taskLogo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                taskLogo.topAnchor.constraint(equalTo: contentView.topAnchor),
-                taskLogo.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-                taskLogo.widthAnchor.constraint(equalToConstant: Constants.taskLogoWidth),
-
-                taskLabel.leadingAnchor.constraint(equalTo: taskLogo.trailingAnchor,
-                                                   constant: Constants.taskLabelToTaskLogoSpace),
+                taskLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
+                                                   constant: Constants.taskLabelToContentHorizontalSpace),
                 taskLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
-                                               constant: Constants.taskLabelToContentTopSpace),
+                                               constant: Constants.taskLabelToContentVerticalSpace),
                 taskLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
-                                                    constant: -Constants.taskLabelToContentEndSpace),
+                                                    constant: -Constants.taskLabelToContentHorizontalSpace),
                 taskLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                                  constant: -Constants.taskLabelToContentBottomSpace),
+                                                  constant: -Constants.taskLabelToContentVerticalSpace),
 
                 barcodeLabel.centerYAnchor.constraint(equalTo: taskLabel.centerYAnchor),
                 barcodeLabel.leadingAnchor.constraint(equalTo: taskLabel.leadingAnchor),
@@ -143,8 +127,6 @@ class StockOverlay: UIView {
     }
 
     private func update() {
-        taskLogo.image = UIImage(named: "StockCount")
-        taskLogo.backgroundColor = Constants.taskLogoBackgroundColor
         taskLabel.attributedText = taskAttributedText
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleShowingBarcodeData))
         contentView.addGestureRecognizer(tapRecognizer)
@@ -163,9 +145,9 @@ class StockOverlay: UIView {
                                                          attributes: firstLineAttributes)
         attributedString.append(NSAttributedString(string: "\n"))
         let secondLineAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)
         ]
-        let secondLine = NSAttributedString(string: "Shelf: \(model.shelfCount), Back room: \(model.backroomCount)",
+        let secondLine = NSAttributedString(string: "Shelf: \(model.shelfCount) Back: \(model.backroomCount)",
                                             attributes: secondLineAttributes
         )
         attributedString.append(secondLine)

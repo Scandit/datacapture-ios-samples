@@ -83,8 +83,9 @@ final class DLScanningViewController: UIViewController {
         // We want to scan all zones and both sides
         idCaptureSettings.scannerType = FullDocumentScanner()
 
-        // We are requesting the capture result should contain face image.
+        // We are requesting the capture result should contain face and croppedDocument images.
         idCaptureSettings.resultShouldContainImage(true, for: .face)
+        idCaptureSettings.resultShouldContainImage(true, for: .croppedDocument)
 
         // Create new id capture mode with the chosen settings.
         idCapture = IdCapture(context: context, settings: idCaptureSettings)
@@ -130,32 +131,24 @@ extension DLScanningViewController: IdCaptureListener {
     }
 
     func handleCapturedId(_ capturedId: CapturedId) {
-        if let vizResult = capturedId.vizResult, vizResult.capturedSides == .frontOnly {
-            // when only front scanned do not display the result
-            // since we need to scan the back first
-            return
-        } else if let vizResult = capturedId.vizResult, vizResult.capturedSides == .frontAndBack {
-            handleCapturedIdResult(capturedId)
-        } else {
-            preconditionFailure("Unexpected captured id")
-        }
-    }
-
-    func handleCapturedIdResult(_ capturedId: CapturedId) {
-        hintView.isHidden = false
-        // When the front and back capture is completed, we are passing the captured id to VerificationRunner
-        // VerificationRunner will call back the closure passed in to let us know about the verification result
-        verificationRunner.verify(capturedId: capturedId) { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async { [weak self] in
-                self?.hintView.isHidden = true
-                switch result {
-                case .success(let success):
-                    self?.handleVerificationResult(capturedId, result: success)
-                case .failure(let failure): ()
-                    self?.handleVerificationError(failure)
+        if let vizResult = capturedId.vizResult, vizResult.capturedSides == .frontAndBack {
+            hintView.isHidden = false
+            // When the front and back capture is completed, we are passing the captured id to VerificationRunner
+            // VerificationRunner will call back the closure passed in to let us know about the verification result
+            verificationRunner.verify(capturedId: capturedId) { [weak self] result in
+                guard let self = self else { return }
+                DispatchQueue.main.async { [weak self] in
+                    self?.hintView.isHidden = true
+                    switch result {
+                    case .success(let success):
+                        self?.handleVerificationResult(capturedId, result: success)
+                    case .failure(let failure): ()
+                        self?.handleVerificationError(failure)
+                    }
                 }
             }
+        } else {
+            preconditionFailure("Unexpected captured id")
         }
     }
 

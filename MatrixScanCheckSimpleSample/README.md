@@ -1,9 +1,8 @@
-# Receiving Sample
+# MatrixScan Check Simple Sample
 
-This samples demonstrates the receiving use case with a combined application of SparkScan and MatrixScan Count (Barcode Count API) depending on the physical set-up.
+This sample demonstrates the pre-built MatrixScan Check component (BarcodeCheck API). It demonstrates how to highlight barcodes and display additional information over them using augmented reality.
 
-The pre-built SparkScan and MatrixScan Count components incorporate our best practices for usability and have been rigorously tested with target users in the receiving scenario.
-
+The MatrixScan Check UI incorporates our best practices for usability and has been rigorously tested with target users in real-world scenarios.
 
 ## Installation
 
@@ -12,21 +11,11 @@ The pre-built SparkScan and MatrixScan Count components incorporate our best pra
 - Replace the license key in the sample where you see `-- ENTER YOUR SCANDIT LICENSE KEY HERE --`.
 - Build and run this sample on your mobile device.
 
-## What is MatrixScan Count?
-
-MatrixScan Count is an out-of-the-box scan and count solution for counting and receiving multiple items at once, in which user interface (UI) elements and interactions are built into a workflow.
-
-![MSCount.png](https://github.com/Scandit/.github/blob/main/images/MSCount%20-%20iOS.png)
-
-## What is SparkScan?
-
-SparkScan is a camera-based solution for high-speed single scanning and scan-intensive workflows. It includes an out-of-the-box UI optimized for an efficient and frictionless worker experience.
-
-![SparkScan.png](https://github.com/Scandit/.github/blob/main/images/SparkScan%20-%20iOS.png)
-
 ## Documentation
 
-MatrixScan Count (Barcode Count) and SparkScan are APIs of the Scandit Data Capture SDK.  Our SDK is supported on most popular frameworks.
+MatrixScan Check (BarcodeCheck API) is a pre-built component of the Scandit Data Capture SDK.
+
+Our SDK is supported on most popular frameworks.
 
 [iOS](https://docs.scandit.com/data-capture-sdk/ios/index.html), [Android](https://docs.scandit.com/data-capture-sdk/android/index.html), [Web](https://docs.scandit.com/data-capture-sdk/web/index.html), [Cordova](https://docs.scandit.com/data-capture-sdk/cordova/index.html), Xamarin ([iOS](https://docs.scandit.com/data-capture-sdk/xamarin.ios/index.html), [Android](https://docs.scandit.com/data-capture-sdk/xamarin.android/index.html), [Forms](https://docs.scandit.com/data-capture-sdk/xamarin.forms/index.html)), .NET ([iOS](https://docs.scandit.com/data-capture-sdk/dotnet.ios/index.html), [Android](https://docs.scandit.com/data-capture-sdk/dotnet.android/index.html)), [React Native](https://docs.scandit.com/data-capture-sdk/react-native/index.html), [Flutter](https://docs.scandit.com/data-capture-sdk/flutter/index.html), [Capacitor](https://docs.scandit.com/data-capture-sdk/capacitor/index.html), [Titanium](https://docs.scandit.com/data-capture-sdk/titanium/index.html)
 
@@ -36,7 +25,7 @@ Once you get the sample up and running, go find some barcodes to scan. Don’t f
 
 ## Trial Signup
 
-To add MatrixScan Count to your app, sign up for your Scandit Developer Account  and get instant access to your license key: [https://ssl.scandit.com/dashboard/sign-up?p=test](https://ssl.scandit.com/dashboard/sign-up?p=test)
+To add MatrixScan Check to your app, sign up for your Scandit Developer Account  and get instant access to your license key: [https://ssl.scandit.com/dashboard/sign-up?p=test](https://ssl.scandit.com/dashboard/sign-up?p=test)
 
 ## Support
 

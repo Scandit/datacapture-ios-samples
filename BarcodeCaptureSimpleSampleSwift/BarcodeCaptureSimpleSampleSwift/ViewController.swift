@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     private var barcodeCapture: BarcodeCapture!
     private var captureView: DataCaptureView!
     private var overlay: BarcodeCaptureOverlay!
+    private let feedback = Feedback.default // Used when emitting feedback manually.
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +102,10 @@ class ViewController: UIViewController {
         // Create new barcode capture mode with the settings from above.
         barcodeCapture = BarcodeCapture(context: context, settings: settings)
 
+        // By default, every time a barcode is scanned, a sound (if not in silent mode) and a vibration are played.
+        // Uncomment the following line to set a success feedback without sound and vibration.
+//        barcodeCapture.feedback.success = Feedback(vibration: nil, sound: nil)
+
         // Register self as a listener to get informed whenever a new barcode got recognized.
         barcodeCapture.addListener(self)
 
@@ -137,14 +142,30 @@ extension ViewController: BarcodeCaptureListener {
             return
         }
 
+        // Use the following code to reject barcodes.
+        // By uncommenting the following lines, barcodes not starting with 09: are ignored.
+//        guard (barcode.data ?? "").hasPrefix("09:") else {
+//            // We temporarily change the brush, used to highlight recognized barcodes, to a transparent brush.
+//            self.overlay.brush = Brush.transparent
+//            return
+//        }
+        // Otherwise, if the barcode is of interest, we want to use a brush to highlight it.
+//        overlay.brush = Brush(fill: .clear, stroke: .white, strokeWidth: 3)
+        // We also want to emit a feedback (vibration and, if enabled, sound).
+        // By default, every time a barcode is scanned, a sound (if not in silent mode) and a vibration are played.
+        // To emit a feedback only when necessary, it is necessary to set a success feedback without sound and vibration
+        // when setting up Barcode Capture (in this case in the `setupRecognition` method).
+//        feedback.emit()
+
         // Stop recognizing barcodes for as long as we are displaying the result. There won't be any new results until
         // the capture mode is enabled again. Note that disabling the capture mode does not stop the camera, the camera
         // continues to stream frames until it is turned off.
         barcodeCapture.isEnabled = false
 
-        // If you are not disabling barcode capture here and want to continue scanning, consider setting the
-        // codeDuplicateFilter when creating the barcode capture settings to around 500 or even -1 if you do not want
-        // codes to be scanned more than once.
+        // If you don't want the codes to be scanned more than once, consider setting the
+        // codeDuplicateFilter when creating the barcode capture settings to -1.
+        // You can set any other value (e.g. 500) to set a fixed timeout and override the smart
+        // behaviour enabled by default.
 
         // Get the human readable name of the symbology and assemble the result to be shown.
         let symbology = SymbologyDescription(symbology: barcode.symbology).readableName

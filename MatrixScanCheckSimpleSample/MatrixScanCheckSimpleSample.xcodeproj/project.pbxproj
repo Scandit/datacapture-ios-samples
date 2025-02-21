@@ -3,18 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1AEE4DC9B187D052B24AC212 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 3C274A8B94FC2339104206F6 /* ScanditBarcodeCapture */; };
+		2208289C2D03587B006D1B2B /* DiscountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2208289B2D03587B006D1B2B /* DiscountProvider.swift */; };
+		41FA433696DD118A7BAFC801 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 8572489396362167B38D8910 /* ScanditBarcodeCapture */; };
 		65203C912577F829006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C902577F829006246C6 /* SampleCode.xcconfig */; };
 		6FA0B291219AE7B600FF780A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0B290219AE7B600FF780A /* AppDelegate.swift */; };
 		6FA0B293219AE7B600FF780A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0B292219AE7B600FF780A /* ViewController.swift */; };
 		6FA0B296219AE7B600FF780A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FA0B294219AE7B600FF780A /* Main.storyboard */; };
 		6FA0B298219AE7B800FF780A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FA0B297219AE7B800FF780A /* Assets.xcassets */; };
 		6FA0B29B219AE7B800FF780A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FA0B299219AE7B800FF780A /* LaunchScreen.storyboard */; };
-		CCAE42909CE0C935A8BC560B /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 265E4FCA800BB685867F94DC /* ScanditCaptureCore */; };
+		84644A4CBFE2D31C15B8197C /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 34D24919821D92A434999AA2 /* ScanditCaptureCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,8 +32,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2208289B2D03587B006D1B2B /* DiscountProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountProvider.swift; sourceTree = "<group>"; };
 		65203C902577F829006246C6 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
-		6FA0B28D219AE7B600FF780A /* BarcodeCaptureSimpleSampleSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarcodeCaptureSimpleSampleSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FA0B28D219AE7B600FF780A /* MatrixScanCheckSimpleSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatrixScanCheckSimpleSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FA0B290219AE7B600FF780A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FA0B292219AE7B600FF780A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6FA0B295219AE7B600FF780A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,8 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AEE4DC9B187D052B24AC212 /* ScanditBarcodeCapture in Frameworks */,
-				CCAE42909CE0C935A8BC560B /* ScanditCaptureCore in Frameworks */,
+				41FA433696DD118A7BAFC801 /* ScanditBarcodeCapture in Frameworks */,
+				84644A4CBFE2D31C15B8197C /* ScanditCaptureCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				65203C8F2577F829006246C6 /* Configuration */,
-				6FA0B28F219AE7B600FF780A /* BarcodeCaptureSimpleSampleSwift */,
+				6FA0B28F219AE7B600FF780A /* MatrixScanCheckSimpleSample */,
 				6FA0B2A2219AF55800FF780A /* Frameworks */,
 				6FA0B28E219AE7B600FF780A /* Products */,
 			);
@@ -76,22 +78,23 @@
 		6FA0B28E219AE7B600FF780A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6FA0B28D219AE7B600FF780A /* BarcodeCaptureSimpleSampleSwift.app */,
+				6FA0B28D219AE7B600FF780A /* MatrixScanCheckSimpleSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6FA0B28F219AE7B600FF780A /* BarcodeCaptureSimpleSampleSwift */ = {
+		6FA0B28F219AE7B600FF780A /* MatrixScanCheckSimpleSample */ = {
 			isa = PBXGroup;
 			children = (
 				6FA0B290219AE7B600FF780A /* AppDelegate.swift */,
 				6FA0B292219AE7B600FF780A /* ViewController.swift */,
+				2208289B2D03587B006D1B2B /* DiscountProvider.swift */,
 				6FA0B294219AE7B600FF780A /* Main.storyboard */,
 				6FA0B297219AE7B800FF780A /* Assets.xcassets */,
 				6FA0B299219AE7B800FF780A /* LaunchScreen.storyboard */,
 				6FA0B29C219AE7B800FF780A /* Info.plist */,
 			);
-			path = BarcodeCaptureSimpleSampleSwift;
+			path = MatrixScanCheckSimpleSample;
 			sourceTree = "<group>";
 		};
 		6FA0B2A2219AF55800FF780A /* Frameworks */ = {
@@ -104,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6FA0B28C219AE7B600FF780A /* BarcodeCaptureSimpleSampleSwift */ = {
+		6FA0B28C219AE7B600FF780A /* MatrixScanCheckSimpleSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FA0B29F219AE7B800FF780A /* Build configuration list for PBXNativeTarget "BarcodeCaptureSimpleSampleSwift" */;
+			buildConfigurationList = 6FA0B29F219AE7B800FF780A /* Build configuration list for PBXNativeTarget "MatrixScanCheckSimpleSample" */;
 			buildPhases = (
 				6FA0B289219AE7B600FF780A /* Sources */,
 				6FA0B28A219AE7B600FF780A /* Frameworks */,
@@ -117,13 +120,13 @@
 			);
 			dependencies = (
 			);
-			name = BarcodeCaptureSimpleSampleSwift;
+			name = MatrixScanCheckSimpleSample;
 			packageProductDependencies = (
-				3C274A8B94FC2339104206F6 /* ScanditBarcodeCapture */,
-				265E4FCA800BB685867F94DC /* ScanditCaptureCore */,
+				8572489396362167B38D8910 /* ScanditBarcodeCapture */,
+				34D24919821D92A434999AA2 /* ScanditCaptureCore */,
 			);
 			productName = SimpleSampleSwift;
-			productReference = 6FA0B28D219AE7B600FF780A /* BarcodeCaptureSimpleSampleSwift.app */;
+			productReference = 6FA0B28D219AE7B600FF780A /* MatrixScanCheckSimpleSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -143,7 +146,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6FA0B288219AE7B600FF780A /* Build configuration list for PBXProject "BarcodeCaptureSimpleSampleSwift" */;
+			buildConfigurationList = 6FA0B288219AE7B600FF780A /* Build configuration list for PBXProject "MatrixScanCheckSimpleSample" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -153,13 +156,13 @@
 			);
 			mainGroup = 6FA0B284219AE7B600FF780A;
 			packageReferences = (
-				F62F405889238EA497AF11E2 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				35D04D4DADCA52632284D8BD /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = 6FA0B28E219AE7B600FF780A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6FA0B28C219AE7B600FF780A /* BarcodeCaptureSimpleSampleSwift */,
+				6FA0B28C219AE7B600FF780A /* MatrixScanCheckSimpleSample */,
 			);
 		};
 /* End PBXProject section */
@@ -183,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2208289C2D03587B006D1B2B /* DiscountProvider.swift in Sources */,
 				6FA0B293219AE7B600FF780A /* ViewController.swift in Sources */,
 				6FA0B291219AE7B600FF780A /* AppDelegate.swift in Sources */,
 			);
@@ -344,13 +348,15 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/BarcodeCaptureSimpleSampleSwift/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanCheckSimpleSample/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MSCheck;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.simplesampleswift${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.matrixscanchecksimplesample--SAMPLE-CODE-DISAMBIGUATOR-";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.scandit.sdc.matrixscanchecksimplesample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -369,13 +375,15 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/BarcodeCaptureSimpleSampleSwift/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanCheckSimpleSample/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MSCheck;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.simplesampleswift${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.matrixscanchecksimplesample--SAMPLE-CODE-DISAMBIGUATOR-";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.scandit.sdc.matrixscanchecksimplesample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 5.0;
@@ -386,7 +394,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6FA0B288219AE7B600FF780A /* Build configuration list for PBXProject "BarcodeCaptureSimpleSampleSwift" */ = {
+		6FA0B288219AE7B600FF780A /* Build configuration list for PBXProject "MatrixScanCheckSimpleSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FA0B29D219AE7B800FF780A /* Debug */,
@@ -395,7 +403,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FA0B29F219AE7B800FF780A /* Build configuration list for PBXNativeTarget "BarcodeCaptureSimpleSampleSwift" */ = {
+		6FA0B29F219AE7B800FF780A /* Build configuration list for PBXNativeTarget "MatrixScanCheckSimpleSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FA0B2A0219AE7B800FF780A /* Debug */,
@@ -407,7 +415,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F62F405889238EA497AF11E2 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		35D04D4DADCA52632284D8BD /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
 			requirement = {
@@ -418,14 +426,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		265E4FCA800BB685867F94DC /* ScanditCaptureCore */ = {
+		34D24919821D92A434999AA2 /* ScanditCaptureCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F62F405889238EA497AF11E2 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = 35D04D4DADCA52632284D8BD /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditCaptureCore;
 		};
-		3C274A8B94FC2339104206F6 /* ScanditBarcodeCapture */ = {
+		8572489396362167B38D8910 /* ScanditBarcodeCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F62F405889238EA497AF11E2 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = 35D04D4DADCA52632284D8BD /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditBarcodeCapture;
 		};
 /* End XCSwiftPackageProductDependency section */

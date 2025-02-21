@@ -91,16 +91,6 @@ class VizResultPresenter: ResultPresenter {
                                                title: "Driver's License Details"))
         }
 
-        let image_rows = [
-            ImageCellProvider(image: capturedId.images.face, title: "Face Image"),
-            ImageCellProvider(image: capturedId.images.croppedDocument(for: .front), title: "Front Image"),
-            ImageCellProvider(image: capturedId.images.croppedDocument(for: .back), title: "Back Image"),
-            ImageCellProvider(image: capturedId.images.frame(for: .front), title: "Front Frame"),
-            ImageCellProvider(image: capturedId.images.frame(for: .back), title: "Back Frame")
-        ]
-
-        rows += image_rows
-
         self.rows = rows
     }
 }

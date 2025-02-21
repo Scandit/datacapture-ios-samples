@@ -78,9 +78,11 @@ extension Row {
     }
 
     static func action(title: String,
+                       getValue: @escaping (() -> Any?),
                        didSelect: ((Row, IndexPath) -> Void)? = nil) -> Row {
         return Row(title: title,
                    kind: .action,
+                   getValue: getValue,
                    didSelect: didSelect)
     }
 

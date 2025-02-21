@@ -14,7 +14,8 @@
 
 import ScanditCaptureCore
 
-extension FocusRange: CaseIterable, CustomStringConvertible, CustomDebugStringConvertible {
+extension ScanditCaptureCore.FocusRange: Swift.CaseIterable, Swift.CustomStringConvertible,
+                                            Swift.CustomDebugStringConvertible {
     public typealias AllCases = [FocusRange]
     public static var allCases: AllCases {
         return [.near, .far, .full]

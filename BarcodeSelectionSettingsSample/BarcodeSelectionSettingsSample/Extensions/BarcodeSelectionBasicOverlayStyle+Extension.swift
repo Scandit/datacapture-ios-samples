@@ -12,10 +12,9 @@
 // limitations under the License.
 //
 
-import Foundation
 import ScanditBarcodeCapture
 
-extension BarcodeSelectionBasicOverlayStyle: CaseIterable, CustomStringConvertible {
+extension ScanditBarcodeCapture.BarcodeSelectionBasicOverlayStyle: Swift.CaseIterable, Swift.CustomStringConvertible {
     public static var allCases: [BarcodeSelectionBasicOverlayStyle] = [.dot, .frame]
 
     public var description: String {

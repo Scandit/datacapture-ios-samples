@@ -14,7 +14,7 @@
 
 import ScanditIdCapture
 
-extension IdAnonymizationMode: CustomStringConvertible, CaseIterable {
+extension ScanditIdCapture.IdAnonymizationMode: Swift.CustomStringConvertible, Swift.CaseIterable {
     public var description: String {
         switch self {
         case .none:

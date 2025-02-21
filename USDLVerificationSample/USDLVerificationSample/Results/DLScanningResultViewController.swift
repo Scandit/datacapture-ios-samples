@@ -52,7 +52,7 @@ enum Field: Int, CaseIterable {
     func value(in capturedId: CapturedId) -> String {
         switch self {
         case .fullName: return capturedId.fullName
-        case .sex: return capturedId.sex.valueOrNil
+        case .sex: return capturedId.sexType.description
         case .nationality: return capturedId.nationality.valueOrNil
         case .dateOfBirth: return capturedId.dateOfBirth.valueOrNil
         case .address: return capturedId.address.valueOrNil
@@ -107,7 +107,17 @@ final class DLScanningResultViewController: UITableViewController {
         var results = [Result]()
         let status = result.status
 
-        guard status != .expired else {
+        if status == .frontBackDoesNotMatch {
+            results.append(Result(status: .error,
+                                  message: "Information on front and back does not match.",
+                                  image: result.image,
+                                  altText: result.altText))
+            return results
+        }
+
+        results.append(Result(status: .success, message: "Information on front and back matches."))
+
+        if status == .expired {
             results.append(Result(status: .error, message: "Document has expired."))
             return results
         }

@@ -14,7 +14,8 @@
 
 import ScanditCaptureCore
 
-extension MeasureUnit: CaseIterable, CustomStringConvertible, CustomDebugStringConvertible {
+extension ScanditCaptureCore.MeasureUnit: Swift.CaseIterable, Swift.CustomStringConvertible,
+                                            Swift.CustomDebugStringConvertible {
     public typealias AllCases = [MeasureUnit]
     public static var allCases: AllCases {
         return [.dip, .fraction, .pixel]

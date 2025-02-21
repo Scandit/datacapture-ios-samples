@@ -14,7 +14,7 @@
 
 import ScanditIdCapture
 
-extension TextHintPosition: CaseIterable, CustomStringConvertible {
+extension ScanditIdCapture.TextHintPosition: Swift.CaseIterable, Swift.CustomStringConvertible {
     public static var allCases: [TextHintPosition] {
         return [.aboveViewfinder, .belowViewfinder]
     }

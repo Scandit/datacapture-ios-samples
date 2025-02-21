@@ -14,7 +14,8 @@
 
 import ScanditCaptureCore
 
-extension Anchor: CaseIterable, CustomStringConvertible, CustomDebugStringConvertible {
+extension ScanditCaptureCore.Anchor: Swift.CaseIterable, Swift.CustomStringConvertible,
+                                        Swift.CustomDebugStringConvertible {
     public typealias AllCases = [Anchor]
     public static var allCases: AllCases {
         return [.topLeft, .topCenter, .topRight, .centerLeft, .center,

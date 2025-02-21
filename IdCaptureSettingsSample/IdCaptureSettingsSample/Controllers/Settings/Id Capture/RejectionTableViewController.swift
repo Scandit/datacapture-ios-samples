@@ -12,15 +12,11 @@
 // limitations under the License.
 //
 
-import ScanditIdCapture
-
-extension ScanditIdCapture.CapturedSides: Swift.CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .frontAndBack:
-            return "Front and Back"
-        case .frontOnly:
-            return "Front Only"
-        }
+class RejectionTableViewController: SettingsTableViewController {
+    override func setupDataSource() {
+        dataSource = RejectionDataSource(delegate: self)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 }

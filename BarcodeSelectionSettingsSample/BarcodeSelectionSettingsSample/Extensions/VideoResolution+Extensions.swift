@@ -14,7 +14,8 @@
 
 import ScanditCaptureCore
 
-extension VideoResolution: CaseIterable, CustomStringConvertible, CustomDebugStringConvertible {
+extension ScanditCaptureCore.VideoResolution: Swift.CaseIterable, Swift.CustomStringConvertible,
+                                                Swift.CustomDebugStringConvertible {
     public typealias AllCases = [VideoResolution]
     public static var allCases: AllCases {
         return [.hd, .fullHD, .uhd4k, .auto]

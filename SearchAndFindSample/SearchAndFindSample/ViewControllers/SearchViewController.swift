@@ -49,9 +49,8 @@ class SearchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        // Make sure barcode capture is the only mode associated with the context.
-        context.removeAllModes()
-        context.addMode(barcodeCapture)
+        // Make sure barcode capture associated with the context.
+        context.setMode(barcodeCapture)
         // Enable barcode capture to resume processing frames.
         barcodeCapture.isEnabled = true
         // Switch camera on to start streaming frames. The camera is started asynchronously and will take some time to

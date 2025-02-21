@@ -55,17 +55,10 @@ class DeliveryResultViewController: UIViewController {
         case .expired: configureExpiredDocument()
         case .success: configureSuccessfullDelivery()
         case .underage: configureUnderageDelivery()
-        case let .timeout(final): configureTimeOut(final: final)
+        case .timeout: configureTimeOut()
         case .idRejected: configureIdRejected()
         }
         emitFeedback(state: state)
-    }
-
-    func configureWith(expirationDate: Date, birthDate: Date) {
-        configureWith(
-            DeliveryLogic.stateFor(
-                expirationDate: expirationDate, birthDate: birthDate)
-        )
     }
 
     @IBAction func mainButtonAction(_ sender: Any) {
@@ -143,22 +136,15 @@ class DeliveryResultViewController: UIViewController {
         mainStackView.setNeedsLayout()
     }
 
-    private func configureTimeOut(final: Bool) {
+    private func configureTimeOut() {
         titleLabel.text = "Can’t scan?"
         deliveryStatusImage.image = #imageLiteral(resourceName: "error")
 
-        if final {
-            deliveryStatusLabel.text = "Enter data manually or try a different document."
-            mainButton.setAttributedTitle(NSAttributedString(string: "RETRY", attributes: titleAttributes),
-                                          for: .normal)
-            secondaryButton.setTitle("MANUAL ENTRY", for: .normal)
-        } else {
-            deliveryStatusLabel.text = "Try scanning the other side of the document or a different document."
-            mainButton.setAttributedTitle(NSAttributedString(string: "OK", attributes: titleAttributes),
-                                          for: .normal)
-            secondaryButton.isHidden = true
-            mainStackView.setNeedsLayout()
-        }
+        deliveryStatusLabel.text = "Try scanning the other side of the document or a different document."
+        mainButton.setAttributedTitle(NSAttributedString(string: "OK", attributes: titleAttributes),
+                                      for: .normal)
+        secondaryButton.isHidden = true
+        mainStackView.setNeedsLayout()
     }
 
     private func configureIdRejected() {

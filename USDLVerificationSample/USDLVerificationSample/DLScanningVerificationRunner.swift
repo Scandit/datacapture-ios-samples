@@ -24,6 +24,7 @@ private extension CapturedId {
 
 struct DLScanningVerificationResult {
     enum Status {
+        case frontBackDoesNotMatch
         case expired
         case forged
         case likelyForged
@@ -47,13 +48,26 @@ final class DLScanningVerificationRunner {
     typealias Result = Swift.Result<DLScanningVerificationResult, Error>
 
     let barcodeVerifier: AamvaBarcodeVerifier
+    let dataConsistencyVerifier: DataConsistencyVerifier
 
     init(_ context: DataCaptureContext) {
         self.barcodeVerifier = AamvaBarcodeVerifier(context: context)
+        self.dataConsistencyVerifier = DataConsistencyVerifier(context: context)
     }
 
     // This function is main entry point for this class.
     func verify(capturedId: CapturedId, _ completion: @escaping (Result) -> Void) {
+        // We first check if the front and back scanning results match
+        let dataConsistencyResult = dataConsistencyVerifier.verify(capturedId)
+        guard let dataConsistencyResult = dataConsistencyResult,
+                dataConsistencyResult.allChecksPassed else {
+            let frontReviewImage = dataConsistencyResult?.frontReviewImage
+            let warningText = frontReviewImage == nil ? "Your license does not support highlighting discrepancies" : nil
+            completion(.success(DLScanningVerificationResult(status: .frontBackDoesNotMatch,
+                                                             image: frontReviewImage, altText: warningText)))
+            return
+        }
+
         // If the document is expired verification will fail, so we return early
         guard capturedId.isExpired == nil || !capturedId.isExpired! else {
             completion(.success(DLScanningVerificationResult(status: .expired)))

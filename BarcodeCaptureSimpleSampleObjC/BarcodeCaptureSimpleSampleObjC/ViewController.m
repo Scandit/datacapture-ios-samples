@@ -38,6 +38,7 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
 @property (strong, nonatomic) SDCBarcodeCapture *barcodeCapture;
 @property (strong, nonatomic) SDCDataCaptureView *captureView;
 @property (strong, nonatomic) SDCBarcodeCaptureOverlay *overlay;
+@property (strong, nonatomic) SDCFeedback *feedback; // Used when emitting feedback manually.
 
 @end
 
@@ -117,6 +118,14 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
     self.barcodeCapture = [SDCBarcodeCapture barcodeCaptureWithContext:self.context
                                                               settings:settings];
 
+    // By default, every time a barcode is scanned, a sound (if not in silent mode) and a vibration
+    // are played.
+    // Uncomment the following line to set a success feedback without sound and vibration.
+    //    self.barcodeCapture.feedback.success = [[SDCFeedback alloc] initWithVibration:nil
+    //    sound:nil];
+    // Uncomment this line to set a feedback that can be triggered programmatically.
+    //    self.feedback = [SDCFeedback defaultFeedback];
+
     // Register self as a listener to get informed whenever a new barcode got recognized.
     [self.barcodeCapture addListener:self];
 
@@ -165,14 +174,35 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
         return;
     }
 
+    // Use the following code to reject barcodes.
+    // By uncommenting the following lines, barcodes not starting with 09: are ignored.
+    //    if (barcode.data && [barcode.data hasPrefix:@"09:"]) {
+    //        // We temporarily change the brush, used to highlight recognized barcodes, to a
+    // transparent brush.
+    //        self.overlay.brush = [SDCBrush transparentBrush];
+    //        return;
+    //    }
+    // Otherwise, if the barcode is of interest, we want to use a brush to highlight it.
+    //    self.overlay.brush = [[SDCBrush alloc] initWithFillColor:[UIColor clearColor]
+    //                                                 strokeColor:[UIColor whiteColor]
+    //                                                 strokeWidth:3];
+    // We also want to emit a feedback (vibration and, if enabled, sound).
+    // By default, every time a barcode is scanned, a sound (if not in silent mode) and a vibration
+    // are played.
+    // To emit a feedback only when necessary, it is necessary to set a success feedback without
+    // sound and vibration when setting up Barcode Capture (in this case in the `setupRecognition`
+    // method).
+    //    [self.feedback emit];
+
     // Stop recognizing barcodes for as long as we are displaying the result. There won't be any new
     // results until the capture mode is enabled again. Note that disabling the capture mode does
     // not stop the camera, the camera continues to stream frames until it is turned off.
     self.barcodeCapture.enabled = NO;
 
-    // If you are not disabling barcode capture here and want to continue scanning, consider
-    // setting the codeDuplicateFilter when creating the barcode capture settings to around 500
-    // or even -1 if you do not want codes to be scanned more than once.
+    // If you don't want the codes to be scanned more than once, consider setting the
+    // codeDuplicateFilter when creating the barcode capture settings to -1.
+    // You can set any other value (e.g. 500) to set a fixed timeout and override the smart
+    // behaviour enabled by default.
 
     // Get the human readable name of the symbology and assemble the result to be shown.
     NSString *symbology =

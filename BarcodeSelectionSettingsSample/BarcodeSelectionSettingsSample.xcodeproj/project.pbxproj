@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10AB422B85B8CEB7E36D8674 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 46854A22B610FE4FD084D9FD /* ScanditCaptureCore */; };
-		6159447C8017349ADF75C782 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 07BB43DE86FFF0678D2ABEC9 /* ScanditBarcodeCapture */; };
+		1AF44C4193FCC1E107666117 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3C15474FBB90B7282BA9A620 /* ScanditCaptureCore */; };
+		38344D399E682C815CF32731 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 81B94CB98304F8D43402CC16 /* ScanditBarcodeCapture */; };
 		65203C9A2577F8F5006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */; };
 		6561015B26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561015A26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift */; };
 		A22C489C2546E27A00176E29 /* UITableView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48972546E27700176E29 /* UITableView+Utils.swift */; };
@@ -18,9 +18,7 @@
 		A22C48A22546FD7600176E29 /* NumberFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48A12546FD7500176E29 /* NumberFormatter+Extensions.swift */; };
 		A22C48A42546FD9E00176E29 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48A32546FD9E00176E29 /* UITableViewCell+Extensions.swift */; };
 		A233E41C259DD55A0063AB20 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */; };
-		A23F2C612542CEA8006BC2A5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F2C602542CEA8006BC2A5 /* NavigationController.swift */; };
 		A23F2C632542D115006BC2A5 /* SettingsMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F2C622542D115006BC2A5 /* SettingsMainTableViewController.swift */; };
-		A242981A256E52D900532436 /* PointWithUnit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2429819256E52D900532436 /* PointWithUnit+Extensions.swift */; };
 		A26BB4BA25471B070088CCF9 /* CameraSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A26BB4B925471B070088CCF9 /* CameraSettings.storyboard */; };
 		A26BB4BC25471B9C0088CCF9 /* CameraTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4BB25471B9C0088CCF9 /* CameraTableViewController.swift */; };
 		A26BB4BE25471BF70088CCF9 /* CameraDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4BD25471BF70088CCF9 /* CameraDataSource.swift */; };
@@ -45,6 +43,7 @@
 		A26BB4ED254727C80088CCF9 /* FocusRange+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4EB254727C80088CCF9 /* FocusRange+Extensions.swift */; };
 		A26BB4EE254727C80088CCF9 /* VideoResolution+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4EC254727C80088CCF9 /* VideoResolution+Extensions.swift */; };
 		A26BB4F0254727DD0088CCF9 /* MeasureUnit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4EF254727DD0088CCF9 /* MeasureUnit+Extensions.swift */; };
+		A27736CA2D427872004F8755 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27736C92D427872004F8755 /* NavigationController.swift */; };
 		A2C45799253DD3450032DD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45798253DD3450032DD4D /* AppDelegate.swift */; };
 		A2C4579D253DD3450032DD4D /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4579C253DD3450032DD4D /* ScanViewController.swift */; };
 		A2C457A0253DD3450032DD4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C4579E253DD3450032DD4D /* Main.storyboard */; };
@@ -97,9 +96,7 @@
 		A22C48A12546FD7500176E29 /* NumberFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		A22C48A32546FD9E00176E29 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
-		A23F2C602542CEA8006BC2A5 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = ../../../BarcodeCaptureSettingsSample/BarcodeCaptureSettingsSample/Controllers/Other/NavigationController.swift; sourceTree = "<group>"; };
 		A23F2C622542D115006BC2A5 /* SettingsMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainTableViewController.swift; sourceTree = "<group>"; };
-		A2429819256E52D900532436 /* PointWithUnit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PointWithUnit+Extensions.swift"; sourceTree = "<group>"; };
 		A26BB4B925471B070088CCF9 /* CameraSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CameraSettings.storyboard; sourceTree = "<group>"; };
 		A26BB4BB25471B9C0088CCF9 /* CameraTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTableViewController.swift; sourceTree = "<group>"; };
 		A26BB4BD25471BF70088CCF9 /* CameraDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDataSource.swift; sourceTree = "<group>"; };
@@ -124,6 +121,7 @@
 		A26BB4EB254727C80088CCF9 /* FocusRange+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusRange+Extensions.swift"; sourceTree = "<group>"; };
 		A26BB4EC254727C80088CCF9 /* VideoResolution+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VideoResolution+Extensions.swift"; sourceTree = "<group>"; };
 		A26BB4EF254727DD0088CCF9 /* MeasureUnit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeasureUnit+Extensions.swift"; sourceTree = "<group>"; };
+		A27736C92D427872004F8755 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		A2C45795253DD3450032DD4D /* BarcodeSelectionSettingsSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarcodeSelectionSettingsSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C45798253DD3450032DD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2C4579C253DD3450032DD4D /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -160,8 +158,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6159447C8017349ADF75C782 /* ScanditBarcodeCapture in Frameworks */,
-				10AB422B85B8CEB7E36D8674 /* ScanditCaptureCore in Frameworks */,
+				38344D399E682C815CF32731 /* ScanditBarcodeCapture in Frameworks */,
+				1AF44C4193FCC1E107666117 /* ScanditCaptureCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +259,7 @@
 		A2C457B9253F127B0032DD4D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A23F2C602542CEA8006BC2A5 /* NavigationController.swift */,
+				A27736C92D427872004F8755 /* NavigationController.swift */,
 				A2C4579C253DD3450032DD4D /* ScanViewController.swift */,
 				A23F2C622542D115006BC2A5 /* SettingsMainTableViewController.swift */,
 				A26BB4D5254725E90088CCF9 /* SettingsViewController.swift */,
@@ -287,7 +285,6 @@
 				A26BB4E7254727180088CCF9 /* Set+Extensions.swift */,
 				A26BB4EB254727C80088CCF9 /* FocusRange+Extensions.swift */,
 				A26BB4EC254727C80088CCF9 /* VideoResolution+Extensions.swift */,
-				A2429819256E52D900532436 /* PointWithUnit+Extensions.swift */,
 				A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */,
 				6561015A26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift */,
 			);
@@ -362,8 +359,8 @@
 			);
 			name = BarcodeSelectionSettingsSample;
 			packageProductDependencies = (
-				07BB43DE86FFF0678D2ABEC9 /* ScanditBarcodeCapture */,
-				46854A22B610FE4FD084D9FD /* ScanditCaptureCore */,
+				81B94CB98304F8D43402CC16 /* ScanditBarcodeCapture */,
+				3C15474FBB90B7282BA9A620 /* ScanditCaptureCore */,
 			);
 			productName = BarcodeSelectionSettingsSample;
 			productReference = A2C45795253DD3450032DD4D /* BarcodeSelectionSettingsSample.app */;
@@ -375,8 +372,9 @@
 		A2C4578D253DD3450032DD4D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					A2C45794253DD3450032DD4D = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -394,7 +392,7 @@
 			);
 			mainGroup = A2C4578C253DD3450032DD4D;
 			packageReferences = (
-				35F0495A8F29D820E18CFC9A /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				F82245128D7BAB7B1F02CD99 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = A2C45796253DD3450032DD4D /* Products */;
 			projectDirPath = "";
@@ -434,7 +432,6 @@
 				A26BB4D1254725690088CCF9 /* SliderCell.swift in Sources */,
 				6561015B26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift in Sources */,
 				A26BB4EA254727A30088CCF9 /* Float+Extensions.swift in Sources */,
-				A242981A256E52D900532436 /* PointWithUnit+Extensions.swift in Sources */,
 				A2C8801A254ABC6D00F05009 /* PointOfInterestTableViewController.swift in Sources */,
 				A26BB4CE25471C970088CCF9 /* Row+Specializations.swift in Sources */,
 				A2D599A2253F2D280029A805 /* SettingsManager.swift in Sources */,
@@ -442,6 +439,7 @@
 				A26BB4D8254726380088CCF9 /* OptionalAny+Extension.swift in Sources */,
 				A2C8800E254AB81D00F05009 /* SingleBarcodeAutoDetectionTableViewController.swift in Sources */,
 				A22C48A22546FD7600176E29 /* NumberFormatter+Extensions.swift in Sources */,
+				A27736CA2D427872004F8755 /* NavigationController.swift in Sources */,
 				A2C457BC253F12C10032DD4D /* DataCaptureContext+Licensed.swift in Sources */,
 				A23F2C632542D115006BC2A5 /* SettingsMainTableViewController.swift in Sources */,
 				A2C4579D253DD3450032DD4D /* ScanViewController.swift in Sources */,
@@ -451,7 +449,6 @@
 				A26BB4E6254726EF0088CCF9 /* SymbologySettingsDataSource.swift in Sources */,
 				A2C8800825497CDF00F05009 /* DuplicateFilterDataSource.swift in Sources */,
 				A26BB4DC254726740088CCF9 /* FloatWithUnitChooserViewController.swift in Sources */,
-				A23F2C612542CEA8006BC2A5 /* NavigationController.swift in Sources */,
 				A26BB4CC25471C970088CCF9 /* Section.swift in Sources */,
 				A2C45799253DD3450032DD4D /* AppDelegate.swift in Sources */,
 				A233E41C259DD55A0063AB20 /* UIColor+Extensions.swift in Sources */,
@@ -546,6 +543,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -608,6 +606,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -707,26 +706,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		35F0495A8F29D820E18CFC9A /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		F82245128D7BAB7B1F02CD99 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 7.0.2;
+				minimumVersion = 7.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		07BB43DE86FFF0678D2ABEC9 /* ScanditBarcodeCapture */ = {
+		3C15474FBB90B7282BA9A620 /* ScanditCaptureCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 35F0495A8F29D820E18CFC9A /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditBarcodeCapture;
-		};
-		46854A22B610FE4FD084D9FD /* ScanditCaptureCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 35F0495A8F29D820E18CFC9A /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = F82245128D7BAB7B1F02CD99 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditCaptureCore;
+		};
+		81B94CB98304F8D43402CC16 /* ScanditBarcodeCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F82245128D7BAB7B1F02CD99 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditBarcodeCapture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -69,6 +69,68 @@ extension SettingsManager {
         }
     }
 
+    var rejectExpiredIds: Bool {
+        get {
+            return idCaptureSettings.rejectExpiredIds
+        }
+        set {
+            idCaptureSettings.rejectExpiredIds = newValue
+            configure()
+        }
+    }
+
+    var rejectNotRealIdCompliant: Bool {
+        get {
+            return idCaptureSettings.rejectNotRealIdCompliant
+        }
+        set {
+            idCaptureSettings.rejectNotRealIdCompliant = newValue
+            configure()
+        }
+    }
+
+    var rejectForgedAamvaBarcodes: Bool {
+        get {
+            return idCaptureSettings.rejectForgedAamvaBarcodes
+        }
+        set {
+            idCaptureSettings.rejectForgedAamvaBarcodes = newValue
+            configure()
+        }
+    }
+
+    var rejectInconsistentData: Bool {
+        get {
+            return idCaptureSettings.rejectInconsistentData
+        }
+        set {
+            idCaptureSettings.rejectInconsistentData = newValue
+            configure()
+        }
+    }
+
+    var rejectHolderBelowAge: NSNumber? {
+        get {
+            return idCaptureSettings.rejectHolderBelowAge
+        }
+        set {
+            idCaptureSettings.rejectHolderBelowAge = newValue
+            configure()
+        }
+    }
+
+    var rejectIdsExpiringInDays: NSNumber? {
+        get {
+            guard let days = idCaptureSettings.rejectIdsExpiringIn?.days else { return nil }
+            return NSNumber(value: days)
+        }
+        set {
+            idCaptureSettings.rejectIdsExpiringIn = newValue != nil ?
+                Duration(days: newValue!.intValue, months: 0, years: 0) : nil
+            configure()
+        }
+    }
+
     var rejectVoidedIds: Bool {
         get {
             return idCaptureSettings.rejectVoidedIds

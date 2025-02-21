@@ -131,9 +131,9 @@ class IdCaptureViewController: UIViewController {
                                                  machineReadableZone: mode == .mrz,
                                                  visualInspectionZone: mode == .viz)
 
-        // Visual Inspection Zone optionally returns a cropped portrait
+        // Visual Inspection Zone optionally returns a cropped document
         if mode == .viz {
-            settings.resultShouldContainImage(true, for: .face)
+            settings.resultShouldContainImage(true, for: .croppedDocument)
         }
 
         idCapture = IdCapture(context: context, settings: settings)

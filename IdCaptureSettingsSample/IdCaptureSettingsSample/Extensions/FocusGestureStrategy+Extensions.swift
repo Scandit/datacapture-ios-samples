@@ -14,7 +14,8 @@
 
 import ScanditCaptureCore
 
-extension FocusGestureStrategy: CaseIterable, CustomStringConvertible, CustomDebugStringConvertible {
+extension ScanditCaptureCore.FocusGestureStrategy: Swift.CaseIterable, Swift.CustomStringConvertible,
+                                                    Swift.CustomDebugStringConvertible {
     public typealias AllCases = [FocusGestureStrategy]
     public static var allCases: AllCases {
         return [.none, .manualUntilCapture, .autoOnLocation]

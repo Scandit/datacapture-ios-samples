@@ -160,7 +160,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Voided ID detection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hhb-cP-v41">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Rejection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hhb-cP-v41">
                                                     <rect key="frame" x="16" y="0.0" width="324.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -170,7 +170,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="OjY-JZ-p8u" kind="show" id="1OR-sd-49S"/>
+                                            <segue destination="OjY-JZ-p8u" kind="show" id="W3d-Tn-gQT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="11L-Up-TwP" style="IBUITableViewCellStyleDefault" id="bO4-nK-0uO">
@@ -420,10 +420,10 @@
             </objects>
             <point key="canvasLocation" x="2582" y="322"/>
         </scene>
-        <!--Voided ID Detection-->
+        <!--Rejection-->
         <scene sceneID="xCK-mn-mIB">
             <objects>
-                <tableViewController title="Voided ID Detection" id="OjY-JZ-p8u" userLabel="Voided ID Detection" customClass="VoidedIdDetectionTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Rejection" id="OjY-JZ-p8u" userLabel="Rejection" customClass="RejectionTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rnx-ng-yqK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -443,7 +443,7 @@
                             <outlet property="delegate" destination="OjY-JZ-p8u" id="F62-Sn-iRf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Voided ID Detection" id="Frw-eP-ULs" userLabel="Voided ID Detection"/>
+                    <navigationItem key="navigationItem" title="Rejection" id="Frw-eP-ULs" userLabel="Voided ID Detection"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sg1-fe-cip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -484,7 +484,7 @@
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

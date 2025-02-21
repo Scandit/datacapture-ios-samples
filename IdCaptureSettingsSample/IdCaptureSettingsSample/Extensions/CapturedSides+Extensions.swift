@@ -14,7 +14,7 @@
 
 import ScanditIdCapture
 
-extension CapturedSides: CustomStringConvertible, CaseIterable {
+extension ScanditIdCapture.CapturedSides: Swift.CustomStringConvertible, Swift.CaseIterable {
     public var description: String {
         switch self {
         case .frontOnly:

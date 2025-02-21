@@ -94,6 +94,10 @@ ID Scanning Samples demonstrate the features of the ID Capture API and demonstra
 
 **Inventory Audit Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/InventoryAuditSample))
 
+### MatrixScan Check Samples
+
+**MatrixScan Check Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanCheckSimpleSample))
+
 ## Samples on Other Frameworks
 
 Samples on other frameworks are located at [https://github.com/scandit](https://github.com/scandit).

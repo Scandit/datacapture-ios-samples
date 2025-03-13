@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023249429035F7DD95ADF7E8 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = BAAA4F4C96011728CB86012A /* ScanditBarcodeCapture */; };
 		65203C8E2577F7F8006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C8D2577F7F7006246C6 /* SampleCode.xcconfig */; };
+		69B544B09D8C0A4826E7E109 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = B7BF48AAB0787A4800611259 /* ScanditCaptureCore */; };
 		6F1DFF32219B153200716DF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1DFF31219B153200716DF1 /* AppDelegate.m */; };
 		6F1DFF35219B153200716DF1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1DFF34219B153200716DF1 /* ViewController.m */; };
 		6F1DFF38219B153200716DF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F1DFF36219B153200716DF1 /* Main.storyboard */; };
 		6F1DFF3A219B153400716DF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F1DFF39219B153400716DF1 /* Assets.xcassets */; };
 		6F1DFF3D219B153400716DF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F1DFF3B219B153400716DF1 /* LaunchScreen.storyboard */; };
 		6F1DFF40219B153400716DF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1DFF3F219B153400716DF1 /* main.m */; };
-		F2EC49418F0486413F821E11 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = DB97457F9A12A10EC9068DD8 /* ScanditBarcodeCapture */; };
-		FA8A4B83AD8AE8149B1A530C /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6341228806B39A8394C50A /* ScanditCaptureCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,8 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2EC49418F0486413F821E11 /* ScanditBarcodeCapture in Frameworks */,
-				FA8A4B83AD8AE8149B1A530C /* ScanditCaptureCore in Frameworks */,
+				023249429035F7DD95ADF7E8 /* ScanditBarcodeCapture in Frameworks */,
+				69B544B09D8C0A4826E7E109 /* ScanditCaptureCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +126,8 @@
 			);
 			name = BarcodeCaptureSimpleSampleObjC;
 			packageProductDependencies = (
-				DB97457F9A12A10EC9068DD8 /* ScanditBarcodeCapture */,
-				7E6341228806B39A8394C50A /* ScanditCaptureCore */,
+				BAAA4F4C96011728CB86012A /* ScanditBarcodeCapture */,
+				B7BF48AAB0787A4800611259 /* ScanditCaptureCore */,
 			);
 			productName = SimpleSampleObjC;
 			productReference = 6F1DFF2D219B153200716DF1 /* BarcodeCaptureSimpleSampleObjC.app */;
@@ -157,7 +157,7 @@
 			);
 			mainGroup = 6F1DFF24219B153200716DF1;
 			packageReferences = (
-				9EA74A59A3A14D53BC66A229 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				37BF4598A2D69E4ADA7428DE /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = 6F1DFF2E219B153200716DF1 /* Products */;
 			projectDirPath = "";
@@ -399,25 +399,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9EA74A59A3A14D53BC66A229 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		37BF4598A2D69E4ADA7428DE /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 7.1.1;
+				minimumVersion = 7.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7E6341228806B39A8394C50A /* ScanditCaptureCore */ = {
+		B7BF48AAB0787A4800611259 /* ScanditCaptureCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9EA74A59A3A14D53BC66A229 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = 37BF4598A2D69E4ADA7428DE /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditCaptureCore;
 		};
-		DB97457F9A12A10EC9068DD8 /* ScanditBarcodeCapture */ = {
+		BAAA4F4C96011728CB86012A /* ScanditBarcodeCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9EA74A59A3A14D53BC66A229 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = 37BF4598A2D69E4ADA7428DE /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditBarcodeCapture;
 		};
 /* End XCSwiftPackageProductDependency section */

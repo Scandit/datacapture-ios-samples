@@ -115,8 +115,8 @@ class BarcodeCountViewController: UIViewController {
         barcodeCountView.uiDelegate = self
         // Use single scan button to go back to SparkScan
         barcodeCountView.shouldShowSingleScanButton = true
-        // Show the button to enable status mode
-        barcodeCountView.shouldShowStatusModeButton = true
+        // Enable status mode on scan
+        barcodeCountView.shouldShowStatusIconsOnScan = true
 
         // Register self as status provider
         barcodeCountView.setStatusProvider(self)
@@ -202,12 +202,12 @@ extension BarcodeCountViewController: BarcodeCountStatusProvider {
         // Add a delay to simulate fetching the data
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             // If we have infomration that the item is expired add a BarcodeCountStatusItem
-            // with status .expired to the result.
+            // with status .expired to the result. Otherwise return status .none.
             let items: [BarcodeCountStatusItem] = barcodeInstances.compactMap { barcode in
                 if let item = self.itemsTableViewModel?.itemForBarcode(barcode: barcode.barcode), item.isExpired {
                     return BarcodeCountStatusItem(barcode: barcode, status: .expired)
                 }
-                return nil
+                return BarcodeCountStatusItem(barcode: barcode, status: .none)
             }
             let result  = BarcodeCountStatusSuccessResult(
                 statusList: items,

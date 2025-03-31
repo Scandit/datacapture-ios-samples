@@ -42,6 +42,13 @@ class VizResultPresenter: ResultPresenter {
                                    title: "VIZ Secondary Last Name"),
             SimpleTextCellProvider(value: vizResult.fullName,
                                    title: "VIZ Full Name"),
+            SimpleTextCellProvider(value: vizResult.sex.valueOrNil, title: "VIZ Sex"),
+            SimpleTextCellProvider(value: vizResult.dateOfBirth.valueOrNil, title: "VIZ Date of Birth"),
+            SimpleTextCellProvider(value: vizResult.nationality.valueOrNil, title: "VIZ Nationality"),
+            SimpleTextCellProvider(value: vizResult.address.valueOrNil, title: "VIZ Address"),
+            SimpleTextCellProvider(value: vizResult.documentNumber.valueOrNil, title: "VIZ Document Number"),
+            SimpleTextCellProvider(value: vizResult.dateOfExpiry.valueOrNil, title: "VIZ Date of Expiry"),
+            SimpleTextCellProvider(value: vizResult.dateOfIssue.valueOrNil, title: "VIZ Date of Issue"),
             SimpleTextCellProvider(value: vizResult.additionalNameInformation.valueOrNil,
                                    title: "Additional Name Information"),
             SimpleTextCellProvider(value: vizResult.additionalAddressInformation.valueOrNil,
@@ -66,7 +73,8 @@ class VizResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: vizResult.isBackSideCaptureSupported ? "Yes" : "No",
                                    title: "Backside Supported"),
             SimpleTextCellProvider(value: vizResult.visaNumber.valueOrNil, title: "Visa Number"),
-            SimpleTextCellProvider(value: vizResult.passportNumber.valueOrNil, title: "Passport Number")
+            SimpleTextCellProvider(value: vizResult.passportNumber.valueOrNil, title: "Passport Number"),
+            SimpleTextCellProvider(value: vizResult.vehicleOwner.valueOrNil, title: "Vehicle Owner")
         ]
 
         if let drivingLicenseDetails = vizResult.drivingLicenseDetails,
@@ -76,10 +84,10 @@ class VizResultPresenter: ResultPresenter {
             if drivingLicenseDetails.drivingLicenseCategories.isEmpty {
                 dlDetailsString.append("<nil>\n")
             } else {
-                let dlCategories = drivingLicenseDetails.drivingLicenseCategories.enumerated().map {
-                    "Code: \($1.code)\n" +
-                    "Date Of Issue: \($1.dateOfIssue.valueOrNil)\n" +
-                    "Date Of Expiry: \($1.dateOfExpiry.valueOrNil)"
+                let dlCategories = drivingLicenseDetails.drivingLicenseCategories.map {
+                    "Code: \($0.code)\n" +
+                    "Date Of Issue: \($0.dateOfIssue.valueOrNil)\n" +
+                    "Date Of Expiry: \($0.dateOfExpiry.valueOrNil)"
                 }.joined(separator: "\n\n")
                 dlDetailsString.append(dlCategories)
             }

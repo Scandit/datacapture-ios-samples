@@ -96,7 +96,6 @@ class ScanViewController: UIViewController {
         // preview. This is optional, but recommended for better visual feedback. The overlay is automatically added
         // to the view.
         overlay = BarcodeBatchBasicOverlay(barcodeBatch: barcodeBatch, view: captureView, style: .dot)
-        overlay.delegate = self
 
         // Add another Barcode Batch overlay to the data capture view to render other views. The overlay is
         // automatically added to the view.
@@ -180,17 +179,6 @@ extension ScanViewController: BarcodeBatchListener {
             }
         }
     }
-}
-
-// MARK: - BarcodeBatchBasicOverlayDelegate
-
-extension ScanViewController: BarcodeBatchBasicOverlayDelegate {
-    func barcodeBatchBasicOverlay(_ overlay: BarcodeBatchBasicOverlay,
-                                  brushFor trackedBarcode: TrackedBarcode) -> Brush? {
-        return Brush.highlighted
-    }
-
-    func barcodeBatchBasicOverlay(_ overlay: BarcodeBatchBasicOverlay, didTap trackedBarcode: TrackedBarcode) {}
 }
 
 // MARK: - BarcodeBatchAdvancedOverlayDelegate

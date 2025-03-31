@@ -157,18 +157,15 @@ fileprivate extension Brush {
         guard let brushBorderColor = UIColor(sdcHexString: "#FA4446FF") else {
             return .transparent
         }
-        return Brush(fill: defaultBrush.fillColor,
+        return Brush(fill: .clear,
                      stroke: brushBorderColor,
                      strokeWidth: defaultBrush.strokeWidth)
     }()
 
     static let accepted: Brush = {
         let defaultBrush = BarcodeBatchBasicOverlay.defaultBrush(forStyle: .frame)
-        guard let brushBorderColor = UIColor(sdcHexString: "#26D381FF") else {
-            return .transparent
-        }
         return Brush(fill: defaultBrush.fillColor,
-                     stroke: brushBorderColor,
+                     stroke: defaultBrush.strokeColor,
                      strokeWidth: defaultBrush.strokeWidth)
     }()
 }

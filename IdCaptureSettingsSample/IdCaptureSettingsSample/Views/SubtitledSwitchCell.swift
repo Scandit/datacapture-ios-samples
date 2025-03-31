@@ -22,4 +22,13 @@ class SubtitledSwitchCell: SwitchCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override var accessibilityIdentifier: String? {
+        get {
+            return textLabel?.text ?? super.accessibilityIdentifier
+        }
+        set {
+            super.accessibilityIdentifier = newValue
+        }
+    }
 }

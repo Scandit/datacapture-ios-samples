@@ -12,11 +12,15 @@
 // limitations under the License.
 //
 
-import ScanditCaptureCore
-import ScanditBarcodeCapture
+import UIKit
 
-extension Brush {
-    static var highlighted: Brush {
-        return Brush(fill: .white, stroke: .white, strokeWidth: 2)
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        return true
     }
 }

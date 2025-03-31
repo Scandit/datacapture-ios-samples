@@ -22,6 +22,16 @@ class MRZResultPresenter: ResultPresenter {
     required init(capturedId: CapturedId) {
         guard let mrzResult = capturedId.mrzResult else { fatalError("Unexpected null MRZResult") }
         rows = [
+            SimpleTextCellProvider(value: mrzResult.firstName.valueOrNil, title: "MRZ First Name"),
+            SimpleTextCellProvider(value: mrzResult.lastName.valueOrNil, title: "MRZ Last Name"),
+            SimpleTextCellProvider(value: mrzResult.fullName, title: "MRZ Full Name"),
+            SimpleTextCellProvider(value: mrzResult.sex.valueOrNil, title: "MRZ Sex"),
+            SimpleTextCellProvider(value: mrzResult.dateOfBirth.valueOrNil, title: "MRZ Date of Birth"),
+            SimpleTextCellProvider(value: mrzResult.nationality.valueOrNil, title: "MRZ Nationality"),
+            SimpleTextCellProvider(value: mrzResult.address.valueOrNil, title: "MRZ Address"),
+            SimpleTextCellProvider(value: mrzResult.documentNumber.valueOrNil, title: "MRZ Document Number"),
+            SimpleTextCellProvider(value: mrzResult.dateOfExpiry.valueOrNil, title: "MRZ Date of Expiry"),
+            SimpleTextCellProvider(value: mrzResult.dateOfIssue.valueOrNil, title: "MRZ Date of Issue"),
             SimpleTextCellProvider(value: mrzResult.documentCode, title: "Document Code"),
             SimpleTextCellProvider(value: mrzResult.namesAreTruncated ? "Yes" : "No", title: "Names are Truncated"),
             SimpleTextCellProvider(value: mrzResult.optional.valueOrNil, title: "Optional"),

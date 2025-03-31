@@ -25,6 +25,16 @@ class BarcodeResultPresenter: ResultPresenter {
         }
         var rows = [
             SimpleTextCellProvider(value: "\(barcode.aamvaVersion.valueOrNil)", title: "AAMVA Version"),
+            SimpleTextCellProvider(value: barcode.firstName.valueOrNil, title: "Barcode First Name"),
+            SimpleTextCellProvider(value: barcode.lastName.valueOrNil, title: "Barcode Last Name"),
+            SimpleTextCellProvider(value: barcode.fullName, title: "Barcode Full Name"),
+            SimpleTextCellProvider(value: barcode.sex.valueOrNil, title: "Barcode Sex"),
+            SimpleTextCellProvider(value: barcode.dateOfBirth.valueOrNil, title: "Barcode Date of Birth"),
+            SimpleTextCellProvider(value: barcode.nationality.valueOrNil, title: "Barcode Nationality"),
+            SimpleTextCellProvider(value: barcode.address.valueOrNil, title: "Barcode Address"),
+            SimpleTextCellProvider(value: barcode.documentNumber.valueOrNil, title: "Barcode Document Number"),
+            SimpleTextCellProvider(value: barcode.dateOfExpiry.valueOrNil, title: "Barcode Date of Expiry"),
+            SimpleTextCellProvider(value: barcode.dateOfIssue.valueOrNil, title: "Barcode Date of Issue"),
             SimpleTextCellProvider(value: barcode.aliasFamilyName.valueOrNil, title: "Alias Family Name"),
             SimpleTextCellProvider(value: barcode.aliasGivenName.valueOrNil, title: "Alias Given Name"),
             SimpleTextCellProvider(value: barcode.aliasSuffixName.valueOrNil, title: "Alias Suffix Name"),

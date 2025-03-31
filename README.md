@@ -28,6 +28,8 @@ MatrixScan Count is an out-of-the-box scan and count solution for counting and r
 
 **Expiry Management Sample** ([iOS](Scandit%20iOS%20Samples%202246395c6e4146458347ebb7a7f5624f.md))
 
+**MatrixScan Count Tote Mapping Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanCountToteMappingSample))
+
 ### Seach for Barcodes (**MatrixScan Find)**
 
 MatrixScan Find is a pre-built component that uses AR overlays to highlight items that match predefined criteria.

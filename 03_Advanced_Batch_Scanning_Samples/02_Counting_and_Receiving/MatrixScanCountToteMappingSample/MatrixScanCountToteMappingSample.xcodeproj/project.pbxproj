@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		225C32C82D68A8F9003AF554 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C32C72D68A8F9003AF554 /* ViewController.swift */; };
+		225C32C92D68A8F9003AF554 /* BarcodeGridEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C32C62D68A8F9003AF554 /* BarcodeGridEditorViewController.swift */; };
+		302F023D286AF6AA001F651F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302F023C286AF6AA001F651F /* AppDelegate.swift */; };
+		302F0244286AF6AA001F651F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302F0242286AF6AA001F651F /* Main.storyboard */; };
+		302F0246286AF6AB001F651F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302F0245286AF6AB001F651F /* Assets.xcassets */; };
+		302F0249286AF6AB001F651F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 302F0247286AF6AB001F651F /* LaunchScreen.storyboard */; };
+		30FC46F9286B1A35007A38BC /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 30FC46F8286B19BC007A38BC /* SampleCode.xcconfig */; };
+		7B804E4B93786DF41EE46CD5 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 346A4502B1E4AC808D5E340F /* ScanditCaptureCore */; };
+		8EA440E1AE15105B2B6564B1 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 772746ADA14A5A8C9AA158DA /* ScanditBarcodeCapture */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		30FC4701286B1B76007A38BC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		225C32C62D68A8F9003AF554 /* BarcodeGridEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeGridEditorViewController.swift; sourceTree = "<group>"; };
+		225C32C72D68A8F9003AF554 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		302F0239286AF6AA001F651F /* MatrixScanCountToteMappingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatrixScanCountToteMappingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		302F023C286AF6AA001F651F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		302F0243286AF6AA001F651F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		302F0245286AF6AB001F651F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		302F0248286AF6AB001F651F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		302F024A286AF6AB001F651F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30FC46F8286B19BC007A38BC /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		302F0236286AF6AA001F651F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B804E4B93786DF41EE46CD5 /* ScanditCaptureCore in Frameworks */,
+				8EA440E1AE15105B2B6564B1 /* ScanditBarcodeCapture in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		302F0230286AF6AA001F651F = {
+			isa = PBXGroup;
+			children = (
+				30FC46F7286B1991007A38BC /* Configuration */,
+				302F023B286AF6AA001F651F /* MatrixScanCountToteMappingSample */,
+				30FC46FA286B1B0C007A38BC /* Frameworks */,
+				302F023A286AF6AA001F651F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		302F023A286AF6AA001F651F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				302F0239286AF6AA001F651F /* MatrixScanCountToteMappingSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		302F023B286AF6AA001F651F /* MatrixScanCountToteMappingSample */ = {
+			isa = PBXGroup;
+			children = (
+				302F023C286AF6AA001F651F /* AppDelegate.swift */,
+				225C32C72D68A8F9003AF554 /* ViewController.swift */,
+				225C32C62D68A8F9003AF554 /* BarcodeGridEditorViewController.swift */,
+				302F0242286AF6AA001F651F /* Main.storyboard */,
+				302F0245286AF6AB001F651F /* Assets.xcassets */,
+				302F0247286AF6AB001F651F /* LaunchScreen.storyboard */,
+				302F024A286AF6AB001F651F /* Info.plist */,
+			);
+			path = MatrixScanCountToteMappingSample;
+			sourceTree = "<group>";
+		};
+		30FC46F7286B1991007A38BC /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				30FC46F8286B19BC007A38BC /* SampleCode.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		30FC46FA286B1B0C007A38BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		302F0238286AF6AA001F651F /* MatrixScanCountToteMappingSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 302F024D286AF6AB001F651F /* Build configuration list for PBXNativeTarget "MatrixScanCountToteMappingSample" */;
+			buildPhases = (
+				302F0235286AF6AA001F651F /* Sources */,
+				302F0236286AF6AA001F651F /* Frameworks */,
+				302F0237286AF6AA001F651F /* Resources */,
+				30FC4701286B1B76007A38BC /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MatrixScanCountToteMappingSample;
+			packageProductDependencies = (
+				346A4502B1E4AC808D5E340F /* ScanditCaptureCore */,
+				772746ADA14A5A8C9AA158DA /* ScanditBarcodeCapture */,
+			);
+			productName = ReceivingSample;
+			productReference = 302F0239286AF6AA001F651F /* MatrixScanCountToteMappingSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		302F0231286AF6AA001F651F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					302F0238286AF6AA001F651F = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 302F0234286AF6AA001F651F /* Build configuration list for PBXProject "MatrixScanCountToteMappingSample" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 302F0230286AF6AA001F651F;
+			packageReferences = (
+				0AD74033A809BCDE762CB08D /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+			);
+			productRefGroup = 302F023A286AF6AA001F651F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				302F0238286AF6AA001F651F /* MatrixScanCountToteMappingSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		302F0237286AF6AA001F651F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302F0249286AF6AB001F651F /* LaunchScreen.storyboard in Resources */,
+				302F0246286AF6AB001F651F /* Assets.xcassets in Resources */,
+				302F0244286AF6AA001F651F /* Main.storyboard in Resources */,
+				30FC46F9286B1A35007A38BC /* SampleCode.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		302F0235286AF6AA001F651F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				225C32C82D68A8F9003AF554 /* ViewController.swift in Sources */,
+				225C32C92D68A8F9003AF554 /* BarcodeGridEditorViewController.swift in Sources */,
+				302F023D286AF6AA001F651F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		302F0242286AF6AA001F651F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				302F0243286AF6AA001F651F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		302F0247286AF6AB001F651F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				302F0248286AF6AB001F651F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		302F024B286AF6AB001F651F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30FC46F8286B19BC007A38BC /* SampleCode.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		302F024C286AF6AB001F651F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30FC46F8286B19BC007A38BC /* SampleCode.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		302F024E286AF6AB001F651F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30FC46F8286B19BC007A38BC /* SampleCode.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MatrixScanCountToteMappingSample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ToteMapping;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access to the camera is required for scanning.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.matrixscancounttotemappingsample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		302F024F286AF6AB001F651F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30FC46F8286B19BC007A38BC /* SampleCode.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MatrixScanCountToteMappingSample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ToteMapping;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access to the camera is required for scanning.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.sdc.matrixscancounttotemappingsample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		302F0234286AF6AA001F651F /* Build configuration list for PBXProject "MatrixScanCountToteMappingSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				302F024B286AF6AB001F651F /* Debug */,
+				302F024C286AF6AB001F651F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		302F024D286AF6AB001F651F /* Build configuration list for PBXNativeTarget "MatrixScanCountToteMappingSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				302F024E286AF6AB001F651F /* Debug */,
+				302F024F286AF6AB001F651F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0AD74033A809BCDE762CB08D /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		346A4502B1E4AC808D5E340F /* ScanditCaptureCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AD74033A809BCDE762CB08D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditCaptureCore;
+		};
+		772746ADA14A5A8C9AA158DA /* ScanditBarcodeCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AD74033A809BCDE762CB08D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditBarcodeCapture;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 302F0231286AF6AA001F651F /* Project object */;
+}

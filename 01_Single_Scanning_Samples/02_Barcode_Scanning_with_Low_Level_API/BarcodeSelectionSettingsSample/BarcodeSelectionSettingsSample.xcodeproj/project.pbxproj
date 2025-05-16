@@ -1,0 +1,733 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65203C9A2577F8F5006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */; };
+		6561015B26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561015A26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift */; };
+		79154B8782A9301D7B96F7C6 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = ECA34E219ADF58FC4EC9F337 /* ScanditBarcodeCapture */; };
+		A22C489C2546E27A00176E29 /* UITableView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48972546E27700176E29 /* UITableView+Utils.swift */; };
+		A22C489D2546E27A00176E29 /* FloatInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48982546E27700176E29 /* FloatInputCell.swift */; };
+		A22C489E2546E27A00176E29 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48992546E27800176E29 /* SwitchCell.swift */; };
+		A22C48A02546E27A00176E29 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C489B2546E27A00176E29 /* BasicCell.swift */; };
+		A22C48A22546FD7600176E29 /* NumberFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48A12546FD7500176E29 /* NumberFormatter+Extensions.swift */; };
+		A22C48A42546FD9E00176E29 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22C48A32546FD9E00176E29 /* UITableViewCell+Extensions.swift */; };
+		A233E41C259DD55A0063AB20 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */; };
+		A23F2C632542D115006BC2A5 /* SettingsMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F2C622542D115006BC2A5 /* SettingsMainTableViewController.swift */; };
+		A26BB4BA25471B070088CCF9 /* CameraSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A26BB4B925471B070088CCF9 /* CameraSettings.storyboard */; };
+		A26BB4BC25471B9C0088CCF9 /* CameraTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4BB25471B9C0088CCF9 /* CameraTableViewController.swift */; };
+		A26BB4BE25471BF70088CCF9 /* CameraDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4BD25471BF70088CCF9 /* CameraDataSource.swift */; };
+		A26BB4C025471C200088CCF9 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4BF25471C200088CCF9 /* DataSource.swift */; };
+		A26BB4C225471C420088CCF9 /* DataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4C125471C420088CCF9 /* DataSourceDelegate.swift */; };
+		A26BB4CC25471C970088CCF9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4C925471C970088CCF9 /* Section.swift */; };
+		A26BB4CD25471C970088CCF9 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4CA25471C970088CCF9 /* Row.swift */; };
+		A26BB4CE25471C970088CCF9 /* Row+Specializations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4CB25471C970088CCF9 /* Row+Specializations.swift */; };
+		A26BB4D1254725690088CCF9 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4CF254725690088CCF9 /* SliderCell.swift */; };
+		A26BB4D2254725690088CCF9 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26BB4D0254725690088CCF9 /* SliderCell.xib */; };
+		A26BB4D4254725920088CCF9 /* Symbology+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4D3254725920088CCF9 /* Symbology+Extensions.swift */; };
+		A26BB4D6254725E90088CCF9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4D5254725E90088CCF9 /* SettingsViewController.swift */; };
+		A26BB4D8254726380088CCF9 /* OptionalAny+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4D7254726370088CCF9 /* OptionalAny+Extension.swift */; };
+		A26BB4DB254726740088CCF9 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4D9254726740088CCF9 /* ChoiceViewController.swift */; };
+		A26BB4DC254726740088CCF9 /* FloatWithUnitChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4DA254726740088CCF9 /* FloatWithUnitChooserViewController.swift */; };
+		A26BB4E0254726A60088CCF9 /* SymbologiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4DE254726A60088CCF9 /* SymbologiesTableViewController.swift */; };
+		A26BB4E1254726A60088CCF9 /* SymbologySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4DF254726A60088CCF9 /* SymbologySettingsViewController.swift */; };
+		A26BB4E5254726EF0088CCF9 /* SymbologiesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4E3254726EF0088CCF9 /* SymbologiesDataSource.swift */; };
+		A26BB4E6254726EF0088CCF9 /* SymbologySettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4E4254726EF0088CCF9 /* SymbologySettingsDataSource.swift */; };
+		A26BB4E8254727180088CCF9 /* Set+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4E7254727180088CCF9 /* Set+Extensions.swift */; };
+		A26BB4EA254727A30088CCF9 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4E9254727A30088CCF9 /* Float+Extensions.swift */; };
+		A26BB4ED254727C80088CCF9 /* FocusRange+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4EB254727C80088CCF9 /* FocusRange+Extensions.swift */; };
+		A26BB4EE254727C80088CCF9 /* VideoResolution+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4EC254727C80088CCF9 /* VideoResolution+Extensions.swift */; };
+		A26BB4F0254727DD0088CCF9 /* MeasureUnit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BB4EF254727DD0088CCF9 /* MeasureUnit+Extensions.swift */; };
+		A27736CA2D427872004F8755 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27736C92D427872004F8755 /* NavigationController.swift */; };
+		A2C45799253DD3450032DD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C45798253DD3450032DD4D /* AppDelegate.swift */; };
+		A2C4579D253DD3450032DD4D /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4579C253DD3450032DD4D /* ScanViewController.swift */; };
+		A2C457A0253DD3450032DD4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C4579E253DD3450032DD4D /* Main.storyboard */; };
+		A2C457A2253DD3460032DD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2C457A1253DD3460032DD4D /* Assets.xcassets */; };
+		A2C457A5253DD3460032DD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C457A3253DD3460032DD4D /* LaunchScreen.storyboard */; };
+		A2C457BC253F12C10032DD4D /* DataCaptureContext+Licensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C457BB253F12C10032DD4D /* DataCaptureContext+Licensed.swift */; };
+		A2C8800425497AC200F05009 /* BarcodeSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C8800325497AC200F05009 /* BarcodeSelection.storyboard */; };
+		A2C8800625497CC200F05009 /* DuplicateFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8800525497CC200F05009 /* DuplicateFilterTableViewController.swift */; };
+		A2C8800825497CDF00F05009 /* DuplicateFilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8800725497CDF00F05009 /* DuplicateFilterDataSource.swift */; };
+		A2C8800A254AAE4A00F05009 /* FeedbackDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88009254AAE4A00F05009 /* FeedbackDataSource.swift */; };
+		A2C8800C254AAE5300F05009 /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8800B254AAE5300F05009 /* FeedbackTableViewController.swift */; };
+		A2C8800E254AB81D00F05009 /* SingleBarcodeAutoDetectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8800D254AB81D00F05009 /* SingleBarcodeAutoDetectionTableViewController.swift */; };
+		A2C88010254AB84D00F05009 /* SingleBarcodeAutoDetectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8800F254AB84D00F05009 /* SingleBarcodeAutoDetectionDataSource.swift */; };
+		A2C8801A254ABC6D00F05009 /* PointOfInterestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88014254ABC6D00F05009 /* PointOfInterestTableViewController.swift */; };
+		A2C8801D254ABC6D00F05009 /* OverlayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88017254ABC6D00F05009 /* OverlayTableViewController.swift */; };
+		A2C8801E254ABC6D00F05009 /* ScanAreaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88018254ABC6D00F05009 /* ScanAreaTableViewController.swift */; };
+		A2C88024254ABC8F00F05009 /* PointOfInterestDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8801F254ABC8F00F05009 /* PointOfInterestDataSource.swift */; };
+		A2C88025254ABC8F00F05009 /* OverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88020254ABC8F00F05009 /* OverlayDataSource.swift */; };
+		A2C88028254ABC8F00F05009 /* ScanAreaDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88023254ABC8F00F05009 /* ScanAreaDataSource.swift */; };
+		A2C8802A254ABD6D00F05009 /* ViewSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C88029254ABD6D00F05009 /* ViewSettings.storyboard */; };
+		A2C8802C254AD49200F05009 /* SelectionTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8802B254AD49200F05009 /* SelectionTypeTableViewController.swift */; };
+		A2C8802E254AD4B000F05009 /* SelectionTypeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8802D254AD4B000F05009 /* SelectionTypeDataSource.swift */; };
+		A2C88038254C407500F05009 /* ModePointOfInterestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88037254C407500F05009 /* ModePointOfInterestTableViewController.swift */; };
+		A2C8803A254C409000F05009 /* ModePointOfInterestDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88039254C409000F05009 /* ModePointOfInterestDataSource.swift */; };
+		A2D599A2253F2D280029A805 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C457C1253F14F20032DD4D /* SettingsManager.swift */; };
+		A2E91E08255A9B370049D5F7 /* ViewfinderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E91E07255A9B370049D5F7 /* ViewfinderTableViewController.swift */; };
+		A2E91E0A255A9B860049D5F7 /* ViewfinderDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E91E09255A9B860049D5F7 /* ViewfinderDataSource.swift */; };
+		D6B4406B9E8B39218E189C55 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 895A426087E4CAB90A3A391A /* ScanditCaptureCore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A2C457CA253F15FB0032DD4D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		65203C992577F8F5006246C6 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
+		6561015A26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarcodeSelectionBasicOverlayStyle+Extension.swift"; sourceTree = "<group>"; };
+		A22C48972546E27700176E29 /* UITableView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Utils.swift"; sourceTree = "<group>"; };
+		A22C48982546E27700176E29 /* FloatInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatInputCell.swift; sourceTree = "<group>"; };
+		A22C48992546E27800176E29 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		A22C489B2546E27A00176E29 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
+		A22C48A12546FD7500176E29 /* NumberFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		A22C48A32546FD9E00176E29 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		A23F2C622542D115006BC2A5 /* SettingsMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainTableViewController.swift; sourceTree = "<group>"; };
+		A26BB4B925471B070088CCF9 /* CameraSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CameraSettings.storyboard; sourceTree = "<group>"; };
+		A26BB4BB25471B9C0088CCF9 /* CameraTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTableViewController.swift; sourceTree = "<group>"; };
+		A26BB4BD25471BF70088CCF9 /* CameraDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDataSource.swift; sourceTree = "<group>"; };
+		A26BB4BF25471C200088CCF9 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		A26BB4C125471C420088CCF9 /* DataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceDelegate.swift; sourceTree = "<group>"; };
+		A26BB4C925471C970088CCF9 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		A26BB4CA25471C970088CCF9 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		A26BB4CB25471C970088CCF9 /* Row+Specializations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Row+Specializations.swift"; sourceTree = "<group>"; };
+		A26BB4CF254725690088CCF9 /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
+		A26BB4D0254725690088CCF9 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
+		A26BB4D3254725920088CCF9 /* Symbology+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Symbology+Extensions.swift"; sourceTree = "<group>"; };
+		A26BB4D5254725E90088CCF9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A26BB4D7254726370088CCF9 /* OptionalAny+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OptionalAny+Extension.swift"; sourceTree = "<group>"; };
+		A26BB4D9254726740088CCF9 /* ChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
+		A26BB4DA254726740088CCF9 /* FloatWithUnitChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatWithUnitChooserViewController.swift; sourceTree = "<group>"; };
+		A26BB4DE254726A60088CCF9 /* SymbologiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbologiesTableViewController.swift; sourceTree = "<group>"; };
+		A26BB4DF254726A60088CCF9 /* SymbologySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbologySettingsViewController.swift; sourceTree = "<group>"; };
+		A26BB4E3254726EF0088CCF9 /* SymbologiesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbologiesDataSource.swift; sourceTree = "<group>"; };
+		A26BB4E4254726EF0088CCF9 /* SymbologySettingsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbologySettingsDataSource.swift; sourceTree = "<group>"; };
+		A26BB4E7254727180088CCF9 /* Set+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Extensions.swift"; sourceTree = "<group>"; };
+		A26BB4E9254727A30088CCF9 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		A26BB4EB254727C80088CCF9 /* FocusRange+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusRange+Extensions.swift"; sourceTree = "<group>"; };
+		A26BB4EC254727C80088CCF9 /* VideoResolution+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VideoResolution+Extensions.swift"; sourceTree = "<group>"; };
+		A26BB4EF254727DD0088CCF9 /* MeasureUnit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MeasureUnit+Extensions.swift"; sourceTree = "<group>"; };
+		A27736C92D427872004F8755 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		A2C45795253DD3450032DD4D /* BarcodeSelectionSettingsSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarcodeSelectionSettingsSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2C45798253DD3450032DD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A2C4579C253DD3450032DD4D /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		A2C4579F253DD3450032DD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A2C457A1253DD3460032DD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2C457A4253DD3460032DD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A2C457A6253DD3460032DD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2C457BB253F12C10032DD4D /* DataCaptureContext+Licensed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+Licensed.swift"; sourceTree = "<group>"; };
+		A2C457C1253F14F20032DD4D /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		A2C8800325497AC200F05009 /* BarcodeSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BarcodeSelection.storyboard; sourceTree = "<group>"; };
+		A2C8800525497CC200F05009 /* DuplicateFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateFilterTableViewController.swift; sourceTree = "<group>"; };
+		A2C8800725497CDF00F05009 /* DuplicateFilterDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateFilterDataSource.swift; sourceTree = "<group>"; };
+		A2C88009254AAE4A00F05009 /* FeedbackDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDataSource.swift; sourceTree = "<group>"; };
+		A2C8800B254AAE5300F05009 /* FeedbackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewController.swift; sourceTree = "<group>"; };
+		A2C8800D254AB81D00F05009 /* SingleBarcodeAutoDetectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBarcodeAutoDetectionTableViewController.swift; sourceTree = "<group>"; };
+		A2C8800F254AB84D00F05009 /* SingleBarcodeAutoDetectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBarcodeAutoDetectionDataSource.swift; sourceTree = "<group>"; };
+		A2C88014254ABC6D00F05009 /* PointOfInterestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestTableViewController.swift; sourceTree = "<group>"; };
+		A2C88017254ABC6D00F05009 /* OverlayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayTableViewController.swift; sourceTree = "<group>"; };
+		A2C88018254ABC6D00F05009 /* ScanAreaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAreaTableViewController.swift; sourceTree = "<group>"; };
+		A2C8801F254ABC8F00F05009 /* PointOfInterestDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestDataSource.swift; sourceTree = "<group>"; };
+		A2C88020254ABC8F00F05009 /* OverlayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayDataSource.swift; sourceTree = "<group>"; };
+		A2C88023254ABC8F00F05009 /* ScanAreaDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAreaDataSource.swift; sourceTree = "<group>"; };
+		A2C88029254ABD6D00F05009 /* ViewSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewSettings.storyboard; sourceTree = "<group>"; };
+		A2C8802B254AD49200F05009 /* SelectionTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTypeTableViewController.swift; sourceTree = "<group>"; };
+		A2C8802D254AD4B000F05009 /* SelectionTypeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTypeDataSource.swift; sourceTree = "<group>"; };
+		A2C88037254C407500F05009 /* ModePointOfInterestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModePointOfInterestTableViewController.swift; sourceTree = "<group>"; };
+		A2C88039254C409000F05009 /* ModePointOfInterestDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModePointOfInterestDataSource.swift; sourceTree = "<group>"; };
+		A2E91E07255A9B370049D5F7 /* ViewfinderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewfinderTableViewController.swift; sourceTree = "<group>"; };
+		A2E91E09255A9B860049D5F7 /* ViewfinderDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewfinderDataSource.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2C45792253DD3450032DD4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79154B8782A9301D7B96F7C6 /* ScanditBarcodeCapture in Frameworks */,
+				D6B4406B9E8B39218E189C55 /* ScanditCaptureCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65203C982577F8F5006246C6 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				65203C992577F8F5006246C6 /* SampleCode.xcconfig */,
+			);
+			name = Configuration;
+			path = ../../../Configuration;
+			sourceTree = "<group>";
+		};
+		A22C48962546E26200176E29 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A22C489B2546E27A00176E29 /* BasicCell.swift */,
+				A22C48982546E27700176E29 /* FloatInputCell.swift */,
+				A22C48992546E27800176E29 /* SwitchCell.swift */,
+				A26BB4CF254725690088CCF9 /* SliderCell.swift */,
+				A26BB4D0254725690088CCF9 /* SliderCell.xib */,
+				A22C48972546E27700176E29 /* UITableView+Utils.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A26BB4DD254726800088CCF9 /* BarcodeSelection */ = {
+			isa = PBXGroup;
+			children = (
+				A26BB4DE254726A60088CCF9 /* SymbologiesTableViewController.swift */,
+				A26BB4DF254726A60088CCF9 /* SymbologySettingsViewController.swift */,
+				A2C8800525497CC200F05009 /* DuplicateFilterTableViewController.swift */,
+				A2C8800B254AAE5300F05009 /* FeedbackTableViewController.swift */,
+				A2C8800D254AB81D00F05009 /* SingleBarcodeAutoDetectionTableViewController.swift */,
+				A2C8802B254AD49200F05009 /* SelectionTypeTableViewController.swift */,
+				A2C88037254C407500F05009 /* ModePointOfInterestTableViewController.swift */,
+			);
+			path = BarcodeSelection;
+			sourceTree = "<group>";
+		};
+		A26BB4E2254726CF0088CCF9 /* BarcodeSelection */ = {
+			isa = PBXGroup;
+			children = (
+				A2C8800725497CDF00F05009 /* DuplicateFilterDataSource.swift */,
+				A26BB4E3254726EF0088CCF9 /* SymbologiesDataSource.swift */,
+				A26BB4E4254726EF0088CCF9 /* SymbologySettingsDataSource.swift */,
+				A2C88009254AAE4A00F05009 /* FeedbackDataSource.swift */,
+				A2C8800F254AB84D00F05009 /* SingleBarcodeAutoDetectionDataSource.swift */,
+				A2C8802D254AD4B000F05009 /* SelectionTypeDataSource.swift */,
+				A2C88039254C409000F05009 /* ModePointOfInterestDataSource.swift */,
+			);
+			path = BarcodeSelection;
+			sourceTree = "<group>";
+		};
+		A2C4578C253DD3450032DD4D = {
+			isa = PBXGroup;
+			children = (
+				65203C982577F8F5006246C6 /* Configuration */,
+				A2C45797253DD3450032DD4D /* BarcodeSelectionSettingsSample */,
+				A2C457B3253F12010032DD4D /* Frameworks */,
+				A2C45796253DD3450032DD4D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A2C45796253DD3450032DD4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2C45795253DD3450032DD4D /* BarcodeSelectionSettingsSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A2C45797253DD3450032DD4D /* BarcodeSelectionSettingsSample */ = {
+			isa = PBXGroup;
+			children = (
+				A2C45798253DD3450032DD4D /* AppDelegate.swift */,
+				A2C457B9253F127B0032DD4D /* View Controllers */,
+				A2C457BF253F14D40032DD4D /* Models */,
+				A22C48962546E26200176E29 /* Views */,
+				A2C457BA253F129F0032DD4D /* Extensions */,
+				A2C457BE253F132D0032DD4D /* Storyboards */,
+				A2C457A1253DD3460032DD4D /* Assets.xcassets */,
+				A2C457A6253DD3460032DD4D /* Info.plist */,
+			);
+			path = BarcodeSelectionSettingsSample;
+			sourceTree = "<group>";
+		};
+		A2C457B3253F12010032DD4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2C457B9253F127B0032DD4D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A27736C92D427872004F8755 /* NavigationController.swift */,
+				A2C4579C253DD3450032DD4D /* ScanViewController.swift */,
+				A23F2C622542D115006BC2A5 /* SettingsMainTableViewController.swift */,
+				A26BB4D5254725E90088CCF9 /* SettingsViewController.swift */,
+				A26BB4BB25471B9C0088CCF9 /* CameraTableViewController.swift */,
+				A26BB4D9254726740088CCF9 /* ChoiceViewController.swift */,
+				A26BB4DA254726740088CCF9 /* FloatWithUnitChooserViewController.swift */,
+				A26BB4DD254726800088CCF9 /* BarcodeSelection */,
+				A2C88011254ABC3800F05009 /* View */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A2C457BA253F129F0032DD4D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A2C457BB253F12C10032DD4D /* DataCaptureContext+Licensed.swift */,
+				A22C48A12546FD7500176E29 /* NumberFormatter+Extensions.swift */,
+				A22C48A32546FD9E00176E29 /* UITableViewCell+Extensions.swift */,
+				A26BB4D7254726370088CCF9 /* OptionalAny+Extension.swift */,
+				A26BB4E9254727A30088CCF9 /* Float+Extensions.swift */,
+				A26BB4D3254725920088CCF9 /* Symbology+Extensions.swift */,
+				A26BB4EF254727DD0088CCF9 /* MeasureUnit+Extensions.swift */,
+				A26BB4E7254727180088CCF9 /* Set+Extensions.swift */,
+				A26BB4EB254727C80088CCF9 /* FocusRange+Extensions.swift */,
+				A26BB4EC254727C80088CCF9 /* VideoResolution+Extensions.swift */,
+				A233E41B259DD55A0063AB20 /* UIColor+Extensions.swift */,
+				6561015A26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A2C457BE253F132D0032DD4D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A2C457A3253DD3460032DD4D /* LaunchScreen.storyboard */,
+				A2C4579E253DD3450032DD4D /* Main.storyboard */,
+				A26BB4B925471B070088CCF9 /* CameraSettings.storyboard */,
+				A2C8800325497AC200F05009 /* BarcodeSelection.storyboard */,
+				A2C88029254ABD6D00F05009 /* ViewSettings.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A2C457BF253F14D40032DD4D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2C457C1253F14F20032DD4D /* SettingsManager.swift */,
+				A26BB4BF25471C200088CCF9 /* DataSource.swift */,
+				A26BB4C125471C420088CCF9 /* DataSourceDelegate.swift */,
+				A26BB4CA25471C970088CCF9 /* Row.swift */,
+				A26BB4CB25471C970088CCF9 /* Row+Specializations.swift */,
+				A26BB4C925471C970088CCF9 /* Section.swift */,
+				A26BB4BD25471BF70088CCF9 /* CameraDataSource.swift */,
+				A26BB4E2254726CF0088CCF9 /* BarcodeSelection */,
+				A2C88012254ABC4300F05009 /* View */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A2C88011254ABC3800F05009 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A2C88017254ABC6D00F05009 /* OverlayTableViewController.swift */,
+				A2C88014254ABC6D00F05009 /* PointOfInterestTableViewController.swift */,
+				A2C88018254ABC6D00F05009 /* ScanAreaTableViewController.swift */,
+				A2E91E07255A9B370049D5F7 /* ViewfinderTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A2C88012254ABC4300F05009 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A2C88020254ABC8F00F05009 /* OverlayDataSource.swift */,
+				A2C8801F254ABC8F00F05009 /* PointOfInterestDataSource.swift */,
+				A2C88023254ABC8F00F05009 /* ScanAreaDataSource.swift */,
+				A2E91E09255A9B860049D5F7 /* ViewfinderDataSource.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2C45794253DD3450032DD4D /* BarcodeSelectionSettingsSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2C457A9253DD3460032DD4D /* Build configuration list for PBXNativeTarget "BarcodeSelectionSettingsSample" */;
+			buildPhases = (
+				A2C45791253DD3450032DD4D /* Sources */,
+				A2C45792253DD3450032DD4D /* Frameworks */,
+				A2C45793253DD3450032DD4D /* Resources */,
+				A2C457CA253F15FB0032DD4D /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BarcodeSelectionSettingsSample;
+			packageProductDependencies = (
+				ECA34E219ADF58FC4EC9F337 /* ScanditBarcodeCapture */,
+				895A426087E4CAB90A3A391A /* ScanditCaptureCore */,
+			);
+			productName = BarcodeSelectionSettingsSample;
+			productReference = A2C45795253DD3450032DD4D /* BarcodeSelectionSettingsSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A2C4578D253DD3450032DD4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					A2C45794253DD3450032DD4D = {
+						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1200;
+					};
+				};
+			};
+			buildConfigurationList = A2C45790253DD3450032DD4D /* Build configuration list for PBXProject "BarcodeSelectionSettingsSample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A2C4578C253DD3450032DD4D;
+			packageReferences = (
+				88A84459A358FC0ADC7B7B0D /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+			);
+			productRefGroup = A2C45796253DD3450032DD4D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2C45794253DD3450032DD4D /* BarcodeSelectionSettingsSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2C45793253DD3450032DD4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2C8800425497AC200F05009 /* BarcodeSelection.storyboard in Resources */,
+				A26BB4BA25471B070088CCF9 /* CameraSettings.storyboard in Resources */,
+				A2C457A5253DD3460032DD4D /* LaunchScreen.storyboard in Resources */,
+				A26BB4D2254725690088CCF9 /* SliderCell.xib in Resources */,
+				A2C457A2253DD3460032DD4D /* Assets.xcassets in Resources */,
+				A2C457A0253DD3450032DD4D /* Main.storyboard in Resources */,
+				A2C8802A254ABD6D00F05009 /* ViewSettings.storyboard in Resources */,
+				65203C9A2577F8F5006246C6 /* SampleCode.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2C45791253DD3450032DD4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2C8802C254AD49200F05009 /* SelectionTypeTableViewController.swift in Sources */,
+				A2C8803A254C409000F05009 /* ModePointOfInterestDataSource.swift in Sources */,
+				A22C489D2546E27A00176E29 /* FloatInputCell.swift in Sources */,
+				A26BB4D1254725690088CCF9 /* SliderCell.swift in Sources */,
+				6561015B26F205B700431290 /* BarcodeSelectionBasicOverlayStyle+Extension.swift in Sources */,
+				A26BB4EA254727A30088CCF9 /* Float+Extensions.swift in Sources */,
+				A2C8801A254ABC6D00F05009 /* PointOfInterestTableViewController.swift in Sources */,
+				A26BB4CE25471C970088CCF9 /* Row+Specializations.swift in Sources */,
+				A2D599A2253F2D280029A805 /* SettingsManager.swift in Sources */,
+				A26BB4ED254727C80088CCF9 /* FocusRange+Extensions.swift in Sources */,
+				A26BB4D8254726380088CCF9 /* OptionalAny+Extension.swift in Sources */,
+				A2C8800E254AB81D00F05009 /* SingleBarcodeAutoDetectionTableViewController.swift in Sources */,
+				A22C48A22546FD7600176E29 /* NumberFormatter+Extensions.swift in Sources */,
+				A27736CA2D427872004F8755 /* NavigationController.swift in Sources */,
+				A2C457BC253F12C10032DD4D /* DataCaptureContext+Licensed.swift in Sources */,
+				A23F2C632542D115006BC2A5 /* SettingsMainTableViewController.swift in Sources */,
+				A2C4579D253DD3450032DD4D /* ScanViewController.swift in Sources */,
+				A2C8800A254AAE4A00F05009 /* FeedbackDataSource.swift in Sources */,
+				A26BB4E1254726A60088CCF9 /* SymbologySettingsViewController.swift in Sources */,
+				A26BB4C025471C200088CCF9 /* DataSource.swift in Sources */,
+				A26BB4E6254726EF0088CCF9 /* SymbologySettingsDataSource.swift in Sources */,
+				A2C8800825497CDF00F05009 /* DuplicateFilterDataSource.swift in Sources */,
+				A26BB4DC254726740088CCF9 /* FloatWithUnitChooserViewController.swift in Sources */,
+				A26BB4CC25471C970088CCF9 /* Section.swift in Sources */,
+				A2C45799253DD3450032DD4D /* AppDelegate.swift in Sources */,
+				A233E41C259DD55A0063AB20 /* UIColor+Extensions.swift in Sources */,
+				A26BB4E5254726EF0088CCF9 /* SymbologiesDataSource.swift in Sources */,
+				A26BB4E8254727180088CCF9 /* Set+Extensions.swift in Sources */,
+				A22C48A42546FD9E00176E29 /* UITableViewCell+Extensions.swift in Sources */,
+				A2E91E0A255A9B860049D5F7 /* ViewfinderDataSource.swift in Sources */,
+				A2C8801D254ABC6D00F05009 /* OverlayTableViewController.swift in Sources */,
+				A2E91E08255A9B370049D5F7 /* ViewfinderTableViewController.swift in Sources */,
+				A2C88025254ABC8F00F05009 /* OverlayDataSource.swift in Sources */,
+				A22C48A02546E27A00176E29 /* BasicCell.swift in Sources */,
+				A2C8802E254AD4B000F05009 /* SelectionTypeDataSource.swift in Sources */,
+				A2C88028254ABC8F00F05009 /* ScanAreaDataSource.swift in Sources */,
+				A26BB4D6254725E90088CCF9 /* SettingsViewController.swift in Sources */,
+				A26BB4E0254726A60088CCF9 /* SymbologiesTableViewController.swift in Sources */,
+				A2C88010254AB84D00F05009 /* SingleBarcodeAutoDetectionDataSource.swift in Sources */,
+				A26BB4BC25471B9C0088CCF9 /* CameraTableViewController.swift in Sources */,
+				A2C88024254ABC8F00F05009 /* PointOfInterestDataSource.swift in Sources */,
+				A2C8801E254ABC6D00F05009 /* ScanAreaTableViewController.swift in Sources */,
+				A26BB4EE254727C80088CCF9 /* VideoResolution+Extensions.swift in Sources */,
+				A22C489C2546E27A00176E29 /* UITableView+Utils.swift in Sources */,
+				A26BB4D4254725920088CCF9 /* Symbology+Extensions.swift in Sources */,
+				A2C8800C254AAE5300F05009 /* FeedbackTableViewController.swift in Sources */,
+				A26BB4F0254727DD0088CCF9 /* MeasureUnit+Extensions.swift in Sources */,
+				A22C489E2546E27A00176E29 /* SwitchCell.swift in Sources */,
+				A26BB4BE25471BF70088CCF9 /* CameraDataSource.swift in Sources */,
+				A26BB4DB254726740088CCF9 /* ChoiceViewController.swift in Sources */,
+				A2C8800625497CC200F05009 /* DuplicateFilterTableViewController.swift in Sources */,
+				A26BB4CD25471C970088CCF9 /* Row.swift in Sources */,
+				A2C88038254C407500F05009 /* ModePointOfInterestTableViewController.swift in Sources */,
+				A26BB4C225471C420088CCF9 /* DataSourceDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A2C4579E253DD3450032DD4D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2C4579F253DD3450032DD4D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A2C457A3253DD3460032DD4D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2C457A4253DD3460032DD4D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A2C457A7253DD3460032DD4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A2C457A8253DD3460032DD4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A2C457AA253DD3460032DD4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/BarcodeSelectionSettingsSample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.BarcodeSelectionSettingsSample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A2C457AB253DD3460032DD4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65203C992577F8F5006246C6 /* SampleCode.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/BarcodeSelectionSettingsSample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.BarcodeSelectionSettingsSample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A2C45790253DD3450032DD4D /* Build configuration list for PBXProject "BarcodeSelectionSettingsSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2C457A7253DD3460032DD4D /* Debug */,
+				A2C457A8253DD3460032DD4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2C457A9253DD3460032DD4D /* Build configuration list for PBXNativeTarget "BarcodeSelectionSettingsSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2C457AA253DD3460032DD4D /* Debug */,
+				A2C457AB253DD3460032DD4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		88A84459A358FC0ADC7B7B0D /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		895A426087E4CAB90A3A391A /* ScanditCaptureCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88A84459A358FC0ADC7B7B0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditCaptureCore;
+		};
+		ECA34E219ADF58FC4EC9F337 /* ScanditBarcodeCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88A84459A358FC0ADC7B7B0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditBarcodeCapture;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A2C4578D253DD3450032DD4D /* Project object */;
+}

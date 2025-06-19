@@ -26,9 +26,6 @@ struct DeliveryLogic {
     }
 
     static func stateFor(_ capturedId: CapturedId) -> State {
-        if capturedId.dateOfBirth?.localDate == nil {
-            return .idRejected
-        }
-        return .success
+        capturedId.dateOfBirth == nil ? .idRejected : .success
     }
 }

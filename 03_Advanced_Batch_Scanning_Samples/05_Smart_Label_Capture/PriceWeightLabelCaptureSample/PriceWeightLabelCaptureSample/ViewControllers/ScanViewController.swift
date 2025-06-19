@@ -207,7 +207,8 @@ extension ScanViewController {
 
         // Create context and set the default camera as frame source
         // See DataCaptureContext+Extensions.swift for DataCaptureContext.licensed
-        context = DataCaptureContext.licensed
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        context = DataCaptureContext.sharedInstance
         camera = Camera.default
         context.setFrameSource(camera, completionHandler: nil)
 

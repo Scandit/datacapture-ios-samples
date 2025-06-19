@@ -23,7 +23,12 @@ struct Result {
 class ScanViewController: UIViewController {
 
     // The DataCaptureContext that the current BarcodeSelection mode is attached to.
-    private var context: DataCaptureContext!
+    private lazy var context = {
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        return DataCaptureContext.sharedInstance
+    }()
     // The wrapper over the device's camera
     private var camera: Camera?
     // The current BarcodeSelection.
@@ -65,9 +70,6 @@ class ScanViewController: UIViewController {
     }
 
     private func setupRecognition() {
-        // Create data capture context using your license key.
-        context = DataCaptureContext.licensed
-
         // Use the world-facing (back) camera and set it as the frame source of the context. The camera is off by
         // default and must be turned on to start streaming frames to the data capture context for recognition.
         // See viewWillAppear and viewDidDisappear above.

@@ -43,8 +43,11 @@ class SettingsManager {
         // and are then applied to the barcode selection instance that manages barcode recognition.
         barcodeSelectionSettings = BarcodeSelectionSettings()
 
-        // Create data capture context using your license key and set the camera as the frame source.
-        context = DataCaptureContext.licensed
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        context = DataCaptureContext.sharedInstance
+        // Set the camera as the frame source.
         context.setFrameSource(internalCamera, completionHandler: nil)
 
         // Create new barcode selection mode with the settings from above.

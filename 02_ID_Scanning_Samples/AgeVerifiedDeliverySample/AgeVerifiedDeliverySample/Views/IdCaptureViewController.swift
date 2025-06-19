@@ -17,7 +17,7 @@ import UIKit
 
 class IdCaptureViewController: UIViewController {
 
-    private lazy var context = DataCaptureContext.licensed
+    private lazy var context = DataCaptureContext.sharedInstance
     private lazy var camera = Camera.default
     private lazy var captureView = DataCaptureView(context: context, frame: view.bounds)
 
@@ -44,6 +44,10 @@ class IdCaptureViewController: UIViewController {
     }()
 
     private lazy var idCapture = {
+        // BarcodeCapture and IdCapture modes can co-exist with limitations placed on the types of document that
+        // can be scanned. We remove any pre-existing mode so the new mode can operate with full functionality.
+        context.removeCurrentMode()
+
         let idCapture = IdCapture(
             context: context,
             settings: idCaptureSettings

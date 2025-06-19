@@ -14,19 +14,13 @@
 
 import ScanditBarcodeCapture
 
-extension DataCaptureContext {
-    // Enter your Scandit License key here.
-    // Your Scandit License key is available via your Scandit SDK web account.
-    private static let licenseKey = "-- ENTER YOUR SCANDIT LICENSE KEY HERE --"
-
-    // Get a licensed DataCaptureContext.
-    static var licensed: DataCaptureContext {
-        DataCaptureContext(licenseKey: licenseKey)
-    }
-}
-
 class ViewController: UIViewController {
-    private var context: DataCaptureContext!
+    private lazy var context = {
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        return DataCaptureContext.sharedInstance
+    }()
     private var barcodeAr: BarcodeAr!
     private var barcodeArView: BarcodeArView!
     private let discountProvider = DiscountProvider()
@@ -47,9 +41,6 @@ class ViewController: UIViewController {
     }
 
     func setupRecognition() {
-        // Create data capture context using your license key.
-        context = DataCaptureContext.licensed
-
         // Configure the Barcode Ar settings.
         let settings = BarcodeArSettings()
 

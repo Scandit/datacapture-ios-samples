@@ -18,7 +18,12 @@ class ViewController: UIViewController {
     @IBOutlet private weak var itemsTableViewHeader: ItemsTableViewHeader!
     @IBOutlet private weak var tableView: UITableView!
 
-    private let context = DataCaptureContext.licensed
+    private lazy var context = {
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        return DataCaptureContext.sharedInstance
+    }()
     private let imageSize = CGSize(width: 56 * UIScreen.main.scale, height: 56 * UIScreen.main.scale)
 
     private lazy var sparkScan: SparkScan = {

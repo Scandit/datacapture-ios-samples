@@ -22,7 +22,12 @@ class PickViewController: UIViewController {
     // Please customize this in buildSessionStore().
     var pickSessionStore: PickSessionStore!
 
-    private lazy var context = DataCaptureContext.licensed
+    private lazy var context = {
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        return DataCaptureContext.sharedInstance
+    }()
     private var barcodePick: BarcodePick!
     private var barcodePickView: BarcodePickView!
 

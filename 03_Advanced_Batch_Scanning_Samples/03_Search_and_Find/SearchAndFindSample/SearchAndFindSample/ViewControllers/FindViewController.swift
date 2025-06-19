@@ -22,8 +22,7 @@ class FindViewController: UIViewController {
         static let unWindToSearchSegueIdentifier = "unWindToSearchSegueIdentifier"
     }
 
-    // Inject the context
-    var context: DataCaptureContext!
+    private let context = DataCaptureContext.sharedInstance
     private var barcodeFind: BarcodeFind!
     private var barcodeFindView: BarcodeFindView!
     private var foundItems: [BarcodeFindItem]?

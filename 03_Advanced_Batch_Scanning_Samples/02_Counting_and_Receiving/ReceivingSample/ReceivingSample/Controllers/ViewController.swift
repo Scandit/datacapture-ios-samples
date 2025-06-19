@@ -19,8 +19,12 @@ class ViewController: UIViewController {
     @IBOutlet private weak var clearListButton: UIButton!
 
     private var itemsTableViewModel: ItemsTableViewModel!
-    private let context = DataCaptureContext.licensed
-
+    private lazy var context = {
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        return DataCaptureContext.sharedInstance
+    }()
     private lazy var sparkScan: SparkScan = {
         let settings = SparkScanSettings()
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
@@ -92,7 +96,6 @@ extension ViewController {
         if let barcodeCountVC = segue.destination as? BarcodeCountViewController {
             // Stop SparkScan before moving to BarcodeCount
             sparkScan.isEnabled = false
-            barcodeCountVC.context = context
             barcodeCountVC.itemsTableViewModel = itemsTableViewModel
         }
     }

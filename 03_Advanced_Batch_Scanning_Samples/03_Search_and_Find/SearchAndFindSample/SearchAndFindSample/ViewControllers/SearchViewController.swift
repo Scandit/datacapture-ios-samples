@@ -22,7 +22,12 @@ class SearchViewController: UIViewController {
         static let presentFindViewControllerSegue = "presentFindViewControllerSegue"
     }
 
-    private var context: DataCaptureContext!
+    private lazy var context = {
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        return DataCaptureContext.sharedInstance
+    }()
     private var camera: Camera?
     private var barcodeCapture: BarcodeCapture!
     private var captureView: DataCaptureView!
@@ -74,7 +79,6 @@ class SearchViewController: UIViewController {
             let searchOptions = BarcodeFindItemSearchOptions(barcodeData: displayedData)
             let itemToFind = BarcodeFindItem(searchOptions: searchOptions, content: nil)
 
-            destination.context = context
             destination.itemToFind = itemToFind
             destination.symbology = selectedSymbology
         }
@@ -101,9 +105,6 @@ class SearchViewController: UIViewController {
     @IBAction func unwindFromSearchViewController(segue: UIStoryboardSegue) {}
 
     private func setupRecognition() {
-        // Create data capture context using your license key.
-        context = DataCaptureContext.licensed
-
         // Use the default camera and set it as the frame source of the context. The camera is off by
         // default and must be turned on to start streaming frames to the data capture context for recognition.
         // See viewWillAppear and viewDidDisappear above.

@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18F74D2DB5828D391BE3CDE4 /* ScanditIdAamvaBarcodeVerification in Frameworks */ = {isa = PBXBuildFile; productRef = 1E5D4A71A9607F06F5AA2897 /* ScanditIdAamvaBarcodeVerification */; };
-		25174399A31BBA06D386CBA8 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3EB44CB9B9B2D81AB8965DAD /* ScanditCaptureCore */; };
-		5CB445CDB44DAEFC3A2AC7E6 /* ScanditIdCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3D49EDA33E35887E535B0F /* ScanditIdCapture */; };
-		65664BEFB00C2A5F2636271A /* ScanditIDC in Frameworks */ = {isa = PBXBuildFile; productRef = BC1A4301885C015606A808A1 /* ScanditIDC */; };
+		065D46518FA52D9C59AE1EB2 /* ScanditIdAamvaBarcodeVerification in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEC40F7A2737E5EDC2F7929 /* ScanditIdAamvaBarcodeVerification */; };
+		3CAB4E30BEE03F31483DE543 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8C41C392FA0C993DE6ECA9 /* ScanditCaptureCore */; };
+		88544875A20177555D775714 /* ScanditIDC in Frameworks */ = {isa = PBXBuildFile; productRef = 61164FC5B37ED7F6F3C610FD /* ScanditIDC */; };
 		9C659E222CDB837C0064F3A1 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C659E202CDB837C0064F3A1 /* Optional+Extensions.swift */; };
+		B3654D38ABFAF521F59A5D48 /* ScanditIdCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 74A1454AB19B69AC60DF6DAF /* ScanditIdCapture */; };
 		B93CCAC2288EC95700CE992F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCAC1288EC95700CE992F /* AppDelegate.swift */; };
 		B93CCAC6288EC95700CE992F /* DLScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCAC5288EC95700CE992F /* DLScanningViewController.swift */; };
 		B93CCAC9288EC95700CE992F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93CCAC7288EC95700CE992F /* Main.storyboard */; };
 		B93CCACB288EC95800CE992F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B93CCACA288EC95800CE992F /* Assets.xcassets */; };
 		B93CCACE288EC95800CE992F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93CCACC288EC95800CE992F /* LaunchScreen.storyboard */; };
-		B93CCADB288ECC0B00CE992F /* DataCaptureContext+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCADA288ECC0B00CE992F /* DataCaptureContext+License.swift */; };
 		B93CCAF8288EFFD100CE992F /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCAF7288EFFD100CE992F /* HintView.swift */; };
 		B93CCB1E288FFA7E00CE992F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCB1D288FFA7E00CE992F /* UIColorExtension.swift */; };
 		B93CCB3828900E1500CE992F /* DLScanningResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCB3728900E1500CE992F /* DLScanningResultViewController.swift */; };
@@ -62,7 +61,6 @@
 		B93CCACA288EC95800CE992F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B93CCACD288EC95800CE992F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B93CCACF288EC95800CE992F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B93CCADA288ECC0B00CE992F /* DataCaptureContext+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureContext+License.swift"; sourceTree = "<group>"; };
 		B93CCAF7288EFFD100CE992F /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		B93CCB1D288FFA7E00CE992F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B93CCB3728900E1500CE992F /* DLScanningResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLScanningResultViewController.swift; sourceTree = "<group>"; };
@@ -80,10 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65664BEFB00C2A5F2636271A /* ScanditIDC in Frameworks */,
-				25174399A31BBA06D386CBA8 /* ScanditCaptureCore in Frameworks */,
-				5CB445CDB44DAEFC3A2AC7E6 /* ScanditIdCapture in Frameworks */,
-				18F74D2DB5828D391BE3CDE4 /* ScanditIdAamvaBarcodeVerification in Frameworks */,
+				88544875A20177555D775714 /* ScanditIDC in Frameworks */,
+				3CAB4E30BEE03F31483DE543 /* ScanditCaptureCore in Frameworks */,
+				B3654D38ABFAF521F59A5D48 /* ScanditIdCapture in Frameworks */,
+				065D46518FA52D9C59AE1EB2 /* ScanditIdAamvaBarcodeVerification in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +129,6 @@
 				B93CCAC1288EC95700CE992F /* AppDelegate.swift */,
 				B93CCAC5288EC95700CE992F /* DLScanningViewController.swift */,
 				B93CCB4628915E1B00CE992F /* DLScanningVerificationRunner.swift */,
-				B93CCADA288ECC0B00CE992F /* DataCaptureContext+License.swift */,
 				B93CCAF7288EFFD100CE992F /* HintView.swift */,
 				B93CCAC7288EC95700CE992F /* Main.storyboard */,
 				B93CCACA288EC95800CE992F /* Assets.xcassets */,
@@ -189,10 +186,10 @@
 			);
 			name = USDLVerificationSample;
 			packageProductDependencies = (
-				BC1A4301885C015606A808A1 /* ScanditIDC */,
-				3EB44CB9B9B2D81AB8965DAD /* ScanditCaptureCore */,
-				1B3D49EDA33E35887E535B0F /* ScanditIdCapture */,
-				1E5D4A71A9607F06F5AA2897 /* ScanditIdAamvaBarcodeVerification */,
+				61164FC5B37ED7F6F3C610FD /* ScanditIDC */,
+				5C8C41C392FA0C993DE6ECA9 /* ScanditCaptureCore */,
+				74A1454AB19B69AC60DF6DAF /* ScanditIdCapture */,
+				7AEC40F7A2737E5EDC2F7929 /* ScanditIdAamvaBarcodeVerification */,
 			);
 			productName = USDLVerificationSample;
 			productReference = B93CCABE288EC95700CE992F /* USDLVerificationSample.app */;
@@ -227,7 +224,7 @@
 			);
 			mainGroup = B93CCAB5288EC95700CE992F;
 			packageReferences = (
-				CFB24BA48364A9169AA7630F /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				DBBA40079E4C3382FBE699CF /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = B93CCABF288EC95700CE992F /* Products */;
 			projectDirPath = "";
@@ -266,7 +263,6 @@
 				B93CCB4728915E1B00CE992F /* DLScanningVerificationRunner.swift in Sources */,
 				B93CCB3F28913E5500CE992F /* AvatarTableViewCell.swift in Sources */,
 				B93CCB3828900E1500CE992F /* DLScanningResultViewController.swift in Sources */,
-				B93CCADB288ECC0B00CE992F /* DataCaptureContext+License.swift in Sources */,
 				B93CCB1E288FFA7E00CE992F /* UIColorExtension.swift in Sources */,
 				B93CCAF8288EFFD100CE992F /* HintView.swift in Sources */,
 				B93CCB4328913E9500CE992F /* IdentifiableCell.swift in Sources */,
@@ -302,7 +298,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.sdc.idsettingssample.uitests.USDLVerificationSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -320,7 +316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.scandit.sdc.idsettingssample.uitests.USDLVerificationSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -381,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -435,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -464,7 +460,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFO_PLIST_KEY_NSCameraUsageDescription = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -499,7 +495,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFO_PLIST_KEY_NSCameraUsageDescription = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,36 +535,36 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CFB24BA48364A9169AA7630F /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		DBBA40079E4C3382FBE699CF /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 7.3.1;
+				minimumVersion = 7.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1B3D49EDA33E35887E535B0F /* ScanditIdCapture */ = {
+		5C8C41C392FA0C993DE6ECA9 /* ScanditCaptureCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CFB24BA48364A9169AA7630F /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditIdCapture;
-		};
-		1E5D4A71A9607F06F5AA2897 /* ScanditIdAamvaBarcodeVerification */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFB24BA48364A9169AA7630F /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditIdAamvaBarcodeVerification;
-		};
-		3EB44CB9B9B2D81AB8965DAD /* ScanditCaptureCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFB24BA48364A9169AA7630F /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = DBBA40079E4C3382FBE699CF /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditCaptureCore;
 		};
-		BC1A4301885C015606A808A1 /* ScanditIDC */ = {
+		61164FC5B37ED7F6F3C610FD /* ScanditIDC */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CFB24BA48364A9169AA7630F /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = DBBA40079E4C3382FBE699CF /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditIDC;
+		};
+		74A1454AB19B69AC60DF6DAF /* ScanditIdCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBBA40079E4C3382FBE699CF /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditIdCapture;
+		};
+		7AEC40F7A2737E5EDC2F7929 /* ScanditIdAamvaBarcodeVerification */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBBA40079E4C3382FBE699CF /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditIdAamvaBarcodeVerification;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

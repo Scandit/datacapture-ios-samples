@@ -14,20 +14,14 @@
 
 import ScanditBarcodeCapture
 
-extension DataCaptureContext {
-    // Enter your Scandit License key here.
-    // Your Scandit License key is available via your Scandit SDK web account.
-    private static let licenseKey = "-- ENTER YOUR SCANDIT LICENSE KEY HERE --"
-
-    // Get a licensed DataCaptureContext.
-    static var licensed: DataCaptureContext {
-        DataCaptureContext(licenseKey: licenseKey)
-    }
-}
-
 class ViewController: UIViewController {
 
-    private var context: DataCaptureContext!
+    private lazy var context = {
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
+        DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
+        return DataCaptureContext.sharedInstance
+    }()
     private var camera: Camera?
     private var barcodeCount: BarcodeCount!
     private var barcodeCountView: BarcodeCountView!
@@ -83,9 +77,6 @@ class ViewController: UIViewController {
     }
 
     func setupRecognition() {
-        // Create data capture context using your license key.
-        context = DataCaptureContext.licensed
-
         // Use the world-facing (back) camera and set it as the frame source of the context. The camera is off by
         // default and must be turned on to start streaming frames to the data capture context for recognition.
         // See viewWillAppear and viewDidDisappear above.

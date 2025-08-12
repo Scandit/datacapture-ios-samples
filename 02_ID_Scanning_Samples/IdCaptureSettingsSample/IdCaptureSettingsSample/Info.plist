@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Access to the camera is required for scanning.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Bluetooth required to read ISO moblie driver licenses</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

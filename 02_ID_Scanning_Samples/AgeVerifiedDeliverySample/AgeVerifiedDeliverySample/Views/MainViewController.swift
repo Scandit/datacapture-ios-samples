@@ -86,8 +86,7 @@ class MainViewController: UIViewController {
 
         let overlay = BarcodeCaptureOverlay(
             barcodeCapture: barcodeCapture,
-            view: captureView,
-            style: .frame
+            view: captureView
         )
         overlay.viewfinder = RectangularViewfinder(
             style: .square,

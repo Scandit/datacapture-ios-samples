@@ -154,12 +154,22 @@ extension SettingsManager {
         }
     }
 
-    var decodeMobileDriverLicenses: Bool {
+    var decodeMobileDriverLicenseViz: Bool {
         get {
-            idCaptureSettings.decodeMobileDriverLicenses
+            idCaptureSettings.decodeMobileDriverLicenseViz
         }
         set {
-            idCaptureSettings.decodeMobileDriverLicenses = newValue
+            idCaptureSettings.decodeMobileDriverLicenseViz = newValue
+            configure()
+        }
+    }
+
+    var decodeIsoMobileDriverLicenses: Bool {
+        get {
+            idCaptureSettings.decodeIsoMobileDriverLicenses
+        }
+        set {
+            idCaptureSettings.decodeIsoMobileDriverLicenses = newValue
             configure()
         }
     }

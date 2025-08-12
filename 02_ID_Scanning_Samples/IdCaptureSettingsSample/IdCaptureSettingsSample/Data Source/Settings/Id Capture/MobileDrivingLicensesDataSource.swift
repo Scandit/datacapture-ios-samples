@@ -27,13 +27,21 @@ class MobileDrivingLicensesDataSource: DataSource {
         [
             Section(rows: [
                 Row(
-                    title: "Mobile Driver Licenses",
+                    title: "Mobile Driver License VIZ",
                     kind: .switch,
-                    getValue: { SettingsManager.current.decodeMobileDriverLicenses },
+                    getValue: { SettingsManager.current.decodeMobileDriverLicenseViz },
                     didChangeValue: { value, _, _ in
-                        SettingsManager.current.decodeMobileDriverLicenses = value
+                        SettingsManager.current.decodeMobileDriverLicenseViz = value
                     }
-                )
+                ),
+                Row(
+                    title: "ISO Mobile Driver Licenses",
+                    kind: .switch,
+                    getValue: { SettingsManager.current.decodeIsoMobileDriverLicenses },
+                    didChangeValue: { value, _, _ in
+                        SettingsManager.current.decodeIsoMobileDriverLicenses = value
+                    }
+                ),
             ])
         ]
     }()

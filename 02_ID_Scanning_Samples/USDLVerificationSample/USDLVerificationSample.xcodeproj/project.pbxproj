@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D3A44FFA95BA667484F43B5 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB4348218EBDB87E688F0D40 /* ScanditCaptureCore */; };
-		8AA3423B973E231FD02C4398 /* ScanditIdAamvaBarcodeVerification in Frameworks */ = {isa = PBXBuildFile; productRef = 5FD3417F96F8AF84F189BB4B /* ScanditIdAamvaBarcodeVerification */; };
+		361A4A64904BE7CB5377F2B6 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F584438B1CC285D20E86A2D /* ScanditCaptureCore */; };
+		3C084FFE80BD8886AFA4B2E3 /* ScanditIdCapture in Frameworks */ = {isa = PBXBuildFile; productRef = D97943098B26597ED0133741 /* ScanditIdCapture */; };
+		3F20400B9A007388C8B3E25A /* ScanditIDC in Frameworks */ = {isa = PBXBuildFile; productRef = E09F4E0F82266A391FEC6C42 /* ScanditIDC */; };
+		85B94F89B621DB6DAB1CE028 /* ScanditIdAamvaBarcodeVerification in Frameworks */ = {isa = PBXBuildFile; productRef = BBD84EA788C8384410D2A244 /* ScanditIdAamvaBarcodeVerification */; };
 		9C659E222CDB837C0064F3A1 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C659E202CDB837C0064F3A1 /* Optional+Extensions.swift */; };
-		A0DD4A47A4CAA5E017EE765F /* ScanditIdCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 1FA64A3AA6F619BA8E307288 /* ScanditIdCapture */; };
-		A6094CEA99DDE7A7B9C9CA04 /* ScanditIDC in Frameworks */ = {isa = PBXBuildFile; productRef = AE0B49C9BF695A224F104FFB /* ScanditIDC */; };
 		B93CCAC2288EC95700CE992F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCAC1288EC95700CE992F /* AppDelegate.swift */; };
 		B93CCAC6288EC95700CE992F /* DLScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93CCAC5288EC95700CE992F /* DLScanningViewController.swift */; };
 		B93CCAC9288EC95700CE992F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93CCAC7288EC95700CE992F /* Main.storyboard */; };
@@ -78,10 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6094CEA99DDE7A7B9C9CA04 /* ScanditIDC in Frameworks */,
-				3D3A44FFA95BA667484F43B5 /* ScanditCaptureCore in Frameworks */,
-				A0DD4A47A4CAA5E017EE765F /* ScanditIdCapture in Frameworks */,
-				8AA3423B973E231FD02C4398 /* ScanditIdAamvaBarcodeVerification in Frameworks */,
+				3F20400B9A007388C8B3E25A /* ScanditIDC in Frameworks */,
+				361A4A64904BE7CB5377F2B6 /* ScanditCaptureCore in Frameworks */,
+				3C084FFE80BD8886AFA4B2E3 /* ScanditIdCapture in Frameworks */,
+				85B94F89B621DB6DAB1CE028 /* ScanditIdAamvaBarcodeVerification in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,10 +186,10 @@
 			);
 			name = USDLVerificationSample;
 			packageProductDependencies = (
-				AE0B49C9BF695A224F104FFB /* ScanditIDC */,
-				EB4348218EBDB87E688F0D40 /* ScanditCaptureCore */,
-				1FA64A3AA6F619BA8E307288 /* ScanditIdCapture */,
-				5FD3417F96F8AF84F189BB4B /* ScanditIdAamvaBarcodeVerification */,
+				E09F4E0F82266A391FEC6C42 /* ScanditIDC */,
+				1F584438B1CC285D20E86A2D /* ScanditCaptureCore */,
+				D97943098B26597ED0133741 /* ScanditIdCapture */,
+				BBD84EA788C8384410D2A244 /* ScanditIdAamvaBarcodeVerification */,
 			);
 			productName = USDLVerificationSample;
 			productReference = B93CCABE288EC95700CE992F /* USDLVerificationSample.app */;
@@ -224,7 +224,7 @@
 			);
 			mainGroup = B93CCAB5288EC95700CE992F;
 			packageReferences = (
-				71B84DE19596DD3ED4C1FF02 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				DADC45748EFD76B00B7E8F50 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = B93CCABF288EC95700CE992F /* Products */;
 			projectDirPath = "";
@@ -535,36 +535,36 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		71B84DE19596DD3ED4C1FF02 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		DADC45748EFD76B00B7E8F50 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:Scandit/datacapture-spm.git";
+			repositoryURL = "https://github.com/Scandit/datacapture-spm";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 7.4.1;
+				minimumVersion = 7.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1FA64A3AA6F619BA8E307288 /* ScanditIdCapture */ = {
+		1F584438B1CC285D20E86A2D /* ScanditCaptureCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71B84DE19596DD3ED4C1FF02 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditIdCapture;
+			package = DADC45748EFD76B00B7E8F50 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditCaptureCore;
 		};
-		5FD3417F96F8AF84F189BB4B /* ScanditIdAamvaBarcodeVerification */ = {
+		BBD84EA788C8384410D2A244 /* ScanditIdAamvaBarcodeVerification */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71B84DE19596DD3ED4C1FF02 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = DADC45748EFD76B00B7E8F50 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditIdAamvaBarcodeVerification;
 		};
-		AE0B49C9BF695A224F104FFB /* ScanditIDC */ = {
+		D97943098B26597ED0133741 /* ScanditIdCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71B84DE19596DD3ED4C1FF02 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditIDC;
+			package = DADC45748EFD76B00B7E8F50 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditIdCapture;
 		};
-		EB4348218EBDB87E688F0D40 /* ScanditCaptureCore */ = {
+		E09F4E0F82266A391FEC6C42 /* ScanditIDC */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71B84DE19596DD3ED4C1FF02 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditCaptureCore;
+			package = DADC45748EFD76B00B7E8F50 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditIDC;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

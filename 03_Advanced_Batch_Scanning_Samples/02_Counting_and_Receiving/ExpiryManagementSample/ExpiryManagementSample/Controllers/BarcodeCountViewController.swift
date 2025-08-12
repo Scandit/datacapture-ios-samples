@@ -23,7 +23,7 @@ class BarcodeCountViewController: UIViewController {
     private var camera: Camera?
     private var barcodeCount: BarcodeCount!
     private var barcodeCountView: BarcodeCountView!
-    private var currentlyRecognizedBarcodes = Set<Barcode>()
+    private var currentlyRecognizedBarcodes = Set<TrackedBarcode>()
     private var shouldCameraStandby = true
 
     override func viewDidLoad() {
@@ -105,9 +105,6 @@ class BarcodeCountViewController: UIViewController {
             barcodeCount.setAdditionalBarcodes(itemsTableViewModel.allBarcodes())
         }
 
-        // Register self as a listener to monitor the barcode count session.
-        barcodeCount.addListener(self)
-
         // To visualize the Barcode Count UI you need to create a BarcodeCountView and add it to the view hierarchy.
         // BarcodeCountView is designed to be displayed full screen.
         barcodeCountView = BarcodeCountView(frame: view.bounds, context: context, barcodeCount: barcodeCount)
@@ -154,29 +151,6 @@ class BarcodeCountViewController: UIViewController {
     }
 }
 
-// MARK: - BarcodeCountListener
-
-extension BarcodeCountViewController: BarcodeCountListener {
-    func barcodeCount(
-        _ barcodeCount: BarcodeCount,
-        didScanIn session: BarcodeCountSession,
-        frameData: FrameData
-    ) {
-        // Gather all the recognized barcodes
-        let recognizedBarcodes = session.recognizedBarcodes
-        // This method is invoked from a recognition internal thread.
-        // Dispatch to the main thread to update the internal barcode list.
-        DispatchQueue.main.async {
-            // Update the internal list
-            for barcode in recognizedBarcodes
-            where !self.currentlyRecognizedBarcodes.contains(barcode) {
-                self.currentlyRecognizedBarcodes.insert(barcode)
-                self.itemsTableViewModel?.addBarcode(barcode)
-            }
-        }
-    }
-}
-
 // MARK: - BarcodeCountViewUIDelegate
 
 extension BarcodeCountViewController: BarcodeCountViewUIDelegate {
@@ -203,12 +177,23 @@ extension BarcodeCountViewController: BarcodeCountStatusProvider {
         for barcodes: [TrackedBarcode],
         callback: BarcodeCountStatusProviderCallback
     ) {
-        let barcodeInstances: [TrackedBarcode] = barcodes
+        let trackedBarcodes: [TrackedBarcode] = barcodes
+
+        // This method is invoked from a recognition internal thread.
+        // Dispatch to the main thread to update the internal barcode list.
+        DispatchQueue.main.async {
+            // Update the internal list
+            for trackedBarcode in trackedBarcodes where !self.currentlyRecognizedBarcodes.contains(trackedBarcode) {
+                self.currentlyRecognizedBarcodes.insert(trackedBarcode)
+                self.itemsTableViewModel?.addBarcode(trackedBarcode.barcode)
+            }
+        }
+
         // Add a delay to simulate fetching the data
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // If we have infomration that the item is expired add a BarcodeCountStatusItem
+            // If we have information that the item is expired add a BarcodeCountStatusItem
             // with status .expired to the result. Otherwise return status .none.
-            let items: [BarcodeCountStatusItem] = barcodeInstances.compactMap { barcode in
+            let items: [BarcodeCountStatusItem] = trackedBarcodes.compactMap { barcode in
                 if let item = self.itemsTableViewModel?.itemForBarcode(barcode: barcode.barcode), item.isExpired {
                     return BarcodeCountStatusItem(barcode: barcode, status: .expired)
                 }

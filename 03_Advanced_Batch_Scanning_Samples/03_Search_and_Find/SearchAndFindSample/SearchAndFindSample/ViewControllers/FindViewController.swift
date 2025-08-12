@@ -27,8 +27,8 @@ class FindViewController: UIViewController {
     private var barcodeFindView: BarcodeFindView!
     private var foundItems: [BarcodeFindItem]?
 
-    var symbology: Symbology!
-    var itemToFind: BarcodeFindItem!
+    var symbologies: Set<Symbology> = []
+    var itemsToFind: [BarcodeFindItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +53,17 @@ class FindViewController: UIViewController {
         let settings = BarcodeFindSettings()
 
         // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
-        // sample we enable just the symbology of the barcode to find. In your own app ensure that you only enable the
+        // sample we enable several common symbologies. In your own app ensure that you only enable the
         // symbologies that your app requires as every additional enabled symbology has an impact on processing times.
-        settings.set(symbology: symbology, enabled: true)
+        symbologies.forEach {
+            settings.set(symbology: $0, enabled: true)
+        }
 
         // Create new Barcode Find mode with the settings from above.
         barcodeFind = BarcodeFind(settings: settings)
 
         // Set the list of items to find.
-        let itemList: Set<BarcodeFindItem> = [itemToFind]
+        let itemList: Set<BarcodeFindItem> = Set(itemsToFind)
         barcodeFind.setItemList(itemList)
 
         // To visualize the on-going barcode find process on screen, setup a barcode find view that renders the
@@ -73,6 +75,7 @@ class FindViewController: UIViewController {
             barcodeFind: barcodeFind,
             settings: viewSettings
         )
+        barcodeFindView.shouldShowProgressBar = true
         barcodeFindView.uiDelegate = self
         barcodeFindView.prepareSearching()
     }

@@ -140,10 +140,8 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
     // Add a barcode capture overlay to the data capture view to render the location of captured
     // barcodes on top of the video preview. This is optional, but recommended for better visual
     // feedback.
-    self.overlay = [SDCBarcodeCaptureOverlay
-        overlayWithBarcodeCapture:self.barcodeCapture
-               forDataCaptureView:self.captureView
-                        withStyle:SDCBarcodeCaptureOverlayStyleFrame];
+    self.overlay = [SDCBarcodeCaptureOverlay overlayWithBarcodeCapture:self.barcodeCapture
+                                                    forDataCaptureView:self.captureView];
     self.overlay.viewfinder = [SDCRectangularViewfinder
         viewfinderWithStyle:SDCRectangularViewfinderStyleSquare
                   lineStyle:SDCRectangularViewfinderLineStyleLight];

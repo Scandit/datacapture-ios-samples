@@ -18,7 +18,7 @@ import UIKit
 class BarcodeCountViewController: UIViewController {
 
     var itemsTableViewModel: ItemsTableViewModel?
-    private let context = DataCaptureContext.sharedInstance
+    private let context = DataCaptureContext.shared
     private var camera: Camera?
     private var barcodeCount: BarcodeCount!
     private var barcodeCountView: BarcodeCountView!

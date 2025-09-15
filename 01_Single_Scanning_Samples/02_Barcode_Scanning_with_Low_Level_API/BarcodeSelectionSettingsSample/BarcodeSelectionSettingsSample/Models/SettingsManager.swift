@@ -46,7 +46,7 @@ class SettingsManager {
         // Enter your Scandit License key here.
         // Your Scandit License key is available via your Scandit SDK web account.
         DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
-        context = DataCaptureContext.sharedInstance
+        context = DataCaptureContext.shared
         // Set the camera as the frame source.
         context.setFrameSource(internalCamera, completionHandler: nil)
 

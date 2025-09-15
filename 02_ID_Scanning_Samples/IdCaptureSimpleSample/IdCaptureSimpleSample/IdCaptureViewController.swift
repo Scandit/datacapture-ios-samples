@@ -35,7 +35,7 @@ class IdCaptureViewController: UIViewController {
         // Enter your Scandit License key here.
         // Your Scandit License key is available via your Scandit SDK web account.
         DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
-        return DataCaptureContext.sharedInstance
+        return DataCaptureContext.shared
     }()
     private var camera: Camera?
     private var idCapture: IdCapture!

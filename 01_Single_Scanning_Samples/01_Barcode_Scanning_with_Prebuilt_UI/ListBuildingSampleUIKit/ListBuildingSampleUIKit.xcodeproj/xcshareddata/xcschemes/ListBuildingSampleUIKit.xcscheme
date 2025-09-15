@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00C552C122E891300068499C"
-               BuildableName = "ListBuildingSample.app"
-               BlueprintName = "ListBuildingSample"
-               ReferencedContainer = "container:ListBuildingSample.xcodeproj">
+               BuildableName = "ListBuildingSampleUIKit.app"
+               BlueprintName = "ListBuildingSampleUIKit"
+               ReferencedContainer = "container:ListBuildingSampleUIKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "00C552C122E891300068499C"
-            BuildableName = "ListBuildingSample.app"
-            BlueprintName = "ListBuildingSample"
-            ReferencedContainer = "container:ListBuildingSample.xcodeproj">
+            BuildableName = "ListBuildingSampleUIKit.app"
+            BlueprintName = "ListBuildingSampleUIKit"
+            ReferencedContainer = "container:ListBuildingSampleUIKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "00C552C122E891300068499C"
-            BuildableName = "ListBuildingSample.app"
-            BlueprintName = "ListBuildingSample"
-            ReferencedContainer = "container:ListBuildingSample.xcodeproj">
+            BuildableName = "ListBuildingSampleUIKit.app"
+            BlueprintName = "ListBuildingSampleUIKit"
+            ReferencedContainer = "container:ListBuildingSampleUIKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -122,7 +122,7 @@ extension ScanViewController {
         // Create context and set the default camera as frame source
         // See DataCaptureContext+Extensions.swift for DataCaptureContext.licensed
         DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
-        context = DataCaptureContext.sharedInstance
+        context = DataCaptureContext.shared
         camera = Camera.default
         context.setFrameSource(camera, completionHandler: nil)
 
@@ -182,14 +182,14 @@ extension ScanViewController: LabelCaptureValidationFlowDelegate {
 
         DispatchQueue.main.async {
             self.pauseScanning()
-            self.showLabelCapturedAlert(caputredData: capturedData)
+            self.showLabelCapturedAlert(capturedData: capturedData)
         }
     }
 
-    private func showLabelCapturedAlert(caputredData: String) {
+    private func showLabelCapturedAlert(capturedData: String) {
         let alert = UIAlertController(
             title: "Label Captured",
-            message: caputredData,
+            message: capturedData,
             preferredStyle: .alert
         )
 

@@ -14,6 +14,8 @@ SparkScan is a camera-based solution for high-speed single scanning and scan-int
 
 **List Building Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/ListBuildingSample))
 
+**List Building Sample (SwiftUI)** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/ListBuildingSampleSwiftUI))
+
 **ReceivingSample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/ReceivingSample))
 
 ### Counting and Receiving in Batches (MatrixScan Count)

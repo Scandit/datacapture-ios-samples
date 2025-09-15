@@ -17,7 +17,7 @@ import UIKit
 
 class IdCaptureViewController: UIViewController {
 
-    private lazy var context = DataCaptureContext.sharedInstance
+    private lazy var context = DataCaptureContext.shared
     private lazy var camera = Camera.default
     private lazy var captureView = DataCaptureView(context: context, frame: view.bounds)
 

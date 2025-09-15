@@ -62,7 +62,7 @@ final class DLScanningViewController: UIViewController {
         // Enter your Scandit License key here.
         // Your Scandit License key is available via your Scandit SDK web account.
         DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
-        context = DataCaptureContext.sharedInstance
+        context = DataCaptureContext.shared
         // Use the world-facing (back) camera and set it as the frame source of the context. The camera is off by
         // default and must be turned on to start streaming frames to the data capture context for recognition.
         // See viewWillAppear above.
@@ -181,7 +181,7 @@ extension DLScanningViewController: IdCaptureListener {
         viewController.transitioningDelegate = self
         viewController.prepare(capturedId, result)
         present(viewController, animated: true)
-        // We disable IdCapture while presenting the results to prevent capturing while user is inpecting results.
+        // We disable IdCapture while presenting the results to prevent capturing while user is inspecting results.
         idCapture.isEnabled = false
     }
 

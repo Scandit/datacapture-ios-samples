@@ -50,7 +50,7 @@ class MainViewController: UIViewController {
         camera?.apply(cameraSettings)
         camera?.switch(toDesiredState: .on)
 
-        let context = DataCaptureContext.sharedInstance
+        let context = DataCaptureContext.shared
 
         // BarcodeCapture and IdCapture modes can co-exist with limitations placed on the types of document that
         // can be scanned. We remove any pre-existing mode so the new mode can operate with full functionality.

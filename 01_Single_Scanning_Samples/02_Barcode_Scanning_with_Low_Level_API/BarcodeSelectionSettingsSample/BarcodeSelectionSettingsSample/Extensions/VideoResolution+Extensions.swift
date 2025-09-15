@@ -19,7 +19,7 @@ extension ScanditCaptureCore.VideoResolution: Swift.CaseIterable, Swift.CustomSt
 {
     public typealias AllCases = [VideoResolution]
     public static var allCases: AllCases {
-        [.hd, .fullHD, .uhd4k, .auto]
+        [.hd, .fullHD, .uhd4k, .auto, .maxResolution]
     }
 
     public var description: String {
@@ -32,6 +32,8 @@ extension ScanditCaptureCore.VideoResolution: Swift.CaseIterable, Swift.CustomSt
             return "Ultra HD 4K"
         case .auto:
             return "Auto"
+        case .maxResolution:
+            return "Max Resolution"
         }
     }
 

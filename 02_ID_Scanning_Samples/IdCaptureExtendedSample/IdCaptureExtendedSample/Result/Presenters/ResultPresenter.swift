@@ -25,8 +25,8 @@ extension ResultPresenter {
     static func getCommonRows(for capturedId: CapturedId) -> [CellProvider] {
         var cells: [CellProvider] = []
 
-        if !capturedId.fullName.isEmpty {
-            cells.append(SimpleTextCellProvider(value: capturedId.fullName, title: "Full Name"))
+        if let fullName = capturedId.fullName {
+            cells.append(SimpleTextCellProvider(value: fullName, title: "Full Name"))
         }
         if let dateOfBirth = capturedId.dateOfBirth {
             cells.append(SimpleTextCellProvider(value: dateOfBirth.description, title: "Date of Birth"))

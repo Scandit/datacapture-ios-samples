@@ -32,10 +32,12 @@ class IdCaptureViewController: UIViewController {
         ]
 
         // Single sided scanner with all zones
-        settings.scannerType = SingleSideScanner(
-            enablingBarcode: true,
-            machineReadableZone: true,
-            visualInspectionZone: true
+        settings.scanner = IdCaptureScanner(
+            physicalDocument: SingleSideScanner(
+                enablingBarcode: true,
+                machineReadableZone: true,
+                visualInspectionZone: true
+            )
         )
         settings.rejectExpiredIds = true
         settings.rejectHolderBelowAge = 21

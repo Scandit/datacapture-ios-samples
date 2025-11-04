@@ -91,7 +91,7 @@ class IdCaptureViewController: UIViewController {
         ]
 
         // We want to scan all zones and both sides
-        idCaptureSettings.scannerType = FullDocumentScanner()
+        idCaptureSettings.scanner = IdCaptureScanner(physicalDocument: FullDocumentScanner())
 
         // Create new id capture mode with the chosen settings.
         idCapture = IdCapture(context: context, settings: idCaptureSettings)
@@ -162,8 +162,8 @@ extension IdCaptureViewController: IdCaptureListener {
 
     func descriptionForCapturedId(result: CapturedId) -> String {
         var results: [String] = []
-        if !result.fullName.isEmpty {
-            results.append("Full Name: \(result.fullName)")
+        if let fullName = result.fullName {
+            results.append("Full Name: \(fullName)")
         }
         if let dateOfBirth = result.dateOfBirth {
             results.append("Date of Birth: \(dateOfBirth)")

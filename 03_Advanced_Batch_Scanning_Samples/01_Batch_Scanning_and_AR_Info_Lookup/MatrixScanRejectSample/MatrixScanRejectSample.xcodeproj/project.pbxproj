@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		65203CAC2577FAFF006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203CAB2577FAFF006246C6 /* SampleCode.xcconfig */; };
-		676D47308A095956153006D3 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = D89140CAB44832F11D75B001 /* ScanditBarcodeCapture */; };
 		6FF0A9B422083686002C0D21 /* ScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0A9AB22083686002C0D21 /* ScanningViewController.swift */; };
 		6FF0A9B522083686002C0D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FF0A9AC22083686002C0D21 /* Assets.xcassets */; };
 		6FF0A9B722083686002C0D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF0A9AE22083686002C0D21 /* LaunchScreen.storyboard */; };
 		6FF0A9B822083686002C0D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF0A9B022083686002C0D21 /* Main.storyboard */; };
 		6FF0A9B922083686002C0D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0A9B222083686002C0D21 /* AppDelegate.swift */; };
 		6FF0A9C12208633D002C0D21 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0A9C02208633D002C0D21 /* ResultsViewController.swift */; };
-		C12B45A7BE7E1D58FBD2F204 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7A62412A94618ADE909909B3 /* ScanditCaptureCore */; };
+		824B48FEBFF1DAF6599B7A2F /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 87324679B695B58F82E91B28 /* ScanditCaptureCore */; };
+		89BE49969796804B9FC7D728 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 14484951936234F399E4406D /* ScanditBarcodeCapture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,8 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C12B45A7BE7E1D58FBD2F204 /* ScanditCaptureCore in Frameworks */,
-				676D47308A095956153006D3 /* ScanditBarcodeCapture in Frameworks */,
+				824B48FEBFF1DAF6599B7A2F /* ScanditCaptureCore in Frameworks */,
+				89BE49969796804B9FC7D728 /* ScanditBarcodeCapture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,8 +122,8 @@
 			);
 			name = MatrixScanRejectSample;
 			packageProductDependencies = (
-				7A62412A94618ADE909909B3 /* ScanditCaptureCore */,
-				D89140CAB44832F11D75B001 /* ScanditBarcodeCapture */,
+				87324679B695B58F82E91B28 /* ScanditCaptureCore */,
+				14484951936234F399E4406D /* ScanditBarcodeCapture */,
 			);
 			productName = MatrixScanSimpleSample;
 			productReference = A23A015421E88A9500206642 /* MatrixScanRejectSample.app */;
@@ -155,7 +155,7 @@
 			);
 			mainGroup = A23A014B21E88A9500206642;
 			packageReferences = (
-				E314463C8B9EBB25FA9820DA /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				EB044368AB2B79FAA9ABD856 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = A23A015521E88A9500206642 /* Products */;
 			projectDirPath = "";
@@ -265,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -321,7 +321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -341,7 +341,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanRejectSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,7 +364,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MatrixScanRejectSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,26 +401,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E314463C8B9EBB25FA9820DA /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		EB044368AB2B79FAA9ABD856 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Scandit/datacapture-spm";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 7.6.3;
+				minimumVersion = 8.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7A62412A94618ADE909909B3 /* ScanditCaptureCore */ = {
+		14484951936234F399E4406D /* ScanditBarcodeCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E314463C8B9EBB25FA9820DA /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditCaptureCore;
-		};
-		D89140CAB44832F11D75B001 /* ScanditBarcodeCapture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E314463C8B9EBB25FA9820DA /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = EB044368AB2B79FAA9ABD856 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditBarcodeCapture;
+		};
+		87324679B695B58F82E91B28 /* ScanditCaptureCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB044368AB2B79FAA9ABD856 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditCaptureCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

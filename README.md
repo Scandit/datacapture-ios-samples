@@ -12,11 +12,11 @@ SparkScan is a camera-based solution for high-speed single scanning and scan-int
 
 ![SparkScan.png](https://github.com/Scandit/.github/blob/main/images/SparkScan.png)
 
-**List Building Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/ListBuildingSample))
+**List Building Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/01_Barcode_Scanning_with_Prebuilt_UI/ListBuildingSampleUIKit))
 
-**List Building Sample (SwiftUI)** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/ListBuildingSampleSwiftUI))
+**List Building Sample (SwiftUI)** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/01_Barcode_Scanning_with_Prebuilt_UI/ListBuildingSampleSwiftUI))
 
-**ReceivingSample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/ReceivingSample))
+**ReceivingSample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/02_Counting_and_Receiving/ReceivingSample))
 
 ### Counting and Receiving in Batches (MatrixScan Count)
 
@@ -24,13 +24,13 @@ MatrixScan Count is an out-of-the-box scan and count solution for counting and r
 
 ![MSCount.png](https://github.com/Scandit/.github/blob/main/images/MSCount.png)
 
-**MatrixScan Count Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanCountSimpleSample))
+**MatrixScan Count Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/02_Counting_and_Receiving/MatrixScanCountSimpleSample))
 
-**Receiving Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/ReceivingSample))
+**Receiving Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/02_Counting_and_Receiving/ReceivingSample))
 
 **Expiry Management Sample** ([iOS](Scandit%20iOS%20Samples%202246395c6e4146458347ebb7a7f5624f.md))
 
-**MatrixScan Count Tote Mapping Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanCountToteMappingSample))
+**MatrixScan Count Tote Mapping Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/02_Counting_and_Receiving/MatrixScanCountToteMappingSample))
 
 ### Seach for Barcodes (**MatrixScan Find)**
 
@@ -38,7 +38,7 @@ MatrixScan Find is a pre-built component that uses AR overlays to highlight item
 
 ![MSFind.png](https://github.com/Scandit/.github/blob/main/images/MSFind.png)
 
-**Seach  & Find Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/SearchAndFindSample))
+**Seach  & Find Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/03_Search_and_Find/SearchAndFindSample))
 
 ### Scan One of Many Barcodes (Barcode Selection)
 
@@ -56,9 +56,9 @@ Consider Barcode Selection when **accuracy** is more important than **speed**.
   ![TapToSelect.png](https://github.com/Scandit/.github/blob/main/images/TapToSelect.png)
 
 
-**Barcode Selection Settings Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/BarcodeSelectionSettingsSample))
+**Barcode Selection Settings Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/02_Barcode_Scanning_with_Low_Level_API/BarcodeSelectionSettingsSample))
 
-**Reorder from Catalog Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/ReorderFromCatalogSample))
+**Reorder from Catalog Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/02_Counting_and_Receiving/ReorderFromCatalogSample))
 
 ## Fully-flexible API
 
@@ -70,37 +70,37 @@ ID Scanning Samples demonstrate the features of the ID Capture API and demonstra
 
 ![IDScanning.png](https://github.com/Scandit/.github/blob/main/images/IDScanning.png)
 
-**ID Capture Simple Sample** ([link](https://github.com/Scandit/datacapture-cordova-samples/tree/master/IdCaptureSimpleSample))
+**ID Capture Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/02_ID_Scanning_Samples/IdCaptureSimpleSample))
 
-**Age Verified Delivery Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/AgeVerifiedDeliverySample))
+**Age Verified Delivery Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/02_ID_Scanning_Samples/AgeVerifiedDeliverySample))
 
-**US Drivers’ License Verification Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/USDLVerificationSample))
+**US Drivers’ License Verification Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/02_ID_Scanning_Samples/USDLVerificationSample))
 
-**ID Capture Settings Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/IdCaptureSettingsSample))
+**ID Capture Settings Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/02_ID_Scanning_Samples/IdCaptureSettingsSample))
 
-**ID Capture Extended Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/IdCaptureExtendedSample))
+**ID Capture Extended Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/02_ID_Scanning_Samples/IdCaptureExtendedSample))
 
 ### Barcode Capture Samples
 
-**Barcode Capture Simple Sample** ([Swift](https://github.com/Scandit/datacapture-ios-samples/tree/master/BarcodeCaptureSimpleSampleSwift), [ObjC](https://github.com/Scandit/datacapture-ios-samples/tree/master/BarcodeCaptureSimpleSampleObjC))
+**Barcode Capture Simple Sample** ([Swift](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/02_Barcode_Scanning_with_Low_Level_API/BarcodeCaptureSimpleSampleSwift), [ObjC](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/02_Barcode_Scanning_with_Low_Level_API/BarcodeCaptureSimpleSampleObjC))
 
-**Barcode Capture Reject Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/BarcodeCaptureRejectSample))
+**Barcode Capture Reject Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/02_Barcode_Scanning_with_Low_Level_API/BarcodeCaptureRejectSample))
 
-**Barcode Capture Settings Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/BarcodeCaptureSettingsSample))
+**Barcode Capture Settings Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/02_Barcode_Scanning_with_Low_Level_API/BarcodeCaptureSettingsSample))
 
 ### MatrixScan AR Sam**ples**
 
-**MatrixScan Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanSimpleSample))
+**MatrixScan Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/01_Batch_Scanning_and_AR_Info_Lookup/MatrixScanSimpleSample))
 
-**MatrixScan Bubbles Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanBubblesSample))
+**MatrixScan Bubbles Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/01_Batch_Scanning_and_AR_Info_Lookup/MatrixScanBubblesSample))
 
-**MatrixScan Reject Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanRejectSample))
+**MatrixScan Reject Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/01_Batch_Scanning_and_AR_Info_Lookup/MatrixScanRejectSample))
 
-**Inventory Audit Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/InventoryAuditSample))
+**Inventory Audit Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/01_Batch_Scanning_and_AR_Info_Lookup/InventoryAuditSample))
 
 ### MatrixScan AR Samples
 
-**MatrixScan AR Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/MatrixScanARSimpleSample))
+**MatrixScan AR Simple Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/03_Advanced_Batch_Scanning_Samples/01_Batch_Scanning_and_AR_Info_Lookup/MatrixScanARSimpleSample))
 
 ## Samples on Other Frameworks
 

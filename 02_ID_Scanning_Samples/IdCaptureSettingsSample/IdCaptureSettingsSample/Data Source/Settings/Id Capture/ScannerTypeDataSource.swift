@@ -33,20 +33,35 @@ private struct ScannerSettings: Codable {
         var visualInspectionZone = false
     }
 
+    struct MobileFeatures: Codable {
+        var iso18013 = false
+        var ocr = false
+    }
+
     var enabledFeatures = SingleSideFeatures()
+    var mobileFeatures = MobileFeatures()
     var mode: ScanningMode = .full
 
     var scanner: IdCaptureScanner {
+        let physicalScanner: PhysicalDocumentScanner
         switch mode {
         case .single:
-            return SingleSideScanner(
+            physicalScanner = SingleSideScanner(
                 enablingBarcode: enabledFeatures.barcode,
                 machineReadableZone: enabledFeatures.machineReadableZone,
                 visualInspectionZone: enabledFeatures.visualInspectionZone
             )
         case .full:
-            return FullDocumentScanner()
+            physicalScanner = FullDocumentScanner()
         }
+
+        let mobileScanner = MobileDocumentScanner(
+            enablingIso180135: mobileFeatures.iso18013,
+            ocr: mobileFeatures.ocr,
+            elementsToRetain: SettingsManager.current.elementsToRetain
+        )
+
+        return IdCaptureScanner(physicalDocument: physicalScanner, mobileDocument: mobileScanner)
     }
 }
 
@@ -56,21 +71,25 @@ class ScannerTypeDataSource: DataSource {
 
     init(delegate: DataSourceDelegate) {
         self.delegate = delegate
-        if let single = SettingsManager.current.scannerType as? SingleSideScanner {
+        let idCaptureScanner = SettingsManager.current.scanner
+        if let single = idCaptureScanner.physicalDocument as? SingleSideScanner {
             self.scannerSettings.mode = .single
             self.scannerSettings.enabledFeatures.barcode = single.barcode
             self.scannerSettings.enabledFeatures.machineReadableZone = single.machineReadableZone
             self.scannerSettings.enabledFeatures.visualInspectionZone = single.visualInspectionZone
         }
+        let mobile = idCaptureScanner.mobileDocument
+        self.scannerSettings.mobileFeatures.iso18013 = mobile.iso180135
+        self.scannerSettings.mobileFeatures.ocr = mobile.ocr
     }
 
     // MARK: - Sections
 
     var sections: [Section] {
         if self.scannerSettings.mode == .full {
-            return [scannerType]
+            return [scannerType, mobileOptions]
         }
-        return [scannerType, singleSideOptions]
+        return [scannerType, singleSideOptions, mobileOptions]
     }
 
     lazy var scannerType: Section = {
@@ -85,7 +104,7 @@ class ScannerTypeDataSource: DataSource {
                 dataSourceDelegate: self.delegate
             )
         }
-        return Section(rows: rows)
+        return Section(title: "Physical Document Scanner", rows: rows)
     }()
 
     lazy var singleSideOptions: Section = {
@@ -120,8 +139,43 @@ class ScannerTypeDataSource: DataSource {
         ])
     }()
 
+    lazy var mobileOptions: Section = {
+        Section(
+            title: "Mobile Document Scanner",
+            rows: [
+                Row(
+                    title: "ISO 18013-5",
+                    kind: .switch,
+                    getValue: { self.scannerSettings.mobileFeatures.iso18013 },
+                    didChangeValue: { value, _, _ in
+                        self.scannerSettings.mobileFeatures.iso18013 = value
+                        self.updateSettings()
+                    }
+                ),
+                Row(
+                    title: "OCR",
+                    kind: .switch,
+                    getValue: { self.scannerSettings.mobileFeatures.ocr },
+                    didChangeValue: { value, _, _ in
+                        self.scannerSettings.mobileFeatures.ocr = value
+                        self.updateSettings()
+                    }
+                ),
+                Row(
+                    title: "Elements to Retain",
+                    kind: .action,
+                    didSelect: { [weak delegate] _, _ in
+                        delegate?.present {
+                            ElementsToRetainTableViewController()
+                        }
+                    }
+                ),
+            ]
+        )
+    }()
+
     private func updateSettings() {
-        SettingsManager.current.scannerType = scannerSettings.scanner
+        SettingsManager.current.scanner = scannerSettings.scanner
         delegate?.didChangeData()
     }
 }

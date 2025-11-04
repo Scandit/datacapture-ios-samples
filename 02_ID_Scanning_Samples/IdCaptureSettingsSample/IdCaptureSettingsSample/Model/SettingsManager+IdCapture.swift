@@ -36,12 +36,12 @@ extension SettingsManager {
         }
     }
 
-    var scannerType: IdCaptureScanner {
+    var scanner: IdCaptureScanner {
         get {
-            idCaptureSettings.scannerType
+            idCaptureSettings.scanner
         }
         set {
-            idCaptureSettings.scannerType = newValue
+            idCaptureSettings.scanner = newValue
             configure()
         }
     }
@@ -58,14 +58,33 @@ extension SettingsManager {
 
     var resultWithImageTypes: Set<IdImageType> {
         get {
-            let imageTypes = IdImageType.allCases.filter { idCaptureSettings.resultShouldContainImage(for: $0) }
+            let imageTypes = IdImageType.allCases.filter { idCaptureSettings.includeImage(for: $0) }
             return Set<IdImageType>(imageTypes)
         }
         set {
             for type in IdImageType.allCases {
-                idCaptureSettings.resultShouldContainImage(newValue.contains(type), for: type)
-                configure()
+                idCaptureSettings.setIncludeImage(newValue.contains(type), for: type)
             }
+            configure()
+        }
+    }
+
+    var elementsToRetain: MobileDocumentDataElement {
+        get {
+            scanner.mobileDocument.elementsToRetain
+        }
+        set {
+            let mobile = scanner.mobileDocument
+            let newMobileScanner = MobileDocumentScanner(
+                enablingIso180135: mobile.iso180135,
+                ocr: mobile.ocr,
+                elementsToRetain: newValue
+            )
+            scanner = IdCaptureScanner(
+                physicalDocument: scanner.physicalDocument,
+                mobileDocument: newMobileScanner
+            )
+            configure()
         }
     }
 
@@ -150,26 +169,6 @@ extension SettingsManager {
         }
         set {
             idCaptureSettings.decodeBackOfEuropeanDrivingLicense = newValue
-            configure()
-        }
-    }
-
-    var decodeMobileDriverLicenseViz: Bool {
-        get {
-            idCaptureSettings.decodeMobileDriverLicenseViz
-        }
-        set {
-            idCaptureSettings.decodeMobileDriverLicenseViz = newValue
-            configure()
-        }
-    }
-
-    var decodeIsoMobileDriverLicenses: Bool {
-        get {
-            idCaptureSettings.decodeIsoMobileDriverLicenses
-        }
-        set {
-            idCaptureSettings.decodeIsoMobileDriverLicenses = newValue
             configure()
         }
     }

@@ -82,7 +82,7 @@ class ScanViewController: UIViewController {
         if SettingsManager.current.isContinuousModeEnabled {
             dismissResultTimer?.invalidate()
             resultLabel.isHidden = false
-            var result = capturedId.fullName
+            var result = capturedId.fullName ?? ""
             if let date = capturedId.dateOfBirth {
                 result += "\n" + date.description
             }

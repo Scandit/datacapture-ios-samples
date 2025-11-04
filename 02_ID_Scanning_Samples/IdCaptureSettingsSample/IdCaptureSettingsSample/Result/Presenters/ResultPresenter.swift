@@ -45,8 +45,7 @@ fileprivate extension ResultPresenter {
             ),
             SimpleTextCellProvider(value: capturedId.firstName.valueOrNil, title: "First Name"),
             SimpleTextCellProvider(value: capturedId.lastName.valueOrNil, title: "Last Name"),
-            SimpleTextCellProvider(value: capturedId.secondaryLastName.valueOrNil, title: "Secondary Last Name"),
-            SimpleTextCellProvider(value: capturedId.fullName, title: "Full Name"),
+            SimpleTextCellProvider(value: capturedId.fullName.valueOrNil, title: "Full Name"),
             SimpleTextCellProvider(value: capturedId.sexType.description, title: "Sex"),
             SimpleTextCellProvider(value: capturedId.dateOfBirth.valueOrNil, title: "Date of Birth"),
             SimpleTextCellProvider(value: capturedId.age.valueOrNil, title: "Age"),
@@ -63,8 +62,16 @@ fileprivate extension ResultPresenter {
             SimpleTextCellProvider(value: capturedId.isExpired.optionalBooleanRepresentation, title: "Is Expired"),
             SimpleTextCellProvider(value: capturedId.dateOfIssue.valueOrNil, title: "Date of Issue"),
             SimpleTextCellProvider(
+                value: capturedId.isCitizenPassport.description,
+                title: "Is Citizen Passport"
+            ),
+            SimpleTextCellProvider(
                 value: capturedId.usRealIdStatus.description,
                 title: "US REAL ID Status"
+            ),
+            SimpleTextCellProvider(
+                value: capturedId.anonymizedFields.formatted(),
+                title: "Anonymized Fields"
             ),
         ]
     }
@@ -95,6 +102,9 @@ struct ResultPresenterFactory {
         }
         if capturedId.barcode != nil {
             presenters.append(BarcodeResultPresenter.self.init(capturedId: capturedId))
+        }
+        if capturedId.mobileDocumentOcrResult != nil {
+            presenters.append(MobileDocumentOcrResultPresenter.self.init(capturedId: capturedId))
         }
 
         return CombinedResultPresenter(capturedId: capturedId, presenters: presenters)

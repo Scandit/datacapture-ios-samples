@@ -12,8 +12,14 @@
 // limitations under the License.
 //
 
-class MobileDrivingLicensesTableViewController: SettingsTableViewController {
-    override func setupDataSource() {
-        dataSource = MobileDrivingLicensesDataSource(delegate: self)
+import ScanditIdCapture
+
+extension Set where Element == IdFieldType {
+    func formatted() -> String {
+        guard !isEmpty else { return "-" }
+
+        return sorted { $0.rawValue < $1.rawValue }
+            .map { String(describing: $0) }
+            .joined(separator: ", ")
     }
 }

@@ -43,11 +43,7 @@ class VizResultPresenter: ResultPresenter {
                 title: "VIZ Last Name"
             ),
             SimpleTextCellProvider(
-                value: vizResult.secondaryLastName.valueOrNil,
-                title: "VIZ Secondary Last Name"
-            ),
-            SimpleTextCellProvider(
-                value: vizResult.fullName,
+                value: vizResult.fullName.valueOrNil,
                 title: "VIZ Full Name"
             ),
             SimpleTextCellProvider(value: vizResult.sex.valueOrNil, title: "VIZ Sex"),

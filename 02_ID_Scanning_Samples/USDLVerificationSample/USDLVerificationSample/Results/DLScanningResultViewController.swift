@@ -51,7 +51,7 @@ enum Field: Int, CaseIterable {
 
     func value(in capturedId: CapturedId) -> String {
         switch self {
-        case .fullName: return capturedId.fullName
+        case .fullName: return capturedId.fullName.valueOrNil
         case .sex: return capturedId.sexType.description
         case .nationality: return capturedId.nationality.valueOrNil
         case .dateOfBirth: return capturedId.dateOfBirth.valueOrNil
@@ -105,34 +105,32 @@ final class DLScanningResultViewController: UITableViewController {
 
     private func makeVerificationResults(_ result: DLScanningVerificationResult) -> [Result] {
         var results: [Result] = []
-        let status = result.status
+        let rejectionReason = result.rejectionReason
 
-        if status == .frontBackDoesNotMatch {
-            results.append(
-                Result(
-                    status: .error,
-                    message: "Information on front and back does not match.",
-                    image: result.image,
-                    altText: result.altText
+        if let rejectionReason = rejectionReason {
+            // Show single red tile for the specific rejection reason
+            switch rejectionReason {
+            case .documentExpired:
+                results.append(Result(status: .error, message: "Document has expired."))
+            case .inconsistentData:
+                results.append(
+                    Result(
+                        status: .error,
+                        message: "Information on front and back does not match.",
+                        image: result.frontReviewImage,
+                        altText: result.frontReviewImage == nil
+                            ? "Your license does not support highlighting discrepancies" : nil
+                    )
                 )
-            )
-            return results
-        }
-
-        results.append(Result(status: .success, message: "Information on front and back matches."))
-
-        if status == .expired {
-            results.append(Result(status: .error, message: "Document has expired."))
-            return results
-        }
-
-        results.append(Result(status: .success, message: "Document has not expired."))
-
-        if status == .forged {
-            results.append(Result(status: .error, message: "Document barcode is forged."))
-        } else if status == .likelyForged {
-            results.append(Result(status: .success, message: "Document barcode is likely forged."))
+            case .forgedAamvaBarcode:
+                results.append(Result(status: .error, message: "Document barcode is forged."))
+            default:
+                break
+            }
         } else {
+            // Show all 3 green tiles for successful verification
+            results.append(Result(status: .success, message: "Document has not expired."))
+            results.append(Result(status: .success, message: "Information on front and back matches."))
             results.append(Result(status: .success, message: "Document barcode is authentic."))
         }
 

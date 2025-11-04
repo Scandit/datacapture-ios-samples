@@ -16,6 +16,16 @@ import ScanditCaptureCore
 import ScanditIdCapture
 import UIKit
 
+struct DLScanningVerificationResult {
+    let rejectionReason: RejectionReason?
+    let frontReviewImage: UIImage?
+
+    init(rejectionReason: RejectionReason?, frontReviewImage: UIImage? = nil) {
+        self.rejectionReason = rejectionReason
+        self.frontReviewImage = frontReviewImage
+    }
+}
+
 final class DLScanningViewController: UIViewController {
 
     private enum Constants {
@@ -34,7 +44,6 @@ final class DLScanningViewController: UIViewController {
     private var idCapture: IdCapture!
     private var idCaptureSettings: IdCaptureSettings = IdCaptureSettings()
     private var overlay: IdCaptureOverlay!
-    private var verificationRunner: DLScanningVerificationRunner!
     private var hintView = HintView()
 
     override func viewDidLoad() {
@@ -83,11 +92,16 @@ final class DLScanningViewController: UIViewController {
         idCaptureSettings.acceptedDocuments = [DriverLicense(region: .us)]
 
         // We want to scan all zones and both sides
-        idCaptureSettings.scannerType = FullDocumentScanner()
+        idCaptureSettings.scanner = IdCaptureScanner(physicalDocument: FullDocumentScanner())
 
         // We are requesting the capture result should contain face and croppedDocument images.
-        idCaptureSettings.resultShouldContainImage(true, for: .face)
-        idCaptureSettings.resultShouldContainImage(true, for: .croppedDocument)
+        idCaptureSettings.setIncludeImage(true, for: .face)
+        idCaptureSettings.setIncludeImage(true, for: .croppedDocument)
+
+        // Enable built-in verification - documents with inconsistent data, forged AAMVA barcodes, or expired documents will be rejected
+        idCaptureSettings.rejectInconsistentData = true
+        idCaptureSettings.rejectForgedAamvaBarcodes = true
+        idCaptureSettings.rejectExpiredIds = true
 
         // Create new id capture mode with the chosen settings.
         idCapture = IdCapture(context: context, settings: idCaptureSettings)
@@ -99,10 +113,6 @@ final class DLScanningViewController: UIViewController {
         // the video preview. This is optional, but recommended for better visual feedback.
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
         overlay.idLayoutStyle = .rounded
-
-        // VerificationRunner is encapsulating verification process. See the class for more details.
-        // We are initializing VerificationRunner to pass captured id later (see bellow)
-        verificationRunner = DLScanningVerificationRunner(context)
     }
 }
 
@@ -116,64 +126,63 @@ extension DLScanningViewController: IdCaptureListener {
         // Pause the idCapture to not capture while showing the result.
         idCapture.isEnabled = false
 
-        let message: String
+        var message: String?
         switch reason {
+        case .inconsistentData, .forgedAamvaBarcode, .documentExpired:
+            // Handle verification failures by showing detailed verification results
+            if let capturedId = capturedId {
+                handleVerificationFailure(capturedId, reason: reason)
+            }
         case .timeout:
             message = Constants.Message.timeout
         case .notAcceptedDocumentType:
             message = capturedId?.issuingCountry == .us ? Constants.Message.notSupported : Constants.Message.nonUsId
         default:
+            // For any other rejection reasons, show standard error alert
             message = Constants.Message.notSupported
         }
 
-        showAlert(
-            title: "Error",
-            message: message,
-            completion: {
-                // Resume the idCapture.
-                idCapture.isEnabled = true
-            }
-        )
+        if let message = message {
+            showAlert(
+                title: "Error",
+                message: message,
+                completion: {
+                    // Resume the idCapture.
+                    idCapture.isEnabled = true
+                }
+            )
+        }
     }
 
     func handleCapturedId(_ capturedId: CapturedId) {
         if let vizResult = capturedId.vizResult, vizResult.capturedSides == .frontAndBack {
-            hintView.isHidden = false
-            // When the front and back capture is completed, we are passing the captured id to VerificationRunner
-            // VerificationRunner will call back the closure passed in to let us know about the verification result
-            verificationRunner.verify(capturedId: capturedId) { [weak self] result in
-                guard let self = self else { return }
-                DispatchQueue.main.async { [weak self] in
-                    self?.hintView.isHidden = true
-                    switch result {
-                    case .success(let success):
-                        self?.handleVerificationResult(capturedId, result: success)
-                    case .failure(let failure):
-                        ()
-                        self?.handleVerificationError(failure)
-                    }
-                }
-            }
+            // Documents that reach this callback have passed all built-in verification checks
+            // (expiration, data consistency, AAMVA barcode verification)
+            handleVerificationSuccess(capturedId)
         } else {
             preconditionFailure("Unexpected captured id")
         }
     }
 
-    func handleVerificationError(_ error: Error) {
-        let message = """
-            An error was encountered. Please make sure that your Scandit license key permits barcode \
-            verification.
-            """
-        let controller = UIAlertController(
-            title: "Error",
-            message: message,
-            preferredStyle: .alert
-        )
-        controller.addAction(.init(title: "OK", style: .default))
-        present(controller, animated: true)
+    func handleVerificationFailure(_ capturedId: CapturedId, reason: RejectionReason) {
+        // Extract front review image if available for data consistency failures
+        let frontReviewImage =
+            reason == .inconsistentData ? capturedId.verificationResult.dataConsistency?.frontReviewImage : nil
+
+        let result = DLScanningVerificationResult(rejectionReason: reason, frontReviewImage: frontReviewImage)
+        DispatchQueue.main.async { [weak self] in
+            self?.presentResult(capturedId, result: result)
+        }
     }
 
-    func handleVerificationResult(_ capturedId: CapturedId, result: DLScanningVerificationResult) {
+    func handleVerificationSuccess(_ capturedId: CapturedId) {
+        // All verification checks passed
+        let frontReviewImage = capturedId.verificationResult.dataConsistency?.frontReviewImage
+        let result = DLScanningVerificationResult(rejectionReason: nil, frontReviewImage: frontReviewImage)
+        presentResult(capturedId, result: result)
+    }
+
+    func presentResult(_ capturedId: CapturedId, result: DLScanningVerificationResult) {
         guard
             let viewController = UIStoryboard(name: "DLScanningResultViewController", bundle: nil)
                 .instantiateInitialViewController() as? DLScanningResultViewController

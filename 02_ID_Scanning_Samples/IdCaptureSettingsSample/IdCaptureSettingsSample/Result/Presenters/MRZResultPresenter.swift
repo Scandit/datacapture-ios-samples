@@ -24,7 +24,7 @@ class MRZResultPresenter: ResultPresenter {
         rows = [
             SimpleTextCellProvider(value: mrzResult.firstName.valueOrNil, title: "MRZ First Name"),
             SimpleTextCellProvider(value: mrzResult.lastName.valueOrNil, title: "MRZ Last Name"),
-            SimpleTextCellProvider(value: mrzResult.fullName, title: "MRZ Full Name"),
+            SimpleTextCellProvider(value: mrzResult.fullName.valueOrNil, title: "MRZ Full Name"),
             SimpleTextCellProvider(value: mrzResult.sex.valueOrNil, title: "MRZ Sex"),
             SimpleTextCellProvider(value: mrzResult.dateOfBirth.valueOrNil, title: "MRZ Date of Birth"),
             SimpleTextCellProvider(value: mrzResult.nationality.valueOrNil, title: "MRZ Nationality"),
@@ -36,7 +36,7 @@ class MRZResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: mrzResult.namesAreTruncated ? "Yes" : "No", title: "Names are Truncated"),
             SimpleTextCellProvider(value: mrzResult.optionalDataInLine1.valueOrNil, title: "Optional Data In Line 1"),
             SimpleTextCellProvider(value: mrzResult.optionalDataInLine2.valueOrNil, title: "Optional Data In Line 2"),
-            SimpleTextCellProvider(value: mrzResult.capturedMrz, title: "Captured MRZ"),
+            SimpleTextCellProvider(value: mrzResult.capturedMrz.valueOrNil, title: "Captured MRZ"),
             SimpleTextCellProvider(value: mrzResult.personalIdNumber.valueOrNil, title: "Personal ID Number"),
             SimpleTextCellProvider(value: mrzResult.passportNumber.valueOrNil, title: "Passport Number"),
             SimpleTextCellProvider(value: mrzResult.passportIssuerIso.valueOrNil, title: "Passport Issuer ISO"),

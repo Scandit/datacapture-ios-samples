@@ -131,15 +131,17 @@ class IdCaptureViewController: UIViewController {
         ]
 
         // Single sided scanner with selected zone
-        settings.scannerType = SingleSideScanner(
-            enablingBarcode: mode == .barcode,
-            machineReadableZone: mode == .mrz,
-            visualInspectionZone: mode == .viz
+        settings.scanner = IdCaptureScanner(
+            physicalDocument: SingleSideScanner(
+                enablingBarcode: mode == .barcode,
+                machineReadableZone: mode == .mrz,
+                visualInspectionZone: mode == .viz
+            )
         )
 
         // Visual Inspection Zone optionally returns a cropped document
         if mode == .viz {
-            settings.resultShouldContainImage(true, for: .croppedDocument)
+            settings.setIncludeImage(true, for: .croppedDocument)
         }
 
         idCapture = IdCapture(context: context, settings: settings)

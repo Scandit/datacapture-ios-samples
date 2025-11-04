@@ -27,7 +27,7 @@ class BarcodeResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: "\(barcode.aamvaVersion.valueOrNil)", title: "AAMVA Version"),
             SimpleTextCellProvider(value: barcode.firstName.valueOrNil, title: "Barcode First Name"),
             SimpleTextCellProvider(value: barcode.lastName.valueOrNil, title: "Barcode Last Name"),
-            SimpleTextCellProvider(value: barcode.fullName, title: "Barcode Full Name"),
+            SimpleTextCellProvider(value: barcode.fullName.valueOrNil, title: "Barcode Full Name"),
             SimpleTextCellProvider(value: barcode.sex.valueOrNil, title: "Barcode Sex"),
             SimpleTextCellProvider(value: barcode.dateOfBirth.valueOrNil, title: "Barcode Date of Birth"),
             SimpleTextCellProvider(value: barcode.nationality.valueOrNil, title: "Barcode Nationality"),

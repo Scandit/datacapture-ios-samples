@@ -68,7 +68,7 @@ extension ScanViewController {
                 NSNumber(value: Symbology.code128.rawValue),
             ]
         )
-        barcodeField.patterns = ["^0?2\\d+"]
+        barcodeField.valueRegexes = ["^0?2\\d+"]
 
         let expiryDateField = ExpiryDateText(name: "expiry_date")
         expiryDateField.labelDateFormat = LabelDateFormat(

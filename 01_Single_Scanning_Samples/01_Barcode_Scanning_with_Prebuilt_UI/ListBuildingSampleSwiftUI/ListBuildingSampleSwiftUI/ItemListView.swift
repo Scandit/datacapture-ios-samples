@@ -14,53 +14,25 @@
 
 import SwiftUI
 
-struct ItemRowView: View {
-    let item: Item
+struct StackedImagesView: View {
+    let images: [UIImage]
+    let size: CGFloat
 
     var body: some View {
-        HStack(spacing: 16) {
-            // Barcode thumbnail
-            if let images = item.images, !images.isEmpty, let lastImage = images.last {
-                Image(uiImage: rotatedImage(lastImage))
+        ZStack {
+            ForEach(Array(images.enumerated()), id: \.offset) { index, image in
+                Image(uiImage: rotatedImage(image))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 60, height: 60)
+                    .frame(width: (size - CGFloat(images.count * 4)), height: size - CGFloat(images.count * 4))
                     .clipped()
-                    .cornerRadius(8)
-                    .background(Color(.systemGray6))
-            } else {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color(.systemGray4))
-                    .frame(width: 60, height: 60)
+                    .offset(x: CGFloat(-index * 4), y: CGFloat(-index * 4))
             }
-
-            // Item details
-            VStack(alignment: .leading, spacing: 2) {
-                Text(item.data)
-                    .font(.system(size: 18, weight: .medium))
-                    .foregroundColor(.black)
-                    .lineLimit(1)
-
-                Text(item.symbologyReadableName)
-                    .font(.system(size: 14))
-                    .foregroundColor(Color(.systemGray))
-
-                if item.quantity > 1 {
-                    Text("Qty: \(item.quantity)")
-                        .font(.caption)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 2)
-                        .background(Color(.systemBlue))
-                        .foregroundColor(.white)
-                        .cornerRadius(4)
-                }
-            }
-
-            Spacer()
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(Color.white)
+        .frame(
+            width: size,
+            height: size
+        )
     }
 
     private func rotatedImage(_ image: UIImage) -> UIImage {
@@ -70,5 +42,44 @@ struct ItemRowView: View {
             scale: image.scale,
             orientation: .right
         )
+    }
+}
+
+struct ItemRowView: View {
+    let item: Item
+
+    var body: some View {
+        HStack(spacing: 16) {
+            // Barcode thumbnail with stacked images
+            if let images = item.images, !images.isEmpty {
+                let imagesToShow = Array(images.suffix(3))
+                StackedImagesView(images: imagesToShow, size: 56)
+            } else {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color(.systemGray4))
+                    .frame(width: 56, height: 56)
+            }
+
+            // Item details
+            VStack(alignment: .leading, spacing: 2) {
+                Text(item.data)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.black)
+                    .lineLimit(1)
+
+                Text(item.symbologyReadableName)
+                    .font(.system(size: 14))
+                    .foregroundColor(Color(.systemGray))
+            }
+
+            Spacer()
+
+            if item.quantity > 1 {
+                Text("Qty: \(item.quantity)")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.black)
+            }
+        }
+        .padding(.horizontal, 16)
     }
 }

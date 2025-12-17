@@ -12,8 +12,10 @@
 // limitations under the License.
 //
 
-class IdAnonymizationModeTableViewController: SettingsTableViewController {
-    override func setupDataSource() {
-        dataSource = IdAnonymizationModeDataSource(delegate: self)
-    }
-}
+#import <UIKit/UIKit.h>
+
+@interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+
+@end

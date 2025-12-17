@@ -101,6 +101,10 @@ extension SettingsTableViewController {
         tableView.reloadData()
     }
 
+    func didChangeData(at indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+
     func getFloatWithUnit(title: String?, currentValue: FloatWithUnit, completion: @escaping (FloatWithUnit) -> Void) {
         navigationController?.pushViewController(
             FloatWithUnitChooserViewController(

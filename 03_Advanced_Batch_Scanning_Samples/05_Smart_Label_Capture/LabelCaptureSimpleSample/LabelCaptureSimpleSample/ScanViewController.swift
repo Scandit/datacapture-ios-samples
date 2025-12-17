@@ -26,7 +26,7 @@ class ScanViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupRecognition()
+        try? setupRecognition()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,69 +58,51 @@ class ScanViewController: UIViewController {
 // MARK: - LabelCapture configuration
 
 extension ScanViewController {
-    private var labelDefinition: LabelDefinition {
-        // barcode value starting with 02, UPC/GS1 DataBar Expanded/Code128
-        let barcodeField = CustomBarcode(
-            name: "barcode",
-            symbologies: [
-                NSNumber(value: Symbology.ean13UPCA.rawValue),
-                NSNumber(value: Symbology.gs1DatabarExpanded.rawValue),
-                NSNumber(value: Symbology.code128.rawValue),
-            ]
-        )
-        barcodeField.valueRegexes = ["^0?2\\d+"]
 
-        let expiryDateField = ExpiryDateText(name: "expiry_date")
-        expiryDateField.labelDateFormat = LabelDateFormat(
-            componentFormat: LabelDateComponentFormat.MDY,
-            acceptPartialDates: false
-        )
-        expiryDateField.optional = true
+    private func setupRecognition() throws {
+        let labelCaptureSettings = try LabelCaptureSettings {
+            LabelDefinition("weighted_item") {
+                CustomBarcode(
+                    name: "barcode",
+                    symbologies: [.ean13UPCA, .gs1DatabarExpanded, .code128]
+                )
 
-        let weightField = WeightText(name: "weight")
-        weightField.optional = true
+                ExpiryDateText(name: "expiry_date")
+                    .labelDateFormat(
+                        LabelDateFormat(
+                            componentFormat: LabelDateComponentFormat.MDY,
+                            acceptPartialDates: false
+                        )
+                    )
+                    .optional(true)
 
-        let unitPriceField = UnitPriceText(name: "unit_price")
-        unitPriceField.optional = true
+                WeightText(name: "weight")
+                    .optional(true)
 
-        return LabelDefinition(
-            name: "weighted_item",
-            fields: [barcodeField, expiryDateField, weightField, unitPriceField]
-        )
+                UnitPriceText(name: "unit_price")
+                    .optional(true)
+            }
 
-        // Note: - You can customize the label definiton to adapt it to your use-case. For example, you can use the following label definitoin for Smart Devices box Scanning.
-        //        let barcodeField = CustomBarcode(
-        //            name: "FIELD_BARCODE",
-        //            symbologies: [
-        //                NSNumber(value: Symbology.ean13UPCA.rawValue),
-        //                NSNumber(value: Symbology.code128.rawValue),
-        //                NSNumber(value: Symbology.code39.rawValue),
-        //                NSNumber(value: Symbology.interleavedTwoOfFive.rawValue),
-        //            ]
-        //        )
-        //
-        //        let imeiOneField = IMEIOneBarcode(name: "FIELD_IMEI1")
-        //
-        //        let imeiTwoField = IMEITwoBarcode(name: "FIELD_IMEI2")
-        //        imeiTwoField.optional = true
-        //
-        //        let serialNumberField = SerialNumberBarcode(name: "FIELD_SERIAL_NUMBER")
-        //        serialNumberField.optional = true
-        //
-        //        return LabelDefinition(
-        //            name: "SMART_DEVICE",
-        //            fields: [barcodeField, imeiOneField, imeiTwoField, serialNumberField]
-        //        )
-    }
-
-    private func setupRecognition() {
-        guard let labelCaptureSettings = try? LabelCaptureSettings(labelDefinitions: [labelDefinition])
-        else {
-            return
+            // Note: - You can customize the label definiton to adapt it to your use-case.
+            // For example, you can use the following label definitoin for Smart Devices box Scanning.
+            //        return LabelDefinition("SMART_DEVICE") {
+            //            CustomBarcode(
+            //                name: "FIELD_BARCODE",
+            //                symbologies: [.ean13UPCA, .code128, .code39, .interleavedTwoOfFive]
+            //            )
+            //
+            //            IMEIOneBarcode(name: "FIELD_IMEI1")
+            //
+            //            IMEITwoBarcode(name: "FIELD_IMEI2")
+            //                .optional(true)
+            //
+            //            SerialNumberBarcode(name: "FIELD_SERIAL_NUMBER")
+            //                .optional(true)
+            //        }
         }
 
-        // Create context and set the default camera as frame source
-        // See DataCaptureContext+Extensions.swift for DataCaptureContext.licensed
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
         DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
         context = DataCaptureContext.shared
         camera = Camera.default

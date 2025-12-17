@@ -67,15 +67,13 @@ extension Row {
             title: title,
             kind: .option,
             getValue: getValue,
-            didChangeValue: { [weak dataSourceDelegate] in
-                didChangeValue($0)
-                dataSourceDelegate?.didChangeData()
-            },
-            didSelect: { row, _ in
+            didChangeValue: { didChangeValue($0) },
+            didSelect: { [weak dataSourceDelegate] row, indexPath in
                 guard let value = row.getValue?() as? Bool else {
                     return
                 }
                 row.didChangeValue?(!value)
+                dataSourceDelegate?.didChangeData(at: indexPath)
             }
         )
     }

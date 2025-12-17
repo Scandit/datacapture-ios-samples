@@ -12,17 +12,15 @@
 // limitations under the License.
 //
 
-import UIKit
+#import "SceneDelegate.h"
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+@implementation SceneDelegate
 
-    var window: UIWindow?
-
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
-        true
-    }
+- (void)scene:(UIScene *)scene
+    willConnectToSession:(UISceneSession *)session
+                 options:(UISceneConnectionOptions *)connectionOptions {
+    // When UISceneStoryboardFile is set in Info.plist, the window and root view controller
+    // are automatically created by UIKit. We just need to ensure the window scene is available.
 }
+
+@end

@@ -36,16 +36,21 @@ struct ContentView: View {
                 // Header with item count and clear button
                 HStack {
                     Text("\(viewModel.totalItemsCount) item(s) scanned")
-                        .font(.body)
+                        .font(.system(size: 13, weight: .semibold))
                         .foregroundColor(.black)
 
                     Spacer()
 
-                    Button("CLEAR LIST") {
-                        viewModel.clearItems()
-                    }
-                    .font(.subheadline)
-                    .foregroundColor(viewModel.items.isEmpty ? .gray : .red)
+                    Button(
+                        action: {
+                            viewModel.clearItems()
+                        },
+                        label: {
+                            Text("CLEAR LIST")
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(viewModel.items.isEmpty ? .gray : .red)
+                        }
+                    )
                     .disabled(viewModel.items.isEmpty)
                 }
                 .padding(.horizontal, 16)
@@ -66,13 +71,13 @@ struct ContentView: View {
                     List {
                         ForEach(viewModel.items) { item in
                             ItemRowView(item: item)
-                                .listRowBackground(Color.clear)
+                                .frame(height: 80.0)
                                 .listRowSeparator(.hidden)
-                                .padding(.vertical, 4)
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
                         }
                     }
-                    .listStyle(PlainListStyle())
-                    .background(Color.white)
+                    .listStyle(.plain)
+                    .background(Color(red: 0.97, green: 0.98, blue: 0.99))
                 }
             }
             .background(Color.white)

@@ -26,7 +26,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Anonymization Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O08-W7-RmX">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Anonymization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O08-W7-RmX">
                                                     <rect key="frame" x="16" y="0.0" width="324.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -328,10 +328,10 @@
             </objects>
             <point key="canvasLocation" x="1322" y="322"/>
         </scene>
-        <!--Anonymization Mode-->
+        <!--Anonymization-->
         <scene sceneID="tP0-bR-f7l">
             <objects>
-                <tableViewController title="Supported Sides" id="m7K-iX-eLD" userLabel="Anonymization Mode" customClass="IdAnonymizationModeTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Supported Sides" id="m7K-iX-eLD" userLabel="Anonymization" customClass="AnonymizationTableViewController" customModule="IdCaptureSettingsSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="e3w-0e-cxZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -351,7 +351,7 @@
                             <outlet property="delegate" destination="m7K-iX-eLD" id="buc-bW-57t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Anonymization Mode" id="BTO-1W-dR9"/>
+                    <navigationItem key="navigationItem" title="Anonymization" id="BTO-1W-dR9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPw-vN-e8m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="MM0-ml-XEg" style="IBUITableViewCellStyleDefault" id="7gP-PX-S6m">

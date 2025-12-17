@@ -16,10 +16,11 @@
 		525CD66D28D0DCAF002FAC9B /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CD66C28D0DCAF002FAC9B /* ItemTableViewCell.swift */; };
 		525CD67028D0E3DF002FAC9B /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CD66F28D0E3DF002FAC9B /* Array+Extensions.swift */; };
 		525CD67228D0F34A002FAC9B /* ItemsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CD67128D0F34A002FAC9B /* ItemsTableViewHeader.swift */; };
-		5BD04B01BB7B4E5DF97D9417 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 2BDD408292925D86A7A6A646 /* ScanditBarcodeCapture */; };
+		5B134D098ADEE3789BCACC64 /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = F326489994EC52661F529A9C /* ScanditBarcodeCapture */; };
 		A26FC33928EB63AC00923B5B /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26FC33828EB63AC00923B5B /* UIImage+Extensions.swift */; };
+		BAFF2E1E882548289B8B693C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B84DEBC62497C86592D2C /* SceneDelegate.swift */; };
 		DC0744072AB9D10F00FD1216 /* StackedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0744062AB9D10F00FD1216 /* StackedImageView.swift */; };
-		EDB744BBBFD3BC596D7D2990 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 32184E14A6E091A7A489D957 /* ScanditCaptureCore */; };
+		F31B4BFEAC934BEE9AEB162F /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = E67A46D1B3414E0EC1603DE8 /* ScanditCaptureCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		525CD67128D0F34A002FAC9B /* ItemsTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewHeader.swift; sourceTree = "<group>"; };
 		65203CB12577FB79006246C6 /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
 		A26FC33828EB63AC00923B5B /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		C49B84DEBC62497C86592D2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DC0744062AB9D10F00FD1216 /* StackedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,8 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDB744BBBFD3BC596D7D2990 /* ScanditCaptureCore in Frameworks */,
-				5BD04B01BB7B4E5DF97D9417 /* ScanditBarcodeCapture in Frameworks */,
+				F31B4BFEAC934BEE9AEB162F /* ScanditCaptureCore in Frameworks */,
+				5B134D098ADEE3789BCACC64 /* ScanditBarcodeCapture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				00C552C522E891300068499C /* AppDelegate.swift */,
+				C49B84DEBC62497C86592D2C /* SceneDelegate.swift */,
 				525CD66728D0D492002FAC9B /* Models */,
 				525CD66228D0C909002FAC9B /* Views */,
 				00C552DE22E898B70068499C /* Controllers */,
@@ -184,8 +187,8 @@
 			);
 			name = ListBuildingSampleUIKit;
 			packageProductDependencies = (
-				32184E14A6E091A7A489D957 /* ScanditCaptureCore */,
-				2BDD408292925D86A7A6A646 /* ScanditBarcodeCapture */,
+				E67A46D1B3414E0EC1603DE8 /* ScanditCaptureCore */,
+				F326489994EC52661F529A9C /* ScanditBarcodeCapture */,
 			);
 			productName = ListBuildingSample;
 			productReference = 00C552C222E891300068499C /* ListBuildingSampleUIKit.app */;
@@ -216,7 +219,7 @@
 			);
 			mainGroup = 00C552B922E891300068499C;
 			packageReferences = (
-				6C914C889CDF8D62C8CD83EB /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				475048778A2D29F41E74074B /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = 00C552C322E891300068499C /* Products */;
 			projectDirPath = "";
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAFF2E1E882548289B8B693C /* SceneDelegate.swift in Sources */,
 				DC0744072AB9D10F00FD1216 /* StackedImageView.swift in Sources */,
 				525CD66928D0D4A9002FAC9B /* Item.swift in Sources */,
 				00C552C822E891300068499C /* ViewController.swift in Sources */,
@@ -472,26 +476,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6C914C889CDF8D62C8CD83EB /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		475048778A2D29F41E74074B /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Scandit/datacapture-spm";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 8.0.0;
+				minimumVersion = 8.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2BDD408292925D86A7A6A646 /* ScanditBarcodeCapture */ = {
+		E67A46D1B3414E0EC1603DE8 /* ScanditCaptureCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6C914C889CDF8D62C8CD83EB /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditBarcodeCapture;
-		};
-		32184E14A6E091A7A489D957 /* ScanditCaptureCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C914C889CDF8D62C8CD83EB /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = 475048778A2D29F41E74074B /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditCaptureCore;
+		};
+		F326489994EC52661F529A9C /* ScanditBarcodeCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 475048778A2D29F41E74074B /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditBarcodeCapture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

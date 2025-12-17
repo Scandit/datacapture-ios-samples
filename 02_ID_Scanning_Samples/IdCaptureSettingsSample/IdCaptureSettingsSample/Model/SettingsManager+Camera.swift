@@ -67,4 +67,14 @@ extension SettingsManager {
         }
     }
 
+    var adaptiveExposure: Bool {
+        get {
+            cameraSettings.adaptiveExposure
+        }
+        set {
+            cameraSettings.adaptiveExposure = newValue
+            camera?.apply(cameraSettings, completionHandler: nil)
+        }
+    }
+
 }

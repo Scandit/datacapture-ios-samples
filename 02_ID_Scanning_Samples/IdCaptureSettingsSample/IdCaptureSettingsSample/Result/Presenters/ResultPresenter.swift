@@ -50,6 +50,7 @@ fileprivate extension ResultPresenter {
             SimpleTextCellProvider(value: capturedId.dateOfBirth.valueOrNil, title: "Date of Birth"),
             SimpleTextCellProvider(value: capturedId.age.valueOrNil, title: "Age"),
             SimpleTextCellProvider(value: capturedId.nationality.valueOrNil, title: "Nationality"),
+            SimpleTextCellProvider(value: capturedId.nationalityISO.valueOrNil, title: "Nationality ISO"),
             SimpleTextCellProvider(value: capturedId.address.valueOrNil, title: "Address"),
             SimpleTextCellProvider(value: capturedId.issuingCountryISO.valueOrNil, title: "Issuing Country ISO"),
             SimpleTextCellProvider(value: capturedId.issuingCountry.description, title: "Issuing Country"),

@@ -31,6 +31,7 @@ class SettingsTableViewController: UITableViewController, DataSourceDelegate {
         tableView.register(SwitchCell.self)
         tableView.register(SubtitledSwitchCell.self)
         tableView.register(FloatInputCell.self)
+        tableView.register(IntegerInputCell.self)
         tableView.registerNib(SliderCell.self)
         tableView.register(TextEditCell.self)
     }
@@ -71,6 +72,11 @@ class SettingsTableViewController: UITableViewController, DataSourceDelegate {
         }
 
         if let cell = cell as? FloatInputCell, let value = row.getValue?() as? CGFloat {
+            cell.delegate = self
+            cell.value = value
+        }
+
+        if let cell = cell as? IntegerInputCell, let value = row.getValue?() as? Int {
             cell.delegate = self
             cell.value = value
         }
@@ -178,6 +184,14 @@ extension SettingsTableViewController: SwitchCellDelegate {
 
 extension SettingsTableViewController: FloatInputCellDelegate {
     func didChange(value: CGFloat, forCell cell: FloatInputCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let row = dataSource.sections.row(forIndexPath: indexPath)
+        row.didChangeValue?(value, row, indexPath)
+    }
+}
+
+extension SettingsTableViewController: IntegerInputCellDelegate {
+    func didChange(value: Int, forCell cell: IntegerInputCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let row = dataSource.sections.row(forIndexPath: indexPath)
         row.didChangeValue?(value, row, indexPath)

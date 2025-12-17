@@ -18,6 +18,7 @@ import ScanditIdCapture
 class SettingsManager {
     static let current = SettingsManager()
     var isContinuousModeEnabled = false
+    var storedAnonymizedFields: Set<IdFieldType> = []
 
     var context: DataCaptureContext
     var idCaptureSettings: IdCaptureSettings

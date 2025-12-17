@@ -90,6 +90,14 @@ class RejectionDataSource: DataSource {
                         SettingsManager.current.rejectVoidedIds = value
                     }
                 ),
+                Row(
+                    title: "Rejection Timeout (s)",
+                    kind: .integer,
+                    getValue: { SettingsManager.current.rejectionTimeoutSeconds },
+                    didChangeValue: { value, _, _ in
+                        SettingsManager.current.rejectionTimeoutSeconds = value
+                    }
+                ),
             ])
         ]
     }()

@@ -73,3 +73,58 @@ class FloatInputCell: UITableViewCell {
         textField.text = numberFormatter.string(from: value)
     }
 }
+
+protocol IntegerInputCellDelegate: AnyObject {
+    func didChange(value: Int, forCell cell: IntegerInputCell)
+}
+
+class IntegerInputCell: UITableViewCell {
+
+    weak var delegate: IntegerInputCellDelegate?
+
+    private var textField: UITextField!
+
+    var value: Int {
+        get {
+            guard let text = textField.text, let integer = Int(text) else { return 0 }
+            return integer
+        }
+        set {
+            textField.text = String(newValue)
+        }
+    }
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+        setupTextField()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func startEditing() {
+        textField.becomeFirstResponder()
+    }
+
+    private func setupTextField() {
+        textField = UITextField(frame: CGRect(x: 0, y: 0, width: 100, height: 28))
+        textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(textFieldDidEndEditing(_:)), for: .editingDidEnd)
+        textField.textAlignment = .right
+        textField.keyboardType = .numberPad
+
+        textField.font = UITableViewCell.defaultDetailTextFont
+        textField.textColor = UITableViewCell.defaultDetailTextColor
+
+        accessoryView = textField
+    }
+
+    @objc func textFieldChanged(_ textField: UITextField) {
+        delegate?.didChange(value: value, forCell: self)
+    }
+
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = String(value)
+    }
+}

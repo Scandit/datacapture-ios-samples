@@ -18,6 +18,8 @@ import UIKit
 protocol DataSourceDelegate: AnyObject {
     func didChangeData()
 
+    func didChangeData(at indexPath: IndexPath)
+
     func getFloatWithUnit(title: String?, currentValue: FloatWithUnit, completion: @escaping (FloatWithUnit) -> Void)
 
     func presentChoice<Choice: CustomStringConvertible>(

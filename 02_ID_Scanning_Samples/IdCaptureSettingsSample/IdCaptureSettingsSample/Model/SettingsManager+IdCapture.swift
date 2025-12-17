@@ -16,13 +16,23 @@ import ScanditIdCapture
 
 extension SettingsManager {
 
+    var anonymizedFields: Set<IdFieldType> {
+        get {
+            Self.current.storedAnonymizedFields
+        }
+        set {
+            Self.current.storedAnonymizedFields = newValue
+            syncAnonymizedFieldsToSettings()
+        }
+    }
+
     var acceptedDocuments: [IdCaptureDocument] {
         get {
             idCaptureSettings.acceptedDocuments
         }
         set {
             idCaptureSettings.acceptedDocuments = newValue
-            configure()
+            syncAnonymizedFieldsToSettings()
         }
     }
 
@@ -32,7 +42,7 @@ extension SettingsManager {
         }
         set {
             idCaptureSettings.rejectedDocuments = newValue
-            configure()
+            syncAnonymizedFieldsToSettings()
         }
     }
 
@@ -163,6 +173,16 @@ extension SettingsManager {
         }
     }
 
+    var rejectionTimeoutSeconds: Int {
+        get {
+            idCaptureSettings.rejectionTimeoutSeconds
+        }
+        set {
+            idCaptureSettings.rejectionTimeoutSeconds = newValue
+            configure()
+        }
+    }
+
     var decodeBackOfEuropeanDrivingLicense: Bool {
         get {
             idCaptureSettings.decodeBackOfEuropeanDrivingLicense
@@ -197,5 +217,16 @@ extension SettingsManager {
 
     func updateFeedback() {
         idCapture.feedback = idCaptureFeedback
+    }
+
+    private func syncAnonymizedFieldsToSettings() {
+        idCaptureSettings.clearAnonymizedFields()
+        let documents = acceptedDocuments + rejectedDocuments
+        for document in documents {
+            for fieldType in anonymizedFields {
+                idCaptureSettings.addAnonymizedField(document, fieldType: fieldType)
+            }
+        }
+        configure()
     }
 }

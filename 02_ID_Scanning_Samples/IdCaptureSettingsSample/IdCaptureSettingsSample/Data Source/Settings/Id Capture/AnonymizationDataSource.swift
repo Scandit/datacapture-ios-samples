@@ -14,7 +14,7 @@
 
 import ScanditIdCapture
 
-class IdAnonymizationModeDataSource: DataSource {
+class AnonymizationDataSource: DataSource {
     weak var delegate: DataSourceDelegate?
 
     init(delegate: DataSourceDelegate) {
@@ -24,7 +24,7 @@ class IdAnonymizationModeDataSource: DataSource {
     // MARK: - Sections
 
     lazy var sections: [Section] = {
-        let rows: [Row] = IdAnonymizationMode.allCases.map { mode in
+        let modeRows: [Row] = IdAnonymizationMode.allCases.map { mode in
             Row.option(
                 title: mode.description,
                 getValue: { SettingsManager.current.anonymizationMode == mode },
@@ -33,8 +33,24 @@ class IdAnonymizationModeDataSource: DataSource {
             )
         }
 
+        let fieldRows: [Row] = IdFieldType.allCases.map { fieldType in
+            Row(
+                title: fieldType.description,
+                kind: .switch,
+                getValue: { SettingsManager.current.anonymizedFields.contains(fieldType) },
+                didChangeValue: { value, _, _ in
+                    if value {
+                        SettingsManager.current.anonymizedFields.insert(fieldType)
+                    } else {
+                        SettingsManager.current.anonymizedFields.remove(fieldType)
+                    }
+                }
+            )
+        }
+
         return [
-            Section(rows: rows)
+            Section(title: "Mode", rows: modeRows),
+            Section(title: "Anonymized Fields", rows: fieldRows),
         ]
     }()
 }

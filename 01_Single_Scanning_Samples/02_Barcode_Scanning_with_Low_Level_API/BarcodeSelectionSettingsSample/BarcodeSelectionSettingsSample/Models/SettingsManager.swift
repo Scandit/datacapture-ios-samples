@@ -172,9 +172,17 @@ class SettingsManager {
         }
         set {
             // ⚠️ The new camera might be nil, e.g. the device doesn't have a specific or any camera
+
+            // Preserve the torch state from the current camera before switching
+            let previousTorchState = internalCamera?.desiredTorchState ?? .off
+
             internalCamera = newValue
 
             internalCamera?.apply(cameraSettings, completionHandler: nil)
+
+            // Apply the previous torch state to the new camera
+            internalCamera?.desiredTorchState = previousTorchState
+
             context.setFrameSource(internalCamera, completionHandler: nil)
         }
     }

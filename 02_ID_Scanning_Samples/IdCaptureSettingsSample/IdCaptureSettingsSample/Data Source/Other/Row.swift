@@ -22,6 +22,7 @@ class Row {
         case subtitledSwitch
         case valueWithUnit
         case float
+        case integer
         case choice
         case slider(minimum: Float, maximum: Float, decimalPlaces: Int)
         case action
@@ -72,6 +73,8 @@ extension Row {
             return SubtitledSwitchCell.self
         case .float:
             return FloatInputCell.self
+        case .integer:
+            return IntegerInputCell.self
         case .slider:
             return SliderCell.self
         case .text:

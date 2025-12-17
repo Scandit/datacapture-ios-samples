@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00064CA28B6BADA09F15A329 /* ScanditIdEuropeDrivingLicense in Frameworks */ = {isa = PBXBuildFile; productRef = 632A4FCAA0D744D331AAA542 /* ScanditIdEuropeDrivingLicense */; };
+		04C46B72882F9D39C02DA170 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC95D30F744DFDB61F192C0 /* SceneDelegate.swift */; };
 		193357352CAAC360002DBCB7 /* BarcodeResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193357342CAAC360002DBCB7 /* BarcodeResultPresenter.swift */; };
 		19DA3F1E2BBE93F0004288D7 /* RejectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3F1D2BBE93F0004288D7 /* RejectionDataSource.swift */; };
 		19DA3F202BBE9B24004288D7 /* RejectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3F1F2BBE9B24004288D7 /* RejectionTableViewController.swift */; };
-		1D8A4563A7E897716CD539DE /* ScanditIdVoidedDetection in Frameworks */ = {isa = PBXBuildFile; productRef = 3641413D818072672C6BFF4C /* ScanditIdVoidedDetection */; };
-		620843239D61EAAD096520C8 /* ScanditLabelCaptureText in Frameworks */ = {isa = PBXBuildFile; productRef = F3FE4ADD884B7117E9C44BBD /* ScanditLabelCaptureText */; };
+		2E4F4EC1B64DA825A8A549CF /* ScanditIdAamvaBarcodeVerification in Frameworks */ = {isa = PBXBuildFile; productRef = A7F14A198D24704E851CD6DF /* ScanditIdAamvaBarcodeVerification */; };
+		369E4948BCA33A48703620D5 /* ScanditIDC in Frameworks */ = {isa = PBXBuildFile; productRef = 80B54F42A51CDA55B4592DFA /* ScanditIDC */; };
 		65203C852577F711006246C6 /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65203C842577F711006246C6 /* SampleCode.xcconfig */; };
 		657F19A322A90A5E002F73F4 /* RectangularSizeSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F19A222A90A5E002F73F4 /* RectangularSizeSpecification.swift */; };
+		6E08401FB63604DB7626E7B9 /* ScanditIdVoidedDetection in Frameworks */ = {isa = PBXBuildFile; productRef = 3F304FFC862A965F81BDBE18 /* ScanditIdVoidedDetection */; };
 		6F144A14222E8E1A002C5C3E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F144A13222E8E1A002C5C3E /* Section.swift */; };
 		6F144A16222E8E2D002C5C3E /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F144A15222E8E2D002C5C3E /* Row.swift */; };
 		6F144A18222E90A5002C5C3E /* UITableView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F144A17222E90A5002C5C3E /* UITableView+Utils.swift */; };
@@ -28,7 +31,7 @@
 		6F361E76223FAF3F009744EF /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F361E75223FAF3F009744EF /* MainTableViewController.swift */; };
 		6F668AEE225651DD00DCA33A /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668AED225651DD00DCA33A /* ResultTableViewController.swift */; };
 		6F668AF02256524E00DCA33A /* ResultDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668AEF2256524E00DCA33A /* ResultDataSource.swift */; };
-		6F869D0C222FC83A00E20833 /* FloatInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F869D0B222FC83A00E20833 /* FloatInputCell.swift */; };
+		6F869D0C222FC83A00E20833 /* NumericInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F869D0B222FC83A00E20833 /* NumericInputCell.swift */; };
 		6F869D1122300A0C00E20833 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F869D1022300A0C00E20833 /* SettingsManager.swift */; };
 		6F869D1822310C2900E20833 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F869D1722310C2900E20833 /* UITableViewCell+Extensions.swift */; };
 		6F869D1A2231187700E20833 /* DataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F869D192231187700E20833 /* DataSourceDelegate.swift */; };
@@ -58,6 +61,7 @@
 		6FFECF3B22367440005CE4CD /* Anchor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3A22367440005CE4CD /* Anchor+Extensions.swift */; };
 		6FFECF3D223676C9005CE4CD /* ControlsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3C223676C9005CE4CD /* ControlsTableViewController.swift */; };
 		6FFECF3F223676E2005CE4CD /* ControlsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFECF3E223676E2005CE4CD /* ControlsDataSource.swift */; };
+		76074F72B76C918E09F2069E /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 208B471B9AAC4841D5B2FB2B /* ScanditBarcodeCapture */; };
 		8C3809DF29C9E3920088F466 /* TextEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3809DE29C9E3920088F466 /* TextEditCell.swift */; };
 		8CA7108A2A4B3595008314B6 /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA710892A4B3595008314B6 /* FeedbackTableViewController.swift */; };
 		8CA7108C2A4B35C1008314B6 /* FeedbackDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA7108B2A4B35C1008314B6 /* FeedbackDataSource.swift */; };
@@ -65,13 +69,13 @@
 		9C1D9F8D2E96D00A00C625EE /* ElementsToRetainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D9F8C2E96D00A00C625EE /* ElementsToRetainDataSource.swift */; };
 		9C1D9F8F2E96D02700C625EE /* ElementsToRetainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D9F8E2E96D02700C625EE /* ElementsToRetainTableViewController.swift */; };
 		9C30A9BA2E955A9500DC8FB4 /* MobileDocumentOcrResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C30A9B92E955A9500DC8FB4 /* MobileDocumentOcrResultPresenter.swift */; };
+		9C33E89D2EA6952A00E4B154 /* AnonymizationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C33E89C2EA6952A00E4B154 /* AnonymizationDataSource.swift */; };
+		9C33E89F2EA6954400E4B154 /* AnonymizationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C33E89E2EA6954400E4B154 /* AnonymizationTableViewController.swift */; };
 		9C659E092CD948A70064F3A1 /* SearchingSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C659E082CD948A70064F3A1 /* SearchingSettingsTableViewController.swift */; };
 		9C659E0B2CD949220064F3A1 /* RegionSpecificSubtypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C659E0A2CD949220064F3A1 /* RegionSpecificSubtypeTableViewController.swift */; };
 		9C659E0D2CD949D90064F3A1 /* SearchingDocumentSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C659E0C2CD949D90064F3A1 /* SearchingDocumentSelectionDataSource.swift */; };
 		9C659E0F2CD94A100064F3A1 /* RegionSpecificSubtypeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C659E0E2CD94A100064F3A1 /* RegionSpecificSubtypeDataSource.swift */; };
 		9C7F6F79299416A80034D48D /* IdAnonymizationMode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F78299416A80034D48D /* IdAnonymizationMode+Extensions.swift */; };
-		9C7F6F7B299417950034D48D /* IdAnonymizationModeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F7A299417950034D48D /* IdAnonymizationModeDataSource.swift */; };
-		9C7F6F7D299418110034D48D /* IdAnonymizationModeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F6F7C299418110034D48D /* IdAnonymizationModeTableViewController.swift */; };
 		9CA616062C00A05900D12F5E /* BackOfEuropeanDrivingLicenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA616052C00A05900D12F5E /* BackOfEuropeanDrivingLicenseTableViewController.swift */; };
 		9CA616082C00A06B00D12F5E /* BackOfEuropeanDrivingLicenseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA616072C00A06B00D12F5E /* BackOfEuropeanDrivingLicenseDataSource.swift */; };
 		9CAA94532CD54B300064F2C0 /* SubtitledSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAA94522CD54B300064F2C0 /* SubtitledSwitchCell.swift */; };
@@ -84,7 +88,6 @@
 		9CD276682CD5480400D5FD86 /* IdCaptureRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD276672CD5480400D5FD86 /* IdCaptureRegion+Extensions.swift */; };
 		9CD2766A2CD5484000D5FD86 /* DocumentRegionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD276692CD5484000D5FD86 /* DocumentRegionDataSource.swift */; };
 		9CD2766C2CD54A0E00D5FD86 /* IdCaptureDocument+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2766B2CD54A0E00D5FD86 /* IdCaptureDocument+Extensions.swift */; };
-		9EE5431F80012ED333904C1D /* ScanditIdCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 2CF745EE80A36394EB617CC9 /* ScanditIdCapture */; };
 		A2269B1D2527807700FC7451 /* NumberFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2269B1C2527807700FC7451 /* NumberFormatter+Extensions.swift */; };
 		A24906E2255EB19C0024A9F3 /* FocusGestureStrategy+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24906E1255EB19C0024A9F3 /* FocusGestureStrategy+Extensions.swift */; };
 		A24906E4255EB8360024A9F3 /* SettingsManager+IdCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24906E3255EB8360024A9F3 /* SettingsManager+IdCapture.swift */; };
@@ -109,12 +112,10 @@
 		A2CC098C255E9D7600C2E3EA /* GesturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC098B255E9D7600C2E3EA /* GesturesTableViewController.swift */; };
 		A2CC098E255E9DE700C2E3EA /* GesturesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC098D255E9DE700C2E3EA /* GesturesDataSource.swift */; };
 		A2E5EA1E261766D100D43871 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E5EA1D261766D100D43871 /* UIColor+Extensions.swift */; };
-		A40F43C383D1C3F3898B017A /* ScanditIDC in Frameworks */ = {isa = PBXBuildFile; productRef = 6D414552A29E8AA2715A42F9 /* ScanditIDC */; };
-		B22640D2BF774C94B3E97544 /* ScanditIdEuropeDrivingLicense in Frameworks */ = {isa = PBXBuildFile; productRef = 476E4B768B714D5FB9EF82E8 /* ScanditIdEuropeDrivingLicense */; };
-		BFC548BC960231B3F3658E5A /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = B30B4FD9988C1760369698FB /* ScanditBarcodeCapture */; };
+		BF8B4945B3A6E066EBCF413D /* ScanditIdCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 1ED14D4189E2E55E9FBBA683 /* ScanditIdCapture */; };
 		C2C1301F2B27068900A0DA81 /* TextHintPosition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C1301E2B27068900A0DA81 /* TextHintPosition+Extensions.swift */; };
-		D0B14B2DA762D98F4255BA6F /* ScanditIdAamvaBarcodeVerification in Frameworks */ = {isa = PBXBuildFile; productRef = 5384442CB823629F0995A559 /* ScanditIdAamvaBarcodeVerification */; };
-		F5D649849CA6FB70CA85D9D3 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 29A64D06A90D6842314AC11C /* ScanditCaptureCore */; };
+		C3754943A72B121C02D849D8 /* ScanditLabelCaptureText in Frameworks */ = {isa = PBXBuildFile; productRef = CF3442E8BDABBA83B2BA9093 /* ScanditLabelCaptureText */; };
+		DFCC44E3A782488641C69D99 /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = C8DB449ABFC020639C1A9391 /* ScanditCaptureCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,7 +161,7 @@
 		6F361E75223FAF3F009744EF /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		6F668AED225651DD00DCA33A /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		6F668AEF2256524E00DCA33A /* ResultDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDataSource.swift; sourceTree = "<group>"; };
-		6F869D0B222FC83A00E20833 /* FloatInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatInputCell.swift; sourceTree = "<group>"; };
+		6F869D0B222FC83A00E20833 /* NumericInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericInputCell.swift; sourceTree = "<group>"; };
 		6F869D1022300A0C00E20833 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		6F869D1722310C2900E20833 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		6F869D192231187700E20833 /* DataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceDelegate.swift; sourceTree = "<group>"; };
@@ -199,13 +200,13 @@
 		9C1D9F8C2E96D00A00C625EE /* ElementsToRetainDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsToRetainDataSource.swift; sourceTree = "<group>"; };
 		9C1D9F8E2E96D02700C625EE /* ElementsToRetainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsToRetainTableViewController.swift; sourceTree = "<group>"; };
 		9C30A9B92E955A9500DC8FB4 /* MobileDocumentOcrResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileDocumentOcrResultPresenter.swift; sourceTree = "<group>"; };
+		9C33E89C2EA6952A00E4B154 /* AnonymizationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymizationDataSource.swift; sourceTree = "<group>"; };
+		9C33E89E2EA6954400E4B154 /* AnonymizationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymizationTableViewController.swift; sourceTree = "<group>"; };
 		9C659E082CD948A70064F3A1 /* SearchingSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingSettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C659E0A2CD949220064F3A1 /* RegionSpecificSubtypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSpecificSubtypeTableViewController.swift; sourceTree = "<group>"; };
 		9C659E0C2CD949D90064F3A1 /* SearchingDocumentSelectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingDocumentSelectionDataSource.swift; sourceTree = "<group>"; };
 		9C659E0E2CD94A100064F3A1 /* RegionSpecificSubtypeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSpecificSubtypeDataSource.swift; sourceTree = "<group>"; };
 		9C7F6F78299416A80034D48D /* IdAnonymizationMode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IdAnonymizationMode+Extensions.swift"; sourceTree = "<group>"; };
-		9C7F6F7A299417950034D48D /* IdAnonymizationModeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdAnonymizationModeDataSource.swift; sourceTree = "<group>"; };
-		9C7F6F7C299418110034D48D /* IdAnonymizationModeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdAnonymizationModeTableViewController.swift; sourceTree = "<group>"; };
 		9CA616052C00A05900D12F5E /* BackOfEuropeanDrivingLicenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackOfEuropeanDrivingLicenseTableViewController.swift; sourceTree = "<group>"; };
 		9CA616072C00A06B00D12F5E /* BackOfEuropeanDrivingLicenseDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackOfEuropeanDrivingLicenseDataSource.swift; sourceTree = "<group>"; };
 		9CAA94522CD54B300064F2C0 /* SubtitledSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitledSwitchCell.swift; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 		A2CC098B255E9D7600C2E3EA /* GesturesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesTableViewController.swift; sourceTree = "<group>"; };
 		A2CC098D255E9DE700C2E3EA /* GesturesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesDataSource.swift; sourceTree = "<group>"; };
 		A2E5EA1D261766D100D43871 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		AAC95D30F744DFDB61F192C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C2C1301E2B27068900A0DA81 /* TextHintPosition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextHintPosition+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,14 +252,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				620843239D61EAAD096520C8 /* ScanditLabelCaptureText in Frameworks */,
-				F5D649849CA6FB70CA85D9D3 /* ScanditCaptureCore in Frameworks */,
-				9EE5431F80012ED333904C1D /* ScanditIdCapture in Frameworks */,
-				B22640D2BF774C94B3E97544 /* ScanditIdEuropeDrivingLicense in Frameworks */,
-				D0B14B2DA762D98F4255BA6F /* ScanditIdAamvaBarcodeVerification in Frameworks */,
-				A40F43C383D1C3F3898B017A /* ScanditIDC in Frameworks */,
-				1D8A4563A7E897716CD539DE /* ScanditIdVoidedDetection in Frameworks */,
-				BFC548BC960231B3F3658E5A /* ScanditBarcodeCapture in Frameworks */,
+				C3754943A72B121C02D849D8 /* ScanditLabelCaptureText in Frameworks */,
+				DFCC44E3A782488641C69D99 /* ScanditCaptureCore in Frameworks */,
+				BF8B4945B3A6E066EBCF413D /* ScanditIdCapture in Frameworks */,
+				00064CA28B6BADA09F15A329 /* ScanditIdEuropeDrivingLicense in Frameworks */,
+				2E4F4EC1B64DA825A8A549CF /* ScanditIdAamvaBarcodeVerification in Frameworks */,
+				369E4948BCA33A48703620D5 /* ScanditIDC in Frameworks */,
+				6E08401FB63604DB7626E7B9 /* ScanditIdVoidedDetection in Frameworks */,
+				76074F72B76C918E09F2069E /* ScanditBarcodeCapture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +353,7 @@
 			children = (
 				6F869D292231357800E20833 /* BasicCell.swift */,
 				6F1CE39F222E75B200115679 /* SwitchCell.swift */,
-				6F869D0B222FC83A00E20833 /* FloatInputCell.swift */,
+				6F869D0B222FC83A00E20833 /* NumericInputCell.swift */,
 				6F869D352232624A00E20833 /* SliderCell */,
 				6F144A17222E90A5002C5C3E /* UITableView+Utils.swift */,
 				8C3809DE29C9E3920088F466 /* TextEditCell.swift */,
@@ -386,12 +388,12 @@
 		6F869D162230218A00E20833 /* Id Capture */ = {
 			isa = PBXGroup;
 			children = (
+				9C33E89E2EA6954400E4B154 /* AnonymizationTableViewController.swift */,
 				9C1D9F8E2E96D02700C625EE /* ElementsToRetainTableViewController.swift */,
 				9CD2765B2CD544DD00D5FD86 /* DocumentsTableViewController.swift */,
 				9CD2765C2CD544DD00D5FD86 /* ScannerTypeTableViewController.swift */,
 				9CA616052C00A05900D12F5E /* BackOfEuropeanDrivingLicenseTableViewController.swift */,
 				8CA710892A4B3595008314B6 /* FeedbackTableViewController.swift */,
-				9C7F6F7C299418110034D48D /* IdAnonymizationModeTableViewController.swift */,
 				A2545BD426A6C71500905C0A /* ImageTypesTableViewController.swift */,
 				19DA3F1F2BBE9B24004288D7 /* RejectionTableViewController.swift */,
 				9CD2765F2CD545A400D5FD86 /* RegionsTableViewController.swift */,
@@ -417,10 +419,10 @@
 		6F869D2022311CA100E20833 /* Id Capture */ = {
 			isa = PBXGroup;
 			children = (
+				9C33E89C2EA6952A00E4B154 /* AnonymizationDataSource.swift */,
 				9C1D9F8C2E96D00A00C625EE /* ElementsToRetainDataSource.swift */,
 				9CA616072C00A06B00D12F5E /* BackOfEuropeanDrivingLicenseDataSource.swift */,
 				8CA7108B2A4B35C1008314B6 /* FeedbackDataSource.swift */,
-				9C7F6F7A299417950034D48D /* IdAnonymizationModeDataSource.swift */,
 				9CD276692CD5484000D5FD86 /* DocumentRegionDataSource.swift */,
 				A2545BCA26A6B9AF00905C0A /* DocumentTypeDataSource.swift */,
 				A2545BCE26A6C36A00905C0A /* ScannerTypeDataSource.swift */,
@@ -498,6 +500,7 @@
 			children = (
 				9C79FC532B0BE22200EDF805 /* E2ETest */,
 				6FA0B290219AE7B600FF780A /* AppDelegate.swift */,
+				AAC95D30F744DFDB61F192C0 /* SceneDelegate.swift */,
 				6F361E73223FAE78009744EF /* Constants.swift */,
 				6F144A20222EA057002C5C3E /* Storyboards */,
 				6F144A19222E92B6002C5C3E /* Controllers */,
@@ -575,14 +578,14 @@
 			);
 			name = IdCaptureSettingsSample;
 			packageProductDependencies = (
-				F3FE4ADD884B7117E9C44BBD /* ScanditLabelCaptureText */,
-				29A64D06A90D6842314AC11C /* ScanditCaptureCore */,
-				2CF745EE80A36394EB617CC9 /* ScanditIdCapture */,
-				476E4B768B714D5FB9EF82E8 /* ScanditIdEuropeDrivingLicense */,
-				5384442CB823629F0995A559 /* ScanditIdAamvaBarcodeVerification */,
-				6D414552A29E8AA2715A42F9 /* ScanditIDC */,
-				3641413D818072672C6BFF4C /* ScanditIdVoidedDetection */,
-				B30B4FD9988C1760369698FB /* ScanditBarcodeCapture */,
+				CF3442E8BDABBA83B2BA9093 /* ScanditLabelCaptureText */,
+				C8DB449ABFC020639C1A9391 /* ScanditCaptureCore */,
+				1ED14D4189E2E55E9FBBA683 /* ScanditIdCapture */,
+				632A4FCAA0D744D331AAA542 /* ScanditIdEuropeDrivingLicense */,
+				A7F14A198D24704E851CD6DF /* ScanditIdAamvaBarcodeVerification */,
+				80B54F42A51CDA55B4592DFA /* ScanditIDC */,
+				3F304FFC862A965F81BDBE18 /* ScanditIdVoidedDetection */,
+				208B471B9AAC4841D5B2FB2B /* ScanditBarcodeCapture */,
 			);
 			productName = SimpleSampleSwift;
 			productReference = 6FA0B28D219AE7B600FF780A /* IdCaptureSettingsSample.app */;
@@ -618,7 +621,7 @@
 			);
 			mainGroup = 6FA0B284219AE7B600FF780A;
 			packageReferences = (
-				0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+				63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */,
 			);
 			productRefGroup = 6FA0B28E219AE7B600FF780A /* Products */;
 			projectDirPath = "";
@@ -663,7 +666,6 @@
 				A2CC098E255E9DE700C2E3EA /* GesturesDataSource.swift in Sources */,
 				6F144A14222E8E1A002C5C3E /* Section.swift in Sources */,
 				6FA0B293219AE7B600FF780A /* ScanViewController.swift in Sources */,
-				9C7F6F7B299417950034D48D /* IdAnonymizationModeDataSource.swift in Sources */,
 				9C7F6F79299416A80034D48D /* IdAnonymizationMode+Extensions.swift in Sources */,
 				6F144A28222ED63E002C5C3E /* FloatWithUnitChooserViewController.swift in Sources */,
 				6F361E76223FAF3F009744EF /* MainTableViewController.swift in Sources */,
@@ -671,11 +673,12 @@
 				8CA7108A2A4B3595008314B6 /* FeedbackTableViewController.swift in Sources */,
 				193357352CAAC360002DBCB7 /* BarcodeResultPresenter.swift in Sources */,
 				6F144A1D222E9EE7002C5C3E /* DataCaptureContext+Licensed.swift in Sources */,
+				9C33E89D2EA6952A00E4B154 /* AnonymizationDataSource.swift in Sources */,
+				9C33E89F2EA6954400E4B154 /* AnonymizationTableViewController.swift in Sources */,
 				A24906E4255EB8360024A9F3 /* SettingsManager+IdCapture.swift in Sources */,
 				6F869D2622311FFC00E20833 /* CameraDataSource.swift in Sources */,
-				9C7F6F7D299418110034D48D /* IdAnonymizationModeTableViewController.swift in Sources */,
 				9C659E0F2CD94A100064F3A1 /* RegionSpecificSubtypeDataSource.swift in Sources */,
-				6F869D0C222FC83A00E20833 /* FloatInputCell.swift in Sources */,
+				6F869D0C222FC83A00E20833 /* NumericInputCell.swift in Sources */,
 				6FFECF352232CD38005CE4CD /* OverlayDataSource.swift in Sources */,
 				9C659E0B2CD949220064F3A1 /* RegionSpecificSubtypeTableViewController.swift in Sources */,
 				6F869D2422311F3000E20833 /* CameraTableViewController.swift in Sources */,
@@ -688,6 +691,7 @@
 				A2545C2726A7044B00905C0A /* ResultViewController.swift in Sources */,
 				C2C1301F2B27068900A0DA81 /* TextHintPosition+Extensions.swift in Sources */,
 				6FA0B291219AE7B600FF780A /* AppDelegate.swift in Sources */,
+				04C46B72882F9D39C02DA170 /* SceneDelegate.swift in Sources */,
 				6F144A18222E90A5002C5C3E /* UITableView+Utils.swift in Sources */,
 				657F19A322A90A5E002F73F4 /* RectangularSizeSpecification.swift in Sources */,
 				A24906E8255EB8440024A9F3 /* SettingsManager+View.swift in Sources */,
@@ -1004,55 +1008,55 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+		63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Scandit/datacapture-spm";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 8.0.0;
+				minimumVersion = 8.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		29A64D06A90D6842314AC11C /* ScanditCaptureCore */ = {
+		1ED14D4189E2E55E9FBBA683 /* ScanditIdCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditCaptureCore;
-		};
-		2CF745EE80A36394EB617CC9 /* ScanditIdCapture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = 63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditIdCapture;
 		};
-		3641413D818072672C6BFF4C /* ScanditIdVoidedDetection */ = {
+		208B471B9AAC4841D5B2FB2B /* ScanditBarcodeCapture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditIdVoidedDetection;
-		};
-		476E4B768B714D5FB9EF82E8 /* ScanditIdEuropeDrivingLicense */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditIdEuropeDrivingLicense;
-		};
-		5384442CB823629F0995A559 /* ScanditIdAamvaBarcodeVerification */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditIdAamvaBarcodeVerification;
-		};
-		6D414552A29E8AA2715A42F9 /* ScanditIDC */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
-			productName = ScanditIDC;
-		};
-		B30B4FD9988C1760369698FB /* ScanditBarcodeCapture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = 63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditBarcodeCapture;
 		};
-		F3FE4ADD884B7117E9C44BBD /* ScanditLabelCaptureText */ = {
+		3F304FFC862A965F81BDBE18 /* ScanditIdVoidedDetection */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0E3248A29DE37F886CC07263 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			package = 63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditIdVoidedDetection;
+		};
+		632A4FCAA0D744D331AAA542 /* ScanditIdEuropeDrivingLicense */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditIdEuropeDrivingLicense;
+		};
+		80B54F42A51CDA55B4592DFA /* ScanditIDC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditIDC;
+		};
+		A7F14A198D24704E851CD6DF /* ScanditIdAamvaBarcodeVerification */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditIdAamvaBarcodeVerification;
+		};
+		C8DB449ABFC020639C1A9391 /* ScanditCaptureCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditCaptureCore;
+		};
+		CF3442E8BDABBA83B2BA9093 /* ScanditLabelCaptureText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63DA4488894E635B534D2A0D /* XCRemoteSwiftPackageReference "datacapture-spm" */;
 			productName = ScanditLabelCaptureText;
 		};
 /* End XCSwiftPackageProductDependency section */

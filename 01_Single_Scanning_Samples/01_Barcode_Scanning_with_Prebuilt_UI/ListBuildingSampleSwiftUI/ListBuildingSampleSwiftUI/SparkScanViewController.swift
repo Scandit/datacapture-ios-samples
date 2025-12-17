@@ -39,7 +39,8 @@ class SparkScanViewController: UIViewController {
     }
 
     private func setupSparkScan() {
-        // Create data capture context
+        // Enter your Scandit License key here.
+        // Your Scandit License key is available via your Scandit SDK web account.
         context = DataCaptureContext.initialize(licenseKey: "-- ENTER YOUR SCANDIT LICENSE KEY HERE --")
 
         // Configure SparkScan settings

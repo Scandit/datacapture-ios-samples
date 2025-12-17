@@ -102,6 +102,14 @@ class CameraDataSource: DataSource {
                     didChangeValue: { SettingsManager.current.focusRange = $0 },
                     dataSourceDelegate: self.delegate
                 ),
+                Row(
+                    title: "Adaptive Exposure",
+                    kind: .switch,
+                    getValue: { SettingsManager.current.adaptiveExposure },
+                    didChangeValue: { value, _, _ in
+                        SettingsManager.current.adaptiveExposure = value
+                    }
+                ),
             ]
         )
     }()

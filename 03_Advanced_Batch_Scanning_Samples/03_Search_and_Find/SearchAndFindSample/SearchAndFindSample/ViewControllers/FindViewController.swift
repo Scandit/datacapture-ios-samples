@@ -77,6 +77,8 @@ class FindViewController: UIViewController {
         )
         barcodeFindView.shouldShowProgressBar = true
         barcodeFindView.uiDelegate = self
+        // Keep camera in standby when the mode stops for faster SparkScan startup
+        barcodeFindView.cameraStateOnStop = .standby
         barcodeFindView.prepareSearching()
     }
 }

@@ -33,6 +33,15 @@ class AnonymizationDataSource: DataSource {
             )
         }
 
+        let anonymizeDefaultFieldsRow = Row(
+            title: "Anonymize Default Fields",
+            kind: .switch,
+            getValue: { SettingsManager.current.anonymizeDefaultFields },
+            didChangeValue: { value, _, _ in
+                SettingsManager.current.anonymizeDefaultFields = value
+            }
+        )
+
         let fieldRows: [Row] = IdFieldType.allCases.map { fieldType in
             Row(
                 title: fieldType.description,
@@ -50,6 +59,7 @@ class AnonymizationDataSource: DataSource {
 
         return [
             Section(title: "Mode", rows: modeRows),
+            Section(rows: [anonymizeDefaultFieldsRow]),
             Section(title: "Anonymized Fields", rows: fieldRows),
         ]
     }()

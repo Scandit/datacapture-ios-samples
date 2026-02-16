@@ -66,6 +66,16 @@ extension SettingsManager {
         }
     }
 
+    var anonymizeDefaultFields: Bool {
+        get {
+            idCaptureSettings.anonymizeDefaultFields
+        }
+        set {
+            idCaptureSettings.anonymizeDefaultFields = newValue
+            configure()
+        }
+    }
+
     var resultWithImageTypes: Set<IdImageType> {
         get {
             let imageTypes = IdImageType.allCases.filter { idCaptureSettings.includeImage(for: $0) }

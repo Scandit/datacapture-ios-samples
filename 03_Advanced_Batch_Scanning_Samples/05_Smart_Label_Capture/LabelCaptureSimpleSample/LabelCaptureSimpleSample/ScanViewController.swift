@@ -61,25 +61,21 @@ extension ScanViewController {
 
     private func setupRecognition() throws {
         let labelCaptureSettings = try LabelCaptureSettings {
-            LabelDefinition("weighted_item") {
+            LabelDefinition("Retail Item") {
                 CustomBarcode(
-                    name: "barcode",
+                    name: "Barcode",
                     symbologies: [.ean13UPCA, .gs1DatabarExpanded, .code128]
                 )
 
-                ExpiryDateText(name: "expiry_date")
+                ExpiryDateText(name: "Expiry Date")
                     .labelDateFormat(
                         LabelDateFormat(
                             componentFormat: LabelDateComponentFormat.MDY,
                             acceptPartialDates: false
                         )
                     )
-                    .optional(true)
 
-                WeightText(name: "weight")
-                    .optional(true)
-
-                UnitPriceText(name: "unit_price")
+                TotalPriceText(name: "Total Price")
                     .optional(true)
             }
 
@@ -118,23 +114,20 @@ extension ScanViewController {
         // Create capture view to visualize the frame source and set it up
         captureView = DataCaptureView(context: context, frame: containerView.bounds)
         captureView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        captureView.addControl(TorchSwitchControl())
         containerView.insertSubview(captureView, at: 0)
 
         // Create basic overlay to visualize results
         let basicOverlay = LabelCaptureBasicOverlay(labelCapture: labelCapture)
+        basicOverlay.labelBrush = Brush(fill: .clear, stroke: .clear, strokeWidth: 0)
         captureView.addOverlay(basicOverlay)
 
         // Create Validation Flow overlay to verify scanning results and set the delegate
         let validationFlowOverlay = LabelCaptureValidationFlowOverlay(labelCapture: labelCapture, view: captureView)
-        let validationFlowSettings = LabelCaptureValidationFlowSettings()
-        validationFlowOverlay.apply(validationFlowSettings)
         validationFlowOverlay.delegate = self
-        captureView.addOverlay(validationFlowOverlay)
     }
 }
 
-// MARK: LabelCaptureValidationFlowDelegate
+// MARK: - LabelCaptureValidationFlowDelegate
 
 extension ScanViewController: LabelCaptureValidationFlowDelegate {
     func labelCaptureValidationFlowOverlay(
@@ -151,7 +144,7 @@ extension ScanViewController: LabelCaptureValidationFlowDelegate {
                 value = field.barcode?.data
             default:
                 if let date = field.asDate() {
-                    value = "\(date.day) - \(date.month) - \(date.year)"
+                    value = "\(date.month) - \(date.day) - \(date.year)"
                 } else {
                     value = field.text
                 }

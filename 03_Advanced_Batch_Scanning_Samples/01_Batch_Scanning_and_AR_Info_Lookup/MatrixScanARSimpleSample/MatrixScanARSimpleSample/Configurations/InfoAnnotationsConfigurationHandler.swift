@@ -18,7 +18,6 @@ import ScanditBarcodeCapture
 class InfoAnnotationsConfigurationHandler: NSObject, ConfigurationHandler {
     private let highlightBrush: Brush
     private let checkmarkIcon: ScanditIcon
-    private let exclamationMarkIcon: ScanditIcon
     private var selectedBarcodeData: Set<String> = []
 
     override init() {
@@ -28,17 +27,11 @@ class InfoAnnotationsConfigurationHandler: NSObject, ConfigurationHandler {
             strokeWidth: 0.0
         )
 
-        let builder = ScanditIconBuilder()
+        checkmarkIcon = ScanditIconBuilder()
             .withIconColor(.black)
             .withBackgroundShape(.circle)
             .withBackgroundStrokeColor(.black)
-        checkmarkIcon =
-            builder
             .withIcon(.checkmark)
-            .build()
-        exclamationMarkIcon =
-            builder
-            .withIcon(.exclamationMark)
             .build()
     }
 
@@ -52,10 +45,8 @@ class InfoAnnotationsConfigurationHandler: NSObject, ConfigurationHandler {
         guard let data = annotation.barcode.data else { return }
         if selectedBarcodeData.contains(data) {
             annotation.header?.backgroundColor = .scanditYellow
-            annotation.header?.icon = exclamationMarkIcon
         } else {
             annotation.header?.backgroundColor = .scanditCyan
-            annotation.header?.icon = checkmarkIcon
         }
     }
 }

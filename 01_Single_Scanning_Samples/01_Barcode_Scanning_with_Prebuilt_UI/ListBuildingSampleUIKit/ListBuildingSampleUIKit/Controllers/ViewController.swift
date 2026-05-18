@@ -166,7 +166,7 @@ extension ViewController: SparkScanListener {
         guard let barcode = session.newlyRecognizedBarcode else {
             return
         }
-        let thumbnail = frameData?.imageBuffers.last?.image?.resize(for: imageSize)
+        let thumbnail = frameData?.imageBuffers.first?.image?.resize(for: imageSize)
 
         DispatchQueue.main.async {
             if !barcode.isRejected {

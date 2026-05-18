@@ -80,7 +80,7 @@ class ScanViewController: UIViewController {
         captureView = DataCaptureView(context: context, frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         // Disable the zoom gesture.
-        captureView.zoomGesture = nil
+        captureView.zoomGestures = []
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)
         SettingsManager.current.captureView = captureView

@@ -34,7 +34,7 @@ class SettingsManager {
             overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
 
             // Disable the zoom gesture
-            captureView.zoomGesture = nil
+            captureView.zoomGestures = []
         }
     }
 

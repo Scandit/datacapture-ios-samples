@@ -40,17 +40,10 @@ class ScanViewController: UIViewController {
     }
 
     private func startScanning() {
-        camera?.switch(toDesiredState: .on)
         labelCapture.isEnabled = true
     }
 
-    private func pauseScanning() {
-        camera?.switch(toDesiredState: .standby)
-        labelCapture.isEnabled = false
-    }
-
     private func stopScanning() {
-        camera?.switch(toDesiredState: .off)
         labelCapture.isEnabled = false
     }
 }
@@ -143,8 +136,8 @@ extension ScanViewController: LabelCaptureValidationFlowDelegate {
             case .barcode:
                 value = field.barcode?.data
             default:
-                if let date = field.asDate() {
-                    value = "\(date.month) - \(date.day) - \(date.year)"
+                if let date = field.asDate(), let month = date.month, let day = date.day, let year = date.year {
+                    value = "\(month) - \(day) - \(year)"
                 } else {
                     value = field.text
                 }
@@ -156,7 +149,6 @@ extension ScanViewController: LabelCaptureValidationFlowDelegate {
         }
 
         DispatchQueue.main.async {
-            self.pauseScanning()
             self.showLabelCapturedAlert(capturedData: capturedData)
         }
     }

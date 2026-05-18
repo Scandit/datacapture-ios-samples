@@ -94,13 +94,12 @@ class ScanViewController: UIViewController {
         view.addSubview(captureView)
         view.sendSubviewToBack(captureView)
 
-        // Add a Barcode Batch overlay to the data capture view to render the tracked barcodes on top of the video
-        // preview. This is optional, but recommended for better visual feedback. The overlay is automatically added
-        // to the view.
+        // Add a Barcode Batch overlay to the data capture view to render the tracked barcodes on
+        // top of the video preview.
+        // This is optional, but recommended for better visual feedback.
         overlay = BarcodeBatchBasicOverlay(barcodeBatch: barcodeBatch, view: captureView, style: .dot)
 
-        // Add another Barcode Batch overlay to the data capture view to render other views. The overlay is
-        // automatically added to the view.
+        // Add another Barcode Batch overlay to the data capture view to render other views.
         advancedOverlay = BarcodeBatchAdvancedOverlay(barcodeBatch: barcodeBatch, view: captureView)
         advancedOverlay.delegate = self
     }

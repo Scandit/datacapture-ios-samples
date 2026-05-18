@@ -36,6 +36,7 @@ extension IdCaptureDocumentType {
         case .driverLicense: return DriverLicense(region: region)
         case .passport: return Passport(region: region)
         case .visaIcao: return VisaIcao(region: region)
+        case .visaLetter: return VisaLetter(region: region)
         case .residencePermit: return ResidencePermit(region: region)
         case .healthInsuranceCard: return HealthInsuranceCard(region: region)
         case .regionSpecific: fatalError("regionSpecific not supported by this extension")

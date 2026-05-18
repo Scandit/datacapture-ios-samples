@@ -135,9 +135,10 @@ static NSString *const _Nonnull licenseKey = @"-- ENTER YOUR SCANDIT LICENSE KEY
                                         UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:self.captureView];
 
-    // Add a barcode capture overlay to the data capture view to render the location of captured
-    // barcodes on top of the video preview. This is optional, but recommended for better visual
-    // feedback.
+    // Add a Barcode Capture overlay to the data capture view to render the location of captured
+    // barcodes on top of the video preview. Viewfinders are visual components only, and as such
+    // will not restrict the scan area.
+    // This is optional, but recommended for better visual feedback.
     self.overlay = [SDCBarcodeCaptureOverlay overlayWithBarcodeCapture:self.barcodeCapture
                                                     forDataCaptureView:self.captureView];
     self.overlay.viewfinder = [SDCRectangularViewfinder

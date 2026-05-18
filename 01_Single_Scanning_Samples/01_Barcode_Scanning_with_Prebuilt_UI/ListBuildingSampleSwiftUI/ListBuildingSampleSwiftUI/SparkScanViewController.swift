@@ -70,7 +70,7 @@ extension SparkScanViewController: SparkScanListener {
     func sparkScan(_ sparkScan: SparkScan, didScanIn session: SparkScanSession, frameData: FrameData?) {
         guard let barcode = session.newlyRecognizedBarcode else { return }
 
-        let thumbnail = frameData?.imageBuffers.last?.image?.resize(
+        let thumbnail = frameData?.imageBuffers.first?.image?.resize(
             for: CGSize(width: 56, height: 56)
         )
 

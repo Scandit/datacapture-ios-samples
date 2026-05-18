@@ -109,8 +109,9 @@ final class DLScanningViewController: UIViewController {
         // Register self as a listener to get informed whenever a new id got recognized.
         idCapture.addListener(self)
 
-        // Add an id capture overlay to the data capture view to render the location of captured ids on top of
-        // the video preview. This is optional, but recommended for better visual feedback.
+        // Add an ID Capture overlay to the data capture view to render the location of captured
+        // IDs on top of the video preview.
+        // This is optional, but recommended for better visual feedback.
         overlay = IdCaptureOverlay(idCapture: idCapture, view: captureView)
         overlay.idLayoutStyle = .rounded
     }

@@ -85,8 +85,10 @@ class GS1ParserSample: UIViewController {
         // Register self as a listener to get informed whenever a new barcode is recognized.
         barcodeCapture.addListener(self)
 
-        // Add a barcode capture overlay to the data capture view to render the location of captured barcodes on top of
-        // the video preview. This is optional, but recommended for better visual feedback.
+        // Add a Barcode Capture overlay to the data capture view to render the location of captured
+        // barcodes on top of the video preview. Viewfinders are visual components only, and as such
+        // will not restrict the scan area.
+        // This is optional, but recommended for better visual feedback.
         let overlay = BarcodeCaptureOverlay(barcodeCapture: barcodeCapture, view: captureView)
         overlay.viewfinder = RectangularViewfinder(style: .square, lineStyle: .bold)
 

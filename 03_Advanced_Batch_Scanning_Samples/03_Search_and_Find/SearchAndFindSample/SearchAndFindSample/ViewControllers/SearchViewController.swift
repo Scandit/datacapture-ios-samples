@@ -113,7 +113,7 @@ extension SearchViewController {
 extension SearchViewController: SparkScanListener {
     func sparkScan(_ sparkScan: SparkScan, didScanIn session: SparkScanSession, frameData: FrameData?) {
         guard let barcode = session.newlyRecognizedBarcode else { return }
-        let thumbnail = frameData?.imageBuffers.last?.image?.resizeAndRotate(for: imageSize)
+        let thumbnail = frameData?.imageBuffers.first?.image?.resizeAndRotate(for: imageSize)
 
         DispatchQueue.main.async {
             self.addItem(

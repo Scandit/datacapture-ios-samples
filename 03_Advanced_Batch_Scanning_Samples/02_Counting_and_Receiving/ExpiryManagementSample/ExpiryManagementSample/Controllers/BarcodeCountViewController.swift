@@ -192,12 +192,20 @@ extension BarcodeCountViewController: BarcodeCountStatusProvider {
         // Add a delay to simulate fetching the data
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             // If we have information that the item is expired add a BarcodeCountStatusItem
-            // with status .expired to the result. Otherwise return status .none.
+            // with the expired icon to the result. Otherwise return no icon.
+            let expiredIcon = ScanditIconBuilder()
+                .withIcon(.expiredItem)
+                .withIconColor(.black)
+                .withBackgroundColor(.red)
+                .withBackgroundShape(.circle)
+                .withBackgroundStrokeColor(.white)
+                .withBackgroundStrokeWidth(1)
+                .build()
             let items: [BarcodeCountStatusItem] = trackedBarcodes.compactMap { barcode in
                 if let item = self.itemsTableViewModel?.itemForBarcode(barcode: barcode.barcode), item.isExpired {
-                    return BarcodeCountStatusItem(barcode: barcode, status: .expired)
+                    return BarcodeCountStatusItem(barcode: barcode, icon: expiredIcon)
                 }
-                return BarcodeCountStatusItem(barcode: barcode, status: .none)
+                return BarcodeCountStatusItem(barcode: barcode, icon: nil)
             }
             let result = BarcodeCountStatusSuccessResult(
                 statusList: items,

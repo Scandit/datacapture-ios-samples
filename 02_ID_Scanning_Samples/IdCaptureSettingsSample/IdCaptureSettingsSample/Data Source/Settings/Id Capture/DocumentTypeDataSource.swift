@@ -40,6 +40,7 @@ class DocumentTypeDataSource: DataSource {
 
     lazy var sections: [Section] = {
         let rows = IdCaptureDocumentType.allCases
+            .filter { $0 != .visaLetter }
             .map { documentType in
                 let row = Row(
                     title: documentType.description,

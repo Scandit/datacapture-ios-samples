@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3704402A9B108CDD3CC0F0F2 /* ScanditLabelCaptureText in Frameworks */ = {isa = PBXBuildFile; productRef = BFC349E1B4A0ABCEACAB9A08 /* ScanditLabelCaptureText */; };
+		46504E8697A49D7D896F76BF /* ScanditBarcodeCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 0E97446C9595DF85532FFCCE /* ScanditBarcodeCapture */; };
+		9CDD40C5A93A61A1DBF4823E /* ScanditCaptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = 00134E2589DFB6FA08E39AD5 /* ScanditCaptureCore */; };
+		A100000000000000000000A1 /* BarcodePriceDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000B1 /* BarcodePriceDatabase.swift */; };
+		A100000000000000000000A2 /* barcode_price_database.csv in Resources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000B2 /* barcode_price_database.csv */; };
+		A100000000000000000000A3 /* codes_for_testing.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000B3 /* codes_for_testing.pdf */; };
+		DC8FDD612C949DF600DD816E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8FDD602C949DF600DD816E /* AppDelegate.swift */; };
+		DC8FDD6A2C949DF700DD816E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8FDD692C949DF700DD816E /* Assets.xcassets */; };
+		DC8FDD6D2C949DF700DD816E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DC8FDD6C2C949DF700DD816E /* Base */; };
+		DC8FDD752C949EC300DD816E /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8FDD742C949EC200DD816E /* ScanViewController.swift */; };
+		EFD04BE0A517A024E69555D2 /* ScanditPriceLabel in Frameworks */ = {isa = PBXBuildFile; productRef = F4CD4359895ABE64A55F318F /* ScanditPriceLabel */; };
+		F9B94022996D5B77B04073F1 /* ScanditLabelCapture in Frameworks */ = {isa = PBXBuildFile; productRef = 052F4CD8A63C2AAA9B86B6F1 /* ScanditLabelCapture */; };
+		F9E37197A7D747C38C1DA536 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B59BA66AF1D4106B3EA8BFF /* SceneDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DC8FDD862C94A03C00DD816E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2B59BA66AF1D4106B3EA8BFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A100000000000000000000B1 /* BarcodePriceDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodePriceDatabase.swift; sourceTree = "<group>"; };
+		A100000000000000000000B2 /* barcode_price_database.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = barcode_price_database.csv; sourceTree = "<group>"; };
+		A100000000000000000000B3 /* codes_for_testing.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = codes_for_testing.pdf; sourceTree = "<group>"; };
+		DC8FDD5D2C949DF600DD816E /* PriceCaptureSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PriceCaptureSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC8FDD602C949DF600DD816E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DC8FDD692C949DF700DD816E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC8FDD6C2C949DF700DD816E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DC8FDD6E2C949DF700DD816E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC8FDD742C949EC200DD816E /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		DC8FDD782C949F8B00DD816E /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC8FDD5A2C949DF600DD816E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFD04BE0A517A024E69555D2 /* ScanditPriceLabel in Frameworks */,
+				3704402A9B108CDD3CC0F0F2 /* ScanditLabelCaptureText in Frameworks */,
+				9CDD40C5A93A61A1DBF4823E /* ScanditCaptureCore in Frameworks */,
+				F9B94022996D5B77B04073F1 /* ScanditLabelCapture in Frameworks */,
+				46504E8697A49D7D896F76BF /* ScanditBarcodeCapture in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC8FDD542C949DF600DD816E = {
+			isa = PBXGroup;
+			children = (
+				DC8FDD792C949F8B00DD816E /* Configuration */,
+				DC8FDD5F2C949DF600DD816E /* PriceCaptureSample */,
+				DC8FDD7F2C94A01400DD816E /* Frameworks */,
+				DC8FDD5E2C949DF600DD816E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC8FDD5E2C949DF600DD816E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC8FDD5D2C949DF600DD816E /* PriceCaptureSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC8FDD5F2C949DF600DD816E /* PriceCaptureSample */ = {
+			isa = PBXGroup;
+			children = (
+				DC8FDD742C949EC200DD816E /* ScanViewController.swift */,
+				A100000000000000000000B1 /* BarcodePriceDatabase.swift */,
+				DC8FDD602C949DF600DD816E /* AppDelegate.swift */,
+				2B59BA66AF1D4106B3EA8BFF /* SceneDelegate.swift */,
+				DC8FDD762C949ED400DD816E /* Storyboards */,
+				DC8FDD692C949DF700DD816E /* Assets.xcassets */,
+				A100000000000000000000B2 /* barcode_price_database.csv */,
+				A100000000000000000000B3 /* codes_for_testing.pdf */,
+				DC8FDD6E2C949DF700DD816E /* Info.plist */,
+			);
+			path = PriceCaptureSample;
+			sourceTree = "<group>";
+		};
+		DC8FDD762C949ED400DD816E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DC8FDD6B2C949DF700DD816E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DC8FDD792C949F8B00DD816E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				DC8FDD782C949F8B00DD816E /* SampleCode.xcconfig */,
+			);
+			name = Configuration;
+			path = ../../../Configuration;
+			sourceTree = "<group>";
+		};
+		DC8FDD7F2C94A01400DD816E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC8FDD5C2C949DF600DD816E /* PriceCaptureSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC8FDD712C949DF700DD816E /* Build configuration list for PBXNativeTarget "PriceCaptureSample" */;
+			buildPhases = (
+				DC8FDD592C949DF600DD816E /* Sources */,
+				DC8FDD5A2C949DF600DD816E /* Frameworks */,
+				DC8FDD5B2C949DF600DD816E /* Resources */,
+				DC8FDD862C94A03C00DD816E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PriceCaptureSample;
+			packageProductDependencies = (
+				F4CD4359895ABE64A55F318F /* ScanditPriceLabel */,
+				BFC349E1B4A0ABCEACAB9A08 /* ScanditLabelCaptureText */,
+				00134E2589DFB6FA08E39AD5 /* ScanditCaptureCore */,
+				052F4CD8A63C2AAA9B86B6F1 /* ScanditLabelCapture */,
+				0E97446C9595DF85532FFCCE /* ScanditBarcodeCapture */,
+			);
+			productName = PriceWeightLabelCaptureSample;
+			productReference = DC8FDD5D2C949DF600DD816E /* PriceCaptureSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC8FDD552C949DF600DD816E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					DC8FDD5C2C949DF600DD816E = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = DC8FDD582C949DF600DD816E /* Build configuration list for PBXProject "PriceCaptureSample" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DC8FDD542C949DF600DD816E;
+			packageReferences = (
+				616048CDAD3CE155BC26AC05 /* XCRemoteSwiftPackageReference "datacapture-spm" */,
+			);
+			productRefGroup = DC8FDD5E2C949DF600DD816E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC8FDD5C2C949DF600DD816E /* PriceCaptureSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC8FDD5B2C949DF600DD816E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC8FDD6A2C949DF700DD816E /* Assets.xcassets in Resources */,
+				DC8FDD6D2C949DF700DD816E /* Base in Resources */,
+				A100000000000000000000A2 /* barcode_price_database.csv in Resources */,
+				A100000000000000000000A3 /* codes_for_testing.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC8FDD592C949DF600DD816E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9E37197A7D747C38C1DA536 /* SceneDelegate.swift in Sources */,
+				DC8FDD752C949EC300DD816E /* ScanViewController.swift in Sources */,
+				A100000000000000000000A1 /* BarcodePriceDatabase.swift in Sources */,
+				DC8FDD612C949DF600DD816E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DC8FDD6B2C949DF700DD816E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC8FDD6C2C949DF700DD816E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DC8FDD6F2C949DF700DD816E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = CCJEHQ4M9R;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Price Capture";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DC8FDD702C949DF700DD816E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CCJEHQ4M9R;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Price Capture";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DC8FDD722C949DF700DD816E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC8FDD782C949F8B00DD816E /* SampleCode.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INFOPLIST_FILE = PriceCaptureSample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Price Capture";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.PriceCaptureSample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DC8FDD732C949DF700DD816E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC8FDD782C949F8B00DD816E /* SampleCode.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INFOPLIST_FILE = PriceCaptureSample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Price Capture";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scandit.PriceCaptureSample${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC8FDD582C949DF600DD816E /* Build configuration list for PBXProject "PriceCaptureSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC8FDD6F2C949DF700DD816E /* Debug */,
+				DC8FDD702C949DF700DD816E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC8FDD712C949DF700DD816E /* Build configuration list for PBXNativeTarget "PriceCaptureSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC8FDD722C949DF700DD816E /* Debug */,
+				DC8FDD732C949DF700DD816E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		616048CDAD3CE155BC26AC05 /* XCRemoteSwiftPackageReference "datacapture-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Scandit/datacapture-spm";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		00134E2589DFB6FA08E39AD5 /* ScanditCaptureCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 616048CDAD3CE155BC26AC05 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditCaptureCore;
+		};
+		052F4CD8A63C2AAA9B86B6F1 /* ScanditLabelCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 616048CDAD3CE155BC26AC05 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditLabelCapture;
+		};
+		0E97446C9595DF85532FFCCE /* ScanditBarcodeCapture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 616048CDAD3CE155BC26AC05 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditBarcodeCapture;
+		};
+		BFC349E1B4A0ABCEACAB9A08 /* ScanditLabelCaptureText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 616048CDAD3CE155BC26AC05 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditLabelCaptureText;
+		};
+		F4CD4359895ABE64A55F318F /* ScanditPriceLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 616048CDAD3CE155BC26AC05 /* XCRemoteSwiftPackageReference "datacapture-spm" */;
+			productName = ScanditPriceLabel;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DC8FDD552C949DF600DD816E /* Project object */;
+}

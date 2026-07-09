@@ -38,6 +38,7 @@ class MRZResultPresenter: ResultPresenter {
             SimpleTextCellProvider(value: mrzResult.optionalDataInLine2.valueOrNil, title: "Optional Data In Line 2"),
             SimpleTextCellProvider(value: mrzResult.capturedMrz.valueOrNil, title: "Captured MRZ"),
             SimpleTextCellProvider(value: mrzResult.personalIdNumber.valueOrNil, title: "Personal ID Number"),
+            SimpleTextCellProvider(value: mrzResult.passportType.description, title: "Passport Type"),
             SimpleTextCellProvider(value: mrzResult.passportNumber.valueOrNil, title: "Passport Number"),
             SimpleTextCellProvider(value: mrzResult.passportIssuerIso.valueOrNil, title: "Passport Issuer ISO"),
             SimpleTextCellProvider(value: mrzResult.passportDateOfExpiry.valueOrNil, title: "Passport Date of Expiry"),

@@ -55,6 +55,8 @@ fileprivate extension ResultPresenter {
             SimpleTextCellProvider(value: capturedId.issuingCountryISO.valueOrNil, title: "Issuing Country ISO"),
             SimpleTextCellProvider(value: capturedId.issuingCountry.description, title: "Issuing Country"),
             SimpleTextCellProvider(value: capturedId.documentNumber.valueOrNil, title: "Document Number"),
+            SimpleTextCellProvider(value: capturedId.visaNumber.valueOrNil, title: "Visa Number"),
+            SimpleTextCellProvider(value: capturedId.passportNumber.valueOrNil, title: "Passport Number"),
             SimpleTextCellProvider(
                 value: capturedId.documentAdditionalNumber.valueOrNil,
                 title: "Document Additional Number"
@@ -65,6 +67,10 @@ fileprivate extension ResultPresenter {
             SimpleTextCellProvider(
                 value: capturedId.isCitizenPassport.description,
                 title: "Is Citizen Passport"
+            ),
+            SimpleTextCellProvider(
+                value: capturedId.isCapturingComplete.description,
+                title: "Is Capturing Complete"
             ),
             SimpleTextCellProvider(
                 value: capturedId.usRealIdStatus.description,

@@ -67,3 +67,21 @@ extension Optional where Wrapped == NSNumber {
         return value ? "YES" : "NO"
     }
 }
+
+extension Optional where Wrapped == Int {
+    var valueOrNil: String {
+        if let value = self {
+            return String(value)
+        }
+        return "<nil>"
+    }
+}
+
+extension Optional where Wrapped == Bool {
+    var valueOrNil: String {
+        guard let value = self else {
+            return "<nil>"
+        }
+        return value ? "YES" : "NO"
+    }
+}

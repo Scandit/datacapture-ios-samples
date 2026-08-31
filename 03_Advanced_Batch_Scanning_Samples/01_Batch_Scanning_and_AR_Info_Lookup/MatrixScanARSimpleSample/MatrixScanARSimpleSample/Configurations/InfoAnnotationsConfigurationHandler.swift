@@ -112,8 +112,7 @@ extension InfoAnnotationsConfigurationHandler: BarcodeArAnnotationProvider {
         let closeUpAnnotation = closeUpAnnotationFor(barcode: barcode)
         return BarcodeArResponsiveAnnotation(
             barcode: barcode,
-            closeUp: closeUpAnnotation,
-            farAway: farAwayAnnotation
+            annotationsByThreshold: [0.05: farAwayAnnotation, 1.0: closeUpAnnotation]
         )
     }
 }

@@ -37,6 +37,12 @@ class ScanViewController: UIViewController {
 
     private var dismissResultTimer: Timer?
 
+    /// True while a partial result (the front of a double-sided document, delivered when
+    /// notifyOnSideCapture is enabled) is shown and the remaining side is still to be captured.
+    /// Resetting the session while this holds would discard the already-captured side, so we skip
+    /// the reset. Cleared once a complete result is delivered.
+    private var awaitingRemainingSide = false
+
     private lazy var resultLabel: UILabel = makeResultLabel()
 
     override func viewDidLoad() {
@@ -61,8 +67,10 @@ class ScanViewController: UIViewController {
         // completely turn off. Until it is completely stopped, it is still possible to receive further results, hence
         // it's a good idea to first disable ID capture as well.
         idCapture.isEnabled = false
-        // Reset IdCapture to discard front side captures when using Front & Back mode
-        idCapture.reset()
+        // Reset IdCapture to discard front side captures when using Front & Back mode.
+        if !awaitingRemainingSide {
+            idCapture.reset()
+        }
         camera?.switch(toDesiredState: .off)
     }
 
@@ -139,6 +147,7 @@ extension ScanViewController: IdCaptureListener {
     }
 
     func idCapture(_ idCapture: IdCapture, didCapture capturedId: CapturedId) {
+        awaitingRemainingSide = !capturedId.isCapturingComplete
         // Pause the idCapture to not capture while showing the result.
         idCapture.isEnabled = false
         DispatchQueue.main.async { [unowned self] in

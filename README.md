@@ -78,6 +78,8 @@ ID Scanning Samples demonstrate the features of the ID Capture API and demonstra
 
 **ID Capture Extended Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/02_ID_Scanning_Samples/IdCaptureExtendedSample))
 
+**ID Capture Image Upload Sample** ([link](https://github.com/Scandit/datacapture-ios-samples/tree/master/02_ID_Scanning_Samples/IdCaptureImageUploadSample))
+
 ### Barcode Capture Samples
 
 **Barcode Capture Simple Sample** ([Swift](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/02_Barcode_Scanning_with_Low_Level_API/BarcodeCaptureSimpleSampleSwift), [ObjC](https://github.com/Scandit/datacapture-ios-samples/tree/master/01_Single_Scanning_Samples/02_Barcode_Scanning_with_Low_Level_API/BarcodeCaptureSimpleSampleObjC))

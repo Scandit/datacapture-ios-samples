@@ -203,6 +203,16 @@ extension SettingsManager {
         }
     }
 
+    var notifyOnSideCapture: Bool {
+        get {
+            idCaptureSettings.notifyOnSideCapture
+        }
+        set {
+            idCaptureSettings.notifyOnSideCapture = newValue
+            configure()
+        }
+    }
+
     var idCapturedFeedback: Feedback {
         get {
             idCaptureFeedback.idCaptured

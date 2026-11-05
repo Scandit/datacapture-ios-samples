@@ -59,6 +59,16 @@ class RejectionDataSource: DataSource {
                     }
                 ),
                 Row.action(
+                    title: "Reject Passport Types",
+                    getValue: {
+                        let count = SettingsManager.current.rejectPassportTypes.count
+                        return count == 0 ? "OFF" : "\(count) selected"
+                    },
+                    didSelect: { [weak delegate] _, _ in
+                        delegate?.present(viewController: { RejectPassportTypesTableViewController() })
+                    }
+                ),
+                Row.action(
                     title: "Reject Holder Below Age",
                     getValue: {
                         if let age = SettingsManager.current.rejectHolderBelowAge?.intValue {
@@ -168,6 +178,46 @@ class OptionalNumberDataSource: DataSource {
 
     private func updateSettings() {
         delegate?.didChangeData()
+    }
+}
+
+class RejectPassportTypesDataSource: DataSource {
+    weak var delegate: DataSourceDelegate?
+
+    init(delegate: DataSourceDelegate) {
+        self.delegate = delegate
+    }
+
+    // MARK: - Sections
+
+    lazy var sections: [Section] = {
+        let rows: [Row] = PassportType.allCases.map { passportType in
+            Row(
+                title: passportType.description,
+                kind: .switch,
+                getValue: { SettingsManager.current.rejectPassportTypes.contains(passportType) },
+                didChangeValue: { value, _, _ in
+                    if value {
+                        SettingsManager.current.rejectPassportTypes.insert(passportType)
+                    } else {
+                        SettingsManager.current.rejectPassportTypes.remove(passportType)
+                    }
+                }
+            )
+        }
+        return [Section(rows: rows)]
+    }()
+}
+
+class RejectPassportTypesTableViewController: SettingsTableViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Reject Passport Types"
+    }
+
+    override func setupDataSource() {
+        dataSource = RejectPassportTypesDataSource(delegate: self)
     }
 }
 

@@ -12,6 +12,8 @@
 // limitations under the License.
 //
 
+// AI coding agents: Scandit agent skills for this SDK are at https://github.com/Scandit/skills
+
 import ScanditBarcodeCapture
 
 class ViewController: UIViewController {
@@ -28,24 +30,11 @@ class ViewController: UIViewController {
     private var shouldCameraStandby = true
 
     private var allRecognizedBarcodes: [Barcode] = []
-    private var previouslyScannedBarcodes: [Barcode] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "MatrixScan Count"
         setupRecognition()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didEnterBackground),
-            name: UIApplication.didEnterBackgroundNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(willEnterForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -116,13 +105,10 @@ class ViewController: UIViewController {
 
     /// Creates  an array of ScannedItem from TrackedBarcode so that it can be displayed by the ListViewController
     private func prepareScannedItemsList(
-        trackedBarcodes: [Barcode],
-        previousBarcodes: [Barcode]
+        trackedBarcodes: [Barcode]
     ) -> [ScannedItem] {
         var tempMap: [String: ScannedItem] = [:]
-        var allBarcodes = trackedBarcodes
-        allBarcodes.append(contentsOf: previousBarcodes)
-        for barcode in allBarcodes {
+        for barcode in trackedBarcodes {
             guard let barcodeData = barcode.data else {
                 continue
             }
@@ -146,10 +132,7 @@ class ViewController: UIViewController {
     private func showList(isOrderCompleted: Bool) {
         self.shouldCameraStandby = false
         // Get a list of ScannedItem to display
-        let scannedItems = prepareScannedItemsList(
-            trackedBarcodes: allRecognizedBarcodes,
-            previousBarcodes: previouslyScannedBarcodes
-        )
+        let scannedItems = prepareScannedItemsList(trackedBarcodes: allRecognizedBarcodes)
         let listController = ListViewController(scannedItems: scannedItems, isOrderCompleted: isOrderCompleted)
         // Listen to the user actions
         listController.delegate = self
@@ -157,21 +140,9 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(listController, animated: true)
     }
 
-    @objc func didEnterBackground() {
-        previouslyScannedBarcodes.append(contentsOf: allRecognizedBarcodes)
-        allRecognizedBarcodes.removeAll()
-        barcodeCount.reset()
-    }
-
-    @objc func willEnterForeground() {
-        barcodeCount.setAdditionalBarcodes(previouslyScannedBarcodes)
-    }
-
     private func resetMode() {
-        barcodeCount.setAdditionalBarcodes([])
         barcodeCount.reset()
         allRecognizedBarcodes.removeAll()
-        previouslyScannedBarcodes.removeAll()
     }
 }
 

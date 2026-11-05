@@ -148,6 +148,16 @@ extension SettingsManager {
         }
     }
 
+    var rejectPassportTypes: Set<PassportType> {
+        get {
+            idCaptureSettings.rejectPassportTypes
+        }
+        set {
+            idCaptureSettings.rejectPassportTypes = newValue
+            configure()
+        }
+    }
+
     var rejectHolderBelowAge: NSNumber? {
         get {
             idCaptureSettings.rejectHolderBelowAge

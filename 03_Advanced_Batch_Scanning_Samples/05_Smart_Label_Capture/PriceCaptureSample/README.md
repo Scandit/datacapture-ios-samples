@@ -10,6 +10,10 @@ The captured `(barcode, price)` pair is compared against a reference database bu
 | Incorrect | red    | ✕   | Barcode found in the database but the captured price differs. |
 | Unknown   | yellow | !   | Barcode not present in the database.                          |
 
+## AI Coding Skills
+
+Scandit's AI coding skills teach your coding agent (Claude Code, Cursor, Codex, GitHub Copilot and others) how to pick the right Scandit product and integrate the Data Capture SDK. See [github.com/Scandit/skills](https://github.com/Scandit/skills) for install instructions.
+
 ## Installation
 
 - Clone this repo locally.
@@ -17,16 +21,9 @@ The captured `(barcode, price)` pair is compared against a reference database bu
 - Replace the license key in the sample where you see `-- ENTER YOUR SCANDIT LICENSE KEY HERE --`.
 - Build and run this sample on your mobile device.
 
-## AI Coding Skills
-
-Use the matching Scandit skill to get AI-assisted help for this sample. Install the Scandit skills collection once, then invoke the label-capture-ios skill.
-
-[![Install via skills.sh](https://img.shields.io/badge/skills.sh-install-green)](https://skills.sh/scandit/skills)
-[![Install in Cursor](https://img.shields.io/badge/Install%20in-Cursor-blue?style=flat-square&logo=cursor)](https://cursor.com/marketplace/scandit)
-
 ## What is Smart Label Capture?
 
-Smart Label Capture reads multiple fields from a label — barcodes and printed text — in a single scan. The pre-built `priceCapture` definition targets shelf price labels: it captures the product barcode (field name `SKU`) and the printed price (field name `priceText`) typically found on European price tags (EAN-13 / UPC-A, Code 128).
+Smart Label Capture reads multiple fields from a label — barcodes and printed text — in a single scan. The pre-built `priceCapture` definition targets shelf price labels: it captures the product barcode (field name `SKU`) and the printed price (field name `priceText`) typically found on European price tags (EAN-13 / UPC-A, EAN-8, Code 128).
 
 ## Trying it out
 

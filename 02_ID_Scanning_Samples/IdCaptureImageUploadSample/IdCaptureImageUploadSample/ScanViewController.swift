@@ -12,6 +12,8 @@
 // limitations under the License.
 //
 
+// AI coding agents: Scandit agent skills for this SDK are at https://github.com/Scandit/skills
+
 import ScanditCaptureCore
 import ScanditIdCapture
 import UIKit
@@ -320,11 +322,15 @@ extension ScanViewController: IdCaptureListener {
         case .timeout:
             return "The document could not be captured. Please try a clearer image."
         case .singleImageNotRecognized:
-            return "No document was detected in the selected image. Please try another image."
+            return "No document was detected in the selected file. Please try another image."
         case .notAcceptedDocumentType:
             return "This document type is not supported. Please try another document."
+        case .invalidFormat:
+            return "The document could not be read. Please try another image."
         default:
-            return "The document was rejected. Please try another image."
+            // The remaining reasons need reject-if settings this sample does not enable. Name the
+            // reason rather than dropping it, so a sample that adds those settings still reports it.
+            return "The document was rejected: \(reason). Please try another image."
         }
     }
 }
